@@ -1,0 +1,548 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Titillium+Web&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* */
+
+:root {
+    /* Colours */
+    --background: #05060b;
+    --card-background: #111216;
+    --border: #6B727B;
+    --interactable: #1c1e24;
+    --text: #dfe4f1;
+    --secondary-text: #6B727B;
+    --primary: #96a0d5;
+
+    --content-width: min(60rem, 90vw);
+}
+
+*, header, footer {
+    font-family: "Titillium Web", sans-serif;
+    /* Clamp the font size from 12px to 16px;
+       transitions from 487px to 1067px */
+    font-size: clamp(0.75rem, 0.69vw + 0.54rem, 1rem);
+    color: var(--text);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 4rem;
+
+    border-bottom: 0.1rem solid var(--border);
+
+    font-family: "Titillium Web", sans-serif;
+    font-size: 1.618em;
+    text-transform: uppercase;
+
+    background: var(--card-background);
+}
+
+header div {
+    width: var(--content-width);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 8rem;
+
+    border-top: 0.1rem solid var(--border);
+
+    background: var(--card-background);
+}
+
+footer > div {
+    display: flex;
+    justify-content: space-between;
+
+    width: var(--content-width);
+}
+
+footer .game-version {
+    display: block;
+
+    text-align: right;
+    color: var(--secondary-text);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 100vh;
+
+    background: var(--background);
+}
+
+.card {
+    width: var(--content-width);
+
+    border: 0.15rem solid var(--border);
+    border-radius: 0.4rem;
+
+    background: var(--card-background);
+}
+
+.glass {
+    background: rgba(113, 126, 139, 0.1);
+    backdrop-filter: blur(0.3rem);
+    -webkit-backdrop-filter: blur(0.3rem);
+}
+
+#weapon,
+#damage-info {
+    margin-top: 4rem;
+}
+
+#weapon {
+    position: relative;
+
+    height: 24rem;
+
+    background-image: linear-gradient(
+        105deg,
+        transparent 75%,
+        var(--card-background) 90%),
+        var(--weapon-image);
+    background-size: 80rem;
+    background-position: -29rem 56%;
+    background-repeat: no-repeat;
+}
+
+#weapon-info {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    max-width: calc(60rem - 26rem);
+
+    margin: 1.4em;
+}
+
+@media screen and (max-width: 1067px) {
+    #weapon {
+        background-image: linear-gradient(
+            105deg,
+            #0006 40%,
+            var(--card-background) 90%),
+            var(--weapon-image);
+        background-size: 80rem;
+        background-position: -29rem 56%;
+        background-repeat: no-repeat;
+    }
+
+    #weapon-info {
+        left: 0;
+    }
+}
+
+#weapon-info > * {
+    margin-top: 1em;
+}
+
+#weapon-selector {
+    position: relative;
+
+    width: 12em;
+
+    border-radius: 0.4rem;
+}
+
+#weapon-selector select {
+    appearance: none;
+
+    width: 12em;
+    height: 2.5em;
+
+    padding-left: 1em;
+
+    border: 0.15rem solid var(--border);
+    border-radius: 0.4rem;
+
+    font-family: "Titillium Web", sans-serif !important;
+    font-size: 1em;
+    font-weight: bold;
+
+    background: var(--interactable);
+
+    cursor: pointer;
+}
+
+#weapon-selector::before,
+#weapon-selector::after {
+    --size: 0.3em;
+
+    position: absolute;
+    right: 1em;
+    z-index: 1;
+
+    content: "";
+
+    pointer-events: none;
+}
+
+#weapon-selector::before {
+    top: 40%;
+
+    border-right: var(--size) solid transparent;
+    border-bottom: var(--size) solid var(--text);
+    border-left: var(--size) solid transparent;
+}
+
+#weapon-selector::after {
+    top: 55%;
+
+    border-top: var(--size) solid var(--text);
+    border-right: var(--size) solid transparent;
+    border-left: var(--size) solid transparent;
+}
+
+#weapon-selector option {
+    font-weight: normal;
+}
+
+#weapon-selector optgroup {
+    font-size: 0.75em;
+    font-style: normal;
+    color: var(--secondary-text);
+}
+
+#weapon-stats {
+    display: grid;
+    grid-template-columns: repeat(3, calc(3.5em * 1.618));
+    row-gap: 1em;
+}
+
+.weapon-stat-multiple { grid-column: 1 / 5; }
+.weapon-stat-multiple .weapon-stat { display: inline-block; }
+
+.weapon-stat-title {
+    color: var(--secondary-text);
+}
+
+.weapon-stat {
+    display: block;
+    width: 3.5em;
+
+    font-size: 1.618em;
+}
+
+.weapon-stat .weapon-pellet-count {
+    font-size: 0.618em;
+    line-height: 1.618em;
+    vertical-align: bottom;
+}
+
+#weapon-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5em;
+}
+
+#weapon-skills .weapon-skill[title="Headshots"] {
+    position: relative;
+
+    margin-right: 1em;
+}
+
+#weapon-skills .weapon-skill[title="Headshots"]::after {
+    position: absolute;
+    top: 0.25em;
+    right: -0.95em;
+
+    height: 2.5em;
+
+    border-right: 0.15rem solid var(--border);
+
+    content: "";
+}
+
+.weapon-skill {
+    width: 3.2em;
+    height: 3.2em;
+
+    padding: 0;
+
+    border: 0.15rem solid var(--border);
+    border-radius: 0.4rem;
+}
+
+#weapon-skills .weapon-skill {
+    padding: 0.5em;
+}
+
+button.weapon-skill {
+    cursor: pointer;
+}
+
+.weapon-skill img {
+    width: 100%;
+
+    pointer-events: none;
+}
+
+.weapon-skill[disabled=''] {
+    filter: brightness(50%);
+}
+
+.weapon-skill[aria-pressed='true'] {
+    background: var(--text);
+
+    border: 0.15rem solid var(--text);
+}
+
+.weapon-skill[aria-pressed='true'] img {
+    filter: brightness(15%);
+}
+
+#damage-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+
+    margin-bottom: 4rem;
+}
+
+.damage-stats-card {
+    min-height: 8em;
+
+    background-image:
+        linear-gradient(
+            105deg,
+            #0003 0%,
+            var(--card-background) 35%,
+            var(--card-background) 65%,
+            #0006 90%
+        ),
+        var(--enemy-image),
+        var(--weapon-image);
+    background-size:
+        var(--content-width),
+        30em,
+        42em;
+    background-position:
+        left 0 top 0,
+        right -3rem top 20%,
+        left -12.5rem top 55%;
+    background-repeat: no-repeat;
+
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@media screen and (max-width: 800px) {
+    .damage-stats-card {
+            background-image:
+            linear-gradient(
+                105deg,
+                var(--card-background) 50%,
+                #0005 90%
+            ),
+            var(--enemy-image);
+        background-size:
+            var(--content-width),
+            30em;
+        background-position:
+            left 0 top 0,
+            right -3rem top 20%;
+    }
+}
+
+.damage-stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    min-height: 8.2em;
+}
+
+.visor-damage {
+    display: table;
+
+    margin: 1em auto 0;
+    padding: 0.8em 0;
+
+    min-width: min(40rem, 84vw);
+
+    border: 0.15rem solid var(--border);
+    border-radius: 0.4rem;
+
+    text-align: center;
+    color: var(--text);
+}
+
+.visor-damage.cracked {
+    background-image: url("images/Broken Glass.png");
+    background-size: 15rem;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.damage-bracket-container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+
+    margin: 1em 0;
+    max-height: 8em;
+    max-width: 36em;
+
+    overflow: hidden;
+}
+
+.damage-bracket {
+    display: block;
+
+    padding-right: 0.5em;
+
+    width: 10em;
+    height: 100%;
+
+    border-right: 0.15rem solid var(--border);
+
+    text-align: right;
+}
+
+.damage-bracket h1 {
+    margin-bottom: 0.3em;
+
+    font-size: 1.618em;
+}
+
+.damage-bracket h2,
+.time-to-kill {
+    font-size: 0.8em;
+    color: var(--secondary-text);
+}
+
+.damage-stats span {
+    display: block;
+    position: relative;
+
+    margin-top: 0.3em;
+    margin-right: 1.5em;
+}
+
+.damage-stats .time-to-kill {
+    margin-right: 0;
+}
+
+.time-to-kill,
+.damage-stats-enemy span {
+    display: block;
+
+    margin-top: 0.3em;
+}
+
+.enemy-armor::after,
+.enemy-health::after,
+.enemy-armor-hardness::after {
+    position: absolute;
+    right: -1.5em;
+
+    height: 1em;
+    width: 1em;
+
+    background-size: 1em;
+
+    content: "";
+}
+
+.enemy-armor::after { background-image: url("images/Shield.png"); }
+.enemy-health::after { background-image: url("images/Plus\ Shield.png"); }
+.penetrating-armored-shots::after { background-image: url("images/Cracked\ Shield.png"); }
+.enemy-armor-hardness::after { background-image: url("images/Hard\ Shield.png"); }
+
+.damage-stats-weapon,
+.damage-stats-enemy {
+    align-self: flex-end;
+    flex-shrink: 0;
+
+    width: 10em;
+
+    margin: 1em;
+}
+
+.damage-stats-weapon {
+    flex-shrink: 0.4;
+
+    margin-right: 0;
+}
+
+.damage-stats-weapon .weapon-name,
+.damage-stats-enemy .enemy-name {
+    font-weight: bold;
+}
+
+.damage-stats-weapon .weapon-skills {
+    margin-top: 0.5em;
+}
+
+.damage-stats-weapon .weapon-skill {
+    display: inline-block;
+
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    font-size: 0.45em;
+}
+
+.damage-stats-enemy .enemy-name {
+    margin-bottom: 0.5em;
+}
+
+.damage-stats-enemy {
+    margin-left: 0;
+
+    text-align: right;
+}
+
