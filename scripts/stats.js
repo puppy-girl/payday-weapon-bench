@@ -984,6 +984,11 @@ const enemyData = {
         "Armor": 0,
         "ArmorHardness": 0
     },
+    "Drone": {
+      "Health": 50,
+      "Armor": 150,
+      "ArmorHardness": 2
+    },
     "Shield": {
         "Health": 160,
         "Armor": 180,
