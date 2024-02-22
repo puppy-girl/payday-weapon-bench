@@ -851,6 +851,7 @@ const weaponData = {
           }
       ],
       "ArmorPenetration": 1.3,
+      "RoundsPerMinute": 900,
       "ReloadEmptyNotifyTime": 2.6666665,
       "ReloadNotifyTime": 2.3333335,
     },

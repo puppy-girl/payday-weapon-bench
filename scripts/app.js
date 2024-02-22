@@ -520,7 +520,7 @@ function UpdateWeaponStats(
 
     let weaponAmmoLoadedStat = document.createElement('span');
     weaponAmmoLoadedStat.setAttribute('class', 'weapon-stat');
-    weaponAmmoLoadedStat.textContent = weapon.AmmoLoaded;
+    weaponAmmoLoadedStat.textContent = weapon.AmmoLoaded ?? 10;
 
     weaponAmmoLoaded.appendChild(weaponAmmoLoadedStat);
     weaponStats.appendChild(weaponAmmoLoaded);
