@@ -95,10 +95,7 @@ function WeaponShotsToKill(
     if (skills.includes('Cutting Shot')) armorPenetrationBoost += 0.1;
     if (skills.includes('Coup de Grâce')) damageMultiplier += 0.1;
     if (skills.includes('High Grain')) damageMultiplier += 0.2;
-    if (enemyName != 'SWAT' &&
-        enemyName != 'Heavy SWAT' &&
-        skills.includes('Combat Marking')
-    ) damageMultiplier += 0.2;
+    if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
     
     const effectiveArmorPenetration = EffectiveArmorPenetration(
             weapon.ArmorPenetration + armorPenetrationBoost,
@@ -269,10 +266,6 @@ function UpdateDamageChart(
                 let weaponSkillBadge = document.createElement('span');
                 weaponSkillBadge.setAttribute('class', 'weapon-skill');
                 weaponSkillBadge.setAttribute('aria-pressed', 'true');
-                if ((enemyName == 'SWAT' ||
-                    enemyName == 'Heavy SWAT') &&
-                    skill == 'Combat Marking'
-                ) weaponSkillBadge.setAttribute('disabled', '');
     
                 if ((!effectiveArmorPenetration ||
                     !enemyData[enemyName].ArmorHardness) &&
