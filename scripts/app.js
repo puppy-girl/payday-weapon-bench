@@ -115,6 +115,7 @@ function WeaponShotsToKill(
         if (!skills.includes('Headshots')) multiplier = 1;
         if (skills.includes('Headshots') && skills.includes('Long Shot'))
             multiplier = weapon.CriticalDamageMultiplierDistanceArray[0].Multiplier;
+        if (enemyName == 'Drone') multiplier = 1;
         if (distance <= 500 && skills.includes('Face to Face')) damageMultiplier += 0.1;
 
         const weaponShotsToKill = ShotsToKill(
