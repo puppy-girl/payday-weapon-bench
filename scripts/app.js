@@ -181,7 +181,8 @@ function UpdateDamageChart(
                   enemyName,
                   skills
               ),
-              armorPenetration = weaponData[selectedWeapon].ArmorPenetration,
+              armorPenetration = weaponData[selectedWeapon].ArmorPenetration
+                + (skills.includes('Cutting Shot') ? 0.1 : 0),
               effectiveArmorPenetration = EffectiveArmorPenetration(
                   armorPenetration,
                   enemyData[enemyName].ArmorHardness
@@ -273,7 +274,7 @@ function UpdateDamageChart(
                     skill == 'Cutting Shot'
                 ) weaponSkillBadge.setAttribute('disabled', '');
     
-                if (enemyName == 'Dozer' &&
+                if (enemyName == 'Bulldozer' &&
                     skill == 'Coup de Grâce'
                 ) weaponSkillBadge.setAttribute('disabled', '');
     
