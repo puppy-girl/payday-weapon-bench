@@ -14,49 +14,70 @@
             <span>Payday 3 Weapon Bench</span>
         </div>
     </header>
+
     <main>
-        <section id="weapon" class="card">
-            <div id="weapon-info">
-                <div id="weapon-selector">
-                    <select name="weapon">
-                        <!--Generate from weapon stats-->
-                    </select>
+
+        <div id="weapon-data">
+
+            <section id="selected-weapon" class="card">
+
+                <div id="loadout">
+                    <div id="weapon-container">
+                        <div id="weapon-selector-wrapper">
+                            <select name="weapon" id="weapon-selector"></select>
+                        </div>
+                        <button type="button" title="Headshots" class="weapon-skill glass" aria-pressed="false">
+                            <img src="images/Headshots.png" alt="Headshots">
+                        </button>
+                    </div>
+                    <div id="weapon-skills"></div>
+                    <div id="weapon-attachments"></div>
                 </div>
-                <div id="weapon-stats">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro, earum omnis doloribus accusantium delectus ipsum cum est necessitatibus soluta pariatur libero dolorem consequatur aperiam nesciunt, quidem unde, exercitationem error vero sequi. Ratione incidunt nam nemo voluptas harum corrupti! Beatae architecto placeat excepturi, consectetur quaerat repellendus sunt aliquam aliquid nobis illum.
+
+            </section>
+
+            <section id="selected-weapon-stats" class="card">
+
+                <div id="weapon-stats-container">
+                    <div class="weapon-stat-multiple">
+                        <span id="weapon-damage-stats-title" class="weapon-stat-title">Damage</span>
+                        <div id="weapon-damage-stats"></div>
+                    </div>
+    
+                    <div class="weapon-stat-multiple">
+                        <span id="weapon-crit-stats-title" class="weapon-stat-title">Crit Multiplier</span>
+                        <div id="weapon-crit-stats"></div>
+                    </div>
+    
+                    <div>
+                        <span class="weapon-stat-title">RPM</span>
+                        <span id="weapon-rpm-stat" class="weapon-stat"></span>
+                    </div>
+    
+                    <div>
+                        <span class="weapon-stat-title">AP</span>
+                        <span id="weapon-ap-stat" class="weapon-stat"></span>
+                    </div>
+    
+                    <div>
+                        <span class="weapon-stat-title">Mag Size</span>
+                        <span id="weapon-mag-size-stat" class="weapon-stat"></span>
+                    </div>
+    
+                    <div>
+                        <span class="weapon-stat-title">Ammo Pickup</span>
+                        <span id="weapon-ammo-pickup-stat" class="weapon-stat"></span>
+                    </div>
                 </div>
-                <div id="weapon-skills">
-                    <button type="button" title="Headshots" class="weapon-skill glass" aria-pressed="false">
-                        <img src="images/Headshots.png" alt="Headshots">
-                    </button>
-                    <button type="button" title="Edge" class="weapon-skill glass" aria-pressed="false">
-                        <img src="images/Edge.png" alt="Edge">
-                    </button>
-                    <button type="button" title="Cutting Shot" class="weapon-skill glass" aria-pressed="false" disabled>
-                        <img src="images/Cutting Shot.png" alt="Cutting Shot">
-                    </button>
-                    <button type="button" title="Long Shot" class="weapon-skill glass" aria-pressed="false" disabled>
-                        <img src="images/Long Shot.png" alt="Long Shot">
-                    </button>
-                    <button type="button" title="Face to Face" class="weapon-skill glass" aria-pressed="false" disabled>
-                        <img src="images/Face to Face.png" alt="Face to Face">
-                    </button>
-                    <button type="button" title="Coup de Grâce" class="weapon-skill glass" aria-pressed="false" disabled>
-                        <img src="images/Coup de Grâce.png" alt="Coup de Grâce">
-                    </button>
-                    <button type="button" title="High Grain" class="weapon-skill glass" aria-pressed="false">
-                        <img src="images/High Grain.png" alt="High Grain">
-                    </button>
-                    <button type="button" title="Combat Marking" class="weapon-skill glass" aria-pressed="false">
-                        <img src="images/Combat Marking.png" alt="Combat Marking">
-                    </button>
-                </div>
-            </div>
-        </section>
-        <section id="damage-info">
-            <!--Generate from enemy stats-->
-        </section>
+
+            </section>
+
+        </div>
+
+        <div id="damage-data"></div>
+
     </main>
+
     <footer>
         <div>
             <span>Made by Jade ・:*・。*・</span>
