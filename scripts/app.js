@@ -195,16 +195,26 @@ function InitialiseWeaponData() {
         'Long Shot',
         'Face to Face',
         'Coup de Grâce',
+        'Combat Marking',
         'High Grain',
-        'Combat Marking'
     ]
+
+    const skillDescriptions = {
+        'Edge': 'You deal 10% extra damage for 20 seconds.',
+        'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.1.',
+        'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
+        'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
+        'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
+        'Combat Marking': 'You deal 20% extra damage to marked targets.',
+        'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 10 seconds.',
+    }
 
     skills.forEach(skill => {
         const weaponSkillButton = document.querySelector('#weapon-skills')
             .appendChild(document.createElement('button'));
         weaponSkillButton.setAttribute('type', 'button');
         weaponSkillButton.setAttribute('title', skill);
-        weaponSkillButton.setAttribute('class', 'weapon-skill glass');
+        weaponSkillButton.setAttribute('class', 'weapon-skill glass tooltip-wrapper');
         weaponSkillButton.setAttribute('aria-pressed', 'false');
 
         // Disable buttons for skills that require edge
@@ -219,6 +229,17 @@ function InitialiseWeaponData() {
         const weaponSkillIcon = weaponSkillButton.appendChild(document.createElement('img'));
         weaponSkillIcon.setAttribute('src', 'images/' + skill + '.png');
         weaponSkillIcon.setAttribute('alt', skill);
+
+        const weaponSkillTooltip = weaponSkillButton.appendChild(document.createElement('div'));
+        weaponSkillTooltip.setAttribute('class', 'tooltip');
+        
+        const tooltipTitle = weaponSkillTooltip.appendChild(document.createElement('span'));
+        tooltipTitle.setAttribute('class', 'tooltip-title');
+        tooltipTitle.textContent = skill;
+
+        const tooltipBody = weaponSkillTooltip.appendChild(document.createElement('p'));
+        tooltipBody.setAttribute('class', 'tooltip-body');
+        tooltipBody.innerHTML = skillDescriptions[skill];
     });
 }
 

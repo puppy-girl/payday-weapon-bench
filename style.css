@@ -138,6 +138,42 @@ main {
     -webkit-backdrop-filter: blur(0.3rem);
 }
 
+.tooltip-wrapper { position: relative;}
+.tooltip-wrapper:hover .tooltip { visibility: visible; opacity: 100%; }
+
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    inset: 120% 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+
+    width: 10em;
+    height: fit-content;
+
+    padding: 0.5em;
+
+    border: 0.1rem solid var(--border);
+    border-radius: 0.4rem;
+
+    background: var(--card-background);
+
+    transition: opacity 0.3s ease-in;
+}
+
+.tooltip-title {
+    font-weight: bold;
+}
+
+.tooltip-body {
+    margin-top: 0.5em;
+
+    font-size: 0.8em;
+    text-align: left;
+}
+
 #weapon-data { margin: 4rem 2rem 0 2rem; }
 #damage-data { margin: 4rem 2rem; }
 
