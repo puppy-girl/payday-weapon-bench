@@ -205,7 +205,7 @@ function InitialiseWeaponData() {
         'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
         'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
         'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
-        'Combat Marking': 'You deal 20% extra damage to marked targets.',
+        'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
         'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 10 seconds.',
     }
 
@@ -222,7 +222,8 @@ function InitialiseWeaponData() {
             skill == 'Cutting Shot' ||
             skill == 'Long Shot' ||
             skill == 'Face to Face' ||
-            skill == 'Coup de Grâce'
+            skill == 'Coup de Grâce' ||
+            skill == 'Combat Marking'
         )
             weaponSkillButton.setAttribute('disabled', '');
 
@@ -559,7 +560,8 @@ const edgeSkillButtons = [...skillButtons].filter(skillButton => {
         skillButton.title == 'Cutting Shot' ||
         skillButton.title == 'Long Shot' ||
         skillButton.title == 'Face to Face' ||
-        skillButton.title == 'Coup de Grâce'
+        skillButton.title == 'Coup de Grâce' ||
+        skillButton.title == 'Combat Marking'
     );
 });
 
