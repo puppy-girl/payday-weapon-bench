@@ -69,8 +69,8 @@ table {
 
 header {
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
     height: 4rem;
 
@@ -85,6 +85,10 @@ header {
 
 header div {
     width: var(--content-width);
+
+    margin: 0 2rem;
+
+    line-height: 4rem;
 }
 
 footer {
