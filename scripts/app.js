@@ -213,7 +213,7 @@ function InitialiseWeaponData() {
         const weaponSkillButton = document.querySelector('#weapon-skills')
             .appendChild(document.createElement('button'));
         weaponSkillButton.setAttribute('type', 'button');
-        weaponSkillButton.setAttribute('title', skill);
+        weaponSkillButton.setAttribute('value', skill);
         weaponSkillButton.setAttribute('class', 'weapon-skill glass tooltip-wrapper');
         weaponSkillButton.setAttribute('aria-pressed', 'false');
 
@@ -557,11 +557,11 @@ InitialiseWeaponData();
 const skillButtons = document.querySelectorAll('button.weapon-skill');
 const edgeSkillButtons = [...skillButtons].filter(skillButton => {
     return (
-        skillButton.title == 'Cutting Shot' ||
-        skillButton.title == 'Long Shot' ||
-        skillButton.title == 'Face to Face' ||
-        skillButton.title == 'Coup de Grâce' ||
-        skillButton.title == 'Combat Marking'
+        skillButton.value == 'Cutting Shot' ||
+        skillButton.value == 'Long Shot' ||
+        skillButton.value == 'Face to Face' ||
+        skillButton.value == 'Coup de Grâce' ||
+        skillButton.value == 'Combat Marking'
     );
 });
 
@@ -600,7 +600,7 @@ for (const button of skillButtons) {
             event.target.setAttribute('aria-pressed', 'false');
         }
 
-        if (event.target.title == 'Edge') {
+        if (event.target.value == 'Edge') {
             if (event.target.getAttribute('aria-pressed') == 'true') {
                 for (const edgeSkill of edgeSkillButtons) {
                     edgeSkill.removeAttribute('disabled');
@@ -616,7 +616,7 @@ for (const button of skillButtons) {
 
         const pressedButtons = Array.from(skillButtons)
             .filter(i => i.getAttribute('aria-pressed') == 'true')
-            .map(i => i = i.title);
+            .map(i => i = i.value);
         skills = pressedButtons;
 
         UpdateDamageData(selectedWeapon, skills);

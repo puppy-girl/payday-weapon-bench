@@ -294,7 +294,7 @@ main {
     color: var(--secondary-text);
 }
 
-.weapon-skill[title="Headshots"] { 
+.weapon-skill[value="Headshots"] { 
     font-size: 0.78em;
 }
 
