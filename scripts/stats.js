@@ -242,33 +242,33 @@ const weaponData = {
     "Reinfeld 900S": {
         "Class": "Marksman Rifle",
         "DamageDistanceArray": [
-            {
-              "Damage": 129.9,
-              "Distance": 4000.0
-            },
-            {
-              "Damage": 62.5,
-              "Distance": 6000.0
-            },
-            {
-              "Damage": 41.7,
-              "Distance": 10000.0
-            }
-          ],
-          "CriticalDamageMultiplierDistanceArray": [
-            {
-              "Multiplier": 3.0,
-              "Distance": 4000.0
-            },
-            {
-              "Multiplier": 2.0,
-              "Distance": 10000.0
-            },
-            {
-              "Multiplier": 1.5,
-              "Distance": 15000.0
-            }
-          ],
+          {
+            "Damage": 160.0,
+            "Distance": 4000.0
+          },
+          {
+            "Damage": 77.0,
+            "Distance": 6000.0
+          },
+          {
+            "Damage": 51.3,
+            "Distance": 10000.0
+          }
+        ],
+        "CriticalDamageMultiplierDistanceArray": [
+          {
+            "Multiplier": 3.0,
+            "Distance": 4000.0
+          },
+          {
+            "Multiplier": 2.0,
+            "Distance": 10000.0
+          },
+          {
+            "Multiplier": 1.5,
+            "Distance": 15000.0
+          }
+        ],
           "AmmoLoaded": 5,
           "AmmoInventoryMax": 50,
           "AmmoInventory": 25,
@@ -276,7 +276,7 @@ const weaponData = {
             "Min": 0.0,
             "Max": 2.0
           },
-          "ArmorPenetration": 1.3,
+          "ArmorPenetration": 2,
           "RoundsPerMinute": 50.0,
           "ReloadEmptyNotifyTime": 2.9999998,
           "ReloadNotifyTime": 2.4999998,
@@ -987,7 +987,7 @@ const enemyData = {
     },
     "Drone": {
       "Health": 50,
-      "Armor": 150,
+      "Armor": 50,
       "ArmorHardness": 2
     },
     "Shield": {
