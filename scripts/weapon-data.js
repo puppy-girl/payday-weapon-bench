@@ -870,15 +870,15 @@ const weaponData = {
     Class: "Marksman Rifle",
     DamageDistanceArray: [
       {
-        Damage: 129.9,
+        Damage: 160.0,
         Distance: 4000.0,
       },
       {
-        Damage: 62.5,
+        Damage: 77.0,
         Distance: 6000.0,
       },
       {
-        Damage: 41.7,
+        Damage: 51.3,
         Distance: 10000.0,
       },
     ],
@@ -903,7 +903,7 @@ const weaponData = {
       Min: 0.0,
       Max: 2.0,
     },
-    ArmorPenetration: 1.3,
+    ArmorPenetration: 2,
     RoundsPerMinute: 50.0,
     GraphDisplacementList: {
       Points: [
