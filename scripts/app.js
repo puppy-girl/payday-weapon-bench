@@ -503,15 +503,16 @@ function UpdateWeaponStats(
     const damageStats = document.querySelector('#weapon-damage-stats'),
           critStats = document.querySelector('#weapon-crit-stats');
 
-    // Damage distance array
-    const weaponDamageDistances = weapon.DamageDistanceArray.map(i => i.Distance / 100 + "m");
-    document.querySelector('#weapon-damage-stats-title')
-        .textContent = `Damage // ${weaponDamageDistances.join(', ')}`;
-
     damageStats.innerHTML = '';
 
     weapon.DamageDistanceArray.forEach(distance => {
-        const weaponDamageStat = damageStats.appendChild(document.createElement('span'));
+        const weaponDamageRow = damageStats.appendChild(document.createElement('tr'));
+
+        const weaponDamageDistance = weaponDamageRow.appendChild(document.createElement('td'));
+        weaponDamageDistance.setAttribute('class', 'weapon-stat-distance');
+        weaponDamageDistance.textContent = distance.Distance / 100 + 'm';
+
+        const weaponDamageStat = weaponDamageRow.appendChild(document.createElement('td'));
         weaponDamageStat.setAttribute('class', 'weapon-stat');
         weaponDamageStat.textContent = Math.round(distance.Damage * 10) / 10;
 
@@ -522,15 +523,16 @@ function UpdateWeaponStats(
         }
     });
 
-    // Crit multiplier distance array
-    const weaponCritDistances = weapon.CriticalDamageMultiplierDistanceArray.map(i => i.Distance / 100 + "m");
-    document.querySelector('#weapon-crit-stats-title')
-        .textContent = `Crit Multiplier // ${weaponCritDistances.join(', ')}`;
-
     critStats.innerHTML = '';
 
     weapon.CriticalDamageMultiplierDistanceArray.forEach(distance => {
-        const weaponCritStat = critStats.appendChild(document.createElement('span'));
+        const weaponCritRow = critStats.appendChild(document.createElement('tr'));
+
+        const weaponCritDistance = weaponCritRow.appendChild(document.createElement('td'));
+        weaponCritDistance.setAttribute('class', 'weapon-stat-distance');
+        weaponCritDistance.textContent = distance.Distance / 100 + 'm';
+    
+        const weaponCritStat = weaponCritRow.appendChild(document.createElement('td'));
         weaponCritStat.setAttribute('class', 'weapon-stat');
         weaponCritStat.textContent = distance.Multiplier + "×";
     });
