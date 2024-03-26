@@ -69,8 +69,8 @@ table {
 
 header {
     display: flex;
-    align-items: center;
     justify-content: center;
+    flex-wrap: wrap;
 
     height: 4rem;
 
@@ -85,6 +85,10 @@ header {
 
 header div {
     width: var(--content-width);
+
+    margin: 0 2rem;
+
+    line-height: 4rem;
 }
 
 footer {
@@ -115,8 +119,8 @@ footer .game-version {
 
 main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
     min-height: 100vh;
 
@@ -138,12 +142,46 @@ main {
     -webkit-backdrop-filter: blur(0.3rem);
 }
 
-#weapon,
-#damage-info {
-    margin-top: 4rem;
+.tooltip-wrapper { position: relative;}
+.tooltip-wrapper:hover .tooltip { visibility: visible; opacity: 100%; }
+
+.tooltip {
+    visibility: hidden;
+    opacity: 0;
+
+    position: absolute;
+    inset: 120% 50%;
+    transform: translateX(-50%);
+    z-index: 999;
+
+    width: 10em;
+    height: fit-content;
+
+    padding: 0.5em;
+
+    border: 0.1rem solid var(--border);
+    border-radius: 0.4rem;
+
+    background: var(--card-background);
+
+    transition: opacity 0.3s ease-in;
 }
 
-#weapon {
+.tooltip-title {
+    font-weight: bold;
+}
+
+.tooltip-body {
+    margin-top: 0.5em;
+
+    font-size: 0.8em;
+    text-align: left;
+}
+
+#weapon-data { margin: 4rem 2rem 0 2rem; }
+#damage-data { margin: 4rem 2rem; }
+
+#selected-weapon {
     position: relative;
 
     height: 24rem;
@@ -154,34 +192,33 @@ main {
         var(--card-background) 90%),
         var(--weapon-image);
     background-size: 80rem;
-    background-position: -29rem 56%;
+    background-position: -30rem 56%;
     background-repeat: no-repeat;
 }
 
-#weapon-info {
+#loadout {
     position: absolute;
     bottom: 0;
-    right: 0;
 
     max-width: calc(60rem - 26rem);
 
-    margin: 1.4em;
+    margin: 1rem 1rem 1rem 24rem;
 }
 
 @media screen and (max-width: 1067px) {
-    #weapon {
+    #selected-weapon {
         background-image: linear-gradient(
             105deg,
             #0006 40%,
             var(--card-background) 90%),
             var(--weapon-image);
         background-size: 80rem;
-        background-position: -29rem 56%;
+        background-position: -30rem 56%;
         background-repeat: no-repeat;
     }
 
-    #weapon-info {
-        left: 0;
+    #loadout {
+        margin: 1rem;
     }
 }
 
@@ -189,7 +226,12 @@ main {
     margin-top: 1em;
 }
 
-#weapon-selector {
+#weapon-container {
+    display: flex;
+    gap: 0.5em;
+}
+
+#weapon-selector-wrapper {
     position: relative;
 
     width: 12em;
@@ -197,7 +239,7 @@ main {
     border-radius: 0.4rem;
 }
 
-#weapon-selector select {
+#weapon-selector {
     appearance: none;
 
     width: 12em;
@@ -217,8 +259,8 @@ main {
     cursor: pointer;
 }
 
-#weapon-selector::before,
-#weapon-selector::after {
+#weapon-selector-wrapper::before,
+#weapon-selector-wrapper::after {
     --size: 0.3em;
 
     position: absolute;
@@ -230,7 +272,7 @@ main {
     pointer-events: none;
 }
 
-#weapon-selector::before {
+#weapon-selector-wrapper::before {
     top: 40%;
 
     border-right: var(--size) solid transparent;
@@ -238,7 +280,7 @@ main {
     border-left: var(--size) solid transparent;
 }
 
-#weapon-selector::after {
+#weapon-selector-wrapper::after {
     top: 55%;
 
     border-top: var(--size) solid var(--text);
@@ -256,54 +298,16 @@ main {
     color: var(--secondary-text);
 }
 
-#weapon-stats {
-    display: grid;
-    grid-template-columns: repeat(3, calc(3.5em * 1.618));
-    row-gap: 1em;
-}
-
-.weapon-stat-multiple { grid-column: 1 / 5; }
-.weapon-stat-multiple .weapon-stat { display: inline-block; }
-
-.weapon-stat-title {
-    color: var(--secondary-text);
-}
-
-.weapon-stat {
-    display: block;
-    width: 3.5em;
-
-    font-size: 1.618em;
-}
-
-.weapon-stat .weapon-pellet-count {
-    font-size: 0.618em;
-    line-height: 1.618em;
-    vertical-align: bottom;
+.weapon-skill[value="Headshots"] { 
+    font-size: 0.78em;
 }
 
 #weapon-skills {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5em;
-}
 
-#weapon-skills .weapon-skill[title="Headshots"] {
-    position: relative;
-
-    margin-right: 1em;
-}
-
-#weapon-skills .weapon-skill[title="Headshots"]::after {
-    position: absolute;
-    top: 0.25em;
-    right: -0.95em;
-
-    height: 2.5em;
-
-    border-right: 0.15rem solid var(--border);
-
-    content: "";
+    margin-top: 1em;
 }
 
 .weapon-skill {
@@ -316,7 +320,7 @@ main {
     border-radius: 0.4rem;
 }
 
-#weapon-skills .weapon-skill {
+button.weapon-skill {
     padding: 0.5em;
 }
 
@@ -344,7 +348,60 @@ button.weapon-skill {
     filter: brightness(15%);
 }
 
-#damage-info {
+
+#selected-weapon-stats {
+    margin-top: 2rem;
+}
+
+#weapon-stats-container,
+#weapon-damage-crits-container,
+#weapon-small-stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+#weapon-stats-container {
+    margin: 1rem;
+}
+
+.weapon-stat-table {
+    width: 14em;
+
+    border-collapse: separate;
+    border-spacing: 0 0.25em;
+}
+
+.weapon-stat-table tr:nth-child(even) {
+    background-color: var(--interactable);
+}
+
+.weapon-stat-title {
+    display: block;
+
+    color: var(--secondary-text);
+}
+
+.weapon-stat-title:not(#weapon-damage-stats-title, #weapon-crit-stats-title) {
+    margin-bottom: 0.25em;
+}
+
+.weapon-stat {
+    display: block;
+
+    font-size: 1.618em;
+}
+
+.weapon-stat-distance { vertical-align: middle; }
+td.weapon-stat { float: right; }
+
+.weapon-stat .weapon-pellet-count {
+    font-size: 0.618em;
+    line-height: 1.618em;
+    vertical-align: bottom;
+}
+
+#damage-data {
     display: flex;
     flex-direction: column;
     gap: 2em;

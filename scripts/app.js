@@ -153,7 +153,7 @@ function TimeToKill(
     shotsToKill,
     roundsPerMinute,
     pelletCount,
-    magazineAmmo,
+    magSize,
     reloadTime
 ) {
     if (!roundsPerMinute) roundsPerMinute = 600;
@@ -161,16 +161,95 @@ function TimeToKill(
     else shotsToKill = Math.ceil(shotsToKill / pelletCount);
 
     let timeToKill = (shotsToKill - 1) / (roundsPerMinute / 60);
-    if (reloadTime && magazineAmmo && shotsToKill > magazineAmmo)
-        timeToKill += reloadTime * Math.floor(shotsToKill / magazineAmmo);
+    if (reloadTime && magSize && shotsToKill > magSize)
+        timeToKill += reloadTime * Math.floor(shotsToKill / magSize);
 
     return Math.round(timeToKill * 100) / 100;
 }
 
-function UpdateDamageChart(
+function InitialiseWeaponData() {
+    // Create a list of weapons organised by their class
+    let weaponList = {};
+    for (const weapon in weaponData) {
+        const weaponClass = weaponData[weapon].Class
+        weaponList[weaponClass] = weaponList[weaponClass] || [];
+        weaponList[weaponClass].push(weapon)
+    }
+
+    // Populate the weapon selector separated by class
+    const weaponSelector = document.querySelector('#weapon-selector');
+    for (const weaponClass in weaponList) {
+        const weaponSelectorGroup = weaponSelector.appendChild(document.createElement('optgroup'));
+        weaponSelectorGroup.setAttribute('label', weaponClass);
+
+        weaponList[weaponClass].forEach((weapon) => {
+            const weaponSelectorOption = weaponSelector.appendChild(document.createElement('option'));
+            weaponSelectorOption.setAttribute('value', weapon);
+            weaponSelectorOption.textContent = weapon;
+        });
+    }
+
+    const skills = [
+        'Edge',
+        'Cutting Shot',
+        'Long Shot',
+        'Face to Face',
+        'Coup de Grâce',
+        'Combat Marking',
+        'High Grain',
+    ]
+
+    const skillDescriptions = {
+        'Edge': 'You deal 10% extra damage for 20 seconds.',
+        'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.1.',
+        'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
+        'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
+        'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
+        'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
+        'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 10 seconds.',
+    }
+
+    skills.forEach(skill => {
+        const weaponSkillButton = document.querySelector('#weapon-skills')
+            .appendChild(document.createElement('button'));
+        weaponSkillButton.setAttribute('type', 'button');
+        weaponSkillButton.setAttribute('value', skill);
+        weaponSkillButton.setAttribute('class', 'weapon-skill glass tooltip-wrapper');
+        weaponSkillButton.setAttribute('aria-pressed', 'false');
+
+        // Disable buttons for skills that require edge
+        if (
+            skill == 'Cutting Shot' ||
+            skill == 'Long Shot' ||
+            skill == 'Face to Face' ||
+            skill == 'Coup de Grâce' ||
+            skill == 'Combat Marking'
+        )
+            weaponSkillButton.setAttribute('disabled', '');
+
+        const weaponSkillIcon = weaponSkillButton.appendChild(document.createElement('img'));
+        weaponSkillIcon.setAttribute('src', 'images/' + skill + '.png');
+        weaponSkillIcon.setAttribute('alt', skill);
+
+        const weaponSkillTooltip = weaponSkillButton.appendChild(document.createElement('div'));
+        weaponSkillTooltip.setAttribute('class', 'tooltip');
+        
+        const tooltipTitle = weaponSkillTooltip.appendChild(document.createElement('span'));
+        tooltipTitle.setAttribute('class', 'tooltip-title');
+        tooltipTitle.textContent = skill;
+
+        const tooltipBody = weaponSkillTooltip.appendChild(document.createElement('p'));
+        tooltipBody.setAttribute('class', 'tooltip-body');
+        tooltipBody.innerHTML = skillDescriptions[skill];
+    });
+}
+
+function UpdateDamageData(
     selectedWeapon,
     skills
 ) {
+    const damageChart = document.querySelector('#damage-data');
+
     damageChart.textContent = '';
 
     let currentCard = 0;
@@ -412,9 +491,7 @@ function UpdateDamageChart(
         });
     }
 
-    console.log(selectedWeapon);
-
-    document.querySelector('#weapon')
+    document.querySelector('#selected-weapon')
         .style.setProperty('--weapon-image', `url("images/weapons/${selectedWeapon}.jpg")`);
 }
 
@@ -423,170 +500,86 @@ function UpdateWeaponStats(
 ) {
     const weapon = weaponData[selectedWeapon];
 
-    weaponStats.innerHTML = '';
+    const damageStats = document.querySelector('#weapon-damage-stats'),
+          critStats = document.querySelector('#weapon-crit-stats');
 
-    // Damage distance array
-    let weaponDamage = document.createElement('div');
-    weaponDamage.setAttribute('class', 'weapon-stat-multiple');
+    damageStats.innerHTML = '';
 
-    let weaponDamageTitle = document.createElement('span');
-    weaponDamageTitle.setAttribute('class', 'weapon-stat-title');
-
-    let weaponDamageDistances = weapon.DamageDistanceArray.map(i => i.Distance / 100 + "m");
-    weaponDamageTitle.textContent = `Damage // ${weaponDamageDistances.join(', ')}`;
-    weaponDamage.appendChild(weaponDamageTitle);
-
-    let weaponDamageAtDistances = document.createElement('div');
     weapon.DamageDistanceArray.forEach(distance => {
-        let weaponDamageStat = document.createElement('span');
+        const weaponDamageRow = damageStats.appendChild(document.createElement('tr'));
+
+        const weaponDamageDistance = weaponDamageRow.appendChild(document.createElement('td'));
+        weaponDamageDistance.setAttribute('class', 'weapon-stat-distance');
+        weaponDamageDistance.textContent = distance.Distance / 100 + 'm';
+
+        const weaponDamageStat = weaponDamageRow.appendChild(document.createElement('td'));
         weaponDamageStat.setAttribute('class', 'weapon-stat');
         weaponDamageStat.textContent = Math.round(distance.Damage * 10) / 10;
+
         if (weapon.ProjectilesPerFiredRound && weapon.ProjectilesPerFiredRound > 1) {
-            let weaponPelletCount = document.createElement('span');
+            const weaponPelletCount = weaponDamageStat.appendChild(document.createElement('span'));
             weaponPelletCount.setAttribute('class', 'weapon-pellet-count');
             weaponPelletCount.textContent += `×${weapon.ProjectilesPerFiredRound}`
-            weaponDamageStat.appendChild(weaponPelletCount);
         }
-        weaponDamageAtDistances.appendChild(weaponDamageStat);
     });
 
-    weaponDamage.appendChild(weaponDamageAtDistances);
-    weaponStats.appendChild(weaponDamage);
+    critStats.innerHTML = '';
 
-    // Crit multiplier distance array
-    let weaponCrit = document.createElement('div');
-    weaponCrit.setAttribute('class', 'weapon-stat-multiple');
-
-    let weaponCritTitle = document.createElement('span');
-    weaponCritTitle.setAttribute('class', 'weapon-stat-title');
-
-    let weaponCritDistances = weapon.CriticalDamageMultiplierDistanceArray.map(i => i.Distance / 100 + "m");
-    weaponCritTitle.textContent = `Crit Multiplier // ${weaponCritDistances.join(', ')}`;
-    weaponCrit.appendChild(weaponCritTitle);
-
-    let weaponCritAtDistances = document.createElement('div');
     weapon.CriticalDamageMultiplierDistanceArray.forEach(distance => {
-        let weaponCritStat = document.createElement('span');
+        const weaponCritRow = critStats.appendChild(document.createElement('tr'));
+
+        const weaponCritDistance = weaponCritRow.appendChild(document.createElement('td'));
+        weaponCritDistance.setAttribute('class', 'weapon-stat-distance');
+        weaponCritDistance.textContent = distance.Distance / 100 + 'm';
+    
+        const weaponCritStat = weaponCritRow.appendChild(document.createElement('td'));
         weaponCritStat.setAttribute('class', 'weapon-stat');
         weaponCritStat.textContent = distance.Multiplier + "×";
-        weaponCritAtDistances.appendChild(weaponCritStat);
     });
 
-    weaponCrit.appendChild(weaponCritAtDistances);
-    weaponStats.appendChild(weaponCrit);
+    document.querySelector('#weapon-rpm-stat')
+        .textContent = weapon.RoundsPerMinute ?? 600;
 
-    // RPM
-    let weaponRPM = document.createElement('div');
+    document.querySelector('#weapon-ap-stat')
+        .textContent = weapon.ArmorPenetration;
 
-    let weaponRPMTitle = document.createElement('span');
-    weaponRPMTitle.setAttribute('class', 'weapon-stat-title');
-    weaponRPMTitle.textContent = 'RPM';
-    weaponRPM.appendChild(weaponRPMTitle);
-
-    let weaponRPMStat = document.createElement('span');
-    weaponRPMStat.setAttribute('class', 'weapon-stat');
-    weaponRPMStat.textContent = weapon.RoundsPerMinute ?? 600;
-
-    weaponRPM.appendChild(weaponRPMStat);
-    weaponStats.appendChild(weaponRPM);
-
-    // Armour Penetration
-    let weaponAP = document.createElement('div');
-
-    let weaponAPTitle = document.createElement('span');
-    weaponAPTitle.setAttribute('class', 'weapon-stat-title');
-    weaponAPTitle.textContent = 'AP';
-    weaponAP.appendChild(weaponAPTitle);
-
-    let weaponAPStat = document.createElement('span');
-    weaponAPStat.setAttribute('class', 'weapon-stat');
-    weaponAPStat.textContent = weapon.ArmorPenetration;
-
-    weaponAP.appendChild(weaponAPStat);
-    weaponStats.appendChild(weaponAP);
-
-    // Mag Size
-    let weaponAmmoLoaded = document.createElement('div');
-
-    let weaponAmmoLoadedTitle = document.createElement('span');
-    weaponAmmoLoadedTitle.setAttribute('class', 'weapon-stat-title');
-    weaponAmmoLoadedTitle.textContent = 'Mag';
-    weaponAmmoLoaded.appendChild(weaponAmmoLoadedTitle);
-
-    let weaponAmmoLoadedStat = document.createElement('span');
-    weaponAmmoLoadedStat.setAttribute('class', 'weapon-stat');
-    weaponAmmoLoadedStat.textContent = weapon.AmmoLoaded ?? 10;
-
-    weaponAmmoLoaded.appendChild(weaponAmmoLoadedStat);
-    weaponStats.appendChild(weaponAmmoLoaded);
-
-    // Ammo Pickup
-    let weaponAmmoPickup = document.createElement('div');
-
-    let weaponAmmoPickupTitle = document.createElement('span');
-    weaponAmmoPickupTitle.setAttribute('class', 'weapon-stat-title');
-    weaponAmmoPickupTitle.textContent = 'Ammo Pickup';
-    weaponAmmoPickup.appendChild(weaponAmmoPickupTitle);
-
-    let weaponAmmoPickupStat = document.createElement('span');
-    weaponAmmoPickupStat.setAttribute('class', 'weapon-stat');
+    document.querySelector('#weapon-mag-size-stat')
+        .textContent = weapon.AmmoLoaded ?? 10;
 
     if (weapon.AmmoPickup.Min == weapon.AmmoPickup.Max)
-        weaponAmmoPickupStat.textContent = weapon.AmmoPickup.Max;
+        document.querySelector('#weapon-ammo-pickup-stat')
+            .textContent = weapon.AmmoPickup.Max;
     else
-        weaponAmmoPickupStat.textContent = `${weapon.AmmoPickup.Min ?? 0}-${weapon.AmmoPickup.Max ?? 10}`;
-
-    weaponAmmoPickup.appendChild(weaponAmmoPickupStat);
-    weaponStats.appendChild(weaponAmmoPickup);
+        document.querySelector('#weapon-ammo-pickup-stat')
+            .textContent = `${weapon.AmmoPickup.Min ?? 0}-${weapon.AmmoPickup.Max ?? 10}`;
 }
 
-const weaponStats = document.querySelector('#weapon-stats');
-const weaponSelector = document.querySelector('#weapon-selector select');
-const skillButtons = document.querySelectorAll('#weapon-skills button');
-const edgeSkillButtons = Array.from(skillButtons).filter(i => {
+InitialiseWeaponData();
+
+const skillButtons = document.querySelectorAll('button.weapon-skill');
+const edgeSkillButtons = [...skillButtons].filter(skillButton => {
     return (
-        i.title == 'Cutting Shot' ||
-        i.title == 'Long Shot' ||
-        i.title == 'Face to Face' ||
-        i.title == 'Coup de Grâce'
+        skillButton.value == 'Cutting Shot' ||
+        skillButton.value == 'Long Shot' ||
+        skillButton.value == 'Face to Face' ||
+        skillButton.value == 'Coup de Grâce' ||
+        skillButton.value == 'Combat Marking'
     );
 });
-const damageChart = document.querySelector('#damage-info');
-
-// Create a list of weapons organised by their class
-let weaponList = {};
-for (const weapon in weaponData) {
-    const weaponClass = weaponData[weapon].Class
-    weaponList[weaponClass] = weaponList[weaponClass] || [];
-    weaponList[weaponClass].push(weapon)
-}
-
-// Populate the weapon selector separated by class
-for (const weaponClass in weaponList) {
-    let weaponSelectorGroup = document.createElement('optgroup');
-    weaponSelectorGroup.setAttribute('label', weaponClass);
-    weaponSelector.appendChild(weaponSelectorGroup);
-
-    weaponList[weaponClass].forEach((weapon) => {
-        let weaponSelectorOption = document.createElement('option');
-        weaponSelectorOption.setAttribute('value', weapon);
-        weaponSelectorOption.textContent = weapon;
-        weaponSelector.appendChild(weaponSelectorOption);
-    });
-}
 
 // Initialise the damage chart with defaults
+const weaponSelector = document.querySelector('#weapon-selector');
 let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value,
     skills = [];
 
-UpdateDamageChart(selectedWeapon, skills);
+UpdateDamageData(selectedWeapon, skills);
 UpdateWeaponStats(selectedWeapon);
 
 // Add event listeners for weapon selector and buttons to update damage chart
 
 weaponSelector.addEventListener("change", (event) => {
     selectedWeapon = event.target.options[event.target.selectedIndex].value;
-    UpdateDamageChart(selectedWeapon, skills);
+    UpdateDamageData(selectedWeapon, skills);
     UpdateWeaponStats(selectedWeapon);
 });
 
@@ -609,7 +602,7 @@ for (const button of skillButtons) {
             event.target.setAttribute('aria-pressed', 'false');
         }
 
-        if (event.target.title == 'Edge') {
+        if (event.target.value == 'Edge') {
             if (event.target.getAttribute('aria-pressed') == 'true') {
                 for (const edgeSkill of edgeSkillButtons) {
                     edgeSkill.removeAttribute('disabled');
@@ -625,15 +618,9 @@ for (const button of skillButtons) {
 
         const pressedButtons = Array.from(skillButtons)
             .filter(i => i.getAttribute('aria-pressed') == 'true')
-            .map(i => i = i.title);
+            .map(i => i = i.value);
         skills = pressedButtons;
 
-        UpdateDamageChart(selectedWeapon, skills);
+        UpdateDamageData(selectedWeapon, skills);
     });
-
-    if (button.title == 'Edge' && button.getAttribute('aria-pressed') == 'false') {
-        for (const edgeSkill of edgeSkillButtons) {
-            edgeSkill.setAttribute('disabled', '');
-        }
-    }
 }
