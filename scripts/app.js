@@ -206,7 +206,7 @@ function InitialiseWeaponData() {
         'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
         'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
         'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
-        'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 10 seconds.',
+        'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 30 seconds.',
     }
 
     skills.forEach(skill => {
