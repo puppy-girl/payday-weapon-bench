@@ -1169,20 +1169,32 @@ const weaponData = {
     Class: "SMG",
     DamageDistanceArray: [
       {
-        Damage: 30.0,
+        Damage: 42.0,
+        Distance: 500.0,
+      },
+      {
+        Damage: 35.0,
         Distance: 1000.0,
       },
       {
+        Damage: 25.0,
+        Distance: 1500.0,
+      },
+      {
         Damage: 22.0,
+        Distance: 2000.0,
+      },
+      {
+        Damage: 16.0,
         Distance: 3000.0,
       },
       {
-        Damage: 14.3,
+        Damage: 12.0,
         Distance: 5000.0,
       },
       {
         Damage: 10.0,
-        Distance: 10000.0,
+        Distance: 1000000.0,
       },
     ],
     CriticalDamageMultiplierDistanceArray: [
@@ -1195,12 +1207,13 @@ const weaponData = {
         Distance: 6000.0,
       },
     ],
+    ArmorPenetration: 0.5,
     AmmoLoaded: 25,
-    AmmoInventoryMax: 250,
-    AmmoInventory: 125,
+    AmmoInventoryMax: 200,
+    AmmoInventory: 100,
     AmmoPickup: {
-      Min: 8.0,
-      Max: 11.0,
+      Min: 9.0,
+      Max: 12.0,
     },
     RoundsPerMinute: 1100.0,
     GraphDisplacementList: {
@@ -1291,9 +1304,9 @@ const weaponData = {
     DisplacementGraphLoopStart: 14,
     DisplacementHipFireMultiplier: 1.7,
     FireSpreadStart: 0.2,
-    FireSpreadIncrease: 0.15,
+    FireSpreadIncrease: 0.1,
     FireSpreadResetTime: 0.2,
-    FireSpreadCap: 1.5,
+    FireSpreadCap: 1.0,
     SpreadStanceMultipliers: {
       Stand: {
         Start: 4.0,
@@ -1322,9 +1335,10 @@ const weaponData = {
         Start: 0.33,
       },
     },
+    SprintExitPlayRate: 2.0,
     EquipNotifyTime: 0.16666666,
     UnequipNotifyTime: 0.33333334,
-    SprintExitNotifyTime: 0.16666667,
+    SprintExitNotifyTime: 0.3333333,
     ReloadEmptyNotifyTime: 1.8333334,
     ReloadNotifyTime: 1.5000001,
   },
