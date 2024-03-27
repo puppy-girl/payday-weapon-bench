@@ -92,7 +92,7 @@ function WeaponShotsToKill(
     if (!weapon.ArmorPenetration) weapon.ArmorPenetration = 0;
 
     if (skills.includes('Edge')) damageMultiplier += 0.1;
-    if (skills.includes('Cutting Shot')) armorPenetrationBoost += 0.1;
+    if (skills.includes('Cutting Shot')) armorPenetrationBoost += 0.5;
     if (skills.includes('Coup de Grâce')) damageMultiplier += 0.1;
     if (skills.includes('High Grain')) damageMultiplier += 0.2;
     if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
@@ -201,7 +201,7 @@ function InitialiseWeaponData() {
 
     const skillDescriptions = {
         'Edge': 'You deal 10% extra damage for 20 seconds.',
-        'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.1.',
+        'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.5.',
         'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
         'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
         'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
