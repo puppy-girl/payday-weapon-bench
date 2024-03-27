@@ -236,7 +236,7 @@ function UpdateDamageData(
                   skills
               ),
               armorPenetration = weaponData[selectedWeapon].ArmorPenetration
-                + (skills.includes('Cutting Shot') ? 0.1 : 0),
+                + (skills.includes('Cutting Shot') ? 0.5 : 0),
               effectiveArmorPenetration = EffectiveArmorPenetration(
                   armorPenetration,
                   enemyData[enemyName].ArmorHardness
