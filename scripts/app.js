@@ -96,6 +96,7 @@ function WeaponShotsToKill(
     if (skills.includes('Coup de Grâce')) damageMultiplier += 0.1;
     if (skills.includes('High Grain')) damageMultiplier += 0.2;
     if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
+    if (skills.includes('Pain Asymbolia')) damageMultiplier += 0.1;
     
     const effectiveArmorPenetration = EffectiveArmorPenetration(
             weapon.ArmorPenetration + armorPenetrationBoost,
@@ -189,27 +190,7 @@ function InitialiseWeaponData() {
         });
     }
 
-    const skills = [
-        'Edge',
-        'Cutting Shot',
-        'Long Shot',
-        'Face to Face',
-        'Coup de Grâce',
-        'Combat Marking',
-        'High Grain',
-    ]
-
-    const skillDescriptions = {
-        'Edge': 'You deal 10% extra damage for 20 seconds.',
-        'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.5.',
-        'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
-        'Face to Face': 'Requires Edge.<br />As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters of you.',
-        'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
-        'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
-        'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 30 seconds.',
-    }
-
-    skills.forEach(skill => {
+    Object.keys(weaponSkills).forEach(skill => {
         const weaponSkillButton = document.querySelector('#weapon-skills')
             .appendChild(document.createElement('button'));
         weaponSkillButton.setAttribute('type', 'button');
@@ -218,13 +199,7 @@ function InitialiseWeaponData() {
         weaponSkillButton.setAttribute('aria-pressed', 'false');
 
         // Disable buttons for skills that require edge
-        if (
-            skill == 'Cutting Shot' ||
-            skill == 'Long Shot' ||
-            skill == 'Face to Face' ||
-            skill == 'Coup de Grâce' ||
-            skill == 'Combat Marking'
-        )
+        if (edgeSkills.includes(skill))
             weaponSkillButton.setAttribute('disabled', '');
 
         const weaponSkillIcon = weaponSkillButton.appendChild(document.createElement('img'));
@@ -240,7 +215,7 @@ function InitialiseWeaponData() {
 
         const tooltipBody = weaponSkillTooltip.appendChild(document.createElement('p'));
         tooltipBody.setAttribute('class', 'tooltip-body');
-        tooltipBody.innerHTML = skillDescriptions[skill];
+        tooltipBody.innerHTML = weaponSkills[skill];
     });
 }
 
@@ -554,17 +529,31 @@ function UpdateWeaponStats(
             .textContent = `${weapon.AmmoPickup.Min ?? 0}-${weapon.AmmoPickup.Max ?? 10}`;
 }
 
+const weaponSkills = {
+    'Edge': 'You deal 10% extra damage for 20 seconds.',
+    'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.5.',
+    'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
+    'Face to Face': 'Requires Edge and Grit.<br />You deal 10% extra damage to targets within 5 meters.',
+    'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
+    'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
+    'Pain Asymbolia': 'Requires Edge, Grit, or Rush.<br />The effects of Edge, Grit, and Rush are doubled.',
+    'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 30 seconds.',
+}
+
+const edgeSkills = [
+    'Cutting Shot',
+    'Long Shot',
+    'Face to Face',
+    'Coup de Grâce',
+    'Combat Marking',
+    'Pain Asymbolia'
+]
+
 InitialiseWeaponData();
 
 const skillButtons = document.querySelectorAll('button.weapon-skill');
 const edgeSkillButtons = [...skillButtons].filter(skillButton => {
-    return (
-        skillButton.value == 'Cutting Shot' ||
-        skillButton.value == 'Long Shot' ||
-        skillButton.value == 'Face to Face' ||
-        skillButton.value == 'Coup de Grâce' ||
-        skillButton.value == 'Combat Marking'
-    );
+    return (edgeSkills.includes(skillButton.value));
 });
 
 // Initialise the damage chart with defaults
