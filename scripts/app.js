@@ -526,7 +526,7 @@ function UpdateWeaponStats(
             .textContent = weapon.AmmoPickup.Max;
     else
         document.querySelector('#weapon-ammo-pickup-stat')
-            .textContent = `${weapon.AmmoPickup.Min ?? 0}-${weapon.AmmoPickup.Max ?? 10}`;
+            .textContent = `${weapon.AmmoPickup.Min ?? 5}-${weapon.AmmoPickup.Max ?? 10}`;
 }
 
 const weaponSkills = {
