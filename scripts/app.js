@@ -277,6 +277,7 @@ function UpdateDamageData(
                 }
                 if (skills.includes('High Grain')) damageMultiplier += 0.2;
                 if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
+                if (skills.includes('Pain Asymbolia')) damageMultiplier += 0.1;
     
                 let shotsToBreakVisor = Math.ceil(
                         enemyData[enemyName].VisorArmor / (damage * damageMultiplier)
