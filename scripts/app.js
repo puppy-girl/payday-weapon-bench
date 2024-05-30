@@ -72,7 +72,7 @@ function ShotsToKill(
 function WeaponShotsToKill(
     weaponName,
     enemyName,
-    skills
+    selectedSkills
 ) {
     const weapon = weaponData[weaponName],
           enemy = enemyData[enemyName];
@@ -87,19 +87,24 @@ function WeaponShotsToKill(
     ])].sort((a, b) => b - a);
 
     let damageMultiplier = 1,
-        armorPenetrationBoost = 0;
+        armorPenetrationModifier = 0;
 
     if (!weapon.ArmorPenetration) weapon.ArmorPenetration = 0;
 
-    if (skills.includes('Edge')) damageMultiplier += 0.1;
-    if (skills.includes('Cutting Shot')) armorPenetrationBoost += 0.5;
-    if (skills.includes('Coup de Grâce')) damageMultiplier += 0.1;
-    if (skills.includes('High Grain')) damageMultiplier += 0.2;
-    if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
-    if (skills.includes('Pain Asymbolia')) damageMultiplier += 0.1;
+    // Apply damage and AP buffs from skills
+    if (selectedSkills.includes('edge'))
+        damageMultiplier += skills.edge.damageMultiplier;
+    if (selectedSkills.includes('coupdegrace'))
+        damageMultiplier += skills.coupdegrace.damageMultiplier;
+    if (selectedSkills.includes('combatmarking'))
+        damageMultiplier += skills.combatmarking.damageMultiplier;
+    if (selectedSkills.includes('painasymbolia'))
+        damageMultiplier += skills.painasymbolia.damageMultiplier;
+    if (selectedSkills.includes('highgrain'))
+        armorPenetrationModifier += skills.highgrain.armorPenetrationModifier;
     
     const effectiveArmorPenetration = EffectiveArmorPenetration(
-            weapon.ArmorPenetration + armorPenetrationBoost,
+            weapon.ArmorPenetration + armorPenetrationModifier,
             enemy.ArmorHardness
           );
 
@@ -113,25 +118,26 @@ function WeaponShotsToKill(
         let multiplier = (weapon.CriticalDamageMultiplierDistanceArray.find(i => i.Distance >= distance) ??
                 weapon.CriticalDamageMultiplierDistanceArray.slice(-1)[0]).Multiplier;
         
-        if (!skills.includes('Headshots')) multiplier = 1;
-        if (skills.includes('Headshots') && skills.includes('Long Shot'))
+        if (!selectedSkills.includes('headshot')) multiplier = 1;
+        if (selectedSkills.includes('headshot') && selectedSkills.includes('longshot'))
             multiplier = weapon.CriticalDamageMultiplierDistanceArray[0].Multiplier;
         if (enemyName == 'Drone') multiplier = 1;
-        if (distance <= 500 && skills.includes('Face to Face')) damageMultiplier += 0.1;
+        if (distance <= 500 && selectedSkills.includes('facetoface'))
+            damageMultiplier += skills.facetoface.damageMultiplier;
 
         const weaponShotsToKill = ShotsToKill(
             damage * damageMultiplier,
             multiplier,
             effectiveArmorPenetration,
             enemy.Health,
-            // If headshots are enabled assume the dozer's face is unarmoured
-            enemyName == 'Bulldozer' && skills.includes('Headshots') ?
+            // If headshot are enabled assume the dozer's face is unarmoured
+            enemyName == 'Bulldozer' && selectedSkills.includes('headshot') ?
                 0 :
                 enemy.Armor
         );
 
-        // Calculation only includes headshots if headshots are enabled
-        if (enemyName == 'Bulldozer' && skills.includes('Headshots')) {
+        // Calculation only includes headshot if headshot are enabled
+        if (enemyName == 'Bulldozer' && selectedSkills.includes('headshot')) {
             weaponShotsToKill.unarmoredCrits += weaponShotsToKill.unarmoredNonCrits;
             weaponShotsToKill.unarmoredNonCrits = 0;
         }
@@ -190,7 +196,7 @@ function InitialiseWeaponData() {
         });
     }
 
-    Object.keys(weaponSkills).forEach(skill => {
+    Object.keys(skills).forEach(skill => {
         const weaponSkillButton = document.querySelector('#weapon-skills')
             .appendChild(document.createElement('button'));
         weaponSkillButton.setAttribute('type', 'button');
@@ -203,7 +209,7 @@ function InitialiseWeaponData() {
             weaponSkillButton.setAttribute('disabled', '');
 
         const weaponSkillIcon = weaponSkillButton.appendChild(document.createElement('img'));
-        weaponSkillIcon.setAttribute('src', 'images/' + skill + '.png');
+        weaponSkillIcon.setAttribute('src', 'images/skills/' + skill + '.png');
         weaponSkillIcon.setAttribute('alt', skill);
 
         const weaponSkillTooltip = weaponSkillButton.appendChild(document.createElement('div'));
@@ -211,17 +217,19 @@ function InitialiseWeaponData() {
         
         const tooltipTitle = weaponSkillTooltip.appendChild(document.createElement('span'));
         tooltipTitle.setAttribute('class', 'tooltip-title');
-        tooltipTitle.textContent = skill;
+        tooltipTitle.textContent = skills[skill].name;
 
         const tooltipBody = weaponSkillTooltip.appendChild(document.createElement('p'));
         tooltipBody.setAttribute('class', 'tooltip-body');
-        tooltipBody.innerHTML = weaponSkills[skill];
+        tooltipBody.innerHTML = edgeSkills.includes(skill) ?
+            'Requires Edge.<br/>' + skills[skill].description :
+            skills[skill].description;
     });
 }
 
 function UpdateDamageData(
     selectedWeapon,
-    skills
+    selectedSkills
 ) {
     const damageChart = document.querySelector('#damage-data');
 
@@ -233,10 +241,10 @@ function UpdateDamageData(
         const shotsAtDistances = WeaponShotsToKill(
                   selectedWeapon,
                   enemyName,
-                  skills
+                  selectedSkills
               ),
               armorPenetration = weaponData[selectedWeapon].ArmorPenetration
-                + (skills.includes('Cutting Shot') ? 0.5 : 0),
+                + (selectedSkills.includes('highgrain') ? skills.highgrain.armorPenetrationModifier : 0),
               effectiveArmorPenetration = EffectiveArmorPenetration(
                   armorPenetration,
                   enemyData[enemyName].ArmorHardness
@@ -250,11 +258,11 @@ function UpdateDamageData(
         statDisplay.setAttribute('class', 'damage-stats');
         damageStats.appendChild(statDisplay);
 
-        // If the enemy is a dozer or a shield and headshots is enabled
+        // If the enemy is a dozer or a shield and headshot is enabled
         // display the shots required and TTK to break their visor
         if (
             (enemyName == 'Bulldozer' || enemyName == 'Shield') &&
-            skills.includes('Headshots')
+            selectedSkills.includes('headshot')
         ) {
             let visorDisplay = document.createElement('p');
             visorDisplay.setAttribute('class', 'visor-damage glass');
@@ -270,14 +278,17 @@ function UpdateDamageData(
             } else {
                 visorDisplay.setAttribute('class', 'visor-damage glass cracked');
 
-                if (skills.includes('Edge')) damageMultiplier += 0.1;
-                if (skills.includes('Face to Face')) {
-                    damageMultiplier += 0.1;
-                    distance = 5
+                if (selectedSkills.includes('edge'))
+                    damageMultiplier += skills.edge.damageMultiplier;
+                if (selectedSkills.includes('facetoface')) {
+                    damageMultiplier += skills.facetoface.damageMultiplier;
+                    distance = 5;
                 }
-                if (skills.includes('High Grain')) damageMultiplier += 0.2;
-                if (skills.includes('Combat Marking')) damageMultiplier += 0.2;
-                if (skills.includes('Pain Asymbolia')) damageMultiplier += 0.1;
+                if (selectedSkills.includes('combatmarking'))
+                    damageMultiplier += skills.combatmarking.damageMultiplier;
+                if (selectedSkills.includes('painasymbolia'))
+                    damageMultiplier += skills.painasymbolia.damageMultiplier;
+
     
                 let shotsToBreakVisor = Math.ceil(
                         enemyData[enemyName].VisorArmor / (damage * damageMultiplier)
@@ -316,25 +327,25 @@ function UpdateDamageData(
         damageStatsWeaponName.textContent = selectedWeapon;
         damageStatsWeapon.appendChild(damageStatsWeaponName);
 
-        if (skills) {
+        if (selectedSkills) {
             let damageStatsWeaponSkills = document.createElement('div');
             damageStatsWeaponSkills.setAttribute('class', 'weapon-skills');
-            skills.forEach(skill => {
+            selectedSkills.forEach(skill => {
                 let weaponSkillBadge = document.createElement('span');
                 weaponSkillBadge.setAttribute('class', 'weapon-skill');
                 weaponSkillBadge.setAttribute('aria-pressed', 'true');
     
                 if ((!effectiveArmorPenetration ||
                     !enemyData[enemyName].ArmorHardness) &&
-                    skill == 'Cutting Shot'
+                    skill == 'highgrain'
                 ) weaponSkillBadge.setAttribute('disabled', '');
     
                 if (enemyName == 'Bulldozer' &&
-                    skill == 'Coup de Grâce'
+                    skill == 'coupdegrace'
                 ) weaponSkillBadge.setAttribute('disabled', '');
     
                 let weaponSkillIcon = document.createElement('img');
-                weaponSkillIcon.setAttribute('src', './images/' + skill + '.png');
+                weaponSkillIcon.setAttribute('src', './images/skills/' + skill + '.png');
                 weaponSkillIcon.setAttribute('alt', skill);
                 weaponSkillBadge.appendChild(weaponSkillIcon);
     
@@ -530,25 +541,52 @@ function UpdateWeaponStats(
             .textContent = `${weapon.AmmoPickup.Min ?? 5}-${weapon.AmmoPickup.Max ?? 10}`;
 }
 
-const weaponSkills = {
-    'Edge': 'You deal 10% extra damage for 20 seconds.',
-    'Cutting Shot': 'Requires Edge.<br />Your armor penetration is increased by 0.5.',
-    'Long Shot': 'Requires Edge.<br />As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
-    'Face to Face': 'Requires Edge and Grit.<br />You deal 10% extra damage to targets within 5 meters.',
-    'Coup de Grâce': 'Requires Edge.<br />You deal 10% extra damage to staggered or stunned targets.',
-    'Combat Marking': 'Requires Edge.<br />You deal 20% extra damage to marked targets.',
-    'Pain Asymbolia': 'Requires Edge, Grit, or Rush.<br />The effects of Edge, Grit, and Rush are doubled.',
-    'High Grain': 'After interacting with an ammo bag you deal 20% extra damage for 30 seconds.',
+const skills = {
+    'edge': {
+        name: 'Edge',
+        description: 'You deal 10% extra damage for 20 seconds.',
+        requiresEdge: false,
+        damageMultiplier: 0.1
+    },
+    'longshot': {
+        name: 'Long Shot',
+        description: 'As long as you are aiming down sights distance penalties do not apply to headshot multipliers.',
+        requiresEdge: true
+    },
+    'facetoface': {
+        name: 'Face to Face',
+        description: 'As long as you have both Edge and Grit you deal 10% extra damage to targets within 5 meters.',
+        requiresEdge: true,
+        damageMultiplier: 0.1
+    },
+    'coupdegrace': {
+        name: 'Coup de Grâce',
+        description: 'You deal 10% extra damage to staggered or stunned targets.',
+        requiresEdge: true,
+        damageMultiplier: 0.1
+    },
+    'combatmarking': {
+        name: 'Combat Marking',
+        description: 'You deal 20% extra damage to marked targets.',
+        requiresEdge: true,
+        damageMultiplier: 0.2
+    },
+    'painasymbolia': {
+        name: 'Pain Asymbolia',
+        description: 'The effects of Edge, Grit, and Rush are doubled.',
+        requiresEdge: true,
+        damageMultiplier: 0.1
+    },
+    'highgrain': {
+        name: 'High Grain',
+        description: 'After interacting with an ammo bag you and your teammates gain 0.5 AP.',
+        requiresEdge: false,
+        armorPenetrationModifier: 0.5
+    }
 }
 
-const edgeSkills = [
-    'Cutting Shot',
-    'Long Shot',
-    'Face to Face',
-    'Coup de Grâce',
-    'Combat Marking',
-    'Pain Asymbolia'
-]
+const edgeSkills = Object.keys(skills).filter(skill => skills[skill].requiresEdge);
+console.log(edgeSkills);
 
 InitialiseWeaponData();
 
@@ -560,16 +598,16 @@ const edgeSkillButtons = [...skillButtons].filter(skillButton => {
 // Initialise the damage chart with defaults
 const weaponSelector = document.querySelector('#weapon-selector');
 let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value,
-    skills = [];
+    selectedSkills = [];
 
-UpdateDamageData(selectedWeapon, skills);
+UpdateDamageData(selectedWeapon, selectedSkills);
 UpdateWeaponStats(selectedWeapon);
 
 // Add event listeners for weapon selector and buttons to update damage chart
 
 weaponSelector.addEventListener("change", (event) => {
     selectedWeapon = event.target.options[event.target.selectedIndex].value;
-    UpdateDamageData(selectedWeapon, skills);
+    UpdateDamageData(selectedWeapon, selectedSkills);
     UpdateWeaponStats(selectedWeapon);
 });
 
@@ -592,7 +630,7 @@ for (const button of skillButtons) {
             event.target.setAttribute('aria-pressed', 'false');
         }
 
-        if (event.target.value == 'Edge') {
+        if (event.target.value == 'edge') {
             if (event.target.getAttribute('aria-pressed') == 'true') {
                 for (const edgeSkill of edgeSkillButtons) {
                     edgeSkill.removeAttribute('disabled');
@@ -609,8 +647,8 @@ for (const button of skillButtons) {
         const pressedButtons = Array.from(skillButtons)
             .filter(i => i.getAttribute('aria-pressed') == 'true')
             .map(i => i = i.value);
-        skills = pressedButtons;
+        selectedSkills = pressedButtons;
 
-        UpdateDamageData(selectedWeapon, skills);
+        UpdateDamageData(selectedWeapon, selectedSkills);
     });
 }
