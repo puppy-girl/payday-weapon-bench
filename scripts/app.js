@@ -1,6 +1,6 @@
 // Effective Armour Penetration is the amount of damage dealt through armour
 // based on the weapon's armour penetration and the enemy's armour hardness
-function EffectiveArmorPenetration(
+function effectiveArmorPenetration(
     armorPenetration,
     armorHardness
 ) {
@@ -9,7 +9,7 @@ function EffectiveArmorPenetration(
     return Math.max(0, Math.min(1, armorPenetration - armorHardness + 1));
 }
 
-function ShotsToKill(
+function shotsToKill(
     damage,
     critMultiplier,
     effectiveArmorPenetration,
@@ -69,7 +69,7 @@ function ShotsToKill(
 }
 
 // Returns the shots to kill at each unique distance
-function WeaponShotsToKill(
+function weaponShotsToKill(
     weaponName,
     enemyName,
     selectedSkills
@@ -103,7 +103,7 @@ function WeaponShotsToKill(
     if (selectedSkills.includes('highgrain'))
         armorPenetrationModifier += skills.highgrain.armorPenetrationModifier;
     
-    const effectiveArmorPenetration = EffectiveArmorPenetration(
+    const EAP = effectiveArmorPenetration(
             weapon.ArmorPenetration + armorPenetrationModifier,
             enemy.ArmorHardness
           );
@@ -125,18 +125,18 @@ function WeaponShotsToKill(
         if (distance <= 500 && selectedSkills.includes('facetoface'))
             damageMultiplier += skills.facetoface.damageMultiplier;
 
-        const weaponShotsToKill = ShotsToKill(
+        const weaponShotsToKill = shotsToKill(
             damage * damageMultiplier,
             multiplier,
-            effectiveArmorPenetration,
+            EAP,
             enemy.Health,
-            // If headshot are enabled assume the dozer's face is unarmoured
+            // If headshots are enabled assume the dozer's face is unarmoured
             enemyName == 'Bulldozer' && selectedSkills.includes('headshot') ?
                 0 :
                 enemy.Armor
         );
 
-        // Calculation only includes headshot if headshot are enabled
+        // Calculation only includes headshots if headshots are enabled
         if (enemyName == 'Bulldozer' && selectedSkills.includes('headshot')) {
             weaponShotsToKill.unarmoredCrits += weaponShotsToKill.unarmoredNonCrits;
             weaponShotsToKill.unarmoredNonCrits = 0;
@@ -156,7 +156,7 @@ function WeaponShotsToKill(
     return shotsAtDistances;
 }
 
-function TimeToKill(
+function timeToKill(
     shotsToKill,
     roundsPerMinute,
     pelletCount,
@@ -167,14 +167,14 @@ function TimeToKill(
     if (!pelletCount) pelletCount = 1;
     else shotsToKill = Math.ceil(shotsToKill / pelletCount);
 
-    let timeToKill = (shotsToKill - 1) / (roundsPerMinute / 60);
+    let TTK = (shotsToKill - 1) / (roundsPerMinute / 60);
     if (reloadTime && magSize && shotsToKill > magSize)
-        timeToKill += reloadTime * Math.floor(shotsToKill / magSize);
+        TTK += reloadTime * Math.floor(shotsToKill / magSize);
 
-    return Math.round(timeToKill * 100) / 100;
+    return Math.round(TTK * 100) / 100;
 }
 
-function InitialiseWeaponData() {
+function initialiseWeaponData() {
     // Create a list of weapons organised by their class
     let weaponList = {};
     for (const weapon in weaponData) {
@@ -227,7 +227,7 @@ function InitialiseWeaponData() {
     });
 }
 
-function UpdateDamageData(
+function updateDamageData(
     selectedWeapon,
     selectedSkills
 ) {
@@ -238,14 +238,14 @@ function UpdateDamageData(
     let currentCard = 0;
 
     for (const enemyName in enemyData) {
-        const shotsAtDistances = WeaponShotsToKill(
+        const shotsAtDistances = weaponShotsToKill(
                   selectedWeapon,
                   enemyName,
                   selectedSkills
               ),
               armorPenetration = weaponData[selectedWeapon].ArmorPenetration
                 + (selectedSkills.includes('highgrain') ? skills.highgrain.armorPenetrationModifier : 0),
-              effectiveArmorPenetration = EffectiveArmorPenetration(
+              EAP = effectiveArmorPenetration(
                   armorPenetration,
                   enemyData[enemyName].ArmorHardness
               );
@@ -293,7 +293,7 @@ function UpdateDamageData(
                 let shotsToBreakVisor = Math.ceil(
                         enemyData[enemyName].VisorArmor / (damage * damageMultiplier)
                     ),
-                    timeToBreakVisor = TimeToKill(
+                    timeToBreakVisor = timeToKill(
                         shotsToBreakVisor,
                         weaponData[selectedWeapon].RoundsPerMinute,
                         weaponData[selectedWeapon].ProjectilesPerFiredRound,
@@ -335,7 +335,7 @@ function UpdateDamageData(
                 weaponSkillBadge.setAttribute('class', 'weapon-skill');
                 weaponSkillBadge.setAttribute('aria-pressed', 'true');
     
-                if ((!effectiveArmorPenetration ||
+                if ((!EAP ||
                     !enemyData[enemyName].ArmorHardness) &&
                     skill == 'highgrain'
                 ) weaponSkillBadge.setAttribute('disabled', '');
@@ -366,7 +366,7 @@ function UpdateDamageData(
             const distance = Object.keys(shotsAtDistances)[i];
             if (!distance) break;
 
-            const timeToKill = TimeToKill(
+            const TTK = timeToKill(
                       shotsAtDistances[distance].totalShots,
                       weaponData[selectedWeapon].RoundsPerMinute,
                       weaponData[selectedWeapon].ProjectilesPerFiredRound,
@@ -401,7 +401,7 @@ function UpdateDamageData(
 
             if (armoredCrits || armoredNonCrits) {
                 let damageBracketArmored = document.createElement('span');
-                if (effectiveArmorPenetration) {
+                if (EAP) {
                     damageBracketArmored.setAttribute('class', 'enemy-armor penetrating-armored-shots');
                 } else {
                     damageBracketArmored.setAttribute('class', 'enemy-armor');
@@ -425,7 +425,7 @@ function UpdateDamageData(
 
             let damageBracketTTK = document.createElement('span');
             damageBracketTTK.setAttribute('class', 'time-to-kill');
-            damageBracketTTK.textContent = timeToKill + " seconds";
+            damageBracketTTK.textContent = TTK + " seconds";
             damageBracket.appendChild(damageBracketTTK);
 
             const reloadCount = Math.floor((totalShotsToKill - 1) / (weaponData[selectedWeapon].AmmoLoaded ?? 10));
@@ -482,7 +482,7 @@ function UpdateDamageData(
         .style.setProperty('--weapon-image', `url("images/weapons/${selectedWeapon}.jpg")`);
 }
 
-function UpdateWeaponStats(
+function updateWeaponStats(
     selectedWeapon
 ) {
     const weapon = weaponData[selectedWeapon];
@@ -588,7 +588,7 @@ const skills = {
 const edgeSkills = Object.keys(skills).filter(skill => skills[skill].requiresEdge);
 console.log(edgeSkills);
 
-InitialiseWeaponData();
+initialiseWeaponData();
 
 const skillButtons = document.querySelectorAll('button.weapon-skill');
 const edgeSkillButtons = [...skillButtons].filter(skillButton => {
@@ -600,15 +600,15 @@ const weaponSelector = document.querySelector('#weapon-selector');
 let selectedWeapon = weaponSelector.options[weaponSelector.selectedIndex].value,
     selectedSkills = [];
 
-UpdateDamageData(selectedWeapon, selectedSkills);
-UpdateWeaponStats(selectedWeapon);
+updateDamageData(selectedWeapon, selectedSkills);
+updateWeaponStats(selectedWeapon);
 
 // Add event listeners for weapon selector and buttons to update damage chart
 
 weaponSelector.addEventListener("change", (event) => {
     selectedWeapon = event.target.options[event.target.selectedIndex].value;
-    UpdateDamageData(selectedWeapon, selectedSkills);
-    UpdateWeaponStats(selectedWeapon);
+    updateDamageData(selectedWeapon, selectedSkills);
+    updateWeaponStats(selectedWeapon);
 });
 
 weaponSelector.addEventListener("submit", (event) => {
@@ -649,6 +649,6 @@ for (const button of skillButtons) {
             .map(i => i = i.value);
         selectedSkills = pressedButtons;
 
-        UpdateDamageData(selectedWeapon, selectedSkills);
+        updateDamageData(selectedWeapon, selectedSkills);
     });
 }
