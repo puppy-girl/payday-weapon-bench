@@ -579,9 +579,9 @@ const skills = {
     },
     'highgrain': {
         name: 'High Grain',
-        description: 'After interacting with an ammo bag you and your teammates gain 0.5 AP.',
+        description: 'After interacting with an ammo bag you and your teammates gain 0.2 AP.',
         requiresEdge: false,
-        armorPenetrationModifier: 0.5
+        armorPenetrationModifier: 0.2
     }
 }
 
