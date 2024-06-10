@@ -409,7 +409,7 @@ function updateDamageData(
 
                 let shotsText = [];
                 if (armoredCrits) shotsText.push(armoredCrits + (armoredCrits != 1 ? ' crits' : ' crit'));
-                if (armoredNonCrits) shotsText.push(armoredNonCrits + (armoredNonCrits != 1 ? ' shots' : ' shot'));
+                if (armoredNonCrits) shotsText.push(armoredNonCrits + ' body');
                 damageBracketArmored.textContent = shotsText.join(' + ');
                 damageBracket.appendChild(damageBracketArmored);
             }
@@ -418,7 +418,7 @@ function updateDamageData(
                 damageBracketUnarmored.setAttribute('class', 'enemy-health');
                 let shotsText = [];
                 if (unarmoredCrits) shotsText.push(unarmoredCrits + (unarmoredCrits != 1 ? ' crits' : ' crit'));
-                if (unarmoredNonCrits) shotsText.push(unarmoredNonCrits + (unarmoredNonCrits != 1 ? ' shots' : ' shot'));
+                if (unarmoredNonCrits) shotsText.push(unarmoredNonCrits + ' body');
                 damageBracketUnarmored.textContent = shotsText.join(' + ');
                 damageBracket.appendChild(damageBracketUnarmored);
             }
