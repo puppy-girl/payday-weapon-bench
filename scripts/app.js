@@ -94,7 +94,7 @@ function weaponShotsToKill(
     // Apply damage and AP buffs from skills
     if (selectedSkills.includes('edge'))
         damageMultiplier += skills.edge.damageMultiplier;
-    if (selectedSkills.includes('coupdegrace'))
+    if (selectedSkills.includes('coupdegrace') && enemyName !== 'Bulldozer')
         damageMultiplier += skills.coupdegrace.damageMultiplier;
     if (selectedSkills.includes('combatmarking'))
         damageMultiplier += skills.combatmarking.damageMultiplier;
