@@ -1,21 +1,17 @@
-silly little payday 3 damage calculator yippie
+A supplementary tool for Payday 3's loadouts to view weapon details, mechanics, and damage stats.
 
-## todo:
-- improve styling
-  - header and footer needs work ohhhhboy
-- add hover tooltips to explain skill effects and requirements
-- add hover tooltips to visually show distances
-- drag and drop enemy damage stats for easier comparison
-
-## potentially:
-- implement a more detailed stats display
-  - better organising of data
-  - better visualisation of damage and crit falloffs
-  - visualisation of weapon recoil patterns
-  - visualisation of accuracy?
-- weapon attachments
-  - mag size increases for reload speed impacted ttks
-  - long and close range barrels for damage falloffs
-  - precision shot magnification?
-  - maybe even everything if it impacts stat visualisation meaningfully who knows
-- direct compare tool
+### todo:
+- build and style the main page
+  - scrollable weapon selector
+  - weapon details
+  - skill selector
+  - attachment selector
+  - weapon stat info
+  - enemy damage info
+- update weapon stats with skill and attachment selection
+- update damage stats with skill and attachment selection
+- add tooltips on hover to explain skills, attachments, and mechanics
+  - implement tooltips
+  - add tooltips for skills
+  - add tooltips for attachments
+  - add tooltips for mechanics
