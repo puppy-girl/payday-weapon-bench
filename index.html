@@ -3,10 +3,146 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payday 3 Weapon Bench</title>
+    <title>Weapon Bench v2</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <aside id="sidebar">
+        <div id="sidebar-header">
+            <svg
+                id="collapse-button"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                />
+            </svg>              
+        </div>
+
+        <div id="weapon-list">
+            <div class="selectable-weapon selected">
+                <span class=selectable-weapon-name>Car-4</span>
+            </div>
+            <div class="selectable-weapon">
+                <span class=selectable-weapon-name>WAR-45</span>
+                <span class="selectable-weapon-dlc">Syntax Error</span>
+            </div>
+            <div class="selectable-weapon">
+                <span class=selectable-weapon-name>Adeling RG5</span>
+                <span class="selectable-weapon-dlc">Boys in Blue</span>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <h1>Payday 3 Weapon Bench</h1>
+
+        <div id="content">
+            <section id="loadout">
+                <h2>Car-4</h2>
+                <div class="loadout-skills">
+                    <span class="loadout-category-title">Skills</span>
+                    <div class="skill-container">
+                        <span class="skill selected">Edge</span>
+                        <span class="skill">Long Shot</span>
+                        <span class="skill">Precision Shot</span>
+                        <span class="skill">Face to Face</span>
+                        <span class="skill">Coup de Grace</span>
+                        <span class="skill">Combat Marking</span>
+                        <span class="skill">Pain Asymbolia</span>
+                        <span class="skill">High Grain</span>
+                        <span class="skill">Expose</span>
+                        <span class="skill">Duck and Weave</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Sight</span>
+                    <div class="attachment-container">
+                        <span class="attachment selected">Classic RDS</span>
+                        <span class="attachment">Tactical Sight</span>
+                        <span class="attachment">Compact RDS</span>
+                        <span class="attachment">Projection RDS</span>
+                        <span class="attachment">Viewpoint Sight</span>
+                        <span class="attachment">Sheath RDS</span>
+                        <span class="attachment">Lined Sight</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Barrel</span>
+                    <div class="attachment-container">
+                        <span class="attachment">CQC Barrel</span>
+                        <span class="attachment">Ranged Barrel</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Barrel Extension</span>
+                    <div class="attachment-container">
+                        <span class="attachment">Express Muzzle Break</span>
+                        <span class="attachment">Beveled Silencer</span>
+                        <span class="attachment">Hybrid Muzzle Break</span>
+                        <span class="attachment">Piped Silencer</span>
+                        <span class="attachment">Indent Compensator</span>
+                        <span class="attachment">Cylindric Silencer</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Grip</span>
+                    <div class="attachment-container">
+                        <span class="attachment">Tac Grip</span>
+                        <span class="attachment">Biofit Grip</span>
+                        <span class="attachment">Perforated Grip</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Vertical Grip</span>
+                    <div class="attachment-container">
+                        <span class="attachment">Cylindric Grip</span>
+                        <span class="attachment">Stub Grip</span>
+                        <span class="attachment">Angled Ghost Grip</span>
+                        <span class="attachment">Quick Hold Grip</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Magazine</span>
+                    <div class="attachment-container">
+                        <span class="attachment">Compact Mag</span>
+                        <span class="attachment selected">Quick-Pull Mag</span>
+                        <span class="attachment">Extended Mag</span>
+                    </div>
+                </div>
+                <div class="loadout-category">
+                    <span class="loadout-category-title">Stock</span>
+                    <div class="attachment-container">
+                        <span class="attachment">Light Frame</span>
+                        <span class="attachment">Padded Tube</span>
+                        <span class="attachment">HQ</span>
+                        <span class="attachment">TQ</span>
+                    </div>
+                </div>
+            </section>
+    
+            <section id="stats">
+                <div id="weapon-stats">
+                    <div class="weapon-stat-container">
+                        <span class="weapon-stat-category-title">Damage</span>
+                    </div>
+                    <div class="weapon-stat-container">
+                        <span class="weapon-stat-category-title">Magazine</span>
+                    </div>
+                </div>
+
+                <div id="damage-stats">
+                    <div class="damage-stat-container">
+
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>
