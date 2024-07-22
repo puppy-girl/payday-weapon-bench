@@ -226,30 +226,70 @@ h1 {
     line-height: 1em;
 }
 
-.loadout-skills { margin-bottom: 1.618em; }
-.loadout-category-title { font-weight: 600; }
+#skill-selector { margin-bottom: 1.618em; }
+.loadout-category legend { font-weight: 600; }
 
-.skill-container, .attachment-container {
+.loadout-category {
+    padding: 0;
+    border: none;
+}
+
+.loadout-category-container {
     display: flex;
     flex-flow: row wrap;
     gap: 0.5em;
 
     margin-top: 0.25em;
+    padding: 0;
+
+    border: none;
 }
 
-.skill, .attachment {
+.skill input {
+    display: none;
+}
+
+.skill label, .attachment {
     border: var(--border);
     border-radius: 0.2em;
 
-    background-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(2px);
+
+    user-select: none;
+    cursor: pointer;
 }
 
-.skill {
+.skill label {
+    display: inline-block;
+
     width: 4.236rem;
     height: 4.236rem;
 
     font-size: 1rem;
+    color: transparent;
+}
+
+.skill label::before {
+    position: absolute;
+    width: 4.236rem;
+    height: 4.236rem;
+
+    scale: 90%;
+
+    background:
+        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat,
+        rgba(0, 0, 0, 0.1);
+
+    content: '';
+}
+
+.skill input:disabled + label::before {
+    opacity: 25%;
+    background:
+        linear-gradient(to bottom right, transparent 49%, white 50%, transparent 51%),
+        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat,
+        rgba(0, 0, 0, 0.1);
 }
 
 .attachment {
@@ -290,11 +330,11 @@ h1 {
 
 /* */
 
-*:has(> input:checked) {
+.selectable-weapon:has(> input:checked), .skill:has(> input:checked) label {
     border-color: var(--color-primary);
 }
 
-*:has(> input:checked)::after {
+.selectable-weapon:has(> input:checked)::after, .skill:has(> input:checked) label::after {
     position: absolute;
     top: 0;
     right: 0;

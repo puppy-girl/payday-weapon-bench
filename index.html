@@ -42,24 +42,21 @@
         <div id="content">
             <section id="loadout">
                 <h2>Car-4</h2>
-                <div class="loadout-skills">
-                    <span class="loadout-category-title">Skills</span>
-                    <div class="skill-container">
-                        <span class="skill selected">Edge</span>
-                        <span class="skill">Long Shot</span>
-                        <span class="skill">Precision Shot</span>
-                        <span class="skill">Face to Face</span>
-                        <span class="skill">Coup de Grace</span>
-                        <span class="skill">Combat Marking</span>
-                        <span class="skill">Pain Asymbolia</span>
-                        <span class="skill">High Grain</span>
-                        <span class="skill">Expose</span>
-                        <span class="skill">Duck and Weave</span>
+                <fieldset id="skill-selector" class="loadout-category">
+                    <legend>Skills</legend>
+                    <div class="loadout-category-container">
+                        <template class="skill">
+                            <input
+                                type="checkbox"
+                                id="edge"
+                                name="skill"/>
+                            <label for="edge"></label>
+                        </template>
                     </div>
-                </div>
+                </fieldset>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Sight</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment selected">Classic RDS</span>
                         <span class="attachment">Tactical Sight</span>
                         <span class="attachment">Compact RDS</span>
@@ -71,14 +68,14 @@
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Barrel</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">CQC Barrel</span>
                         <span class="attachment">Ranged Barrel</span>
                     </div>
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Barrel Extension</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">Express Muzzle Break</span>
                         <span class="attachment">Beveled Silencer</span>
                         <span class="attachment">Hybrid Muzzle Break</span>
@@ -89,7 +86,7 @@
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Grip</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">Tac Grip</span>
                         <span class="attachment">Biofit Grip</span>
                         <span class="attachment">Perforated Grip</span>
@@ -97,7 +94,7 @@
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Vertical Grip</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">Cylindric Grip</span>
                         <span class="attachment">Stub Grip</span>
                         <span class="attachment">Angled Ghost Grip</span>
@@ -106,7 +103,7 @@
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Magazine</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">Compact Mag</span>
                         <span class="attachment selected">Quick-Pull Mag</span>
                         <span class="attachment">Extended Mag</span>
@@ -114,7 +111,7 @@
                 </div>
                 <div class="loadout-category">
                     <span class="loadout-category-title">Stock</span>
-                    <div class="attachment-container">
+                    <div class="loadout-category-container">
                         <span class="attachment">Light Frame</span>
                         <span class="attachment">Padded Tube</span>
                         <span class="attachment">HQ</span>

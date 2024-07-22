@@ -3,6 +3,102 @@ const DLCs = [
     "Boys in Blue"
 ];
 
+const skills = {
+    "edge": {
+        "displayName": "Edge",
+        "description": "You deal 10% extra damage for 20 seconds.",
+        "damageModifier": 0.1,
+        "iconOffset": {
+            "X": 0,
+            "Y": 0
+        }
+    },
+    "long-shot": {
+        "displayName": "Long Shot",
+        "description": "As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.",
+        "requires": [ "edge" ],
+        "iconOffset": {
+            "X": 2,
+            "Y": 5
+        }
+    },
+    "precision-shot": {
+        "displayName": "Precision Shot",
+        "description": "As long as you have EDGE and are aiming down a scope, your shot will deal extra damage based on your scope magnification.",
+        "requires": [ "edge" ],
+        "iconOffset": {
+            "X": 3,
+            "Y": 5
+        }
+    },
+    "face-to-face": {
+        "displayName": "Face to Face",
+        "description": "As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.",
+        "requires": [ "edge" ],
+        "damageModifier": 0.1,
+        "iconOffset": {
+            "X": 2,
+            "Y": 8
+        }
+    },
+    "coup-de-grace": {
+        "displayName": "Coup de Grâce",
+        "description": "If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.",
+        "requires": [ "edge" ],
+        "damageModifier": 0.1,
+        "iconOffset": {
+            "X": 2,
+            "Y": 14
+        }
+    },
+    "combat-marking": {
+        "displayName": "Combat Marking",
+        "description": "As long as you have EDGE, you deal an extra 20% damage against any marked target.",
+        "requires": [ "edge" ],
+        "damageModifier": 0.2,
+        "iconOffset": {
+            "X": 1,
+            "Y": 15
+        }
+    },
+    "pain-asymbolia": {
+        "displayName": "Pain Asymbolia",
+        "description": "As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.",
+        "requires": [ "edge" ],
+        "damageModifier": 0.1,
+        "iconOffset": {
+            "X": 5,
+            "Y": 19
+        }
+    },
+    "high-grain": {
+        "displayName": "High Grain",
+        "description": "All placed Ammo Bags increase armor penetration for 30 seconds after interaction for you and all your teammates. Each additional crew member equipped with this skill increases weapon damage by 5% on top of that.",
+        "armorPenModifier": 0.2,
+        "iconOffset": {
+            "X": 4,
+            "Y": 1
+        }
+    },
+    "expose": {
+        "displayName": "Expose",
+        "description": "Shots fired at enemies affected by your flashbang will ignore armor for as long as they are stunned.",
+        "iconOffset": {
+            "X": 4,
+            "Y": 14
+        }
+    },
+    "duck-and-weave": {
+        "displayName": "Duck and Weave",
+        "description": "As long as you have RUSH, you deal 25% more damage to enemies from behind. This bonus is reduced by 5% for each armor chunk you currently have beyond the first.",
+        "damageModifier": 0.25,
+        "iconOffset": {
+            "X": 3,
+            "Y": 20
+        }
+    }
+}
+
 // Effective Armour Penetration is the amount of damage dealt through armour
 // based on the weapon's armour penetration and the enemy's armour hardness
 function effectiveArmorPenetration(
@@ -199,7 +295,7 @@ function populateWeaponSelector() {
     const selectableWeaponTemplate = document.querySelector('template.selectable-weapon').cloneNode(true);
     document.querySelector('template.selectable-weapon').remove();
 
-    for (weapon of sortedWeapons) {
+    for (const weapon of sortedWeapons) {
         const selectableWeapon = weaponSelector.appendChild(document.createElement('div'));
 
         selectableWeapon.innerHTML = selectableWeaponTemplate.innerHTML;
@@ -232,8 +328,72 @@ function populateWeaponSelector() {
     }
 }
 
+function populateSkills() {
+    const skillContainer = document.querySelector('#skill-selector .loadout-category-container');
+    const skillTemplate = document.querySelector('template.skill').cloneNode(true);
+    document.querySelector('template.skill').remove();
+
+    for (const skill in skills) {
+        const selectableSkill = skillContainer.appendChild(document.createElement('div'));
+
+        selectableSkill.innerHTML = skillTemplate.innerHTML;
+        selectableSkill.classList = [ 'skill' ];
+
+        const skillInput = selectableSkill.children[0];
+        const skillLabel = selectableSkill.children[1];
+
+        skillInput.id = skill;
+
+        if (skills[skill].requires?.includes('edge'))
+            skillInput.disabled = true;
+
+        skillLabel.innerHTML = skills[skill].displayName;
+        skillLabel.setAttribute('for', skill);
+        
+        skillLabel.style = `
+            --image-x-offset: ${skills[skill].iconOffset.X * -64}px;
+            --image-y-offset: ${skills[skill].iconOffset.Y * -64}px;
+            --image-url: url("images/${skill == 'edge' ? 'edge.png' : 'skills.png'}");
+        `;
+
+        skillInput.addEventListener('change', (event) => {
+            updateSkills(event.target.id);
+        });
+    }
+}
+
 populateWeaponSelector();
+populateSkills();
 
 function updateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML = selectedWeapon.DisplayName;
+}
+
+const equippedSkills = [];
+
+function updateSkills(selectedSkill) {
+    const skillIsEquipped = equippedSkills.includes(selectedSkill);
+
+    if (!skillIsEquipped) equippedSkills.push(selectedSkill);
+    else equippedSkills.splice(equippedSkills.indexOf(selectedSkill), 1);
+
+    const dependentSkills = Object.keys(skills).filter(skill => {
+        return skills[skill].requires?.includes(selectedSkill);
+    });
+
+    for (const skill of dependentSkills) {
+        const skillInput = document.querySelector(`input#${skill}`);
+
+        if (skillIsEquipped) {
+            skillInput.disabled = true;
+            skillInput.checked = false;
+
+            if(equippedSkills.includes(skill))
+                equippedSkills.splice(equippedSkills.indexOf(skill), 1);
+        } else {
+            skillInput.disabled = false;
+        }
+    }
+
+    console.log(equippedSkills);
 }
