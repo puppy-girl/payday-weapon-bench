@@ -10,7 +10,8 @@ const weaponCategories = [
     'LMG'
 ];
 
-const data = {};
+const weaponOutput = {};
+const attachmentOutput = {};
 
 try {
     const files = await fs.readdir('PAYDAY3/Content', {
@@ -22,6 +23,11 @@ try {
         return file.isDirectory()
             && file.path.includes('Gameplay/Weapons/')
             && weaponCategories.includes(file.path.split('/').pop());
+    });
+
+    const attachments = files.filter(file => {
+        return file.path.includes('Gameplay/WeaponParts/')
+            && /WPD_[a-zA-Z0-9_]*\.json/.test(file.name);
     });
 
     for (const weapon of weapons) {
@@ -57,7 +63,7 @@ try {
 
         const DLC = weapon.path.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
 
-        data[weapon.name] = {
+        weaponOutput[weapon.name] = {
             DisplayName: weaponData.DisplayName.LocalizedString,
             TypeClassText: weaponData.TypeClassText.LocalizedString,
             DLC: DLC ? DLC[1] : null,
@@ -78,7 +84,40 @@ try {
         } catch { }
     }
 
-    fs.writeFile('../scripts/weapons.js', 'const weaponData = ' + JSON.stringify(data, null, 4));
+    fs.writeFile('../scripts/weapons.js', 'const weaponData = ' + JSON.stringify(weaponOutput, null, 4));
+
+    for (const attachment of attachments) {
+        const attachmentPath = attachment.path + '/' + attachment.name;
+        const attachmentData = JSON.parse(await fs.readFile(attachmentPath))[0].Properties;
+
+        const key = attachment.name.split('.')[0];
+        attachmentOutput[key] = {};
+
+        if (attachmentData.AttributeModifierMap)
+            attachmentOutput[key].AttributeModifierMap = attachmentData.AttributeModifierMap;
+
+        if (attachmentData.MagazineData)
+            attachmentOutput[key].MagazineData = JSON.parse(
+                await fs.readFile(attachmentData.MagazineData.ObjectPath.split('.')[0] + '.json')
+            )[0];
+
+        if (attachmentData.SightDataArray) {
+            const targetingDataPath = JSON.parse(
+                await fs.readFile(attachmentData.SightDataArray[0].ObjectPath.split('.')[0] + '.json')
+            )[0].Properties.TargetingData.ObjectPath;
+
+            const targetingDataProperties = JSON.parse(
+                await fs.readFile(targetingDataPath.split('.')[0] + '.json')
+            )[0].Properties;
+
+            attachmentOutput[key].TargetingData = {
+                TargetingMagnification: targetingDataProperties.TargetingMagnification,
+                TargetingOnTopMagnification: targetingDataProperties.TargetingOnTopMagnification
+            };
+        }
+    }
+
+    fs.writeFile('../scripts/attachments.js', 'const attachmentData = ' + JSON.stringify(attachmentOutput, null, 4));
 } catch(err) {
     console.error(err);
 }
