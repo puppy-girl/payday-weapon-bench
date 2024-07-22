@@ -1,3 +1,8 @@
+const DLCs = [
+    "Syntax Error",
+    "Boys in Blue"
+];
+
 // Effective Armour Penetration is the amount of damage dealt through armour
 // based on the weapon's armour penetration and the enemy's armour hardness
 function effectiveArmorPenetration(
@@ -173,3 +178,23 @@ function timeToKill(
 
     return Math.round(TTK * 100) / 100;
 }
+
+function populateWeaponSelector() {
+    const weaponSelector = document.querySelector('div#weapon-list');
+    const selectableWeaponTemplate = document.querySelector('template.selectable-weapon').cloneNode(true);
+
+    for (weapon in weaponData) {
+        const selectableWeapon = weaponSelector.appendChild(document.createElement('div'));
+        selectableWeapon.innerHTML = selectableWeaponTemplate.innerHTML;
+        selectableWeapon.classList = [ 'selectable-weapon' ];
+        selectableWeapon.style = `
+            --image-x-offset: ${weaponData[weapon].DisplayIcon.SourceUV.X * -1}px;
+            --image-y-offset: ${weaponData[weapon].DisplayIcon.SourceUV.Y * -1}px;
+            --image-url: url("images/${weaponData[weapon].DisplayIcon.SourceTexture}");
+        `;
+        selectableWeapon.children[0].innerHTML = weaponData[weapon].DisplayName;
+        selectableWeapon.children[1].innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
+    }
+}
+
+populateWeaponSelector();

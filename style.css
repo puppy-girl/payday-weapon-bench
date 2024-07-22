@@ -118,7 +118,7 @@ body {
     width: 256px;
     height: 128px;
 
-    background: url("images/SS_UI_WeaponsPrimary.png") no-repeat var(--image-y-offset) var(--image-x-offset);
+    background: var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat;
 
     content: '';
 }
