@@ -2,9 +2,9 @@ A supplementary tool for Payday 3's loadouts to view weapon details, mechanics, 
 
 ### todo:
 - build and style the main page
-  - scrollable weapon selector
+  - ~~scrollable weapon selector~~
   - weapon details
-  - skill selector
+  - ~~skill selector~~
   - attachment selector
   - weapon stat info
   - enemy damage info
@@ -15,3 +15,7 @@ A supplementary tool for Payday 3's loadouts to view weapon details, mechanics, 
   - add tooltips for skills
   - add tooltips for attachments
   - add tooltips for mechanics
+- write importer to automate creating stat files
+  - ~~import weapon stats~~
+  - ~~import weapon images~~
+  - import weapon attachments
