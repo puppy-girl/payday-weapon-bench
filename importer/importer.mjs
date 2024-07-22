@@ -6,21 +6,21 @@ const weaponCategories = [
     'Pistol',
     'Revolver',
     'Shotgun',
-    'SMG'
+    'SMG',
+    'LMG'
 ];
-
-const weaponsDirectory = './PAYDAY3/Content/Gameplay/Weapons';
 
 const data = {};
 
 try {
-    const files = await fs.readdir(weaponsDirectory, {
+    const files = await fs.readdir('PAYDAY3/Content', {
         withFileTypes: true,
         recursive: true
     });
 
     const weapons = files.filter(file => {
         return file.isDirectory()
+            && file.path.includes('Gameplay/Weapons/')
             && weaponCategories.includes(file.path.split('/').pop());
     });
 
@@ -48,9 +48,12 @@ try {
             'RoundsPerMinute',
         ];
 
+        const DLC = weapon.path.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
+
         data[weapon.name] = {
             DisplayName: weaponData.DisplayName.LocalizedString,
             TypeClassText: weaponData.TypeClassText.LocalizedString,
+            DLC: DLC ? DLC[1] : null,
             FireData: Object.fromEntries(
                 Object.entries(fireData)
                 .filter(([key, _]) => fireDataFilter.includes(key))

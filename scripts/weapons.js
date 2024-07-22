@@ -2,6 +2,7 @@ const weaponData = {
     "Mosconi12C": {
         "DisplayName": "Mosconi 12 Classic",
         "TypeClassText": "Shotgun",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -56,6 +57,7 @@ const weaponData = {
     "R880": {
         "DisplayName": "Reinfeld 880",
         "TypeClassText": "Shotgun",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -110,6 +112,7 @@ const weaponData = {
     "Commando": {
         "DisplayName": "Ziv Commando",
         "TypeClassText": "SMG",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -167,6 +170,7 @@ const weaponData = {
     "Compact7": {
         "DisplayName": "SG Compact-7",
         "TypeClassText": "SMG",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -215,6 +219,7 @@ const weaponData = {
     "PC9": {
         "DisplayName": "FIK PC9",
         "TypeClassText": "SMG",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -259,6 +264,7 @@ const weaponData = {
     "Bison": {
         "DisplayName": "Sforza Bison",
         "TypeClassText": "Revolver",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -304,6 +310,7 @@ const weaponData = {
     "Castigo44": {
         "DisplayName": "J&M Castigo 44",
         "TypeClassText": "Revolver",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -349,6 +356,7 @@ const weaponData = {
     "S40": {
         "DisplayName": "Signature 40",
         "TypeClassText": "Pistol",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -405,6 +413,7 @@ const weaponData = {
     "S403": {
         "DisplayName": "Signature 403",
         "TypeClassText": "Pistol",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -461,6 +470,7 @@ const weaponData = {
     "SPM11": {
         "DisplayName": "SP Model 11",
         "TypeClassText": "Pistol",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -517,6 +527,7 @@ const weaponData = {
     "Stryk7": {
         "DisplayName": "Stryk 7",
         "TypeClassText": "Pistol",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -569,6 +580,7 @@ const weaponData = {
     "A114": {
         "DisplayName": "SA A144",
         "TypeClassText": "Marksman",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -618,6 +630,7 @@ const weaponData = {
     "R900S": {
         "DisplayName": "Reinfeld 900S",
         "TypeClassText": "Marksman",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -665,6 +678,7 @@ const weaponData = {
     "CAR4": {
         "DisplayName": "CAR-4",
         "TypeClassText": "Assault Rifle",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -715,6 +729,7 @@ const weaponData = {
     "KU59": {
         "DisplayName": "KU-59",
         "TypeClassText": "Assault Rifle",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -772,6 +787,7 @@ const weaponData = {
     "NWB9": {
         "DisplayName": "Northwest B-9",
         "TypeClassText": "Assault Rifle",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -821,6 +837,7 @@ const weaponData = {
     "VF7S": {
         "DisplayName": "VF-7S",
         "TypeClassText": "Assault Rifle",
+        "DLC": null,
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -871,5 +888,363 @@ const weaponData = {
         },
         "ReloadNotifyTime": 2.8333335,
         "ReloadEmptyNotifyTime": 3.1666665
+    },
+    "ATK7": {
+        "DisplayName": "SG ATK-7",
+        "TypeClassText": "SMG",
+        "DLC": "2",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 31.3,
+                    "Distance": 500
+                },
+                {
+                    "Damage": 30,
+                    "Distance": 1500
+                },
+                {
+                    "Damage": 25.8,
+                    "Distance": 2000
+                },
+                {
+                    "Damage": 23,
+                    "Distance": 2500
+                },
+                {
+                    "Damage": 19,
+                    "Distance": 5000
+                },
+                {
+                    "Damage": 12,
+                    "Distance": 1000000
+                }
+            ],
+            "AmmoLoaded": 30,
+            "AmmoInventoryMax": 300,
+            "AmmoInventory": 120,
+            "AmmoPickup": {
+                "Min": 7,
+                "Max": 9
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 3,
+                    "Distance": 1500
+                },
+                {
+                    "Multiplier": 2.5,
+                    "Distance": 3000
+                },
+                {
+                    "Multiplier": 2,
+                    "Distance": 5000
+                },
+                {
+                    "Multiplier": 1.5,
+                    "Distance": 10000
+                }
+            ],
+            "FireType": "ESBZFireType::Auto",
+            "ArmorPenetration": 1.1,
+            "RoundsPerMinute": 800
+        },
+        "ReloadNotifyTime": 2.1666665,
+        "ReloadEmptyNotifyTime": 2.3333335
+    },
+    "Bullkick500": {
+        "DisplayName": "J&M Bullkick 500",
+        "TypeClassText": "Revolver",
+        "DLC": "2",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 150,
+                    "Distance": 2500
+                },
+                {
+                    "Damage": 100,
+                    "Distance": 5000
+                },
+                {
+                    "Damage": 50,
+                    "Distance": 10000
+                }
+            ],
+            "AmmoLoaded": 5,
+            "AmmoInventoryMax": 35,
+            "AmmoInventory": 25,
+            "AmmoPickup": {
+                "Min": 0.5,
+                "Max": 1
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 3,
+                    "Distance": 4000
+                },
+                {
+                    "Multiplier": 2,
+                    "Distance": 10000
+                }
+            ],
+            "ArmorPenetration": 2,
+            "RoundsPerMinute": 75
+        },
+        "ReloadNotifyTime": 2.8333333,
+        "ReloadEmptyNotifyTime": 2.8333333
+    },
+    "MX63": {
+        "DisplayName": "Blyspruta MX63",
+        "TypeClassText": "LMG",
+        "DLC": "2",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 28,
+                    "Distance": 2500
+                },
+                {
+                    "Damage": 24,
+                    "Distance": 4500
+                },
+                {
+                    "Damage": 19,
+                    "Distance": 1000000
+                }
+            ],
+            "AmmoLoaded": 100,
+            "AmmoInventoryMax": 400,
+            "AmmoInventory": 200,
+            "AmmoPickup": {
+                "Min": 8
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 5,
+                    "Distance": 1000
+                },
+                {
+                    "Multiplier": 3,
+                    "Distance": 3500
+                },
+                {
+                    "Multiplier": 2,
+                    "Distance": 6000
+                },
+                {
+                    "Multiplier": 1.5,
+                    "Distance": 10000
+                }
+            ],
+            "FireType": "ESBZFireType::Auto",
+            "ArmorPenetration": 1,
+            "RoundsPerMinute": 720
+        },
+        "ReloadNotifyTime": 2.6666665,
+        "ReloadEmptyNotifyTime": 2.8333333
+    },
+    "RG5": {
+        "DisplayName": "Adelig RG5",
+        "TypeClassText": "Assault Rifle",
+        "DLC": "2",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 42,
+                    "Distance": 500
+                },
+                {
+                    "Damage": 39,
+                    "Distance": 3000
+                },
+                {
+                    "Damage": 27,
+                    "Distance": 4000
+                },
+                {
+                    "Damage": 20.7,
+                    "Distance": 5000
+                },
+                {
+                    "Damage": 17.1,
+                    "Distance": 1000000
+                }
+            ],
+            "AmmoLoaded": 20,
+            "AmmoInventoryMax": 200,
+            "AmmoInventory": 80,
+            "AmmoPickup": {
+                "Max": 7
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 5,
+                    "Distance": 1500
+                },
+                {
+                    "Multiplier": 3,
+                    "Distance": 3500
+                },
+                {
+                    "Multiplier": 2,
+                    "Distance": 6000
+                },
+                {
+                    "Multiplier": 1.5,
+                    "Distance": 10000
+                }
+            ],
+            "FireType": "ESBZFireType::Auto",
+            "ArmorPenetration": 1.2
+        },
+        "ReloadNotifyTime": 2.6666665,
+        "ReloadEmptyNotifyTime": 2.8333333
+    },
+    "FSA12": {
+        "DisplayName": "Rebel Tactics FSA-12G",
+        "TypeClassText": "Shotgun",
+        "DLC": "1",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 20,
+                    "Distance": 1500
+                },
+                {
+                    "Damage": 8,
+                    "Distance": 2500
+                },
+                {
+                    "Damage": 5,
+                    "Distance": 3500
+                },
+                {
+                    "Damage": 3.7,
+                    "Distance": 5000
+                },
+                {
+                    "Damage": 2.6,
+                    "Distance": 10000
+                }
+            ],
+            "AmmoInventory": 40,
+            "AmmoPickup": {
+                "Min": 3,
+                "Max": 4
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 5,
+                    "Distance": 1500
+                },
+                {
+                    "Multiplier": 3,
+                    "Distance": 2500
+                },
+                {
+                    "Multiplier": 1,
+                    "Distance": 10000
+                }
+            ],
+            "ProjectilesPerFiredRound": 7,
+            "RoundsPerMinute": 300
+        },
+        "ReloadNotifyTime": 1.9999999,
+        "ReloadEmptyNotifyTime": 2.3333335
+    },
+    "WAR45": {
+        "DisplayName": "WAR-45",
+        "TypeClassText": "SMG",
+        "DLC": "1",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 35,
+                    "Distance": 1000
+                },
+                {
+                    "Damage": 30,
+                    "Distance": 2500
+                },
+                {
+                    "Damage": 25,
+                    "Distance": 4500
+                },
+                {
+                    "Damage": 18.5,
+                    "Distance": 10000
+                }
+            ],
+            "AmmoLoaded": 25,
+            "AmmoInventoryMax": 250,
+            "AmmoPickup": {
+                "Max": 7
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 2,
+                    "Distance": 3500
+                },
+                {
+                    "Multiplier": 1.5,
+                    "Distance": 6000
+                }
+            ],
+            "FireType": "ESBZFireType::Auto",
+            "ArmorPenetration": 1.25,
+            "RoundsPerMinute": 650
+        },
+        "ReloadNotifyTime": 2.1666667,
+        "ReloadEmptyNotifyTime": 2.5000002
+    },
+    "FIK22": {
+        "DisplayName": "FIK 22 TLR",
+        "TypeClassText": "Marksman",
+        "DLC": "1",
+        "FireData": {
+            "DamageDistanceArray": [
+                {
+                    "Damage": 25,
+                    "Distance": 3500
+                },
+                {
+                    "Damage": 18.5,
+                    "Distance": 7000
+                },
+                {
+                    "Damage": 14.3,
+                    "Distance": 10000
+                }
+            ],
+            "AmmoLoaded": 25,
+            "AmmoInventoryMax": 250,
+            "AmmoPickup": {
+                "Min": 7,
+                "Max": 9
+            },
+            "CriticalDamageMultiplierDistanceArray": [
+                {
+                    "Multiplier": 5,
+                    "Distance": 2000
+                },
+                {
+                    "Multiplier": 3,
+                    "Distance": 4000
+                },
+                {
+                    "Multiplier": 2,
+                    "Distance": 6000
+                },
+                {
+                    "Multiplier": 1.5,
+                    "Distance": 10000
+                }
+            ],
+            "ArmorPenetration": 1.3,
+            "RoundsPerMinute": 900
+        },
+        "ReloadNotifyTime": 2.333333,
+        "ReloadEmptyNotifyTime": 2.666667
     }
 }
