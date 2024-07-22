@@ -16,7 +16,6 @@ const skills = {
     "long-shot": {
         "displayName": "Long Shot",
         "description": "As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.",
-        "requires": [ "edge" ],
         "iconOffset": {
             "X": 2,
             "Y": 5
@@ -25,7 +24,6 @@ const skills = {
     "precision-shot": {
         "displayName": "Precision Shot",
         "description": "As long as you have EDGE and are aiming down a scope, your shot will deal extra damage based on your scope magnification.",
-        "requires": [ "edge" ],
         "iconOffset": {
             "X": 3,
             "Y": 5
@@ -34,7 +32,6 @@ const skills = {
     "face-to-face": {
         "displayName": "Face to Face",
         "description": "As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.",
-        "requires": [ "edge" ],
         "damageModifier": 0.1,
         "iconOffset": {
             "X": 2,
@@ -44,7 +41,6 @@ const skills = {
     "coup-de-grace": {
         "displayName": "Coup de Grâce",
         "description": "If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.",
-        "requires": [ "edge" ],
         "damageModifier": 0.1,
         "iconOffset": {
             "X": 2,
@@ -54,7 +50,6 @@ const skills = {
     "combat-marking": {
         "displayName": "Combat Marking",
         "description": "As long as you have EDGE, you deal an extra 20% damage against any marked target.",
-        "requires": [ "edge" ],
         "damageModifier": 0.2,
         "iconOffset": {
             "X": 1,
@@ -64,7 +59,6 @@ const skills = {
     "pain-asymbolia": {
         "displayName": "Pain Asymbolia",
         "description": "As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.",
-        "requires": [ "edge" ],
         "damageModifier": 0.1,
         "iconOffset": {
             "X": 5,
@@ -98,6 +92,15 @@ const skills = {
         }
     }
 }
+
+const edgeDependentSkills = [
+    "long-shot",
+    "precision-shot",
+    "face-to-face",
+    "coup-de-grace",
+    "combat-marking",
+    "pain-asymbolia"
+]
 
 // Effective Armour Penetration is the amount of damage dealt through armour
 // based on the weapon's armour penetration and the enemy's armour hardness
@@ -344,7 +347,7 @@ function populateSkills() {
 
         skillInput.id = skill;
 
-        if (skills[skill].requires?.includes('edge'))
+        if (edgeDependentSkills.includes(skill))
             skillInput.disabled = true;
 
         skillLabel.innerHTML = skills[skill].displayName;
@@ -377,11 +380,8 @@ function updateSkills(selectedSkill) {
     if (!skillIsEquipped) equippedSkills.push(selectedSkill);
     else equippedSkills.splice(equippedSkills.indexOf(selectedSkill), 1);
 
-    const dependentSkills = Object.keys(skills).filter(skill => {
-        return skills[skill].requires?.includes(selectedSkill);
-    });
-
-    for (const skill of dependentSkills) {
+    if (selectedSkill !== 'edge') return;
+    for (const skill of edgeDependentSkills) {
         const skillInput = document.querySelector(`input#${skill}`);
 
         if (skillIsEquipped) {
@@ -394,6 +394,4 @@ function updateSkills(selectedSkill) {
             skillInput.disabled = false;
         }
     }
-
-    console.log(equippedSkills);
 }
