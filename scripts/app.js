@@ -179,12 +179,27 @@ function timeToKill(
     return Math.round(TTK * 100) / 100;
 }
 
+const weaponCategories = [
+    'AssaultRifle',
+    'Marksman',
+    'Shotgun',
+    'Pistol',
+    'Revolver',
+    'SMG',
+    'LMG'
+];
+
+const sortedWeapons = Object.keys(weaponData).sort((a, b) => {
+    return weaponCategories.indexOf(weaponData[a].TypeClassText) - weaponCategories.indexOf(weaponData[b].TypeClassText)
+        || weaponData[a].DLC - weaponData[b].DLC;
+});
+
 function populateWeaponSelector() {
     const weaponSelector = document.querySelector('div#weapon-list');
     const selectableWeaponTemplate = document.querySelector('template.selectable-weapon').cloneNode(true);
     document.querySelector('template.selectable-weapon').remove();
 
-    for (weapon in weaponData) {
+    for (weapon of sortedWeapons) {
         const selectableWeapon = weaponSelector.appendChild(document.createElement('div'));
         selectableWeapon.innerHTML = selectableWeaponTemplate.innerHTML;
         selectableWeapon.classList = [ 'selectable-weapon' ];
