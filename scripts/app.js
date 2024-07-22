@@ -182,6 +182,7 @@ function timeToKill(
 function populateWeaponSelector() {
     const weaponSelector = document.querySelector('div#weapon-list');
     const selectableWeaponTemplate = document.querySelector('template.selectable-weapon').cloneNode(true);
+    document.querySelector('template.selectable-weapon').remove();
 
     for (weapon in weaponData) {
         const selectableWeapon = weaponSelector.appendChild(document.createElement('div'));
