@@ -3,6 +3,13 @@ const weaponData = {
         "DisplayName": "Mosconi 12 Classic",
         "TypeClassText": "Shotgun",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 768,
+                "Y": 128
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -58,6 +65,13 @@ const weaponData = {
         "DisplayName": "Reinfeld 880",
         "TypeClassText": "Shotgun",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -113,6 +127,13 @@ const weaponData = {
         "DisplayName": "Ziv Commando",
         "TypeClassText": "SMG",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 384
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -171,6 +192,13 @@ const weaponData = {
         "DisplayName": "SG Compact-7",
         "TypeClassText": "SMG",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 768,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -220,6 +248,13 @@ const weaponData = {
         "DisplayName": "FIK PC9",
         "TypeClassText": "SMG",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 768,
+                "Y": 256
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -265,6 +300,13 @@ const weaponData = {
         "DisplayName": "Sforza Bison",
         "TypeClassText": "Revolver",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 256
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -311,6 +353,13 @@ const weaponData = {
         "DisplayName": "J&M Castigo 44",
         "TypeClassText": "Revolver",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 384
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -357,6 +406,13 @@ const weaponData = {
         "DisplayName": "Signature 40",
         "TypeClassText": "Pistol",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 384
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -414,6 +470,13 @@ const weaponData = {
         "DisplayName": "Signature 403",
         "TypeClassText": "Pistol",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 512
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -471,6 +534,13 @@ const weaponData = {
         "DisplayName": "SP Model 11",
         "TypeClassText": "Pistol",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 512
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -528,6 +598,13 @@ const weaponData = {
         "DisplayName": "Stryk 7",
         "TypeClassText": "Pistol",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 256
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -581,6 +658,13 @@ const weaponData = {
         "DisplayName": "SA A144",
         "TypeClassText": "Marksman",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 128
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -631,6 +715,13 @@ const weaponData = {
         "DisplayName": "Reinfeld 900S",
         "TypeClassText": "Marksman",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -679,6 +770,13 @@ const weaponData = {
         "DisplayName": "CAR-4",
         "TypeClassText": "Assault Rifle",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -730,6 +828,13 @@ const weaponData = {
         "DisplayName": "KU-59",
         "TypeClassText": "Assault Rifle",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 128
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -788,6 +893,13 @@ const weaponData = {
         "DisplayName": "Northwest B-9",
         "TypeClassText": "Assault Rifle",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 768,
+                "Y": 384
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -838,6 +950,13 @@ const weaponData = {
         "DisplayName": "VF-7S",
         "TypeClassText": "Assault Rifle",
         "DLC": null,
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 512
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -893,6 +1012,13 @@ const weaponData = {
         "DisplayName": "SG ATK-7",
         "TypeClassText": "SMG",
         "DLC": "2",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -956,6 +1082,13 @@ const weaponData = {
         "DisplayName": "J&M Bullkick 500",
         "TypeClassText": "Revolver",
         "DLC": "2",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 128
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -998,6 +1131,13 @@ const weaponData = {
         "DisplayName": "Blyspruta MX63",
         "TypeClassText": "LMG",
         "DLC": "2",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 128
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -1048,6 +1188,13 @@ const weaponData = {
         "DisplayName": "Adelig RG5",
         "TypeClassText": "Assault Rifle",
         "DLC": "2",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 256,
+                "Y": 0
+            },
+            "SourceTexture": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -1105,6 +1252,13 @@ const weaponData = {
         "DisplayName": "Rebel Tactics FSA-12G",
         "TypeClassText": "Shotgun",
         "DLC": "1",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 512,
+                "Y": 768
+            },
+            "SourceTexture": "SS_UI_Weapon_Presets.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -1157,6 +1311,13 @@ const weaponData = {
         "DisplayName": "WAR-45",
         "TypeClassText": "SMG",
         "DLC": "1",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 768,
+                "Y": 768
+            },
+            "SourceTexture": "SS_UI_Weapon_Presets.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {
@@ -1202,6 +1363,13 @@ const weaponData = {
         "DisplayName": "FIK 22 TLR",
         "TypeClassText": "Marksman",
         "DLC": "1",
+        "DisplayIcon": {
+            "SourceUV": {
+                "X": 0,
+                "Y": 896
+            },
+            "SourceTexture": "SS_UI_Weapon_Presets.png"
+        },
         "FireData": {
             "DamageDistanceArray": [
                 {

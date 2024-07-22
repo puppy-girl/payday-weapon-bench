@@ -31,6 +31,13 @@ try {
         const weaponDataPath = weaponPath + '/' + weaponFiles.find(element => element.includes('DA_WeaponData'));
         const weaponData = JSON.parse(await fs.readFile(weaponDataPath))[0].Properties;
 
+        const iconDataPath = weaponData.DisplayIcon.AssetPathName.replace('/Game', 'PAYDAY3/Content').split('.')[0] + '.json';
+        const iconDataFile = JSON.parse(await fs.readFile(iconDataPath));
+        const iconData = iconDataFile[1] ? iconDataFile[1].Properties : iconDataFile[0].Properties;
+
+        const iconFile = iconData.BakedSourceTexture.ObjectPath.split('.')[0] + '.png';
+        const iconName = iconFile.split('/').reverse()[0];
+
         const fireDataPath = weaponPath + '/' + weaponFiles.find(element => element.includes('DA_FireData'));
         const fireData = JSON.parse(await fs.readFile(fireDataPath))[0].Properties;
 
@@ -54,6 +61,10 @@ try {
             DisplayName: weaponData.DisplayName.LocalizedString,
             TypeClassText: weaponData.TypeClassText.LocalizedString,
             DLC: DLC ? DLC[1] : null,
+            DisplayIcon: {
+                SourceUV: iconData.BakedSourceUV ? iconData.BakedSourceUV : { X: 0, Y: 0 },
+                SourceTexture: iconName
+            },
             FireData: Object.fromEntries(
                 Object.entries(fireData)
                 .filter(([key, _]) => fireDataFilter.includes(key))
@@ -61,6 +72,10 @@ try {
             ReloadNotifyTime: weaponData.ReloadNotifyTime,
             ReloadEmptyNotifyTime: weaponData.ReloadEmptyNotifyTime,
         };
+
+        try {
+            await fs.copyFile(iconFile, `../images/${iconName}`, fs.constants.COPYFILE_EXCL);
+        } catch { }
     }
 
     fs.writeFile('../scripts/weapons.js', 'const weaponData = ' + JSON.stringify(data, null, 4));
