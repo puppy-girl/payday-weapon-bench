@@ -195,7 +195,7 @@ const sortedWeapons = Object.keys(weaponData).sort((a, b) => {
 });
 
 function populateWeaponSelector() {
-    const weaponSelector = document.querySelector('div#weapon-list');
+    const weaponSelector = document.querySelector('#weapon-list');
     const selectableWeaponTemplate = document.querySelector('template.selectable-weapon').cloneNode(true);
     document.querySelector('template.selectable-weapon').remove();
 
@@ -208,8 +208,15 @@ function populateWeaponSelector() {
             --image-y-offset: ${weaponData[weapon].DisplayIcon.SourceUV.Y * -1}px;
             --image-url: url("images/${weaponData[weapon].DisplayIcon.SourceTexture}");
         `;
-        selectableWeapon.children[0].innerHTML = weaponData[weapon].DisplayName;
-        selectableWeapon.children[1].innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
+        selectableWeapon.children[0].id = weapon;
+        selectableWeapon.children[0].value = weapon;
+        selectableWeapon.children[1].innerHTML = weaponData[weapon].DisplayName;
+        selectableWeapon.children[1].setAttribute('for', weapon);
+        selectableWeapon.children[2].innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
+        selectableWeapon.children[2].setAttribute('for', weapon);
+
+        if (weapon == 'CAR4')
+            selectableWeapon.children[0].checked = true;
     }
 }
 

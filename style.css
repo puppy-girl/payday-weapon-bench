@@ -96,6 +96,8 @@ body {
 
     max-height: calc(100vh - 5rem);
 
+    border: none;
+
     overflow: scroll;
 }
 
@@ -127,13 +129,24 @@ body {
 
     background: var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat;
 
+    pointer-events: none;
+
     content: '';
 }
 
 .selectable-weapon:first-child { margin-top: 1rem; }
 .selectable-weapon:last-child { margin-bottom: 1rem; }
 
-.selectable-weapon span.selectable-weapon-name {
+.selectable-weapon input {
+    width: 20rem;
+    height: 10rem;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+.selectable-weapon label.selectable-weapon-name {
     position: absolute;
     bottom: 0.5rem;
     left: 0.5rem;
@@ -145,7 +158,7 @@ body {
     line-height: 1.5rem;
 }
 
-.selectable-weapon span.selectable-weapon-dlc {
+.selectable-weapon label.selectable-weapon-dlc {
     position: absolute;
     bottom: 0.5rem;
     right: 0.5rem;
@@ -277,11 +290,11 @@ h1 {
 
 /* */
 
-.selected {
+*:has(> input:checked) {
     border-color: var(--color-primary);
 }
 
-.selected::after {
+*:has(> input:checked)::after {
     position: absolute;
     top: 0;
     right: 0;
