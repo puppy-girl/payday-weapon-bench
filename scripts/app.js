@@ -201,6 +201,7 @@ function populateWeaponSelector() {
 
     for (weapon of sortedWeapons) {
         const selectableWeapon = weaponSelector.appendChild(document.createElement('div'));
+
         selectableWeapon.innerHTML = selectableWeaponTemplate.innerHTML;
         selectableWeapon.classList = [ 'selectable-weapon' ];
         selectableWeapon.style = `
@@ -208,16 +209,31 @@ function populateWeaponSelector() {
             --image-y-offset: ${weaponData[weapon].DisplayIcon.SourceUV.Y * -1}px;
             --image-url: url("images/${weaponData[weapon].DisplayIcon.SourceTexture}");
         `;
-        selectableWeapon.children[0].id = weapon;
-        selectableWeapon.children[0].value = weapon;
-        selectableWeapon.children[1].innerHTML = weaponData[weapon].DisplayName;
-        selectableWeapon.children[1].setAttribute('for', weapon);
-        selectableWeapon.children[2].innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
-        selectableWeapon.children[2].setAttribute('for', weapon);
+
+        const weaponInput = selectableWeapon.children[0];
+        const weaponName = selectableWeapon.children[1];
+        const weaponDLC = selectableWeapon.children[2];
+
+        weaponInput.id = weapon;
+        weaponInput.value = weapon;
+
+        weaponName.innerHTML = weaponData[weapon].DisplayName;
+        weaponName.setAttribute('for', weapon);
+
+        weaponDLC.innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
+        weaponDLC.setAttribute('for', weapon);
 
         if (weapon == 'CAR4')
-            selectableWeapon.children[0].checked = true;
+            weaponInput.checked = true;
+        
+        weaponInput.addEventListener('change', (event) => {
+            updateLoadout(weaponData[event.target.value]);
+        });
     }
 }
 
 populateWeaponSelector();
+
+function updateLoadout(selectedWeapon) {
+    document.querySelector('#loadout h2').innerHTML = selectedWeapon.DisplayName;
+}
