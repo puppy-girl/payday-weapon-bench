@@ -107,8 +107,20 @@ body {
 
     background:
         linear-gradient(to top right, rgba(0, 0, 0, 0.5), transparent 50%),
-        url("images/car4.png") no-repeat center/75%,
         var(--color-surface);
+}
+
+.selectable-weapon::before {
+    position: absolute;
+    top: calc((10rem - 128px) / 2);
+    left: calc((20rem - 256px) / 2);
+    
+    width: 256px;
+    height: 128px;
+
+    background: url("images/SS_UI_WeaponsPrimary.png") no-repeat var(--image-y-offset) var(--image-x-offset);
+
+    content: '';
 }
 
 .selectable-weapon span.selectable-weapon-name {
