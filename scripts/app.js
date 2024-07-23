@@ -489,5 +489,5 @@ function updateWeaponStats(selectedWeapon) {
         (selectedWeapon.FireData.AmmoPickup.Min ?? 5) + '-' +
         (selectedWeapon.FireData.AmmoPickup.Max ?? 10)
     );
-    maxAmmoDisplay.innerHTML = selectedWeapon.FireData.AmmoInventory;
+    maxAmmoDisplay.innerHTML = selectedWeapon.FireData.AmmoInventoryMax;
 }
