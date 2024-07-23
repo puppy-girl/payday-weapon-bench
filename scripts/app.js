@@ -389,13 +389,28 @@ function updateAttachments() {
         });
 }
 
+const attachmentCategories = [
+    'SLOT_Sight',
+    'SLOT_Mag',
+    'SLOT_BarrelExtension',
+    'SLOT_Barrel',
+    'SLOT_VerticalGrip',
+    'SLOT_ForeGrip',
+    'SLOT_Grip',
+    'SLOT_Stock'
+];
+
 function populateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML = selectedWeapon.DisplayName;
 
     loadoutAttachments.innerHTML = '';
     updateAttachments();
 
-    for (const attachmentCategory in selectedWeapon.ModularConfiguration) {
+    const sortedAttachments = Object.keys(selectedWeapon.ModularConfiguration).sort((a, b) => {
+        return attachmentCategories.indexOf(a) - attachmentCategories.indexOf(b);
+    });
+
+    for (const attachmentCategory of sortedAttachments) {
         const defaultAttachment = selectedWeapon.ModularConfiguration[attachmentCategory].DefaultPart
             ?? 'None';
         const attachments = [
