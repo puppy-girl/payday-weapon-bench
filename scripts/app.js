@@ -323,13 +323,13 @@ function populateWeaponSelector() {
         weaponDLC.setAttribute('for', weapon);
         
         weaponInput.addEventListener('change', (event) => {
-            updateLoadout(weaponData[event.target.value]);
+            populateLoadout(weaponData[event.target.value]);
         });
 
         if (weapon == 'CAR4')
             weaponInput.checked = true;
 
-        updateLoadout(weaponData['CAR4']);
+        populateLoadout(weaponData['CAR4']);
     }
 }
 
@@ -375,14 +375,21 @@ function populateSkills() {
     }
 }
 
-populateWeaponSelector();
-populateSkills();
+const equippedAttachments = [];
 
-function updateLoadout(selectedWeapon) {
+function updateAttachments() {
+    equippedAttachments.length = 0;
+
+    return document.querySelectorAll('.attachment input:checked').forEach(i => {
+            if (i.value !== 'None') equippedAttachments.push(i.value);
+        });
+}
+
+function populateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML = selectedWeapon.DisplayName;
 
     loadoutAttachments.innerHTML = '';
-    equippedAttachments = [];
+    updateAttachments();
 
     for (const attachmentCategory in selectedWeapon.ModularConfiguration) {
         const defaultAttachment = selectedWeapon.ModularConfiguration[attachmentCategory].DefaultPart
@@ -413,10 +420,17 @@ function updateLoadout(selectedWeapon) {
             
                 attachmentLabel.setAttribute('for', attachmentCategory + '_' + attachment);
                 attachmentLabel.innerHTML = attachment;
+
+                attachmentInput.addEventListener('change', () => {
+                    updateAttachments();
+                });
             }
         }
     }
 }
+
+populateWeaponSelector();
+populateSkills();
 
 const equippedSkills = [];
 
