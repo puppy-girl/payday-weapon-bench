@@ -328,6 +328,20 @@ h1 {
     background-color: rgba(60, 60, 60, 0.1);
 }
 
+.weapon-stat-category {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.weapon-stat {
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding: 0.25rem 1rem;
+}
+
 #damage-stats {
     margin-top: 2.618em;
 }

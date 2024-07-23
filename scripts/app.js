@@ -323,7 +323,10 @@ function populateWeaponSelector() {
         weaponDLC.setAttribute('for', weapon);
         
         weaponInput.addEventListener('change', (event) => {
-            populateLoadout(weaponData[event.target.value]);
+            const selectedWeapon = weaponData[event.target.value];
+
+            populateLoadout(selectedWeapon);
+            updateWeaponStats(selectedWeapon);
         });
 
         if (weapon == 'CAR4')
@@ -454,4 +457,21 @@ function updateSkills(selectedSkill) {
             skillInput.disabled = false;
         }
     }
+}
+
+function updateWeaponStats(selectedWeapon) {
+    const rpmDisplay = document.querySelector('#rpm');
+    const apDisplay = document.querySelector('#ap');
+    const magSizeDisplay = document.querySelector('#mag');
+    const ammoPickupDisplay = document.querySelector('#ammo-pickup');
+    const maxAmmoDisplay = document.querySelector('#max-ammo');
+
+    rpmDisplay.innerHTML = selectedWeapon.FireData.RoundsPerMinute ?? 600;
+    apDisplay.innerHTML = selectedWeapon.FireData.ArmorPenetration ?? 0;
+    magSizeDisplay.innerHTML = selectedWeapon.FireData.AmmoLoaded;
+    ammoPickupDisplay.innerHTML = (
+        (selectedWeapon.FireData.AmmoPickup.Min ?? 5) + '-' +
+        (selectedWeapon.FireData.AmmoPickup.Max ?? 10)
+    );
+    maxAmmoDisplay.innerHTML = selectedWeapon.FireData.AmmoInventory;
 }
