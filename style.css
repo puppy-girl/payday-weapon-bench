@@ -207,11 +207,6 @@ h1 {
 }
 
 #loadout {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
-    gap: 1.618rem;
-
     max-height: calc(100vh - 9rem);
 
     overflow: scroll;
@@ -219,7 +214,7 @@ h1 {
 
 #loadout h2 {
     margin-top: 1.5em;
-    margin-bottom: 1.618rem;
+    margin-bottom: 2.618rem;
 
     font-family: var(--font-display);
     font-size: 6.854rem;
@@ -245,11 +240,15 @@ h1 {
     border: none;
 }
 
-.skill input {
+.skill input,
+.attachment input {
     display: none;
 }
 
-.skill label, .attachment {
+.skill label,
+.attachment label {
+    display: inline-block;
+
     border: var(--border);
     border-radius: 0.2em;
 
@@ -261,8 +260,6 @@ h1 {
 }
 
 .skill label {
-    display: inline-block;
-
     width: 4.236rem;
     height: 4.236rem;
 
@@ -292,8 +289,15 @@ h1 {
         rgba(0, 0, 0, 0.1);
 }
 
-.attachment {
-    padding: 0.25rem 1rem;
+#loadout-attachments {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 1.618rem;
+}
+
+.attachment label {
+    padding: 0.25em 1em;
 }
 
 #weapon-stats {
@@ -330,11 +334,15 @@ h1 {
 
 /* */
 
-.selectable-weapon:has(> input:checked), .skill:has(> input:checked) label {
+.selectable-weapon:has(> input:checked),
+.skill:has(> input:checked) label,
+.attachment:has(> input:checked) label {
     border-color: var(--color-primary);
 }
 
-.selectable-weapon:has(> input:checked)::after, .skill:has(> input:checked) label::after {
+.selectable-weapon:has(> input:checked)::after,
+.skill:has(> input:checked) label::after,
+.attachment:has(> input:checked) label::after {
     position: absolute;
     top: 0;
     right: 0;

@@ -54,69 +54,17 @@
                         </template>
                     </div>
                 </fieldset>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Sight</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment selected">Classic RDS</span>
-                        <span class="attachment">Tactical Sight</span>
-                        <span class="attachment">Compact RDS</span>
-                        <span class="attachment">Projection RDS</span>
-                        <span class="attachment">Viewpoint Sight</span>
-                        <span class="attachment">Sheath RDS</span>
-                        <span class="attachment">Lined Sight</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Barrel</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">CQC Barrel</span>
-                        <span class="attachment">Ranged Barrel</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Barrel Extension</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">Express Muzzle Break</span>
-                        <span class="attachment">Beveled Silencer</span>
-                        <span class="attachment">Hybrid Muzzle Break</span>
-                        <span class="attachment">Piped Silencer</span>
-                        <span class="attachment">Indent Compensator</span>
-                        <span class="attachment">Cylindric Silencer</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Grip</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">Tac Grip</span>
-                        <span class="attachment">Biofit Grip</span>
-                        <span class="attachment">Perforated Grip</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Vertical Grip</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">Cylindric Grip</span>
-                        <span class="attachment">Stub Grip</span>
-                        <span class="attachment">Angled Ghost Grip</span>
-                        <span class="attachment">Quick Hold Grip</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Magazine</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">Compact Mag</span>
-                        <span class="attachment selected">Quick-Pull Mag</span>
-                        <span class="attachment">Extended Mag</span>
-                    </div>
-                </div>
-                <div class="loadout-category">
-                    <span class="loadout-category-title">Stock</span>
-                    <div class="loadout-category-container">
-                        <span class="attachment">Light Frame</span>
-                        <span class="attachment">Padded Tube</span>
-                        <span class="attachment">HQ</span>
-                        <span class="attachment">TQ</span>
-                    </div>
+
+                <div id="loadout-attachments">
+                    <template id="attachment-selector" class="loadout-category">
+                        <legend></legend>
+                        <div class="loadout-category-container"></div>
+                    </template>
+
+                    <template class="attachment">
+                        <input type="radio" id="" name="sight" value="">
+                        <label for=""></label>
+                    </template>
                 </div>
             </section>
     

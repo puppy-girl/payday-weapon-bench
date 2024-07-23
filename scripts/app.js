@@ -321,21 +321,31 @@ function populateWeaponSelector() {
 
         weaponDLC.innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? "";
         weaponDLC.setAttribute('for', weapon);
-
-        if (weapon == 'CAR4')
-            weaponInput.checked = true;
         
         weaponInput.addEventListener('change', (event) => {
             updateLoadout(weaponData[event.target.value]);
         });
+
+        if (weapon == 'CAR4')
+            weaponInput.checked = true;
+
+        updateLoadout(weaponData['CAR4']);
     }
 }
 
-function populateSkills() {
-    const skillContainer = document.querySelector('#skill-selector .loadout-category-container');
-    const skillTemplate = document.querySelector('template.skill').cloneNode(true);
-    document.querySelector('template.skill').remove();
+const skillContainer = document.querySelector('#skill-selector .loadout-category-container');
+const skillTemplate = document.querySelector('template.skill').cloneNode(true);
+document.querySelector('template.skill').remove();
 
+const loadoutAttachments = document.querySelector('#loadout-attachments');
+
+const attachmentTemplate = document.querySelector('template.attachment').cloneNode(true);
+document.querySelector('template.attachment').remove();
+
+const attachmentGroupTemplate = document.querySelector('#attachment-selector').cloneNode(true);
+document.querySelector('#attachment-selector').remove();
+
+function populateSkills() {
     for (const skill in skills) {
         const selectableSkill = skillContainer.appendChild(document.createElement('div'));
 
@@ -370,6 +380,42 @@ populateSkills();
 
 function updateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML = selectedWeapon.DisplayName;
+
+    loadoutAttachments.innerHTML = '';
+    equippedAttachments = [];
+
+    for (const attachmentCategory in selectedWeapon.ModularConfiguration) {
+        const defaultAttachment = selectedWeapon.ModularConfiguration[attachmentCategory].DefaultPart
+            ?? 'None';
+        const attachments = [
+            defaultAttachment, ...selectedWeapon.ModularConfiguration[attachmentCategory].UniqueModParts
+        ];
+
+        if (selectedWeapon.ModularConfiguration[attachmentCategory].UniqueModParts.length > 0) {
+            const attachmentFieldset = loadoutAttachments.appendChild(document.createElement('fieldset'));
+            attachmentFieldset.innerHTML = attachmentGroupTemplate.innerHTML;
+            attachmentFieldset.classList = [ 'loadout-category' ];
+    
+            attachmentFieldset.children[0].innerHTML = attachmentCategory;
+    
+            for (const attachment of attachments) {
+                const attachmentButton = attachmentFieldset.children[1].appendChild(document.createElement('div'));
+                attachmentButton.innerHTML = attachmentTemplate.innerHTML;
+                attachmentButton.classList = [ 'attachment' ];
+    
+                const attachmentInput = attachmentButton.children[0];
+                const attachmentLabel = attachmentButton.children[1];
+            
+                attachmentInput.id = attachmentCategory + '_' + attachment;
+                attachmentInput.value = attachment;
+                attachmentInput.name = attachmentCategory;
+                attachmentInput.checked = attachment == defaultAttachment;
+            
+                attachmentLabel.setAttribute('for', attachmentCategory + '_' + attachment);
+                attachmentLabel.innerHTML = attachment;
+            }
+        }
+    }
 }
 
 const equippedSkills = [];
