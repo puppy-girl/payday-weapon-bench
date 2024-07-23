@@ -61,6 +61,20 @@ try {
             'RoundsPerMinute',
         ];
 
+        const weaponAttachments = {};
+
+        for (const attachmentCategory of weaponData.ModularConfiguration) {
+            console.log(attachmentCategory);
+            const key = attachmentCategory.Key.split(`'`)[1].split('.')[1];
+            weaponAttachments[key] = {};
+            weaponAttachments[key].DefaultPart = attachmentCategory.Value.DefaultPart
+                ? attachmentCategory.Value.DefaultPart.ObjectName.split(`'`)[1]
+                : null;
+            weaponAttachments[key].UniqueModParts = attachmentCategory.Value.UniqueModParts.map(part => {
+                return part.ObjectName.split(`'`)[1];
+            });
+        }
+
         const DLC = weapon.path.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
 
         weaponOutput[weapon.name] = {
@@ -75,6 +89,7 @@ try {
                 Object.entries(fireData)
                 .filter(([key, _]) => fireDataFilter.includes(key))
             ),
+            ModularConfiguration: weaponAttachments,
             ReloadNotifyTime: weaponData.ReloadNotifyTime,
             ReloadEmptyNotifyTime: weaponData.ReloadEmptyNotifyTime,
         };
