@@ -333,6 +333,7 @@ function populateWeaponSelector() {
             weaponInput.checked = true;
 
         populateLoadout(weaponData['CAR4']);
+        updateWeaponStats(weaponData['CAR4']);
     }
 }
 
