@@ -27,7 +27,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "A114_Barrel_Default": {},
     "A114_Barrel_Ranged": {
@@ -56,7 +57,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "A114_Body_Default": {},
     "A114_Body_UpperReceiver": {},
@@ -106,7 +108,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "A114_Mag_Quick": {
         "AttributeModifierMap": [
@@ -131,7 +134,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "A114_RearSight_Default": {},
     "A114_SightMount_Default": {},
@@ -158,7 +162,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Contoured Grip"
     },
     "ATK7_Grip_Default": {},
     "ATK7_Grip_SmoothFluted": {
@@ -175,7 +180,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Smooth Fluted Grip"
     },
     "ATK7_Grip_Tac": {
         "AttributeModifierMap": [
@@ -191,7 +197,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Cut-Tac Grip"
     },
     "ATK7_Mag_Compact": {
         "AttributeModifierMap": [
@@ -216,7 +223,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Magazine"
     },
     "ATK7_Mag_Default": {
         "MagazineData": {
@@ -260,7 +268,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Magazine"
     },
     "ATK7_Mag_Quick": {
         "AttributeModifierMap": [
@@ -285,7 +294,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Magazine"
     },
     "ATK7_RearSight_Default": {},
     "ATK7_SightMount_Default": {},
@@ -308,7 +318,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hollow Frame"
     },
     "ATK7_Stock_RubberFramed": {
         "AttributeModifierMap": [
@@ -328,7 +339,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Rubber Framed Stock"
     },
     "Ammo_12gauge": {},
     "Ammo_357magnum": {},
@@ -346,7 +358,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::DamageDistance",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "12G Obelisk Silencer"
     },
     "BarrelExt_12GVentComp": {
         "AttributeModifierMap": [
@@ -362,7 +375,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "12G Vent Compensator"
     },
     "BarrelExt_BeveledSilencer": {
         "AttributeModifierMap": [
@@ -374,7 +388,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Beveled Silencer"
     },
     "BarrelExt_CompactComp": {
         "AttributeModifierMap": [
@@ -390,7 +405,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Compact Compensator"
     },
     "BarrelExt_CylindricSilencer": {
         "AttributeModifierMap": [
@@ -402,7 +418,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::DamageDistance",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Cylindric Silencer"
     },
     "BarrelExt_Express": {
         "AttributeModifierMap": [
@@ -418,7 +435,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Express Muzzle Break"
     },
     "BarrelExt_HybridMB": {
         "AttributeModifierMap": [
@@ -434,7 +452,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hybrid Muzzle Break"
     },
     "BarrelExt_IndentComp": {
         "AttributeModifierMap": [
@@ -450,7 +469,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Indent Compensator"
     },
     "BarrelExt_JawChoke": {
         "AttributeModifierMap": [
@@ -462,7 +482,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalSpreadRadius",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "12G Jaw Choke"
     },
     "BarrelExt_ObeliskSilencer": {
         "AttributeModifierMap": [
@@ -474,7 +495,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::DamageDistance",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Obelisk Silencer"
     },
     "BarrelExt_PartedComp": {
         "AttributeModifierMap": [
@@ -490,7 +512,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Parted Compensator"
     },
     "BarrelExt_PipedSilencer": {
         "AttributeModifierMap": [
@@ -506,7 +529,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Piped Silencer"
     },
     "BarrelExt_Ridged": {
         "AttributeModifierMap": [
@@ -518,7 +542,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Edge Ridged Silencer"
     },
     "BarrelExt_SedimentChoke": {
         "AttributeModifierMap": [
@@ -534,7 +559,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "12G Sediment Choke"
     },
     "BarrelExt_SkeletonizedComp": {
         "AttributeModifierMap": [
@@ -546,7 +572,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Skeletonized Compensator"
     },
     "BarrelExt_SnubSilencer": {
         "AttributeModifierMap": [
@@ -554,7 +581,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Snub Silencer"
     },
     "BarrelExt_Torque": {
         "AttributeModifierMap": [
@@ -566,7 +594,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Torque Silencer"
     },
     "BarrelExt_WhisperWrap": {
         "AttributeModifierMap": [
@@ -578,7 +607,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": 5
             }
-        ]
+        ],
+        "DisplayName": "Whisper Wrap Silencer"
     },
     "Bison_Barrel_CQC": {
         "AttributeModifierMap": [
@@ -598,7 +628,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::DamageDistance",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "Bison_Barrel_Default": {},
     "Bison_Barrel_Ranged": {
@@ -619,7 +650,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "Bison_Body_Default": {},
     "Bison_Bolt_Default": {},
@@ -639,7 +671,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Grip"
     },
     "Bison_Grip_Default": {},
     "Bison_Grip_Hardwood": {
@@ -656,7 +689,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hardwood Grip"
     },
     "Bison_Grip_Tac": {
         "AttributeModifierMap": [
@@ -672,7 +706,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip "
     },
     "Bison_MagRelease_Default": {},
     "Bison_Mag_Default": {},
@@ -697,7 +732,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "Bullkick500_Barrel_Default": {},
     "Bullkick500_Barrel_Ranged": {
@@ -718,7 +754,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "Bullkick500_Barrel_Tactical": {
         "AttributeModifierMap": [
@@ -742,7 +779,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tactical Barrel"
     },
     "Bullkick500_Body_Default": {},
     "Bullkick500_Bolt_Default": {},
@@ -761,7 +799,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Grip"
     },
     "Bullkick500_Grip_Default": {},
     "Bullkick500_Grip_Hardwood": {
@@ -778,7 +817,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hardwood Grip"
     },
     "Bullkick500_Grip_Tac": {
         "AttributeModifierMap": [
@@ -794,7 +834,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tactical Grip"
     },
     "Bullkick500_Mag_Default": {},
     "Bullkick500_Mag_Unfluted": {
@@ -807,7 +848,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Unfluted Cylinder"
     },
     "Bullkick500_RearSight_Default": {},
     "Bullkick500_SightMount_Default": {},
@@ -832,7 +874,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "CAR4_Barrel_Default": {},
     "CAR4_Barrel_Ranged": {
@@ -853,7 +896,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "CAR4_Body_Default": {},
     "CAR4_Bolt_Default": {},
@@ -884,7 +928,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "CAR4_Mag_Default": {
         "MagazineData": {
@@ -928,7 +973,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "CAR4_Mag_Quick": {
         "AttributeModifierMap": [
@@ -953,7 +999,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "CAR4_RearSight_Default": {},
     "CAR4_StockMount_Default": {},
@@ -976,7 +1023,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "Castigo44_Barrel_Default": {},
     "Castigo44_Barrel_Ranged": {
@@ -997,7 +1045,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "Castigo44_Barrel_Tac": {
         "AttributeModifierMap": [
@@ -1009,7 +1058,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Barrel"
     },
     "Castigo44_Body_Default": {},
     "Castigo44_Bolt_Default": {},
@@ -1028,7 +1078,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Grip"
     },
     "Castigo44_Grip_Default": {},
     "Castigo44_Grip_Hardwood": {
@@ -1045,7 +1096,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hardwood Grip"
     },
     "Castigo44_Grip_Tac": {
         "AttributeModifierMap": [
@@ -1061,7 +1113,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip"
     },
     "Castigo44_Mag_Default": {},
     "Castigo44_RearSight_Default": {},
@@ -1096,7 +1149,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "Commando_Mag_Default": {
         "MagazineData": {
@@ -1138,7 +1192,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "Commando_Mag_Quick": {
         "AttributeModifierMap": [
@@ -1162,7 +1217,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "Commando_RearSight_Default": {},
     "Commando_SightMount_Default": {},
@@ -1198,7 +1254,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "Compact7_Mag_Default": {
         "MagazineData": {
@@ -1240,7 +1297,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "Compact7_Mag_Quick": {
         "AttributeModifierMap": [
@@ -1264,7 +1322,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "Compact7_RearSight_Default": {},
     "Compact7_StockMount_Default": {},
@@ -1289,7 +1348,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "FIK22_Barrel_Default": {},
     "FIK22_Barrel_Ranged": {
@@ -1310,7 +1370,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "FIK22_Body_Default": {},
     "FIK22_ChargingHandle_Default": {},
@@ -1340,7 +1401,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "FIK22_Mag_Default": {
         "MagazineData": {
@@ -1383,7 +1445,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "FIK22_Mag_Quick": {
         "AttributeModifierMap": [
@@ -1407,7 +1470,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "FIK22_RearSight_Default": {},
     "FIK22_StockMount_Default": {},
@@ -1432,7 +1496,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "FSA12_Barrel_Default": {},
     "FSA12_Barrel_Ranged": {
@@ -1449,7 +1514,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "FSA12_Body_Default": {},
     "FSA12_ChargingHandle_Default": {},
@@ -1478,7 +1544,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "FSA12_Mag_Default": {
         "MagazineData": {
@@ -1518,7 +1585,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "FSA12_Mag_Quick": {
         "AttributeModifierMap": [
@@ -1539,7 +1607,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "FSA12_RearSight_Default": {},
     "FSA12_StockMount_Default": {},
@@ -1558,7 +1627,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Grip"
     },
     "Grip_Perforated": {
         "AttributeModifierMap": [
@@ -1574,7 +1644,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Perforated Grip"
     },
     "Grip_Tac": {
         "AttributeModifierMap": [
@@ -1590,7 +1661,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip"
     },
     "HET5_Ammo_Default": {},
     "HET5_BarrelExt_Default": {},
@@ -1631,7 +1703,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Rail Barrel"
     },
     "KU59_Barrel_TradGrip": {
         "AttributeModifierMap": [
@@ -1651,7 +1724,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Trad Grip Barrel"
     },
     "KU59_Body_Default": {},
     "KU59_ChargingHandle_Default": {},
@@ -1669,7 +1743,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Grip"
     },
     "KU59_Grip_Default": {},
     "KU59_Grip_Perforated": {
@@ -1686,7 +1761,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Perforated Grip"
     },
     "KU59_Grip_Tac": {
         "AttributeModifierMap": [
@@ -1702,7 +1778,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip"
     },
     "KU59_Mag_Compact": {
         "AttributeModifierMap": [
@@ -1727,7 +1804,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "KU59_Mag_Default": {
         "MagazineData": {
@@ -1771,7 +1849,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "KU59_Mag_Quick": {
         "AttributeModifierMap": [
@@ -1796,7 +1875,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "KU59_RearSight_Default": {},
     "KU59_SightMount_Default": {},
@@ -1822,7 +1902,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "MX63_Barrel_Default": {},
     "MX63_Barrel_Ranged": {
@@ -1843,7 +1924,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "MX63_Body_Default": {},
     "MX63_Bolt_Default": {},
@@ -1899,7 +1981,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "Mosconi12C_Barrel_Default": {},
     "Mosconi12C_Barrel_Ranged": {
@@ -1916,7 +1999,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "Mosconi12C_Body_Default": {},
     "Mosconi12C_Foregrip_Default": {},
@@ -1942,7 +2026,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "CQC"
     },
     "Mosconi12C_Stock_Default": {},
     "Mosconi12C_Stock_Fortified": {
@@ -1963,7 +2048,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Fortified"
     },
     "Mosconi12C_Stock_Padded": {
         "AttributeModifierMap": [
@@ -1983,7 +2069,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Padded"
     },
     "NWB9_Ammo_Default": {},
     "NWB9_BarrelExt_Default": {},
@@ -2017,7 +2104,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "NWB9_Mag_Default": {
         "MagazineData": {
@@ -2061,7 +2149,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "NWB9_Mag_Quick": {
         "AttributeModifierMap": [
@@ -2086,7 +2175,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "NWB9_RearSight_Default": {},
     "NWB9_StockMount_Default": {},
@@ -2123,7 +2213,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "PC9_Mag_Default": {
         "MagazineData": {
@@ -2165,7 +2256,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "PC9_Mag_Quick": {
         "AttributeModifierMap": [
@@ -2189,7 +2281,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "PC9_RearSight_Default": {},
     "PC9_StockMount_Default": {},
@@ -2213,7 +2306,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "R880_Barrel_Comp": {
         "AttributeModifierMap": [
@@ -2225,7 +2319,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Comp Barrel"
     },
     "R880_Barrel_Default": {},
     "R880_Barrel_Ranged": {
@@ -2242,7 +2337,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "R880_Body_Default": {},
     "R880_Bolt_Default": {},
@@ -2260,7 +2356,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Biofit Fore-End"
     },
     "R880_Foregrip_Default": {},
     "R880_Foregrip_Tactical": {
@@ -2273,7 +2370,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tactical Fore-End"
     },
     "R880_FrontSight_Default": {},
     "R880_Mag_Default": {},
@@ -2296,7 +2394,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "CQC"
     },
     "R880_Stock_Default": {},
     "R880_Stock_Fortified": {
@@ -2317,7 +2416,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Fortified"
     },
     "R880_Stock_Padded": {
         "AttributeModifierMap": [
@@ -2337,7 +2437,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Padded"
     },
     "R900S_Ammo_Default": {},
     "R900S_Barrel_CQC": {
@@ -2358,7 +2459,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "R900S_Barrel_Default": {},
     "R900S_Barrel_Ranged": {
@@ -2379,7 +2481,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "R900S_Body_Default": {},
     "R900S_Bolt_Default": {},
@@ -2423,7 +2526,8 @@ const attachmentData = {
                     "Max": 2
                 }
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "R900S_SightMount_Rail": {},
     "R900S_Stock_Default": {},
@@ -2445,7 +2549,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Hardwood"
     },
     "R900S_Stock_Lightweight": {
         "AttributeModifierMap": [
@@ -2465,7 +2570,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Lightweight"
     },
     "RG5_Ammo_Default": {},
     "RG5_BarrelExt_Default": {},
@@ -2487,7 +2593,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "RG5_Barrel_Default": {},
     "RG5_Barrel_Ranged": {
@@ -2508,7 +2615,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "RG5_Body_Default": {},
     "RG5_Bolt_Default": {},
@@ -2529,7 +2637,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Contoured Grip"
     },
     "RG5_Grip_Default": {},
     "RG5_Grip_SmoothFluted": {
@@ -2546,7 +2655,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Smooth Fluted Grip"
     },
     "RG5_Grip_Tac": {
         "AttributeModifierMap": [
@@ -2562,7 +2672,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Cut-Tac Grip"
     },
     "RG5_Mag_Compact": {
         "AttributeModifierMap": [
@@ -2587,7 +2698,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Magazine"
     },
     "RG5_Mag_Default": {
         "MagazineData": {
@@ -2631,7 +2743,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Magazine"
     },
     "RG5_Mag_Quick": {
         "AttributeModifierMap": [
@@ -2656,7 +2769,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Magazine"
     },
     "RG5_RearSight_Default": {},
     "RG5_SightMount_Default": {},
@@ -2675,7 +2789,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "HQ"
     },
     "RG5_Stock_Light": {
         "AttributeModifierMap": [
@@ -2695,7 +2810,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Light Frame"
     },
     "RG5_Stock_TQ": {
         "AttributeModifierMap": [
@@ -2715,7 +2831,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "TQ"
     },
     "RG5_stock_Default": {},
     "S403_Ammo_Default": {},
@@ -2737,7 +2854,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Friction Grip"
     },
     "S403_Grip_Grained": {
         "AttributeModifierMap": [
@@ -2749,7 +2867,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Grained Grip"
     },
     "S403_Grip_Ribbed": {
         "AttributeModifierMap": [
@@ -2765,7 +2884,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ribbed Grip"
     },
     "S403_Mag_Default": {
         "MagazineData": {
@@ -2809,7 +2929,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "S403_Mag_Quick": {
         "AttributeModifierMap": [
@@ -2834,7 +2955,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "S403_RearSight_Default": {},
     "S403_SightMount_Default": {},
@@ -2855,7 +2977,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Embossed Grip"
     },
     "S40_Grip_Hardwood": {
         "AttributeModifierMap": [
@@ -2871,7 +2994,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Hardwood Grip"
     },
     "S40_Grip_Tac": {
         "AttributeModifierMap": [
@@ -2887,7 +3011,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip"
     },
     "S40_Mag_Default": {
         "MagazineData": {
@@ -2931,7 +3056,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "S40_Mag_Quick": {
         "AttributeModifierMap": [
@@ -2956,7 +3082,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "S40_RearSight_Default": {},
     "S40_SightMount_Default": {},
@@ -2980,7 +3107,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Checkered Grip"
     },
     "SPM11_Grip_Default": {},
     "SPM11_Grip_Embossed": {
@@ -2993,7 +3121,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Embossed Grip"
     },
     "SPM11_Grip_Tac": {
         "AttributeModifierMap": [
@@ -3009,7 +3138,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Tac Grip"
     },
     "SPM11_Mag_Default": {
         "MagazineData": {
@@ -3050,7 +3180,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "SPM11_Mag_Quick": {
         "AttributeModifierMap": [
@@ -3075,7 +3206,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "SPM11_RearSight_Default": {},
     "SPM11_SightMount_Default": {},
@@ -3096,7 +3228,8 @@ const attachmentData = {
         ],
         "TargetingData": {
             "TargetingMagnification": 1.15
-        }
+        },
+        "DisplayName": "Box RDS"
     },
     "Sight_ClassicRDS": {
         "AttributeModifierMap": [
@@ -3112,7 +3245,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.15,
             "TargetingOnTopMagnification": 1.15
-        }
+        },
+        "DisplayName": "Classic RDS"
     },
     "Sight_Compact": {
         "AttributeModifierMap": [
@@ -3128,7 +3262,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.15,
             "TargetingOnTopMagnification": 1.15
-        }
+        },
+        "DisplayName": "Compact RDS"
     },
     "Sight_Fluted": {
         "AttributeModifierMap": [
@@ -3148,7 +3283,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 5,
             "TargetingOnTopMagnification": 6
-        }
+        },
+        "DisplayName": "Fluted Marksman Scope"
     },
     "Sight_LED": {
         "AttributeModifierMap": [
@@ -3163,7 +3299,8 @@ const attachmentData = {
         ],
         "TargetingData": {
             "TargetingMagnification": 1.1
-        }
+        },
+        "DisplayName": "LED RDS"
     },
     "Sight_LightHolographic": {
         "AttributeModifierMap": [
@@ -3183,7 +3320,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.2,
             "TargetingOnTopMagnification": 1.2
-        }
+        },
+        "DisplayName": "Light Holographic Sight"
     },
     "Sight_Lined": {
         "AttributeModifierMap": [
@@ -3203,7 +3341,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.8,
             "TargetingOnTopMagnification": 1.15
-        }
+        },
+        "DisplayName": "Lined Sight"
     },
     "Sight_Long6X": {
         "TargetingData": {
@@ -3229,7 +3368,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 6,
             "TargetingOnTopMagnification": 7
-        }
+        },
+        "DisplayName": "Primed Marksman Scope"
     },
     "Sight_Projection": {
         "AttributeModifierMap": [
@@ -3249,7 +3389,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.2,
             "TargetingOnTopMagnification": 1.2
-        }
+        },
+        "DisplayName": "Projection RDS"
     },
     "Sight_Sheath": {
         "AttributeModifierMap": [
@@ -3264,7 +3405,8 @@ const attachmentData = {
         ],
         "TargetingData": {
             "TargetingMagnification": 1.15
-        }
+        },
+        "DisplayName": "Sheath RDS"
     },
     "Sight_Slate": {
         "AttributeModifierMap": [
@@ -3279,7 +3421,8 @@ const attachmentData = {
         ],
         "TargetingData": {
             "TargetingMagnification": 1.1
-        }
+        },
+        "DisplayName": "Slate RDS"
     },
     "Sight_Snapshot": {
         "AttributeModifierMap": [
@@ -3295,7 +3438,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.15,
             "TargetingOnTopMagnification": 1.15
-        }
+        },
+        "DisplayName": "Snapshot Clear-Tag"
     },
     "Sight_Tactical": {
         "AttributeModifierMap": [
@@ -3319,7 +3463,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 2,
             "TargetingOnTopMagnification": 2
-        }
+        },
+        "DisplayName": "Tactical Sight"
     },
     "Sight_Tagged": {
         "AttributeModifierMap": [
@@ -3334,7 +3479,8 @@ const attachmentData = {
         ],
         "TargetingData": {
             "TargetingMagnification": 1.15
-        }
+        },
+        "DisplayName": "Tagged Iron Sight"
     },
     "Sight_ViewPoint": {
         "AttributeModifierMap": [
@@ -3358,7 +3504,8 @@ const attachmentData = {
         "TargetingData": {
             "TargetingMagnification": 1.3,
             "TargetingOnTopMagnification": 1.3
-        }
+        },
+        "DisplayName": "Viewpoint Sight"
     },
     "Stock_HQ": {
         "AttributeModifierMap": [
@@ -3374,7 +3521,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "HQ"
     },
     "Stock_LightFrame": {
         "AttributeModifierMap": [
@@ -3394,7 +3542,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Light Frame"
     },
     "Stock_Minimized": {
         "AttributeModifierMap": [
@@ -3414,7 +3563,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Minimized Hook Stock"
     },
     "Stock_PaddedTube": {
         "AttributeModifierMap": [
@@ -3434,7 +3584,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Padded Tube"
     },
     "Stock_TQ": {
         "AttributeModifierMap": [
@@ -3454,7 +3605,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "TQ"
     },
     "Stryk7_Ammo_Default": {},
     "Stryk7_Barrel_Default": {},
@@ -3476,7 +3628,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HipfireSpread",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Friction Grip"
     },
     "Stryk7_Grip_Grained": {
         "AttributeModifierMap": [
@@ -3488,7 +3641,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Grained Grip"
     },
     "Stryk7_Grip_Ribbed": {
         "AttributeModifierMap": [
@@ -3504,7 +3658,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ribbed Grip"
     },
     "Stryk7_Mag_Default": {
         "MagazineData": {
@@ -3548,7 +3703,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "Stryk7_Mag_Quick": {
         "AttributeModifierMap": [
@@ -3573,7 +3729,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "Stryk7_RearSight_Default": {},
     "Stryk7_SightMount_Default": {},
@@ -3597,7 +3754,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "CQC Barrel"
     },
     "VF7S_Barrel_Default": {},
     "VF7S_Barrel_Ranged": {
@@ -3618,7 +3776,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::OverallGunkick",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Ranged Barrel"
     },
     "VF7S_Body_Default": {},
     "VF7S_Bolt_Default": {},
@@ -3645,7 +3804,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "VF7S_Mag_Default": {
         "MagazineData": {
@@ -3689,7 +3849,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "VF7S_Mag_Quick": {
         "AttributeModifierMap": [
@@ -3714,7 +3875,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "VF7S_RearSight_Default": {},
     "VF7S_StockMount_Default": {},
@@ -3733,7 +3895,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::VerticalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Angled Ghost Grip"
     },
     "VerticalGrip_Cylinder": {
         "AttributeModifierMap": [
@@ -3753,7 +3916,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
                 "Value": -10
             }
-        ]
+        ],
+        "DisplayName": "Cylinder Grip"
     },
     "VerticalGrip_FlatSide": {
         "AttributeModifierMap": [
@@ -3769,7 +3933,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -15
             }
-        ]
+        ],
+        "DisplayName": "Flat-Side STAB Grip"
     },
     "VerticalGrip_QuickHold": {
         "AttributeModifierMap": [
@@ -3789,7 +3954,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::InitialRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Quick Hold Grip"
     },
     "VerticalGrip_RiggerHandstop": {
         "AttributeModifierMap": [
@@ -3809,7 +3975,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::InitialRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Rigger Handstop"
     },
     "VerticalGrip_Stub": {
         "AttributeModifierMap": [
@@ -3825,7 +3992,8 @@ const attachmentData = {
                 "Key": "ESBZWeaponAttribute::HorizontalRecoil",
                 "Value": -5
             }
-        ]
+        ],
+        "DisplayName": "Stub Grip"
     },
     "WAR45_Ammo_Default": {},
     "WAR45_BarrelExt_Default": {},
@@ -3858,7 +4026,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Compact Mag"
     },
     "WAR45_Mag_Default": {
         "MagazineData": {
@@ -3901,7 +4070,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Extended Mag"
     },
     "WAR45_Mag_Quick": {
         "AttributeModifierMap": [
@@ -3925,7 +4095,8 @@ const attachmentData = {
                 },
                 "AmmoVisibilityType": "ESBZWeaponAmmoVisibilityType::Reload"
             }
-        }
+        },
+        "DisplayName": "Quick-Pull Mag"
     },
     "WAR45_RearSight_Default": {},
     "WAR45_StockMount_Default": {},

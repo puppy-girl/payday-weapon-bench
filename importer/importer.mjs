@@ -187,6 +187,11 @@ try {
                     targetingDataProperties.TargetingOnTopMagnification,
             };
         }
+
+        if (attachmentData.DisplayName) {
+            attachmentOutput[key].DisplayName =
+                attachmentData.DisplayName.LocalizedString;
+        }
     }
 
     const sortedAttachmentData = Object.keys(attachmentOutput)
