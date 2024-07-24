@@ -129,9 +129,16 @@ try {
         } catch {}
     }
 
+    const sortedWeaponData = Object.keys(weaponOutput)
+        .sort()
+        .reduce((obj, key) => {
+            obj[key] = weaponOutput[key];
+            return obj;
+        }, {});
+
     fs.writeFile(
         '../scripts/weapons.js',
-        'const weaponData = ' + JSON.stringify(weaponOutput, null, 4)
+        'const weaponData = ' + JSON.stringify(sortedWeaponData, null, 4)
     );
 
     for (const attachment of attachments) {
@@ -179,9 +186,17 @@ try {
         }
     }
 
+    const sortedAttachmentData = Object.keys(attachmentOutput)
+        .sort()
+        .reduce((obj, key) => {
+            obj[key] = attachmentOutput[key];
+            return obj;
+        }, {});
+
     fs.writeFile(
         '../scripts/attachments.js',
-        'const attachmentData = ' + JSON.stringify(attachmentOutput, null, 4)
+        'const attachmentData = ' +
+            JSON.stringify(sortedAttachmentData, null, 4)
     );
 } catch (err) {
     console.error(err);
