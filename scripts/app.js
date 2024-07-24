@@ -438,14 +438,14 @@ function updateAttachments() {
 }
 
 const attachmentCategories = [
-    'SLOT_Sight',
-    'SLOT_Mag',
-    'SLOT_BarrelExtension',
-    'SLOT_Barrel',
-    'SLOT_VerticalGrip',
-    'SLOT_ForeGrip',
-    'SLOT_Grip',
-    'SLOT_Stock',
+    'Sight',
+    'Mag',
+    'BarrelExtension',
+    'Barrel',
+    'VerticalGrip',
+    'ForeGrip',
+    'Grip',
+    'Stock',
 ];
 
 function populateLoadout(selectedWeapon) {
