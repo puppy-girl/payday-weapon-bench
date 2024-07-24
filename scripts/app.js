@@ -472,6 +472,11 @@ function populateLoadout(selectedWeapon) {
                 .UniqueModParts,
         ];
 
+        const attachmentCategoryName = attachmentCategory
+            .split('_')
+            .pop()
+            .replace(/([a-z])([A-Z])/g, '$1 $2');
+
         if (
             selectedWeapon.ModularConfiguration[attachmentCategory]
                 .UniqueModParts.length > 0
@@ -482,7 +487,7 @@ function populateLoadout(selectedWeapon) {
             attachmentFieldset.innerHTML = attachmentGroupTemplate.innerHTML;
             attachmentFieldset.classList = ['loadout-category'];
 
-            attachmentFieldset.children[0].innerHTML = attachmentCategory;
+            attachmentFieldset.children[0].innerHTML = attachmentCategoryName;
 
             for (const attachment of attachments) {
                 const attachmentButton =
@@ -500,11 +505,20 @@ function populateLoadout(selectedWeapon) {
                 attachmentInput.name = attachmentCategory;
                 attachmentInput.checked = attachment == defaultAttachment;
 
+                let attachmentName = attachment
+                    .split('_')
+                    .pop()
+                    .replace(/([a-z])([A-Z])/g, '$1 $2');
+                if (attachmentName == 'None')
+                    attachmentName = 'No ' + attachmentCategoryName;
+                if (attachmentName == 'Default')
+                    attachmentName = 'Default ' + attachmentCategoryName;
+
                 attachmentLabel.setAttribute(
                     'for',
                     attachmentCategory + '_' + attachment
                 );
-                attachmentLabel.innerHTML = attachment;
+                attachmentLabel.innerHTML = attachmentName;
 
                 attachmentInput.addEventListener('change', () => {
                     updateAttachments();
