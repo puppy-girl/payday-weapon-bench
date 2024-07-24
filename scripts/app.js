@@ -510,7 +510,7 @@ function populateLoadout(selectedWeapon) {
                     attachment
                         .split('_')
                         .pop()
-                        .replace(/([a-z])([A-Z])/g, '$1 $2');
+                        .replace(/([a-z])([A-Z0-9])/g, '$1 $2');
 
                 attachmentLabel.setAttribute(
                     'for',
