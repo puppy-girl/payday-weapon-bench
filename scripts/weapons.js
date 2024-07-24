@@ -160,7 +160,7 @@ const weaponData = {
     "ATK7": {
         "DisplayName": "ATK-7",
         "TypeClassText": "SMG",
-        "DLC": null,
+        "DLC": "2",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 0,
@@ -442,7 +442,7 @@ const weaponData = {
     "Bullkick500": {
         "DisplayName": "Bullkick 500",
         "TypeClassText": "Revolver",
-        "DLC": null,
+        "DLC": "2",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 0,
@@ -1111,7 +1111,7 @@ const weaponData = {
     "FIK22": {
         "DisplayName": "FIK 22 TLR",
         "TypeClassText": "Marksman",
-        "DLC": null,
+        "DLC": "1",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 0,
@@ -1259,7 +1259,7 @@ const weaponData = {
     "FSA12": {
         "DisplayName": "FSA-12G",
         "TypeClassText": "Shotgun",
-        "DLC": null,
+        "DLC": "1",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 512,
@@ -1564,7 +1564,7 @@ const weaponData = {
     "MX63": {
         "DisplayName": "Blyspruta MX63",
         "TypeClassText": "LMG",
-        "DLC": null,
+        "DLC": "2",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 256,
@@ -2389,7 +2389,7 @@ const weaponData = {
     "RG5": {
         "DisplayName": "Adelig RG5",
         "TypeClassText": "Assault Rifle",
-        "DLC": null,
+        "DLC": "2",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 256,
@@ -3230,7 +3230,7 @@ const weaponData = {
     "WAR45": {
         "DisplayName": "WAR-45",
         "TypeClassText": "SMG",
-        "DLC": null,
+        "DLC": "1",
         "DisplayIcon": {
             "SourceUV": {
                 "X": 768,

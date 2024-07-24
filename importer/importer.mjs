@@ -102,8 +102,7 @@ try {
                 });
         }
 
-        const DLC = weapon.parentPath.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
-
+        const DLC = weapon.parentPath.match(/\d*-DLC[a-zA-Z0]*(\d*)/);
         weaponOutput[weapon.name] = {
             DisplayName: weaponData.DisplayName.LocalizedString,
             TypeClassText: weaponData.TypeClassText.LocalizedString,
