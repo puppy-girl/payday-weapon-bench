@@ -505,14 +505,12 @@ function populateLoadout(selectedWeapon) {
                 attachmentInput.name = attachmentCategory;
                 attachmentInput.checked = attachment == defaultAttachment;
 
-                let attachmentName = attachment
-                    .split('_')
-                    .pop()
-                    .replace(/([a-z])([A-Z])/g, '$1 $2');
-                if (attachmentName == 'None')
-                    attachmentName = 'No ' + attachmentCategoryName;
-                if (attachmentName == 'Default')
-                    attachmentName = 'Default ' + attachmentCategoryName;
+                let attachmentName =
+                    attachmentData[attachment]?.DisplayName ??
+                    attachment
+                        .split('_')
+                        .pop()
+                        .replace(/([a-z])([A-Z])/g, '$1 $2');
 
                 attachmentLabel.setAttribute(
                     'for',
