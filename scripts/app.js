@@ -550,7 +550,7 @@ function updateWeaponStats(selectedWeapon) {
         ]?.MagazineData?.Properties;
 
     const rpm = fireData.RoundsPerMinute ?? 600;
-    const ap = fireData.RoundsPerMinute ?? 0;
+    const ap = fireData.ArmorPenetration ?? 0;
     const mag = {
         AmmoLoaded: (magAttachment ?? fireData).AmmoLoaded ?? 10,
         AmmoInventoryMax: (magAttachment ?? fireData).AmmoInventoryMax ?? 100,
