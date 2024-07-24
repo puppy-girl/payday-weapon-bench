@@ -1,4 +1,5 @@
 import * as fs from 'node:fs/promises';
+import * as path from 'node:path';
 
 const weaponCategories = [
     'AssaultRifle',
@@ -22,14 +23,14 @@ try {
     const weapons = files.filter((file) => {
         return (
             file.isDirectory() &&
-            file.parentPath.includes('Gameplay/Weapons/') &&
-            weaponCategories.includes(file.parentPath.split('/').pop())
+            file.parentPath.includes(`Gameplay${path.sep}Weapons`) &&
+            weaponCategories.includes(path.basename(file.parentPath))
         );
     });
 
     const attachments = files.filter((file) => {
         return (
-            file.parentPath.includes('Gameplay/WeaponParts/') &&
+            file.parentPath.includes(`Gameplay${path.sep}WeaponParts`) &&
             /WPD_[a-zA-Z0-9_]*\.json/.test(file.name)
         );
     });
@@ -42,6 +43,7 @@ try {
             weaponPath +
             '/' +
             weaponFiles.find((element) => element.includes('DA_WeaponData'));
+
         const weaponData = JSON.parse(await fs.readFile(weaponDataPath))[0]
             .Properties;
 
@@ -55,14 +57,15 @@ try {
             ? iconDataFile[1].Properties
             : iconDataFile[0].Properties;
 
-        const iconFile =
-            iconData.BakedSourceTexture.ObjectPath.split('.')[0] + '.png';
-        const iconName = iconFile.split('/').reverse()[0];
+        const iconName = path
+            .basename(iconData.BakedSourceTexture.ObjectPath)
+            .replace('.0', '.png');
 
         const fireDataPath =
             weaponPath +
             '/' +
             weaponFiles.find((element) => element.includes('DA_FireData'));
+
         const fireData = JSON.parse(await fs.readFile(fireDataPath))[0]
             .Properties;
 
@@ -83,7 +86,6 @@ try {
         const weaponAttachments = {};
 
         for (const attachmentCategory of weaponData.ModularConfiguration) {
-            console.log(attachmentCategory);
             const key = attachmentCategory.Key.split(`'`)[1].split('.')[1];
             weaponAttachments[key] = {};
             weaponAttachments[key].DefaultPart = attachmentCategory.Value
@@ -147,21 +149,25 @@ try {
         if (attachmentData.MagazineData)
             attachmentOutput[key].MagazineData = JSON.parse(
                 await fs.readFile(
-                    attachmentData.MagazineData.ObjectPath.split('.')[0] +
+                    attachmentData.MagazineData.ObjectPath.replace(
+                        '.0',
                         '.json'
+                    )
                 )
             )[0];
 
         if (attachmentData.SightDataArray) {
             const targetingDataPath = JSON.parse(
                 await fs.readFile(
-                    attachmentData.SightDataArray[0].ObjectPath.split('.')[0] +
+                    attachmentData.SightDataArray[0].ObjectPath.replace(
+                        '.0',
                         '.json'
+                    )
                 )
             )[0].Properties.TargetingData.ObjectPath;
 
             const targetingDataProperties = JSON.parse(
-                await fs.readFile(targetingDataPath.split('.')[0] + '.json')
+                await fs.readFile(targetingDataPath.replace('.0', '.json'))
             )[0].Properties;
 
             attachmentOutput[key].TargetingData = {
