@@ -235,7 +235,7 @@ h1 {
 
 #content {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 48rem;
     gap: 3rem;
 }
 
@@ -252,6 +252,29 @@ h1 {
     font-family: var(--font-display);
     font-size: 6.854rem;
     line-height: 1em;
+}
+
+@media only screen and (max-width: 2000px) {
+    #content {
+        display: flex;
+        flex-flow: column nowrap;
+
+        max-height: calc(100vh - 9rem);
+
+        overflow: scroll;
+    }
+
+    #loadout {
+        flex-shrink: 0;
+
+        max-height: fit-content;
+
+        overflow: hidden;
+    }
+
+    #loadout h2 {
+        font-size: 4.236rem;
+    }
 }
 
 #skill-selector { margin-bottom: 1.618em; }
