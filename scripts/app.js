@@ -15,8 +15,8 @@ const skills = {
         description:
             'As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.',
         iconOffset: {
-            X: 2,
-            Y: 5,
+            X: 127,
+            Y: 319,
         },
     },
     'precision-shot': {
@@ -24,8 +24,8 @@ const skills = {
         description:
             'As long as you have EDGE and are aiming down a scope, your shot will deal extra damage based on your scope magnification.',
         iconOffset: {
-            X: 3,
-            Y: 5,
+            X: 191,
+            Y: 319,
         },
     },
     'face-to-face': {
@@ -34,8 +34,8 @@ const skills = {
             'As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.',
         damageModifier: 0.1,
         iconOffset: {
-            X: 2,
-            Y: 8,
+            X: 127,
+            Y: 511,
         },
     },
     'coup-de-grace': {
@@ -44,8 +44,8 @@ const skills = {
             'If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.',
         damageModifier: 0.1,
         iconOffset: {
-            X: 2,
-            Y: 14,
+            X: 126,
+            Y: 895,
         },
     },
     'combat-marking': {
@@ -54,8 +54,8 @@ const skills = {
             'As long as you have EDGE, you deal an extra 20% damage against any marked target.',
         damageModifier: 0.2,
         iconOffset: {
-            X: 1,
-            Y: 15,
+            X: 64,
+            Y: 960,
         },
     },
     'pain-asymbolia': {
@@ -64,8 +64,8 @@ const skills = {
             'As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.',
         damageModifier: 0.1,
         iconOffset: {
-            X: 5,
-            Y: 19,
+            X: 316,
+            Y: 1216,
         },
     },
     'high-grain': {
@@ -74,8 +74,8 @@ const skills = {
             'All placed Ammo Bags increase armor penetration for 30 seconds after interaction for you and all your teammates. Each additional crew member equipped with this skill increases weapon damage by 5% on top of that.',
         armorPenModifier: 0.2,
         iconOffset: {
-            X: 4,
-            Y: 1,
+            X: 255,
+            Y: 62,
         },
     },
     expose: {
@@ -83,8 +83,8 @@ const skills = {
         description:
             'Shots fired at enemies affected by your flashbang will ignore armor for as long as they are stunned.',
         iconOffset: {
-            X: 4,
-            Y: 14,
+            X: 254,
+            Y: 894,
         },
     },
     'duck-and-weave': {
@@ -93,8 +93,8 @@ const skills = {
             'As long as you have RUSH, you deal 25% more damage to enemies from behind. This bonus is reduced by 5% for each armor chunk you currently have beyond the first.',
         damageModifier: 0.25,
         iconOffset: {
-            X: 3,
-            Y: 20,
+            X: 190,
+            Y: 1279,
         },
     },
 };
@@ -412,8 +412,8 @@ function populateSkills() {
         skillLabel.setAttribute('for', skill);
 
         skillLabel.style = `
-            --image-x-offset: ${skills[skill].iconOffset.X * -64}px;
-            --image-y-offset: ${skills[skill].iconOffset.Y * -64}px;
+            --image-x-offset: ${skills[skill].iconOffset.X * -1}px;
+            --image-y-offset: ${skills[skill].iconOffset.Y * -1}px;
             --image-url: url("images/${
                 skill == 'edge' ? 'edge.png' : 'skills.png'
             }");
