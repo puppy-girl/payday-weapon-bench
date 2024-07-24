@@ -86,15 +86,19 @@ try {
         const weaponAttachments = {};
 
         for (const attachmentCategory of weaponData.ModularConfiguration) {
-            const key = attachmentCategory.Key.split(`'`)[1].split('.')[1];
-            weaponAttachments[key] = {};
-            weaponAttachments[key].DefaultPart = attachmentCategory.Value
+            const slot = attachmentCategory.Key.split(`'`)[1]
+                .split('.')[1]
+                .replace('SLOT_', '');
+            weaponAttachments[slot] = {};
+            weaponAttachments[slot].DefaultPart = attachmentCategory.Value
                 .DefaultPart
-                ? attachmentCategory.Value.DefaultPart.ObjectName.split(`'`)[1]
+                ? attachmentCategory.Value.DefaultPart.ObjectName.split(
+                      `'`
+                  )[1].replace('WPD_', '')
                 : null;
-            weaponAttachments[key].UniqueModParts =
+            weaponAttachments[slot].UniqueModParts =
                 attachmentCategory.Value.UniqueModParts.map((part) => {
-                    return part.ObjectName.split(`'`)[1];
+                    return part.ObjectName.split(`'`)[1].replace('WPD_', '');
                 });
         }
 
@@ -146,7 +150,7 @@ try {
         const attachmentData = JSON.parse(await fs.readFile(attachmentPath))[0]
             .Properties;
 
-        const key = attachment.name.split('.')[0];
+        const key = attachment.name.split('.')[0].replace('WPD_', '');
         attachmentOutput[key] = {};
 
         if (attachmentData.AttributeModifierMap)
