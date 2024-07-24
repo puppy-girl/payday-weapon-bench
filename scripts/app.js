@@ -580,9 +580,13 @@ function updateWeaponStats(selectedWeapon) {
     document.querySelector('#rpm').innerHTML = rpm;
     document.querySelector('#ap').innerHTML = ap;
     document.querySelector('#mag').innerHTML = mag.AmmoLoaded;
+    document.querySelector('#max-ammo').innerHTML = mag.AmmoInventoryMax;
     document.querySelector('#ammo-pickup').innerHTML =
         mag.AmmoPickup.Min + '-' + mag.AmmoPickup.Max;
-    document.querySelector('#max-ammo').innerHTML = mag.AmmoInventoryMax;
+    document.querySelector('#reload').innerHTML =
+        Math.round(selectedWeapon.ReloadNotifyTime * 10) / 10 + 's';
+    document.querySelector('#full-reload').innerHTML =
+        Math.round(selectedWeapon.ReloadEmptyNotifyTime * 10) / 10 + 's';
 
     const weaponDamageStats =
         document.querySelector('#weapon-damage').children[0];
