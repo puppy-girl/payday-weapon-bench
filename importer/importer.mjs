@@ -22,20 +22,20 @@ try {
     const weapons = files.filter((file) => {
         return (
             file.isDirectory() &&
-            file.path.includes('Gameplay/Weapons/') &&
-            weaponCategories.includes(file.path.split('/').pop())
+            file.parentPath.includes('Gameplay/Weapons/') &&
+            weaponCategories.includes(file.parentPath.split('/').pop())
         );
     });
 
     const attachments = files.filter((file) => {
         return (
-            file.path.includes('Gameplay/WeaponParts/') &&
+            file.parentPath.includes('Gameplay/WeaponParts/') &&
             /WPD_[a-zA-Z0-9_]*\.json/.test(file.name)
         );
     });
 
     for (const weapon of weapons) {
-        const weaponPath = weapon.path + '/' + weapon.name;
+        const weaponPath = weapon.parentPath + '/' + weapon.name;
         const weaponFiles = await fs.readdir(weaponPath);
 
         const weaponDataPath =
@@ -96,7 +96,7 @@ try {
                 });
         }
 
-        const DLC = weapon.path.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
+        const DLC = weapon.parentPath.match(/\d*-DLC[a-zA-Z0]*(\d*)\//);
 
         weaponOutput[weapon.name] = {
             DisplayName: weaponData.DisplayName.LocalizedString,
@@ -133,7 +133,7 @@ try {
     );
 
     for (const attachment of attachments) {
-        const attachmentPath = attachment.path + '/' + attachment.name;
+        const attachmentPath = attachment.parentPath + '/' + attachment.name;
         const attachmentData = JSON.parse(await fs.readFile(attachmentPath))[0]
             .Properties;
 
