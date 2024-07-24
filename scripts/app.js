@@ -387,6 +387,11 @@ const attachmentGroupTemplate = document
     .cloneNode(true);
 document.querySelector('#attachment-selector').remove();
 
+const weaponStatTemplate = document
+    .querySelector('template.weapon-stat')
+    .cloneNode(true);
+document.querySelector('template.weapon-stat').remove();
+
 function populateSkills() {
     for (const skill in skills) {
         const selectableSkill = skillContainer.appendChild(
@@ -566,4 +571,37 @@ function updateWeaponStats(selectedWeapon) {
     document.querySelector('#ammo-pickup').innerHTML =
         mag.AmmoPickup.Min + '-' + mag.AmmoPickup.Max;
     document.querySelector('#max-ammo').innerHTML = mag.AmmoInventoryMax;
+
+    const weaponDamageStats =
+        document.querySelector('#weapon-damage').children[0];
+    weaponDamageStats.innerHTML = '';
+
+    fireData.DamageDistanceArray.forEach((damageDistance) => {
+        const damageStat = weaponDamageStats.appendChild(
+            document.createElement('div')
+        );
+        damageStat.innerHTML = weaponStatTemplate.innerHTML;
+        damageStat.classList = ['weapon-stat'];
+
+        damageStat.children[0].innerHTML =
+            Math.min(damageDistance.Distance, 100000) / 100 + 'm';
+        damageStat.children[1].innerHTML =
+            Math.round(damageDistance.Damage * 10) / 10;
+    });
+
+    const weaponCritStats =
+        document.querySelector('#weapon-damage').children[1];
+    weaponCritStats.innerHTML = '';
+
+    fireData.CriticalDamageMultiplierDistanceArray.forEach((critDistance) => {
+        const critStat = weaponCritStats.appendChild(
+            document.createElement('div')
+        );
+        critStat.innerHTML = weaponStatTemplate.innerHTML;
+        critStat.classList = ['weapon-stat'];
+
+        critStat.children[0].innerHTML =
+            Math.min(critDistance.Distance, 100000) / 100 + 'm';
+        critStat.children[1].innerHTML = critDistance.Multiplier + 'x';
+    });
 }
