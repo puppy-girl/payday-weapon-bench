@@ -448,7 +448,6 @@ function populateLoadout(selectedWeapon) {
         selectedWeapon.DisplayName;
 
     loadoutAttachments.innerHTML = '';
-    updateAttachments();
 
     const sortedAttachments = Object.keys(
         selectedWeapon.ModularConfiguration
@@ -504,10 +503,13 @@ function populateLoadout(selectedWeapon) {
 
                 attachmentInput.addEventListener('change', () => {
                     updateAttachments();
+                    updateWeaponStats(selectedWeapon);
                 });
             }
         }
     }
+
+    updateAttachments();
 }
 
 populateWeaponSelector();
@@ -538,18 +540,30 @@ function updateSkills(selectedSkill) {
 }
 
 function updateWeaponStats(selectedWeapon) {
-    const rpmDisplay = document.querySelector('#rpm');
-    const apDisplay = document.querySelector('#ap');
-    const magSizeDisplay = document.querySelector('#mag');
-    const ammoPickupDisplay = document.querySelector('#ammo-pickup');
-    const maxAmmoDisplay = document.querySelector('#max-ammo');
+    const fireData = selectedWeapon.FireData;
 
-    rpmDisplay.innerHTML = selectedWeapon.FireData.RoundsPerMinute ?? 600;
-    apDisplay.innerHTML = selectedWeapon.FireData.ArmorPenetration ?? 0;
-    magSizeDisplay.innerHTML = selectedWeapon.FireData.AmmoLoaded;
-    ammoPickupDisplay.innerHTML =
-        (selectedWeapon.FireData.AmmoPickup.Min ?? 5) +
-        '-' +
-        (selectedWeapon.FireData.AmmoPickup.Max ?? 10);
-    maxAmmoDisplay.innerHTML = selectedWeapon.FireData.AmmoInventoryMax;
+    const magAttachment =
+        attachmentData[
+            equippedAttachments.find((attachment) => {
+                return attachmentData[attachment].MagazineData;
+            })
+        ]?.MagazineData?.Properties;
+
+    const rpm = fireData.RoundsPerMinute ?? 600;
+    const ap = fireData.RoundsPerMinute ?? 0;
+    const mag = {
+        AmmoLoaded: (magAttachment ?? fireData).AmmoLoaded ?? 10,
+        AmmoInventoryMax: (magAttachment ?? fireData).AmmoInventoryMax ?? 100,
+        AmmoPickup: {
+            Min: (magAttachment ?? fireData).AmmoPickup.Min ?? 5,
+            Max: (magAttachment ?? fireData).AmmoPickup.Max ?? 10,
+        },
+    };
+
+    document.querySelector('#rpm').innerHTML = rpm;
+    document.querySelector('#ap').innerHTML = ap;
+    document.querySelector('#mag').innerHTML = mag.AmmoLoaded;
+    document.querySelector('#ammo-pickup').innerHTML =
+        mag.AmmoPickup.Min + '-' + mag.AmmoPickup.Max;
+    document.querySelector('#max-ammo').innerHTML = mag.AmmoInventoryMax;
 }
