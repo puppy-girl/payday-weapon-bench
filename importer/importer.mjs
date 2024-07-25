@@ -211,6 +211,20 @@ try {
         'const attachmentData = ' +
             JSON.stringify(sortedAttachmentData, null, 4)
     );
+
+    fs.writeFile(
+        '../scripts/moddata.js',
+        'const modData = ' +
+            JSON.stringify(
+                JSON.parse(
+                    await fs.readFile(
+                        'PAYDAY3/Content/Gameplay/Weapons/CT_ModData_Default.json'
+                    )
+                )[0].Rows,
+                null,
+                4
+            )
+    );
 } catch (err) {
     console.error(err);
 }
