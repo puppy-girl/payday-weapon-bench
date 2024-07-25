@@ -154,7 +154,12 @@ try {
 
         if (attachmentData.AttributeModifierMap)
             attachmentOutput[key].AttributeModifierMap =
-                attachmentData.AttributeModifierMap;
+                attachmentData.AttributeModifierMap.map((modifier) => {
+                    return {
+                        Key: modifier.Key.replace('ESBZWeaponAttribute::', ''),
+                        Value: modifier.Value,
+                    };
+                });
 
         if (attachmentData.MagazineData)
             attachmentOutput[key].MagazineData = JSON.parse(

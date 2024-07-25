@@ -4,27 +4,27 @@ const attachmentData = {
     "A114_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -34,27 +34,27 @@ const attachmentData = {
     "A114_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -88,7 +88,7 @@ const attachmentData = {
     "A114_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -114,7 +114,7 @@ const attachmentData = {
     "A114_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -151,15 +151,15 @@ const attachmentData = {
     "ATK7_Grip_Contoured": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -169,15 +169,15 @@ const attachmentData = {
     "ATK7_Grip_SmoothFluted": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -186,15 +186,15 @@ const attachmentData = {
     "ATK7_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -203,7 +203,7 @@ const attachmentData = {
     "ATK7_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -248,7 +248,7 @@ const attachmentData = {
     "ATK7_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -274,7 +274,7 @@ const attachmentData = {
     "ATK7_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -303,19 +303,19 @@ const attachmentData = {
     "ATK7_Stock_HollowFrame": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -324,19 +324,19 @@ const attachmentData = {
     "ATK7_Stock_RubberFramed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -351,11 +351,11 @@ const attachmentData = {
     "BarrelExt_12GObelisk": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             }
         ],
@@ -364,15 +364,15 @@ const attachmentData = {
     "BarrelExt_12GVentComp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -10
             }
         ],
@@ -381,11 +381,11 @@ const attachmentData = {
     "BarrelExt_BeveledSilencer": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -394,15 +394,15 @@ const attachmentData = {
     "BarrelExt_CompactComp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -10
             }
         ],
@@ -411,11 +411,11 @@ const attachmentData = {
     "BarrelExt_CylindricSilencer": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             }
         ],
@@ -424,15 +424,15 @@ const attachmentData = {
     "BarrelExt_Express": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HorizontalGunkick",
+                "Key": "HorizontalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -441,15 +441,15 @@ const attachmentData = {
     "BarrelExt_HybridMB": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -458,15 +458,15 @@ const attachmentData = {
     "BarrelExt_IndentComp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -475,11 +475,11 @@ const attachmentData = {
     "BarrelExt_JawChoke": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalSpreadRadius",
+                "Key": "VerticalSpreadRadius",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalSpreadRadius",
+                "Key": "HorizontalSpreadRadius",
                 "Value": -10
             }
         ],
@@ -488,11 +488,11 @@ const attachmentData = {
     "BarrelExt_ObeliskSilencer": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             }
         ],
@@ -501,15 +501,15 @@ const attachmentData = {
     "BarrelExt_PartedComp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -518,15 +518,15 @@ const attachmentData = {
     "BarrelExt_PipedSilencer": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -535,11 +535,11 @@ const attachmentData = {
     "BarrelExt_Ridged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -548,15 +548,15 @@ const attachmentData = {
     "BarrelExt_SedimentChoke": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallPelletDeviation",
+                "Key": "OverallPelletDeviation",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -565,11 +565,11 @@ const attachmentData = {
     "BarrelExt_SkeletonizedComp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -578,7 +578,7 @@ const attachmentData = {
     "BarrelExt_SnubSilencer": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -587,11 +587,11 @@ const attachmentData = {
     "BarrelExt_Torque": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -600,11 +600,11 @@ const attachmentData = {
     "BarrelExt_WhisperWrap": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             }
         ],
@@ -613,19 +613,19 @@ const attachmentData = {
     "Bison_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             }
         ],
@@ -635,19 +635,19 @@ const attachmentData = {
     "Bison_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -660,15 +660,15 @@ const attachmentData = {
     "Bison_Grip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -678,15 +678,15 @@ const attachmentData = {
     "Bison_Grip_Hardwood": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingSpread",
+                "Key": "TargetingSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -695,15 +695,15 @@ const attachmentData = {
     "Bison_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -717,19 +717,19 @@ const attachmentData = {
     "Bullkick500_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -739,19 +739,19 @@ const attachmentData = {
     "Bullkick500_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -760,23 +760,23 @@ const attachmentData = {
     "Bullkick500_Barrel_Tactical": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -788,15 +788,15 @@ const attachmentData = {
     "Bullkick500_Grip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -806,15 +806,15 @@ const attachmentData = {
     "Bullkick500_Grip_Hardwood": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingSpread",
+                "Key": "TargetingSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -823,15 +823,15 @@ const attachmentData = {
     "Bullkick500_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -841,11 +841,11 @@ const attachmentData = {
     "Bullkick500_Mag_Unfluted": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -5
             }
         ],
@@ -859,19 +859,19 @@ const attachmentData = {
     "CAR4_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -881,19 +881,19 @@ const attachmentData = {
     "CAR4_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -908,7 +908,7 @@ const attachmentData = {
     "CAR4_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -953,7 +953,7 @@ const attachmentData = {
     "CAR4_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -979,7 +979,7 @@ const attachmentData = {
     "CAR4_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1008,19 +1008,19 @@ const attachmentData = {
     "Castigo44_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -1030,19 +1030,19 @@ const attachmentData = {
     "Castigo44_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1051,11 +1051,11 @@ const attachmentData = {
     "Castigo44_Barrel_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1067,15 +1067,15 @@ const attachmentData = {
     "Castigo44_Grip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -1085,15 +1085,15 @@ const attachmentData = {
     "Castigo44_Grip_Hardwood": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingSpread",
+                "Key": "TargetingSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -1102,15 +1102,15 @@ const attachmentData = {
     "Castigo44_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -1129,7 +1129,7 @@ const attachmentData = {
     "Commando_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -1173,7 +1173,7 @@ const attachmentData = {
     "Commando_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -1198,7 +1198,7 @@ const attachmentData = {
     "Commando_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1234,7 +1234,7 @@ const attachmentData = {
     "Compact7_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -1278,7 +1278,7 @@ const attachmentData = {
     "Compact7_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -1303,7 +1303,7 @@ const attachmentData = {
     "Compact7_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1333,19 +1333,19 @@ const attachmentData = {
     "FIK22_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -1355,19 +1355,19 @@ const attachmentData = {
     "FIK22_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -1381,7 +1381,7 @@ const attachmentData = {
     "FIK22_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -1425,7 +1425,7 @@ const attachmentData = {
     "FIK22_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -1451,7 +1451,7 @@ const attachmentData = {
     "FIK22_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1481,19 +1481,19 @@ const attachmentData = {
     "FSA12_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -1503,15 +1503,15 @@ const attachmentData = {
     "FSA12_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -1525,7 +1525,7 @@ const attachmentData = {
     "FSA12_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -1565,7 +1565,7 @@ const attachmentData = {
     "FSA12_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -1591,7 +1591,7 @@ const attachmentData = {
     "FSA12_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1616,15 +1616,15 @@ const attachmentData = {
     "Grip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -1633,15 +1633,15 @@ const attachmentData = {
     "Grip_Perforated": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1650,15 +1650,15 @@ const attachmentData = {
     "Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -1688,19 +1688,19 @@ const attachmentData = {
     "KU59_Barrel_Rail": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1709,19 +1709,19 @@ const attachmentData = {
     "KU59_Barrel_TradGrip": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             }
         ],
@@ -1732,15 +1732,15 @@ const attachmentData = {
     "KU59_Grip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -1750,15 +1750,15 @@ const attachmentData = {
     "KU59_Grip_Perforated": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1767,15 +1767,15 @@ const attachmentData = {
     "KU59_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -1784,7 +1784,7 @@ const attachmentData = {
     "KU59_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -1829,7 +1829,7 @@ const attachmentData = {
     "KU59_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -1855,7 +1855,7 @@ const attachmentData = {
     "KU59_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -1887,19 +1887,19 @@ const attachmentData = {
     "MX63_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -1909,19 +1909,19 @@ const attachmentData = {
     "MX63_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -1970,15 +1970,15 @@ const attachmentData = {
     "Mosconi12C_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             }
         ],
@@ -1988,15 +1988,15 @@ const attachmentData = {
     "Mosconi12C_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -2011,19 +2011,19 @@ const attachmentData = {
     "Mosconi12C_Stock_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -2033,19 +2033,19 @@ const attachmentData = {
     "Mosconi12C_Stock_Fortified": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -5
             }
         ],
@@ -2054,19 +2054,19 @@ const attachmentData = {
     "Mosconi12C_Stock_Padded": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": -5
             }
         ],
@@ -2084,7 +2084,7 @@ const attachmentData = {
     "NWB9_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -2129,7 +2129,7 @@ const attachmentData = {
     "NWB9_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -2155,7 +2155,7 @@ const attachmentData = {
     "NWB9_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -2193,7 +2193,7 @@ const attachmentData = {
     "PC9_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -2237,7 +2237,7 @@ const attachmentData = {
     "PC9_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -2262,7 +2262,7 @@ const attachmentData = {
     "PC9_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -2291,19 +2291,19 @@ const attachmentData = {
     "R880_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             }
         ],
@@ -2312,11 +2312,11 @@ const attachmentData = {
     "R880_Barrel_Comp": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -2326,15 +2326,15 @@ const attachmentData = {
     "R880_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -2345,15 +2345,15 @@ const attachmentData = {
     "R880_Foregrip_Biofit": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::EndCycleReloadPlayRate",
+                "Key": "EndCycleReloadPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -2363,11 +2363,11 @@ const attachmentData = {
     "R880_Foregrip_Tactical": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::EndCycleReloadPlayRate",
+                "Key": "EndCycleReloadPlayRate",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -2379,19 +2379,19 @@ const attachmentData = {
     "R880_Stock_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -2401,19 +2401,19 @@ const attachmentData = {
     "R880_Stock_Fortified": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -5
             }
         ],
@@ -2422,19 +2422,19 @@ const attachmentData = {
     "R880_Stock_Padded": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::ViewKickRecoverySpeed",
+                "Key": "ViewKickRecoverySpeed",
                 "Value": -5
             }
         ],
@@ -2444,19 +2444,19 @@ const attachmentData = {
     "R900S_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -2466,19 +2466,19 @@ const attachmentData = {
     "R900S_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -2510,7 +2510,7 @@ const attachmentData = {
     "R900S_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -2534,19 +2534,19 @@ const attachmentData = {
     "R900S_Stock_HardWood": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -10
             }
         ],
@@ -2555,19 +2555,19 @@ const attachmentData = {
     "R900S_Stock_Lightweight": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -10
             }
         ],
@@ -2578,19 +2578,19 @@ const attachmentData = {
     "RG5_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -2600,19 +2600,19 @@ const attachmentData = {
     "RG5_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -2626,15 +2626,15 @@ const attachmentData = {
     "RG5_Grip_Contoured": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -2644,15 +2644,15 @@ const attachmentData = {
     "RG5_Grip_SmoothFluted": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -2661,15 +2661,15 @@ const attachmentData = {
     "RG5_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -2678,7 +2678,7 @@ const attachmentData = {
     "RG5_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -2723,7 +2723,7 @@ const attachmentData = {
     "RG5_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -2749,7 +2749,7 @@ const attachmentData = {
     "RG5_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -2778,15 +2778,15 @@ const attachmentData = {
     "RG5_Stock_HQ": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             }
         ],
@@ -2795,19 +2795,19 @@ const attachmentData = {
     "RG5_Stock_Light": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -2816,19 +2816,19 @@ const attachmentData = {
     "RG5_Stock_TQ": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -2843,15 +2843,15 @@ const attachmentData = {
     "S403_Grip_Friction": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -2860,11 +2860,11 @@ const attachmentData = {
     "S403_Grip_Grained": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -2873,15 +2873,15 @@ const attachmentData = {
     "S403_Grip_Ribbed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -2909,7 +2909,7 @@ const attachmentData = {
     "S403_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -2935,7 +2935,7 @@ const attachmentData = {
     "S403_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -2970,11 +2970,11 @@ const attachmentData = {
     "S40_Grip_Embossed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -2983,15 +2983,15 @@ const attachmentData = {
     "S40_Grip_Hardwood": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingSpread",
+                "Key": "TargetingSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -3000,15 +3000,15 @@ const attachmentData = {
     "S40_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -3036,7 +3036,7 @@ const attachmentData = {
     "S40_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -3062,7 +3062,7 @@ const attachmentData = {
     "S40_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -3096,15 +3096,15 @@ const attachmentData = {
     "SPM11_Grip_Checkered": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingSpread",
+                "Key": "TargetingSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -3114,11 +3114,11 @@ const attachmentData = {
     "SPM11_Grip_Embossed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -3127,15 +3127,15 @@ const attachmentData = {
     "SPM11_Grip_Tac": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -3160,7 +3160,7 @@ const attachmentData = {
     "SPM11_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -3186,7 +3186,7 @@ const attachmentData = {
     "SPM11_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -3214,15 +3214,15 @@ const attachmentData = {
     "Sight_Box": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -3234,11 +3234,11 @@ const attachmentData = {
     "Sight_ClassicRDS": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3251,11 +3251,11 @@ const attachmentData = {
     "Sight_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -3268,15 +3268,15 @@ const attachmentData = {
     "Sight_Fluted": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -10
             }
         ],
@@ -3289,11 +3289,11 @@ const attachmentData = {
     "Sight_LED": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -5
             }
         ],
@@ -3305,15 +3305,15 @@ const attachmentData = {
     "Sight_LightHolographic": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::InitialRecoil",
+                "Key": "InitialRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -15
             }
         ],
@@ -3326,15 +3326,15 @@ const attachmentData = {
     "Sight_Lined": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::ScreenShakeAmplitude",
+                "Key": "ScreenShakeAmplitude",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -3353,15 +3353,15 @@ const attachmentData = {
     "Sight_Primed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -3374,15 +3374,15 @@ const attachmentData = {
     "Sight_Projection": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::InitialRecoil",
+                "Key": "InitialRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -5
             }
         ],
@@ -3395,11 +3395,11 @@ const attachmentData = {
     "Sight_Sheath": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3411,11 +3411,11 @@ const attachmentData = {
     "Sight_Slate": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3427,11 +3427,11 @@ const attachmentData = {
     "Sight_Snapshot": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3444,19 +3444,19 @@ const attachmentData = {
     "Sight_Tactical": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::ScreenShakeAmplitude",
+                "Key": "ScreenShakeAmplitude",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -5
             }
         ],
@@ -3469,11 +3469,11 @@ const attachmentData = {
     "Sight_Tagged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3485,19 +3485,19 @@ const attachmentData = {
     "Sight_ViewPoint": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::ScreenShakeAmplitude",
+                "Key": "ScreenShakeAmplitude",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -5
             }
         ],
@@ -3510,15 +3510,15 @@ const attachmentData = {
     "Stock_HQ": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": -5
             }
         ],
@@ -3527,19 +3527,19 @@ const attachmentData = {
     "Stock_LightFrame": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -3548,19 +3548,19 @@ const attachmentData = {
     "Stock_Minimized": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -15
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -10
             }
         ],
@@ -3569,19 +3569,19 @@ const attachmentData = {
     "Stock_PaddedTube": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": 15
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -10
             }
         ],
@@ -3590,19 +3590,19 @@ const attachmentData = {
     "Stock_TQ": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::SprintExitPlayRate",
+                "Key": "SprintExitPlayRate",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -3617,15 +3617,15 @@ const attachmentData = {
     "Stryk7_Grip_Friction": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": -5
             }
         ],
@@ -3634,11 +3634,11 @@ const attachmentData = {
     "Stryk7_Grip_Grained": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             }
         ],
@@ -3647,15 +3647,15 @@ const attachmentData = {
     "Stryk7_Grip_Ribbed": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalGunkick",
+                "Key": "VerticalGunkick",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -3683,7 +3683,7 @@ const attachmentData = {
     "Stryk7_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -3709,7 +3709,7 @@ const attachmentData = {
     "Stryk7_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -3739,19 +3739,19 @@ const attachmentData = {
     "VF7S_Barrel_CQC": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": -5
             }
         ],
@@ -3761,19 +3761,19 @@ const attachmentData = {
     "VF7S_Barrel_Ranged": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::DamageDistance",
+                "Key": "DamageDistance",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallRecoil",
+                "Key": "OverallRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallGunkick",
+                "Key": "OverallGunkick",
                 "Value": -5
             }
         ],
@@ -3787,7 +3787,7 @@ const attachmentData = {
     "VF7S_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -3829,7 +3829,7 @@ const attachmentData = {
     "VF7S_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -3855,7 +3855,7 @@ const attachmentData = {
     "VF7S_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
@@ -3884,15 +3884,15 @@ const attachmentData = {
     "VerticalGrip_AngledGhost": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             }
         ],
@@ -3901,19 +3901,19 @@ const attachmentData = {
     "VerticalGrip_Cylinder": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::OverallSwapSpeed",
+                "Key": "OverallSwapSpeed",
                 "Value": -10
             },
             {
-                "Key": "ESBZWeaponAttribute::TargetingTransitionTime",
+                "Key": "TargetingTransitionTime",
                 "Value": -10
             }
         ],
@@ -3922,15 +3922,15 @@ const attachmentData = {
     "VerticalGrip_FlatSide": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -15
             }
         ],
@@ -3939,19 +3939,19 @@ const attachmentData = {
     "VerticalGrip_QuickHold": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::InitialRecoil",
+                "Key": "InitialRecoil",
                 "Value": -5
             }
         ],
@@ -3960,19 +3960,19 @@ const attachmentData = {
     "VerticalGrip_RiggerHandstop": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallSpread",
+                "Key": "OverallSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 10
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             },
             {
-                "Key": "ESBZWeaponAttribute::InitialRecoil",
+                "Key": "InitialRecoil",
                 "Value": -5
             }
         ],
@@ -3981,15 +3981,15 @@ const attachmentData = {
     "VerticalGrip_Stub": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::HipfireSpread",
+                "Key": "HipfireSpread",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::VerticalRecoil",
+                "Key": "VerticalRecoil",
                 "Value": 5
             },
             {
-                "Key": "ESBZWeaponAttribute::HorizontalRecoil",
+                "Key": "HorizontalRecoil",
                 "Value": -5
             }
         ],
@@ -4006,7 +4006,7 @@ const attachmentData = {
     "WAR45_Mag_Compact": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 5
             }
         ],
@@ -4050,7 +4050,7 @@ const attachmentData = {
     "WAR45_Mag_Extended": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": -10
             }
         ],
@@ -4076,7 +4076,7 @@ const attachmentData = {
     "WAR45_Mag_Quick": {
         "AttributeModifierMap": [
             {
-                "Key": "ESBZWeaponAttribute::OverallReloadPlayRate",
+                "Key": "OverallReloadPlayRate",
                 "Value": 15
             }
         ],
