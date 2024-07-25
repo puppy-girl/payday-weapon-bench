@@ -556,6 +556,27 @@ function updateSkills(selectedSkill) {
     }
 }
 
+function getModData(stat, value) {
+    const statData = modData[stat].Keys;
+
+    if (value == 0) return 0;
+
+    const previous = statData.findLast((i) => {
+        return value >= i.Time;
+    });
+    const next = statData.find((i) => {
+        return value <= i.Time;
+    });
+
+    if (previous == next) return previous.Value;
+
+    const gradient =
+        (next.Value - previous.Value) / (next.Time - previous.Time);
+    const intercept = previous.Value - gradient * previous.Time;
+
+    return gradient * value + intercept;
+}
+
 function updateWeaponStats(selectedWeapon) {
     const fireData = selectedWeapon.FireData;
 
