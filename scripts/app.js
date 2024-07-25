@@ -559,7 +559,7 @@ function updateSkills(selectedSkill) {
 function getModData(stat, value) {
     const statData = modData[stat].Keys;
 
-    if (value == 0) return 0;
+    if (value == 0 || value == undefined) return 0;
 
     const previous = statData.findLast((i) => {
         return value >= i.Time;
@@ -580,6 +580,25 @@ function getModData(stat, value) {
 function updateWeaponStats(selectedWeapon) {
     const fireData = selectedWeapon.FireData;
 
+    const statModifiers = {};
+    equippedAttachments.forEach((attachment) => {
+        if (attachmentData[attachment]?.AttributeModifierMap) {
+            attachmentData[attachment].AttributeModifierMap.forEach(
+                (modifier) => {
+                    statModifiers[modifier.Key]
+                        ? (statModifiers[modifier.Key] += modifier.Value)
+                        : (statModifiers[modifier.Key] = modifier.Value);
+                }
+            );
+        }
+    });
+
+    const rpm = fireData.RoundsPerMinute ?? 600;
+    document.querySelector('#rpm').innerHTML = rpm;
+
+    const ap = fireData.ArmorPenetration ?? 0;
+    document.querySelector('#ap').innerHTML = ap;
+
     const magAttachment =
         attachmentData[
             equippedAttachments.find((attachment) => {
@@ -587,8 +606,6 @@ function updateWeaponStats(selectedWeapon) {
             })
         ]?.MagazineData?.Properties;
 
-    const rpm = fireData.RoundsPerMinute ?? 600;
-    const ap = fireData.ArmorPenetration ?? 0;
     const mag = {
         AmmoLoaded: (magAttachment ?? fireData).AmmoLoaded ?? 10,
         AmmoInventoryMax: (magAttachment ?? fireData).AmmoInventoryMax ?? 100,
@@ -598,16 +615,29 @@ function updateWeaponStats(selectedWeapon) {
         },
     };
 
-    document.querySelector('#rpm').innerHTML = rpm;
-    document.querySelector('#ap').innerHTML = ap;
     document.querySelector('#mag').innerHTML = mag.AmmoLoaded;
     document.querySelector('#max-ammo').innerHTML = mag.AmmoInventoryMax;
     document.querySelector('#ammo-pickup').innerHTML =
         mag.AmmoPickup.Min + '-' + mag.AmmoPickup.Max;
+
+    const reload =
+        selectedWeapon.ReloadNotifyTime /
+        getModData(
+            'OverallReloadPlayRate',
+            statModifiers['OverallReloadPlayRate'] ?? 1
+        );
+
     document.querySelector('#reload').innerHTML =
-        Math.round(selectedWeapon.ReloadNotifyTime * 10) / 10 + 's';
+        Math.round(reload * 10) / 10 + 's';
+
+    const fullReload =
+        selectedWeapon.ReloadEmptyNotifyTime /
+        getModData(
+            'OverallReloadPlayRate',
+            statModifiers['OverallReloadPlayRate'] ?? 1
+        );
     document.querySelector('#full-reload').innerHTML =
-        Math.round(selectedWeapon.ReloadEmptyNotifyTime * 10) / 10 + 's';
+        Math.round(fullReload * 10) / 10 + 's';
 
     const weaponDamageStats =
         document.querySelector('#weapon-damage').children[0];
@@ -620,8 +650,12 @@ function updateWeaponStats(selectedWeapon) {
         damageStat.innerHTML = weaponStatTemplate.innerHTML;
         damageStat.classList = ['weapon-stat'];
 
+        const distance =
+            damageDistance.Distance +
+            getModData('DamageDistance', statModifiers['DamageDistance']);
+
         damageStat.children[0].innerHTML =
-            Math.min(damageDistance.Distance, 100000) / 100 + 'm';
+            Math.round(Math.min(distance, 100000)) / 100 + 'm';
         damageStat.children[1].innerHTML =
             Math.round(damageDistance.Damage * 10) / 10;
     });
