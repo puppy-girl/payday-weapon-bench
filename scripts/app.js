@@ -695,15 +695,17 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
     if (equippedSkills.includes('high-grain'))
         fireData.ArmorPenetration += skills['high-grain'].armorPenModifier;
 
-    updatedWeapon.ReloadNotifyTime /= getModData(
-        'OverallReloadPlayRate',
-        modifiers['OverallReloadPlayRate'] ?? 1
-    );
+    if (modifiers['OverallReloadPlayRate']) {
+        updatedWeapon.ReloadNotifyTime /= getModData(
+            'OverallReloadPlayRate',
+            modifiers['OverallReloadPlayRate']
+        );
 
-    updatedWeapon.ReloadEmptyNotifyTime /= getModData(
-        'OverallReloadPlayRate',
-        modifiers['OverallReloadPlayRate'] ?? 1
-    );
+        updatedWeapon.ReloadEmptyNotifyTime /= getModData(
+            'OverallReloadPlayRate',
+            modifiers['OverallReloadPlayRate']
+        );
+    }
 
     return updatedWeapon;
 }
@@ -726,10 +728,10 @@ function updateWeaponStats(selectedWeapon) {
         weapon.FireData.AmmoPickup.Min + '-' + weapon.FireData.AmmoPickup.Max;
 
     document.querySelector('#reload').innerHTML =
-        Math.round(weapon.ReloadNotifyTime * 10) / 10 + 's';
+        Math.round(weapon.ReloadNotifyTime * 100) / 100 + 's';
 
     document.querySelector('#full-reload').innerHTML =
-        Math.round(weapon.ReloadEmptyNotifyTime * 10) / 10 + 's';
+        Math.round(weapon.ReloadEmptyNotifyTime * 100) / 100 + 's';
 
     const weaponDamageStats =
         document.querySelector('#weapon-damage').children[0];
@@ -745,7 +747,7 @@ function updateWeaponStats(selectedWeapon) {
         damageStat.children[0].innerHTML =
             Math.round(Math.min(damageStep.Distance, 100000)) / 100 + 'm';
         damageStat.children[1].innerHTML =
-            Math.round(damageStep.Damage * 10) / 10;
+            Math.round(damageStep.Damage * 100) / 100;
     });
 
     const weaponCritStats =
