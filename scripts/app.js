@@ -616,17 +616,6 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
         Max: (equippedMag ?? weapon.FireData).AmmoPickup.Max ?? 10,
     };
 
-    // When face to face is equipped add the 5m distance for its effect
-    if (
-        equippedSkills.includes('face-to-face') &&
-        fireData.DamageDistanceArray[0].Distance !== 500
-    ) {
-        fireData.DamageDistanceArray.unshift({
-            Distance: 500,
-            Damage: fireData.DamageDistanceArray[0].Damage,
-        });
-    }
-
     const equippedSight =
         attachmentData[
             equippedAttachments.find((attachment) => {
@@ -634,46 +623,76 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
             })
         ];
 
+    let damageModifier = 1,
+        rangeModifier = getModData(
+            'DamageDistance',
+            modifiers['DamageDistance']
+        );
+
+    // Precision Shot sets the base damage modifier
+    // to the current scope's magnification
+    if (
+        equippedSkills.includes('precision-shot') &&
+        equippedSight?.TargetingData?.TargetingMagnification >= 5
+    )
+        damageModifier = equippedSight.TargetingData.TargetingMagnification;
+
+    for (skill of [
+        'edge',
+        'coup-de-grace',
+        'combat-marking',
+        'pain-asymbolia',
+        'duck-and-weave',
+    ]) {
+        if (equippedSkills.includes(skill))
+            damageModifier += skills[skill].damageModifier;
+    }
+
+    const faceToFaceIsEquipped = equippedSkills.includes('face-to-face');
+
     fireData.DamageDistanceArray = fireData.DamageDistanceArray.map(
         (damageStep) => {
-            let damageModifier = 1;
+            let damage = damageStep.Damage;
 
-            if (equippedSkills.includes('edge'))
-                damageModifier += skills['edge'].damageModifier;
-            if (equippedSkills.includes('coup-de-grace'))
-                damageModifier += skills['coup-de-grace'].damageModifier;
-            if (equippedSkills.includes('combat-marking'))
-                damageModifier += skills['combat-marking'].damageModifier;
-            if (equippedSkills.includes('pain-asymbolia'))
-                damageModifier += skills['pain-asymbolia'].damageModifier;
-            if (equippedSkills.includes('duck-and-weave'))
-                damageModifier += skills['duck-and-weave'].damageModifier;
-
+            // Face to Face adds to the damage modifier within 5 metres
             if (
-                equippedSkills.includes('face-to-face') &&
-                damageStep.Distance === 500
+                faceToFaceIsEquipped &&
+                damageStep.Distance + rangeModifier <= 500
             )
-                damageModifier += skills['face-to-face'].damageModifier;
-
-            if (
-                equippedSkills.includes('precision-shot') &&
-                equippedSight?.TargetingData?.TargetingMagnification >= 5
-            )
-                damageModifier +=
-                    equippedSight.TargetingData.TargetingMagnification - 1;
-
-            const rangeModifier = getModData(
-                'DamageDistance',
-                modifiers['DamageDistance']
-            );
+                damage *=
+                    damageModifier + skills['face-to-face'].damageModifier;
+            else damage *= damageModifier;
 
             return {
-                Damage: damageStep.Damage * damageModifier,
+                Damage: damage,
                 Distance: damageStep.Distance + rangeModifier,
             };
         }
     );
 
+    if (faceToFaceIsEquipped) {
+        if (fireData.DamageDistanceArray[0].Distance > 500) {
+            // Insert face to face's 5m range at the start of the array
+            fireData.DamageDistanceArray.unshift({
+                Damage:
+                    weapon.FireData.DamageDistanceArray[0].Damage *
+                    (damageModifier + skills['face-to-face'].damageModifier),
+                Distance: 500,
+            });
+        } else if (fireData.DamageDistanceArray[0].Distance < 500) {
+            // Insert face to face's 5m range second in the array
+            const damage =
+                weapon.FireData.DamageDistanceArray[1].Damage *
+                (damageModifier + skills['face-to-face'].damageModifier);
+
+            fireData.DamageDistanceArray.splice(1, 0, {
+                Damage: damage,
+                Distance: 500,
+            });
+        }
+    }
+
+    // Long shot removes distance penalties on critical multipliers
     if (equippedSkills.includes('long-shot')) {
         console.log('long shot');
         fireData.CriticalDamageMultiplierDistanceArray = [
