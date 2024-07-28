@@ -355,18 +355,30 @@ try {
             ');'
     );
 
+    const modData = JSON.parse(
+        await fs.readFile(
+            'PAYDAY3/Content/Gameplay/Weapons/CT_ModData_Default.json'
+        )
+    )[0].Rows;
+
+    const modDataOutput = Object.fromEntries(
+        Object.keys(modData).map((attribute) => {
+            return [
+                attribute,
+                modData[attribute].Keys.map((step) => {
+                    return {
+                        point: step.Time,
+                        value: step.Value,
+                    };
+                }),
+            ];
+        })
+    );
+
     fs.writeFile(
         '../scripts/moddata.js',
         'const MOD_DATA = Object.freeze(' +
-            JSON.stringify(
-                JSON.parse(
-                    await fs.readFile(
-                        'PAYDAY3/Content/Gameplay/Weapons/CT_ModData_Default.json'
-                    )
-                )[0].Rows,
-                null,
-                4
-            ) +
+            JSON.stringify(modDataOutput, null, 4) +
             ');'
     );
 } catch (err) {
