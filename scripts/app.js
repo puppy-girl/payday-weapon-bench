@@ -244,6 +244,27 @@ function applyLoadout(weapon, skills, attachments) {
     if (skills.includes('highGrain'))
         fireData.armorPenetration += SKILLS['highGrain'].modifier;
 
+    const viewKick = updatedWeapon.recoilData.viewKick;
+
+    viewKick.recoilPattern = viewKick.recoilPattern.map((point) => {
+        return {
+            x:
+                point.x *
+                (convertAttributeModifier(
+                    'HorizontalRecoil',
+                    (attributeModifiers['HorizontalRecoil'] ?? 0) +
+                        (attributeModifiers['OverallRecoil'] ?? 0)
+                ) || 1),
+            y:
+                point.y *
+                (convertAttributeModifier(
+                    'VerticalRecoil',
+                    (attributeModifiers['VerticalRecoil'] ?? 0) +
+                        (attributeModifiers['OverallRecoil'] ?? 0)
+                ) || 1),
+        };
+    });
+
     if (attributeModifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= convertAttributeModifier(
             'OverallReloadPlayRate',
@@ -571,8 +592,9 @@ function updateWeaponStats(selectedWeapon) {
     document.querySelector('#full-reload').innerHTML =
         Math.round(weapon.reloadEmptyTime * 100) / 100 + 's';
 
-    const weaponDamageStats =
-        document.querySelector('#weapon-damage').children[0];
+    const weaponDamageStats = document.querySelector(
+        '#weapon-stats-damage > div'
+    ).children[0];
     weaponDamageStats.innerHTML = '';
 
     weapon.fireData.damageDistanceArray.forEach((damageStep) => {
@@ -588,8 +610,8 @@ function updateWeaponStats(selectedWeapon) {
             Math.round(damageStep.damage * 100) / 100;
     });
 
-    const weaponCritStats =
-        document.querySelector('#weapon-damage').children[1];
+    const weaponCritStats = document.querySelector('#weapon-stats-damage > div')
+        .children[1];
     weaponCritStats.innerHTML = '';
 
     weapon.fireData.criticalDamageMultiplierDistanceArray.forEach(
@@ -606,6 +628,56 @@ function updateWeaponStats(selectedWeapon) {
                 criticalDamageStep.multiplier + 'x';
         }
     );
+
+    const recoilPatternStat = document.querySelector('svg#recoil-pattern');
+    recoilPatternStat.innerHTML = '';
+
+    const recoilPattern = weapon.recoilData.viewKick.recoilPattern;
+    const points = [
+        ...recoilPattern.map((point) => {
+            return point.x;
+        }),
+        ...recoilPattern.map((point) => {
+            return point.y;
+        }),
+    ];
+    const max = points.reduce((a, b) => {
+        return Math.max(a, b);
+    }, 0);
+
+    recoilPatternStat.setAttribute('viewBox', `0 0 ${max} ${max}`);
+
+    const baseline = recoilPatternStat.appendChild(
+        document.createElementNS('http://www.w3.org/2000/svg', 'line')
+    );
+
+    baseline.setAttribute('x1', 0);
+    baseline.setAttribute('y1', max * 0.95);
+    baseline.setAttribute('x2', max);
+    baseline.setAttribute('y2', max * 0.95);
+    baseline.setAttribute('stroke', 'white');
+    baseline.setAttribute('stroke-width', max / 160);
+    baseline.setAttribute('stroke-opacity', '20%');
+
+    const firstPoint = recoilPatternStat.appendChild(
+        document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+    );
+
+    firstPoint.setAttribute('cx', max / 2);
+    firstPoint.setAttribute('cy', max * 0.95);
+    firstPoint.setAttribute('r', max / 80);
+    firstPoint.setAttribute('fill', 'white');
+
+    for (const recoilPoint of recoilPattern) {
+        const point = recoilPatternStat.appendChild(
+            document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+        );
+
+        point.setAttribute('cx', recoilPoint.x * -0.9 + max * 0.5);
+        point.setAttribute('cy', recoilPoint.y * -0.9 + max * 0.95);
+        point.setAttribute('r', max / 80);
+        point.setAttribute('fill', 'white');
+    }
 }
 
 populateWeaponSelector();

@@ -70,9 +70,9 @@
     
             <section id="stats">
                 <div id="weapon-stats">
-                    <div class="weapon-stat-container">
+                    <div class="weapon-stat-container" id="weapon-stats-damage">
                         <span class="weapon-stat-category-title">Damage</span>
-                        <div id="weapon-damage">
+                        <div>
                             <div class="weapon-stat-category"">
                                 <template class="weapon-stat">
                                     <span>Range</span>
@@ -94,7 +94,7 @@
                         </div>
                     </div>
                     
-                    <div class="weapon-stat-container">
+                    <div class="weapon-stat-container" id="weapon-stats-magazine">
                         <span class="weapon-stat-category-title">Magazine</span>
                         <div class="weapon-stat-category">
                             <div class="weapon-stat">
@@ -117,6 +117,16 @@
                                 <span>Full Reload</span>
                                 <span id="full-reload"></span>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="weapon-stat-container" id="weapon-stats-recoil">
+                        <span class="weapon-stat-category-title">Recoil</span>
+                        <div class="weapon-stat-category">
+                            <svg 
+                                id="recoil-pattern"
+                                viewBox="0 0 100 100"
+                            ></svg>
                         </div>
                     </div>
                 </div>

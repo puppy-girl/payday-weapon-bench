@@ -356,11 +356,28 @@ h1 {
 
 #weapon-stats {
     display: grid;
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: repeat(15, 1fr);
     gap: 1rem;
 }
 
+#weapon-stats-damage {
+    grid-column-start: 1;
+    grid-column-end: 12;
+}
+
+#weapon-stats-magazine {
+    grid-column-start: 12;
+    grid-column-end: 16;
+}
+
+#weapon-stats-recoil {
+    grid-column-start: 1;
+    grid-column-end: 5;
+}
+
 .weapon-stat-container, .damage-stat-container {
+    min-width: 0;
+
     border: var(--border);
     border-radius: 0.2em;
 
@@ -385,7 +402,7 @@ h1 {
     flex-flow: column nowrap;
     gap: 0.5em;
 
-    margin: 0.5em 0 1em 0;
+    margin: 0.5em 0;
     padding: 0 1em;
 }
 
@@ -410,7 +427,7 @@ h1 {
     font-weight: 500;
 }
 
-#weapon-damage {
+#weapon-stats-damage > div {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
 }
