@@ -280,24 +280,43 @@ try {
         const key = attachment.name.split('.')[0].replace('WPD_', '');
         attachmentOutput[key] = {};
 
+        if (attachmentData.DisplayName) {
+            attachmentOutput[key].displayName =
+                attachmentData.DisplayName.LocalizedString;
+        }
+
         if (attachmentData.AttributeModifierMap)
-            attachmentOutput[key].AttributeModifierMap =
+            attachmentOutput[key].attributeModifierMap =
                 attachmentData.AttributeModifierMap.map((modifier) => {
                     return {
-                        Key: modifier.Key.replace('ESBZWeaponAttribute::', ''),
-                        Value: modifier.Value,
+                        attribute: modifier.Key.replace(
+                            'ESBZWeaponAttribute::',
+                            ''
+                        ),
+                        value: modifier.Value,
                     };
                 });
 
-        if (attachmentData.MagazineData)
-            attachmentOutput[key].MagazineData = JSON.parse(
+        if (attachmentData.MagazineData) {
+            const magazineData = JSON.parse(
                 await fs.readFile(
                     attachmentData.MagazineData.ObjectPath.replace(
                         '.0',
                         '.json'
                     )
                 )
-            )[0];
+            )[0].Properties;
+
+            attachmentOutput[key].magazineData = {
+                ammoLoaded: magazineData.AmmoLoaded,
+                ammoInventory: magazineData.AmmoInventory,
+                ammoInventoryMax: magazineData.AmmoInventoryMax,
+                ammoPickup: {
+                    min: magazineData.AmmoPickup?.Min,
+                    max: magazineData.AmmoPickup?.Max,
+                },
+            };
+        }
 
         if (attachmentData.SightDataArray) {
             const targetingDataPath = JSON.parse(
@@ -313,17 +332,12 @@ try {
                 await fs.readFile(targetingDataPath.replace('.0', '.json'))
             )[0].Properties;
 
-            attachmentOutput[key].TargetingData = {
-                TargetingMagnification:
+            attachmentOutput[key].targetingData = {
+                targetingMagnification:
                     targetingDataProperties.TargetingMagnification,
-                TargetingOnTopMagnification:
+                targetingOnTopMagnification:
                     targetingDataProperties.TargetingOnTopMagnification,
             };
-        }
-
-        if (attachmentData.DisplayName) {
-            attachmentOutput[key].DisplayName =
-                attachmentData.DisplayName.LocalizedString;
         }
     }
 
