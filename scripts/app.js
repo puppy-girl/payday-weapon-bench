@@ -140,14 +140,13 @@ function applyLoadout(weapon, skills, attachments) {
 
     const fireData = updatedWeapon.fireData;
 
-    fireData.ammoLoaded = (equippedMag ?? weapon.fireData).ammoLoaded ?? 10;
-    fireData.ammoInventory =
-        (equippedMag ?? weapon.fireData).ammoInventory ?? 100;
+    fireData.ammoLoaded = (equippedMag ?? fireData).ammoLoaded ?? 10;
+    fireData.ammoInventory = (equippedMag ?? fireData).ammoInventory ?? 100;
     fireData.ammoInventoryMax =
-        (equippedMag ?? weapon.fireData).ammoInventoryMax ?? 200;
+        (equippedMag ?? fireData).ammoInventoryMax ?? 200;
     fireData.ammoPickup = {
-        min: (equippedMag ?? weapon.fireData).ammoPickup.min ?? 5,
-        max: (equippedMag ?? weapon.fireData).ammoPickup.max ?? 10,
+        min: (equippedMag ?? fireData).ammoPickup.min ?? 5,
+        max: (equippedMag ?? fireData).ammoPickup.max ?? 10,
     };
 
     const equippedSight =
