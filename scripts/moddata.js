@@ -1,4 +1,4 @@
-const modData = {
+const MOD_DATA = Object.freeze({
     "HorizontalRecoil": {
         "InterpMode": "RCIM_Linear",
         "Keys": [
@@ -1471,4 +1471,4 @@ const modData = {
         "PreInfinityExtrap": "RCCE_Constant",
         "PostInfinityExtrap": "RCCE_Constant"
     }
-}
+});

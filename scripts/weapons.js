@@ -1,4 +1,4 @@
-const weaponData = {
+const WEAPON_DATA = Object.freeze({
     "A114": {
         "DisplayName": "SA A144",
         "TypeClassText": "Marksman",
@@ -17186,4 +17186,4 @@ const weaponData = {
         "ReloadNotifyTime": 2.1666667,
         "ReloadEmptyNotifyTime": 2.5000002
     }
-}
+});

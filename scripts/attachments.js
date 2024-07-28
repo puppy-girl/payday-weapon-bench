@@ -1,4 +1,4 @@
-const attachmentData = {
+const ATTACHMENT_DATA = Object.freeze({
     "A114_Ammo_Default": {},
     "A114_BarrelExt_Default": {},
     "A114_Barrel_CQC": {
@@ -4101,4 +4101,4 @@ const attachmentData = {
     "WAR45_RearSight_Default": {},
     "WAR45_StockMount_Default": {},
     "WAR45_Stock_Default": {}
-}
+});

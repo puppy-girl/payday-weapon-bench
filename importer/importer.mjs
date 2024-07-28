@@ -159,7 +159,9 @@ try {
 
     fs.writeFile(
         '../scripts/weapons.js',
-        'const weaponData = ' + JSON.stringify(sortedWeaponData, null, 4)
+        'const WEAPON_DATA = Object.freeze(' +
+            JSON.stringify(sortedWeaponData, null, 4) +
+            ');'
     );
 
     for (const attachment of attachments) {
@@ -226,13 +228,14 @@ try {
 
     fs.writeFile(
         '../scripts/attachments.js',
-        'const attachmentData = ' +
-            JSON.stringify(sortedAttachmentData, null, 4)
+        'const ATTACHMENT_DATA = Object.freeze(' +
+            JSON.stringify(sortedAttachmentData, null, 4) +
+            ');'
     );
 
     fs.writeFile(
         '../scripts/moddata.js',
-        'const modData = ' +
+        'const MOD_DATA = Object.freeze(' +
             JSON.stringify(
                 JSON.parse(
                     await fs.readFile(
@@ -241,7 +244,8 @@ try {
                 )[0].Rows,
                 null,
                 4
-            )
+            ) +
+            ');'
     );
 } catch (err) {
     console.error(err);
