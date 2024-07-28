@@ -345,14 +345,16 @@ function populateWeaponSelector() {
         const weaponName = selectableWeapon.children[1];
         const weaponDLC = selectableWeapon.children[2];
 
-        weaponInput.id = weapon;
+        const id = weapon.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
+
+        weaponInput.id = id;
         weaponInput.value = weapon;
 
         weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
-        weaponName.setAttribute('for', weapon);
+        weaponName.setAttribute('for', id);
 
         weaponDLC.innerHTML = DLC[WEAPON_DATA[weapon].dlc - 1] ?? '';
-        weaponDLC.setAttribute('for', weapon);
+        weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
             populateLoadout(event.target.value);
@@ -384,12 +386,15 @@ function populateSkills() {
         const skillInput = selectableSkill.children[0];
         const skillLabel = selectableSkill.children[1];
 
-        skillInput.id = skill;
+        const id = skill.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase();
+
+        skillInput.id = id;
+        skillInput.value = skill;
 
         if (EDGE_DEPENDENT_SKILLS.includes(skill)) skillInput.disabled = true;
 
         skillLabel.innerHTML = SKILLS[skill].displayName;
-        skillLabel.setAttribute('for', skill);
+        skillLabel.setAttribute('for', id);
 
         skillLabel.style = `
             --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
@@ -400,7 +405,7 @@ function populateSkills() {
         `;
 
         skillInput.addEventListener('change', (event) => {
-            updateSkills(event.target.id);
+            updateSkills(event.target.value);
             updateWeaponStats(
                 document.querySelector('.selectable-weapon input:checked').value
             );
@@ -476,7 +481,12 @@ function populateLoadout(selectedWeapon) {
                 const attachmentInput = attachmentButton.children[0];
                 const attachmentLabel = attachmentButton.children[1];
 
-                attachmentInput.id = slot + '_' + attachment;
+                const id = (attachment !== 'None' ? attachment : slot + 'None')
+                    .replace(/([a-z])([A-Z0-9])/g, '$1-$2')
+                    .replace(/_/g, '-')
+                    .toLowerCase();
+
+                attachmentInput.id = id;
                 attachmentInput.value = attachment;
                 attachmentInput.name = slot;
                 attachmentInput.checked = attachment == defaultAttachment;
@@ -488,7 +498,7 @@ function populateLoadout(selectedWeapon) {
                         .pop()
                         .replace(/([a-z])([A-Z0-9])/g, '$1 $2');
 
-                attachmentLabel.setAttribute('for', slot + '_' + attachment);
+                attachmentLabel.setAttribute('for', id);
                 attachmentLabel.innerHTML = attachmentName;
 
                 attachmentInput.addEventListener('change', () => {
@@ -510,7 +520,7 @@ function updateSkills(selectedSkill) {
 
     if (selectedSkill !== 'edge') return;
     for (const skill of EDGE_DEPENDENT_SKILLS) {
-        const skillInput = document.querySelector(`input#${skill}`);
+        const skillInput = document.querySelector(`input[value=${skill}]`);
 
         if (skillIsEquipped) {
             skillInput.disabled = true;
