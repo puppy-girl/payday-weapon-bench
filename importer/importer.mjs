@@ -42,7 +42,7 @@ try {
         const weaponDataPath =
             weaponPath +
             '/' +
-            weaponFiles.find((element) => element.includes('DA_WeaponData'));
+            weaponFiles.find((fileName) => fileName.includes('DA_WeaponData'));
 
         const weaponData = JSON.parse(await fs.readFile(weaponDataPath))[0]
             .Properties;
@@ -64,7 +64,7 @@ try {
         const fireDataPath =
             weaponPath +
             '/' +
-            weaponFiles.find((element) => element.includes('DA_FireData'));
+            weaponFiles.find((fileName) => fileName.includes('DA_FireData'));
 
         const fireData = JSON.parse(await fs.readFile(fireDataPath))[0]
             .Properties;
@@ -86,7 +86,7 @@ try {
         const spreadDataPath =
             weaponPath +
             '/' +
-            weaponFiles.find((element) => element.includes('DA_SpreadData'));
+            weaponFiles.find((fileName) => fileName.includes('DA_SpreadData'));
 
         const spreadData = JSON.parse(await fs.readFile(spreadDataPath))[0]
             .Properties;
@@ -94,7 +94,7 @@ try {
         const recoilDataPath =
             weaponPath +
             '/' +
-            weaponFiles.find((element) => element.includes('DA_RecoilData'));
+            weaponFiles.find((fileName) => fileName.includes('DA_RecoilData'));
 
         const recoilData = JSON.parse(await fs.readFile(recoilDataPath))[0]
             .Properties;
