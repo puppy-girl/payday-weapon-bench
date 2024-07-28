@@ -69,20 +69,6 @@ try {
         const fireData = JSON.parse(await fs.readFile(fireDataPath))[0]
             .Properties;
 
-        const fireDataFilter = [
-            'DamageDistanceArray',
-            'AmmoLoaded',
-            'AmmoInventoryMax',
-            'AmmoInventory',
-            'AmmoPickup',
-            'CriticalDamageMultiplierDistanceArray',
-            'FireType',
-            'ProjectilesPerFiredRound',
-            'MaximumPenetrationCount',
-            'ArmorPenetration',
-            'RoundsPerMinute',
-        ];
-
         const spreadDataPath =
             weaponPath +
             '/' +
@@ -119,26 +105,148 @@ try {
         }
 
         const DLC = weapon.parentPath.match(/\d*-DLC[a-zA-Z0]*(\d*)/);
+
         weaponOutput[weapon.name] = {
-            DisplayName: weaponData.DisplayName.LocalizedString,
-            TypeClassText: weaponData.TypeClassText.LocalizedString,
-            DLC: DLC ? DLC[1] : null,
-            DisplayIcon: {
-                SourceUV: iconData.BakedSourceUV
+            displayName: weaponData.DisplayName.LocalizedString,
+            class: weaponData.TypeClassText.LocalizedString,
+            dlc: DLC ? DLC[1] : null,
+            displayIcon: {
+                offset: iconData.BakedSourceUV
                     ? iconData.BakedSourceUV
                     : { X: 0, Y: 0 },
-                SourceTexture: iconName,
+                source: iconName,
             },
-            FireData: Object.fromEntries(
-                Object.entries(fireData).filter(([key, _]) =>
-                    fireDataFilter.includes(key)
-                )
+            fireData: {
+                damageDistanceArray: fireData.DamageDistanceArray.map(
+                    (damageStep) => {
+                        return {
+                            damage: damageStep.Damage,
+                            distance: damageStep.Distance,
+                        };
+                    }
+                ),
+                criticalDamageMultiplierDistanceArray:
+                    fireData.CriticalDamageMultiplierDistanceArray.map(
+                        (critMultiplierStep) => {
+                            return {
+                                multiplier: critMultiplierStep.Multiplier,
+                                distance: critMultiplierStep.Distance,
+                            };
+                        }
+                    ),
+                ammoLoaded: fireData.AmmoLoaded,
+                ammoInventory: fireData.AmmoInventory,
+                ammoInventoryMax: fireData.ammoInventoryMax,
+                ammoPickup: {
+                    min: fireData.AmmoPickup.Min,
+                    max: fireData.AmmoPickup.Max,
+                },
+                fireType: fireData.FireType?.split('::')[1],
+                projectilesPerFiredRound: fireData.ProjectilesPerFiredRound,
+                maximumPenetrationCount: fireData.MaximumPenetrationCount,
+                armorPenetration: fireData.ArmorPenetration,
+                roundsPerMinute: fireData.RoundsPerMinute,
+            },
+            spreadData: {
+                start: spreadData.FireSpreadStart,
+                increase: spreadData.FireSpreadIncrease,
+                resetTime: spreadData.FireSpreadResetTime,
+                decayRate: spreadData.FireSpreadDecayRate,
+                cap: spreadData.FireSpreadCap,
+                stanceMultipliers: Object.fromEntries(
+                    Object.keys(spreadData.SpreadStanceMultipliers).map(
+                        (stance) => {
+                            const stanceMultipliers =
+                                spreadData.SpreadStanceMultipliers[stance];
+                            return [
+                                stance.charAt(0).toLowerCase() +
+                                    stance.slice(1),
+                                {
+                                    spread: stanceMultipliers.Spread,
+                                    start: stanceMultipliers.Start,
+                                    cap: stanceMultipliers.Cap,
+                                    increment: stanceMultipliers.Increment,
+                                },
+                            ];
+                        }
+                    )
+                ),
+                radiusMultipliers: {
+                    x: spreadData.SpreadRadiusMultipliers?.X,
+                    y: spreadData.SpreadRadiusMultipliers?.Y,
+                },
+                shotgunPatterns: spreadData.ShotgunPatterns?.map((pattern) => {
+                    return pattern.PelletSpreadAngles.map((spreadAngles) => {
+                        return { x: spreadAngles.X, y: spreadAngles.Y };
+                    });
+                }),
+            },
+            recoilData: {
+                viewKick: {
+                    deflectSpeed: recoilData.ViewKick.SpeedDeflect,
+                    recoverSpeed: recoilData.ViewKick.SpeedRecover,
+                    recoverWaitTime: recoilData.ViewKick.RecoverWaitTime,
+                    recoilPattern:
+                        recoilData.ViewKick.GraphDisplacementList.Points.map(
+                            (point) => {
+                                return { x: point.X, y: point.Y };
+                            }
+                        ),
+                    resetTime: recoilData.ViewKick.DisplacementResetTime,
+                    loopStart: recoilData.ViewKick.DisplacementGraphLoopStart,
+                    initialNum: recoilData.ViewKick.DisplacementGraphInitialNum,
+                    hipfireMultiplier:
+                        recoilData.ViewKick.DisplacementHipFireMultiplier,
+                },
+                gunKick: {
+                    deflectSpeed: recoilData.GunKickXY.SpeedDeflect,
+                    recoverSpeed: recoilData.GunKickXY.SpeedRecover,
+                    verticalTop: {
+                        min: recoilData.GunKickXY.VerticalTop?.Min,
+                        max: recoilData.GunKickXY.VerticalTop?.Max,
+                    },
+                    verticalBottom: {
+                        min: recoilData.GunKickXY.VerticalBottom?.Min,
+                        max: recoilData.GunKickXY.VerticalBottom?.Max,
+                    },
+                    verticalMultiplier: {
+                        start: recoilData.GunKickXY.VerticalMultiplier?.Start,
+                        min: recoilData.GunKickXY.VerticalMultiplier?.Min,
+                        max: recoilData.GunKickXY.VerticalMultiplier?.Max,
+                        threshold:
+                            recoilData.GunKickXY.VerticalMultiplier?.Threshold,
+                    },
+                    horizontalRight: {
+                        min: recoilData.GunKickXY.HorizontalRight?.Min,
+                        max: recoilData.GunKickXY.HorizontalRight?.Max,
+                    },
+                    horizontalLeft: {
+                        min: recoilData.GunKickXY.HorizontalLeft?.Min,
+                        max: recoilData.GunKickXY.HorizontalLeft?.Max,
+                    },
+                    horizontalMultiplier: {
+                        start: recoilData.GunKickXY.HorizontalMultiplier?.Start,
+                        min: recoilData.GunKickXY.HorizontalMultiplier?.Min,
+                        max: recoilData.GunKickXY.HorizontalMultiplier?.Max,
+                        threshold:
+                            recoilData.GunKickXY.HorizontalMultiplier
+                                ?.Threshold,
+                    },
+                },
+            },
+            modularConfiguration: Object.fromEntries(
+                Object.keys(weaponAttachments).map((slot) => {
+                    return [
+                        slot.charAt(0).toLowerCase() + slot.slice(1),
+                        {
+                            defaultPart: weaponAttachments[slot].DefaultPart,
+                            uniqueParts: weaponAttachments[slot].UniqueModParts,
+                        },
+                    ];
+                })
             ),
-            SpreadData: spreadData,
-            RecoilData: recoilData,
-            ModularConfiguration: weaponAttachments,
-            ReloadNotifyTime: weaponData.ReloadNotifyTime,
-            ReloadEmptyNotifyTime: weaponData.ReloadEmptyNotifyTime,
+            reloadTime: weaponData.ReloadNotifyTime,
+            reloadEmptyTime: weaponData.ReloadEmptyNotifyTime,
         };
 
         try {
