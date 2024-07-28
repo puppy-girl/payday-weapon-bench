@@ -444,24 +444,19 @@ function populateLoadout(selectedWeapon) {
         }
     );
 
-    for (const attachmentCategory of sortedAttachments) {
+    for (const slot of sortedAttachments) {
         const defaultAttachment =
-            weapon.modularConfiguration[attachmentCategory].defaultPart ??
-            'None';
+            weapon.modularConfiguration[slot].defaultPart ?? 'None';
         const attachments = [
             defaultAttachment,
-            ...weapon.modularConfiguration[attachmentCategory].uniqueParts,
+            ...weapon.modularConfiguration[slot].uniqueParts,
         ];
 
         const attachmentCategoryName = (
-            attachmentCategory.charAt(0).toUpperCase() +
-            attachmentCategory.slice(1)
+            slot.charAt(0).toUpperCase() + slot.slice(1)
         ).replace(/([a-z])([A-Z])/g, '$1 $2');
 
-        if (
-            weapon.modularConfiguration[attachmentCategory].uniqueParts.length >
-            0
-        ) {
+        if (weapon.modularConfiguration[slot].uniqueParts.length > 0) {
             const attachmentFieldset = attachmentsSection.appendChild(
                 document.createElement('fieldset')
             );
@@ -481,9 +476,9 @@ function populateLoadout(selectedWeapon) {
                 const attachmentInput = attachmentButton.children[0];
                 const attachmentLabel = attachmentButton.children[1];
 
-                attachmentInput.id = attachmentCategory + '_' + attachment;
+                attachmentInput.id = slot + '_' + attachment;
                 attachmentInput.value = attachment;
-                attachmentInput.name = attachmentCategory;
+                attachmentInput.name = slot;
                 attachmentInput.checked = attachment == defaultAttachment;
 
                 let attachmentName =
@@ -493,10 +488,7 @@ function populateLoadout(selectedWeapon) {
                         .pop()
                         .replace(/([a-z])([A-Z0-9])/g, '$1 $2');
 
-                attachmentLabel.setAttribute(
-                    'for',
-                    attachmentCategory + '_' + attachment
-                );
+                attachmentLabel.setAttribute('for', slot + '_' + attachment);
                 attachmentLabel.innerHTML = attachmentName;
 
                 attachmentInput.addEventListener('change', () => {
