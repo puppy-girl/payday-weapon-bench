@@ -440,6 +440,11 @@ h1 {
     min-height: 10em;
 }
 
+#weapon-stats-recoil > div {
+    margin: 0;
+    padding: 0 0.5em;
+}
+
 /* */
 
 .selectable-weapon:has(> input:checked),

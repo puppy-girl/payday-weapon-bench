@@ -377,6 +377,7 @@ function populateWeaponSelector() {
         weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
+            console.log('weapon selector');
             populateLoadout(event.target.value);
             updateWeaponStats(event.target.value);
         });
@@ -425,6 +426,7 @@ function populateSkills() {
         `;
 
         skillInput.addEventListener('change', (event) => {
+            console.log('skill selector');
             updateSkills(event.target.value);
             updateWeaponStats(
                 document.querySelector('.selectable-weapon input:checked').value
@@ -522,6 +524,7 @@ function populateLoadout(selectedWeapon) {
                 attachmentLabel.innerHTML = attachmentName;
 
                 attachmentInput.addEventListener('change', () => {
+                    console.log('attachment selector');
                     updateAttachments();
                     updateWeaponStats(selectedWeapon);
                 });
@@ -568,6 +571,8 @@ const weaponStatTemplate = document
     .querySelector('template.weapon-stat')
     .cloneNode(true);
 document.querySelector('template.weapon-stat').remove();
+
+let previousWeapon = '';
 
 function updateWeaponStats(selectedWeapon) {
     const weapon = applyLoadout(
@@ -630,14 +635,16 @@ function updateWeaponStats(selectedWeapon) {
     );
 
     const recoilPatternStat = document.querySelector('svg#recoil-pattern');
-    recoilPatternStat.innerHTML = '';
 
     const recoilPattern = weapon.recoilData.viewKick.recoilPattern;
+    const baseRecoilPattern =
+        WEAPON_DATA[selectedWeapon].recoilData.viewKick.recoilPattern;
+
     const points = [
-        ...recoilPattern.map((point) => {
+        ...baseRecoilPattern.map((point) => {
             return point.x;
         }),
-        ...recoilPattern.map((point) => {
+        ...baseRecoilPattern.map((point) => {
             return point.y;
         }),
     ];
@@ -645,39 +652,47 @@ function updateWeaponStats(selectedWeapon) {
         return Math.max(a, b);
     }, 0);
 
-    recoilPatternStat.setAttribute('viewBox', `0 0 ${max} ${max}`);
+    if (selectedWeapon !== previousWeapon) {
+        recoilPatternStat.innerHTML = '';
 
-    const baseline = recoilPatternStat.appendChild(
-        document.createElementNS('http://www.w3.org/2000/svg', 'line')
-    );
+        recoilPatternStat.setAttribute('viewBox', `0 0 ${max} ${max}`);
 
-    baseline.setAttribute('x1', 0);
-    baseline.setAttribute('y1', max * 0.95);
-    baseline.setAttribute('x2', max);
-    baseline.setAttribute('y2', max * 0.95);
-    baseline.setAttribute('stroke', 'white');
-    baseline.setAttribute('stroke-width', max / 160);
-    baseline.setAttribute('stroke-opacity', '20%');
-
-    const firstPoint = recoilPatternStat.appendChild(
-        document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-    );
-
-    firstPoint.setAttribute('cx', max / 2);
-    firstPoint.setAttribute('cy', max * 0.95);
-    firstPoint.setAttribute('r', max / 80);
-    firstPoint.setAttribute('fill', 'white');
-
-    for (const recoilPoint of recoilPattern) {
-        const point = recoilPatternStat.appendChild(
+        const firstPoint = recoilPatternStat.appendChild(
             document.createElementNS('http://www.w3.org/2000/svg', 'circle')
         );
 
-        point.setAttribute('cx', recoilPoint.x * -0.9 + max * 0.5);
-        point.setAttribute('cy', recoilPoint.y * -0.9 + max * 0.95);
-        point.setAttribute('r', max / 80);
-        point.setAttribute('fill', 'white');
+        firstPoint.setAttribute('cx', max / 2);
+        firstPoint.setAttribute('cy', max * 0.9);
+        firstPoint.setAttribute('r', max / 80);
+        firstPoint.setAttribute('fill', 'white');
+
+        for (const recoilPoint of recoilPattern) {
+            const point = recoilPatternStat.appendChild(
+                document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+            );
+
+            point.setAttribute('cx', recoilPoint.x * -0.8 + max * 0.5);
+            point.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
+            point.setAttribute('r', max / 80);
+            point.setAttribute('fill', 'white');
+            point.setAttribute('style', 'transition: all 0.2s ease-in-out');
+        }
+    } else {
+        for (const recoilPoint in recoilPattern) {
+            const point = recoilPatternStat.childNodes[Number(recoilPoint) + 1];
+
+            point.setAttribute(
+                'cx',
+                recoilPattern[recoilPoint].x * -0.8 + max * 0.5
+            );
+            point.setAttribute(
+                'cy',
+                recoilPattern[recoilPoint].y * -0.8 + max * 0.9
+            );
+        }
     }
+
+    previousWeapon = selectedWeapon;
 }
 
 populateWeaponSelector();
