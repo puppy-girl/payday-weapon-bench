@@ -112,8 +112,11 @@ try {
             dlc: DLC ? DLC[1] : null,
             displayIcon: {
                 offset: iconData.BakedSourceUV
-                    ? iconData.BakedSourceUV
-                    : { X: 0, Y: 0 },
+                    ? {
+                          x: iconData.BakedSourceUV.X,
+                          y: iconData.BakedSourceUV.Y,
+                      }
+                    : { x: 0, y: 0 },
                 source: iconName,
             },
             fireData: {

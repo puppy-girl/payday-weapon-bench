@@ -5,8 +5,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 128
+                "x": 256,
+                "y": 128
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -307,8 +307,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "2",
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 0
+                "x": 0,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
         },
@@ -599,8 +599,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 256
+                "x": 512,
+                "y": 256
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -816,8 +816,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "2",
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 128
+                "x": 0,
+                "y": 128
             },
             "source": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
         },
@@ -1024,8 +1024,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 0
+                "x": 0,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -1331,8 +1331,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 384
+                "x": 256,
+                "y": 384
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -1579,8 +1579,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 384
+                "x": 512,
+                "y": 384
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -1878,8 +1878,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 768,
-                "Y": 0
+                "x": 768,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -2167,8 +2167,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "1",
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 896
+                "x": 0,
+                "y": 896
             },
             "source": "SS_UI_Weapon_Presets.png"
         },
@@ -2459,8 +2459,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "1",
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 768
+                "x": 512,
+                "y": 768
             },
             "source": "SS_UI_Weapon_Presets.png"
         },
@@ -2773,8 +2773,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 128
+                "x": 512,
+                "y": 128
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -3090,8 +3090,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "2",
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 128
+                "x": 256,
+                "y": 128
             },
             "source": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
         },
@@ -3476,8 +3476,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 768,
-                "Y": 128
+                "x": 768,
+                "y": 128
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -3776,8 +3776,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 768,
-                "Y": 384
+                "x": 768,
+                "y": 384
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -4079,8 +4079,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 768,
-                "Y": 256
+                "x": 768,
+                "y": 256
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -4383,8 +4383,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 0
+                "x": 256,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -4670,8 +4670,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 0
+                "x": 512,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -4848,8 +4848,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "2",
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 0
+                "x": 256,
+                "y": 0
             },
             "source": "SS_UI_WeaponsPrimary_00010-DLCHEIST0002.png"
         },
@@ -5168,8 +5168,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 384
+                "x": 0,
+                "y": 384
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -5431,8 +5431,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 512,
-                "Y": 512
+                "x": 512,
+                "y": 512
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -5695,8 +5695,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 0,
-                "Y": 512
+                "x": 0,
+                "y": 512
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -5963,8 +5963,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 256
+                "x": 256,
+                "y": 256
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -6210,8 +6210,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": null,
         "displayIcon": {
             "offset": {
-                "X": 256,
-                "Y": 512
+                "x": 256,
+                "y": 512
             },
             "source": "SS_UI_WeaponsPrimary.png"
         },
@@ -6529,8 +6529,8 @@ const WEAPON_DATA = Object.freeze({
         "dlc": "1",
         "displayIcon": {
             "offset": {
-                "X": 768,
-                "Y": 768
+                "x": 768,
+                "y": 768
             },
             "source": "SS_UI_Weapon_Presets.png"
         },
