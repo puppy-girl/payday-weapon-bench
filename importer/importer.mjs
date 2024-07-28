@@ -83,6 +83,22 @@ try {
             'RoundsPerMinute',
         ];
 
+        const spreadDataPath =
+            weaponPath +
+            '/' +
+            weaponFiles.find((element) => element.includes('DA_SpreadData'));
+
+        const spreadData = JSON.parse(await fs.readFile(spreadDataPath))[0]
+            .Properties;
+
+        const recoilDataPath =
+            weaponPath +
+            '/' +
+            weaponFiles.find((element) => element.includes('DA_RecoilData'));
+
+        const recoilData = JSON.parse(await fs.readFile(recoilDataPath))[0]
+            .Properties;
+
         const weaponAttachments = {};
 
         for (const attachmentCategory of weaponData.ModularConfiguration) {
@@ -118,6 +134,8 @@ try {
                     fireDataFilter.includes(key)
                 )
             ),
+            SpreadData: spreadData,
+            RecoilData: recoilData,
             ModularConfiguration: weaponAttachments,
             ReloadNotifyTime: weaponData.ReloadNotifyTime,
             ReloadEmptyNotifyTime: weaponData.ReloadEmptyNotifyTime,
