@@ -1,81 +1,81 @@
-const DLCs = ['Syntax Error', 'Boys in Blue'];
+const DLC = ['Syntax Error', 'Boys in Blue'];
 
-const skills = {
+const SKILLS = {
     edge: {
         displayName: 'Edge',
         description: 'You deal 10% extra damage for 20 seconds.',
-        damageModifier: 0.1,
+        modifier: 0.1,
         iconOffset: {
-            X: 0,
-            Y: 0,
+            x: 0,
+            y: 0,
         },
     },
-    'long-shot': {
+    longShot: {
         displayName: 'Long Shot',
         description:
             'As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.',
         iconOffset: {
-            X: 127,
-            Y: 319,
+            x: 127,
+            y: 319,
         },
     },
-    'precision-shot': {
+    precisionShot: {
         displayName: 'Precision Shot',
         description:
             'As long as you have EDGE and are aiming down a scope, your shot will deal extra damage based on your scope magnification.',
         iconOffset: {
-            X: 191,
-            Y: 319,
+            x: 191,
+            y: 319,
         },
     },
-    'face-to-face': {
+    faceToFace: {
         displayName: 'Face to Face',
         description:
             'As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.',
-        damageModifier: 0.1,
+        modifier: 0.1,
         iconOffset: {
-            X: 127,
-            Y: 511,
+            x: 127,
+            y: 511,
         },
     },
-    'coup-de-grace': {
+    coupDeGrace: {
         displayName: 'Coup de Grâce',
         description:
             'If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.',
-        damageModifier: 0.1,
+        modifier: 0.1,
         iconOffset: {
-            X: 126,
-            Y: 895,
+            x: 126,
+            y: 895,
         },
     },
-    'combat-marking': {
+    combatMarking: {
         displayName: 'Combat Marking',
         description:
             'As long as you have EDGE, you deal an extra 20% damage against any marked target.',
-        damageModifier: 0.2,
+        modifier: 0.2,
         iconOffset: {
-            X: 64,
-            Y: 960,
+            x: 64,
+            y: 960,
         },
     },
-    'pain-asymbolia': {
+    painAsymbolia: {
         displayName: 'Pain Asymbolia',
         description:
             'As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.',
-        damageModifier: 0.1,
+        modifier: 0.1,
         iconOffset: {
-            X: 316,
-            Y: 1216,
+            x: 316,
+            y: 1216,
         },
     },
-    'high-grain': {
+    highGrain: {
         displayName: 'High Grain',
         description:
             'All placed Ammo Bags increase armor penetration for 30 seconds after interaction for you and all your teammates. Each additional crew member equipped with this skill increases weapon damage by 5% on top of that.',
-        armorPenModifier: 0.2,
+        modifier: 0.2,
         iconOffset: {
-            X: 255,
-            Y: 62,
+            x: 255,
+            y: 62,
         },
     },
     expose: {
@@ -83,32 +83,34 @@ const skills = {
         description:
             'Shots fired at enemies affected by your flashbang will ignore armor for as long as they are stunned.',
         iconOffset: {
-            X: 254,
-            Y: 894,
+            x: 254,
+            y: 894,
         },
     },
-    'duck-and-weave': {
+    duckAndWeave: {
         displayName: 'Duck and Weave',
         description:
             'As long as you have RUSH, you deal 25% more damage to enemies from behind. This bonus is reduced by 5% for each armor chunk you currently have beyond the first.',
-        damageModifier: 0.25,
+        modifier: 0.25,
         iconOffset: {
-            X: 190,
-            Y: 1279,
+            x: 190,
+            y: 1279,
         },
     },
 };
 
-const edgeDependentSkills = [
-    'long-shot',
-    'precision-shot',
-    'face-to-face',
-    'coup-de-grace',
-    'combat-marking',
-    'pain-asymbolia',
+const EDGE_DEPENDENT_SKILLS = [
+    'longShot',
+    'precisionShot',
+    'faceToFace',
+    'coupDeGrace',
+    'combatMarking',
+    'painAsymbolia',
 ];
 
-const weaponCategories = [
+// Sort the weapons list by DLC and class
+
+const weaponClasses = [
     'AssaultRifle',
     'Marksman',
     'Shotgun',
@@ -120,8 +122,8 @@ const weaponCategories = [
 
 const sortedWeapons = Object.keys(WEAPON_DATA).sort((a, b) => {
     return (
-        weaponCategories.indexOf(WEAPON_DATA[a].class) -
-            weaponCategories.indexOf(WEAPON_DATA[b].class) ||
+        weaponClasses.indexOf(WEAPON_DATA[a].class) -
+            weaponClasses.indexOf(WEAPON_DATA[b].class) ||
         WEAPON_DATA[a].dlc - WEAPON_DATA[b].dlc
     );
 });
@@ -162,7 +164,7 @@ function populateWeaponSelector() {
         weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
         weaponName.setAttribute('for', weapon);
 
-        weaponDLC.innerHTML = DLCs[WEAPON_DATA[weapon].dlc - 1] ?? '';
+        weaponDLC.innerHTML = DLC[WEAPON_DATA[weapon].dlc - 1] ?? '';
         weaponDLC.setAttribute('for', weapon);
 
         weaponInput.addEventListener('change', (event) => {
@@ -179,20 +181,20 @@ function populateWeaponSelector() {
     }
 }
 
-const skillContainer = document.querySelector(
+const skillSelector = document.querySelector(
     '#skill-selector .loadout-category-container'
 );
 const skillTemplate = document.querySelector('template.skill').cloneNode(true);
 document.querySelector('template.skill').remove();
 
-const loadoutAttachments = document.querySelector('#loadout-attachments');
+const attachmentsSection = document.querySelector('#loadout-attachments');
 
 const attachmentTemplate = document
     .querySelector('template.attachment')
     .cloneNode(true);
 document.querySelector('template.attachment').remove();
 
-const attachmentGroupTemplate = document
+const attachmentSelectorTemplate = document
     .querySelector('#attachment-selector')
     .cloneNode(true);
 document.querySelector('#attachment-selector').remove();
@@ -203,8 +205,8 @@ const weaponStatTemplate = document
 document.querySelector('template.weapon-stat').remove();
 
 function populateSkills() {
-    for (const skill in skills) {
-        const selectableSkill = skillContainer.appendChild(
+    for (const skill in SKILLS) {
+        const selectableSkill = skillSelector.appendChild(
             document.createElement('div')
         );
 
@@ -216,14 +218,14 @@ function populateSkills() {
 
         skillInput.id = skill;
 
-        if (edgeDependentSkills.includes(skill)) skillInput.disabled = true;
+        if (EDGE_DEPENDENT_SKILLS.includes(skill)) skillInput.disabled = true;
 
-        skillLabel.innerHTML = skills[skill].displayName;
+        skillLabel.innerHTML = SKILLS[skill].displayName;
         skillLabel.setAttribute('for', skill);
 
         skillLabel.style = `
-            --image-x-offset: ${skills[skill].iconOffset.X * -1}px;
-            --image-y-offset: ${skills[skill].iconOffset.Y * -1}px;
+            --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
+            --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
             --image-url: url("images/${
                 skill == 'edge' ? 'edge.png' : 'skills.png'
             }");
@@ -262,7 +264,7 @@ function updateSkills(selectedSkill) {
     else equippedSkills.splice(equippedSkills.indexOf(selectedSkill), 1);
 
     if (selectedSkill !== 'edge') return;
-    for (const skill of edgeDependentSkills) {
+    for (const skill of EDGE_DEPENDENT_SKILLS) {
         const skillInput = document.querySelector(`input#${skill}`);
 
         if (skillIsEquipped) {
@@ -277,7 +279,7 @@ function updateSkills(selectedSkill) {
     }
 }
 
-const attachmentCategories = [
+const attachmentSlots = [
     'sight',
     'mag',
     'barrelExtension',
@@ -292,14 +294,12 @@ function populateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML =
         selectedWeapon.displayName;
 
-    loadoutAttachments.innerHTML = '';
+    attachmentsSection.innerHTML = '';
 
     const sortedAttachments = Object.keys(
         selectedWeapon.modularConfiguration
     ).sort((a, b) => {
-        return (
-            attachmentCategories.indexOf(a) - attachmentCategories.indexOf(b)
-        );
+        return attachmentSlots.indexOf(a) - attachmentSlots.indexOf(b);
     });
 
     for (const attachmentCategory of sortedAttachments) {
@@ -321,10 +321,10 @@ function populateLoadout(selectedWeapon) {
             selectedWeapon.modularConfiguration[attachmentCategory].uniqueParts
                 .length > 0
         ) {
-            const attachmentFieldset = loadoutAttachments.appendChild(
+            const attachmentFieldset = attachmentsSection.appendChild(
                 document.createElement('fieldset')
             );
-            attachmentFieldset.innerHTML = attachmentGroupTemplate.innerHTML;
+            attachmentFieldset.innerHTML = attachmentSelectorTemplate.innerHTML;
             attachmentFieldset.classList = ['loadout-category'];
 
             attachmentFieldset.children[0].innerHTML = attachmentCategoryName;
@@ -444,23 +444,23 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
     // Precision Shot sets the base damage modifier
     // to the current scope's magnification
     if (
-        equippedSkills.includes('precision-shot') &&
+        equippedSkills.includes('precisionShot') &&
         equippedSight?.targetingData?.targetingMagnification >= 5
     )
         damageModifier = equippedSight.targetingData.targetingMagnification;
 
     for (const skill of [
         'edge',
-        'coup-de-grace',
-        'combat-marking',
-        'pain-asymbolia',
-        'duck-and-weave',
+        'coupDeGrace',
+        'combatMarking',
+        'painAsymbolia',
+        'duckAndWeave',
     ]) {
         if (equippedSkills.includes(skill))
-            damageModifier += skills[skill].damageModifier;
+            damageModifier += SKILLS[skill].modifier;
     }
 
-    const faceToFaceIsEquipped = equippedSkills.includes('face-to-face');
+    const faceToFaceIsEquipped = equippedSkills.includes('faceToFace');
 
     fireData.damageDistanceArray = fireData.damageDistanceArray.map(
         (damageStep) => {
@@ -471,8 +471,7 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
                 faceToFaceIsEquipped &&
                 damageStep.distance + rangeModifier <= 500
             )
-                damage *=
-                    damageModifier + skills['face-to-face'].damageModifier;
+                damage *= damageModifier + SKILLS['faceToFace'].modifier;
             else damage *= damageModifier;
 
             return {
@@ -488,14 +487,14 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
             fireData.damageDistanceArray.unshift({
                 damage:
                     weapon.fireData.damageDistanceArray[0].damage *
-                    (damageModifier + skills['face-to-face'].damageModifier),
+                    (damageModifier + SKILLS['faceToFace'].modifier),
                 distance: 500,
             });
         } else if (fireData.damageDistanceArray[0].distance < 500) {
             // Insert face to face's 5m range second in the array
             const damage =
                 weapon.fireData.damageDistanceArray[1].damage *
-                (damageModifier + skills['face-to-face'].damageModifier);
+                (damageModifier + SKILLS['faceToFace'].modifier);
 
             fireData.damageDistanceArray.splice(1, 0, {
                 damage: damage,
@@ -505,8 +504,7 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
     }
 
     // Long shot removes distance penalties on critical multipliers
-    if (equippedSkills.includes('long-shot')) {
-        console.log('long shot');
+    if (equippedSkills.includes('longShot')) {
         fireData.criticalDamageMultiplierDistanceArray = [
             {
                 multiplier:
@@ -523,8 +521,8 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
 
     fireData.armorPenetration = fireData.armorPenetration ?? 0;
 
-    if (equippedSkills.includes('high-grain'))
-        fireData.armorPenetration += skills['high-grain'].armorPenModifier;
+    if (equippedSkills.includes('highGrain'))
+        fireData.armorPenetration += SKILLS['highGrain'].modifier;
 
     if (modifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= getModData(
