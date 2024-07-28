@@ -183,7 +183,7 @@ function shotsToKill(
 
 // Returns the shots to kill at each unique distance
 function weaponShotsToKill(weaponName, enemyName, selectedSkills) {
-    const weapon = weaponData[weaponName],
+    const weapon = WEAPON_DATA[weaponName],
         enemy = enemyData[enemyName];
 
     // Create a new array of distances
@@ -308,11 +308,11 @@ const weaponCategories = [
     'LMG',
 ];
 
-const sortedWeapons = Object.keys(weaponData).sort((a, b) => {
+const sortedWeapons = Object.keys(WEAPON_DATA).sort((a, b) => {
     return (
-        weaponCategories.indexOf(weaponData[a].TypeClassText) -
-            weaponCategories.indexOf(weaponData[b].TypeClassText) ||
-        weaponData[a].DLC - weaponData[b].DLC
+        weaponCategories.indexOf(WEAPON_DATA[a].class) -
+            weaponCategories.indexOf(WEAPON_DATA[b].class) ||
+        WEAPON_DATA[a].dlc - WEAPON_DATA[b].dlc
     );
 });
 
@@ -332,13 +332,13 @@ function populateWeaponSelector() {
         selectableWeapon.classList = ['selectable-weapon'];
         selectableWeapon.style = `
             --image-x-offset: ${
-                weaponData[weapon].DisplayIcon.SourceUV.X * -1
+                WEAPON_DATA[weapon].displayIcon.offset.x * -1
             }px;
             --image-y-offset: ${
-                weaponData[weapon].DisplayIcon.SourceUV.Y * -1
+                WEAPON_DATA[weapon].displayIcon.offset.y * -1
             }px;
             --image-url: url("images/${
-                weaponData[weapon].DisplayIcon.SourceTexture
+                WEAPON_DATA[weapon].displayIcon.source
             }");
         `;
 
@@ -349,14 +349,14 @@ function populateWeaponSelector() {
         weaponInput.id = weapon;
         weaponInput.value = weapon;
 
-        weaponName.innerHTML = weaponData[weapon].DisplayName;
+        weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
         weaponName.setAttribute('for', weapon);
 
-        weaponDLC.innerHTML = DLCs[weaponData[weapon].DLC - 1] ?? '';
+        weaponDLC.innerHTML = DLCs[WEAPON_DATA[weapon].dlc - 1] ?? '';
         weaponDLC.setAttribute('for', weapon);
 
         weaponInput.addEventListener('change', (event) => {
-            const selectedWeapon = weaponData[event.target.value];
+            const selectedWeapon = WEAPON_DATA[event.target.value];
 
             populateLoadout(selectedWeapon);
             updateWeaponStats(selectedWeapon);
@@ -364,8 +364,8 @@ function populateWeaponSelector() {
 
         if (weapon == 'CAR4') weaponInput.checked = true;
 
-        populateLoadout(weaponData['CAR4']);
-        updateWeaponStats(weaponData['CAR4']);
+        populateLoadout(WEAPON_DATA['CAR4']);
+        updateWeaponStats(WEAPON_DATA['CAR4']);
     }
 }
 
@@ -422,7 +422,7 @@ function populateSkills() {
         skillInput.addEventListener('change', (event) => {
             updateSkills(event.target.id);
             updateWeaponStats(
-                weaponData[
+                WEAPON_DATA[
                     document.querySelector('.selectable-weapon input:checked')
                         .value
                 ]
@@ -468,24 +468,24 @@ function updateSkills(selectedSkill) {
 }
 
 const attachmentCategories = [
-    'Sight',
-    'Mag',
-    'BarrelExtension',
-    'Barrel',
-    'VerticalGrip',
-    'ForeGrip',
-    'Grip',
-    'Stock',
+    'sight',
+    'mag',
+    'barrelExtension',
+    'barrel',
+    'verticalGrip',
+    'foreGrip',
+    'grip',
+    'stock',
 ];
 
 function populateLoadout(selectedWeapon) {
     document.querySelector('#loadout h2').innerHTML =
-        selectedWeapon.DisplayName;
+        selectedWeapon.displayName;
 
     loadoutAttachments.innerHTML = '';
 
     const sortedAttachments = Object.keys(
-        selectedWeapon.ModularConfiguration
+        selectedWeapon.modularConfiguration
     ).sort((a, b) => {
         return (
             attachmentCategories.indexOf(a) - attachmentCategories.indexOf(b)
@@ -494,22 +494,22 @@ function populateLoadout(selectedWeapon) {
 
     for (const attachmentCategory of sortedAttachments) {
         const defaultAttachment =
-            selectedWeapon.ModularConfiguration[attachmentCategory]
-                .DefaultPart ?? 'None';
+            selectedWeapon.modularConfiguration[attachmentCategory]
+                .defaultPart ?? 'None';
         const attachments = [
             defaultAttachment,
-            ...selectedWeapon.ModularConfiguration[attachmentCategory]
-                .UniqueModParts,
+            ...selectedWeapon.modularConfiguration[attachmentCategory]
+                .uniqueParts,
         ];
 
-        const attachmentCategoryName = attachmentCategory
-            .split('_')
-            .pop()
-            .replace(/([a-z])([A-Z])/g, '$1 $2');
+        const attachmentCategoryName = (
+            attachmentCategory.charAt(0).toUpperCase() +
+            attachmentCategory.slice(1)
+        ).replace(/([a-z])([A-Z])/g, '$1 $2');
 
         if (
-            selectedWeapon.ModularConfiguration[attachmentCategory]
-                .UniqueModParts.length > 0
+            selectedWeapon.modularConfiguration[attachmentCategory].uniqueParts
+                .length > 0
         ) {
             const attachmentFieldset = loadoutAttachments.appendChild(
                 document.createElement('fieldset')
@@ -536,7 +536,7 @@ function populateLoadout(selectedWeapon) {
                 attachmentInput.checked = attachment == defaultAttachment;
 
                 let attachmentName =
-                    attachmentData[attachment]?.DisplayName ??
+                    ATTACHMENT_DATA[attachment]?.displayName ??
                     attachment
                         .split('_')
                         .pop()
@@ -563,22 +563,22 @@ populateWeaponSelector();
 populateSkills();
 
 function getModData(stat, value) {
-    const statData = modData[stat].Keys;
+    const statData = MOD_DATA[stat];
 
     if (value == 0 || value == undefined) return 0;
 
     const previous = statData.findLast((i) => {
-        return value >= i.Time;
+        return value >= i.point;
     });
     const next = statData.find((i) => {
-        return value <= i.Time;
+        return value <= i.point;
     });
 
-    if (previous == next) return previous.Value;
+    if (previous == next) return previous.value;
 
     const gradient =
-        (next.Value - previous.Value) / (next.Time - previous.Time);
-    const intercept = previous.Value - gradient * previous.Time;
+        (next.value - previous.value) / (next.point - previous.point);
+    const intercept = previous.value - gradient * previous.point;
 
     return gradient * value + intercept;
 }
@@ -588,38 +588,40 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
 
     const modifiers = {};
     equippedAttachments.forEach((attachment) => {
-        if (!attachmentData[attachment]?.AttributeModifierMap) return;
+        if (!ATTACHMENT_DATA[attachment]?.attributeModifierMap) return;
 
-        attachmentData[attachment].AttributeModifierMap.forEach((modifier) => {
-            return modifiers[modifier.Key]
-                ? (modifiers[modifier.Key] += modifier.Value)
-                : (modifiers[modifier.Key] = modifier.Value);
+        ATTACHMENT_DATA[attachment].attributeModifierMap.forEach((modifier) => {
+            return modifiers[modifier.attribute]
+                ? (modifiers[modifier.attribute] += modifier.value)
+                : (modifiers[modifier.attribute] = modifier.value);
         });
     });
 
     const equippedMag =
-        attachmentData[
+        ATTACHMENT_DATA[
             equippedAttachments.find((attachment) => {
-                return attachmentData[attachment].MagazineData;
+                return ATTACHMENT_DATA[attachment].magazineData;
             })
-        ]?.MagazineData?.Properties;
+        ]?.magazineData;
 
-    const fireData = updatedWeapon.FireData;
+    console.log(equippedMag);
 
-    fireData.AmmoLoaded = (equippedMag ?? weapon.FireData).AmmoLoaded ?? 10;
-    fireData.AmmoInventory =
-        (equippedMag ?? weapon.FireData).AmmoInventory ?? 100;
-    fireData.AmmoInventoryMax =
-        (equippedMag ?? weapon.FireData).AmmoInventoryMax ?? 200;
-    fireData.AmmoPickup = {
-        Min: (equippedMag ?? weapon.FireData).AmmoPickup.Min ?? 5,
-        Max: (equippedMag ?? weapon.FireData).AmmoPickup.Max ?? 10,
+    const fireData = updatedWeapon.fireData;
+
+    fireData.ammoLoaded = (equippedMag ?? weapon.fireData).ammoLoaded ?? 10;
+    fireData.ammoInventory =
+        (equippedMag ?? weapon.fireData).ammoInventory ?? 100;
+    fireData.ammoInventoryMax =
+        (equippedMag ?? weapon.fireData).ammoInventoryMax ?? 200;
+    fireData.ammoPickup = {
+        min: (equippedMag ?? weapon.fireData).ammoPickup.min ?? 5,
+        max: (equippedMag ?? weapon.fireData).ammoPickup.max ?? 10,
     };
 
     const equippedSight =
-        attachmentData[
+        ATTACHMENT_DATA[
             equippedAttachments.find((attachment) => {
-                return attachmentData[attachment]?.TargetingData;
+                return ATTACHMENT_DATA[attachment]?.targetingData;
             })
         ];
 
@@ -633,11 +635,11 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
     // to the current scope's magnification
     if (
         equippedSkills.includes('precision-shot') &&
-        equippedSight?.TargetingData?.TargetingMagnification >= 5
+        equippedSight?.targetingData?.targetingMagnification >= 5
     )
-        damageModifier = equippedSight.TargetingData.TargetingMagnification;
+        damageModifier = equippedSight.targetingData.targetingMagnification;
 
-    for (skill of [
+    for (const skill of [
         'edge',
         'coup-de-grace',
         'combat-marking',
@@ -650,44 +652,44 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
 
     const faceToFaceIsEquipped = equippedSkills.includes('face-to-face');
 
-    fireData.DamageDistanceArray = fireData.DamageDistanceArray.map(
+    fireData.damageDistanceArray = fireData.damageDistanceArray.map(
         (damageStep) => {
-            let damage = damageStep.Damage;
+            let damage = damageStep.damage;
 
             // Face to Face adds to the damage modifier within 5 metres
             if (
                 faceToFaceIsEquipped &&
-                damageStep.Distance + rangeModifier <= 500
+                damageStep.distance + rangeModifier <= 500
             )
                 damage *=
                     damageModifier + skills['face-to-face'].damageModifier;
             else damage *= damageModifier;
 
             return {
-                Damage: damage,
-                Distance: damageStep.Distance + rangeModifier,
+                damage: damage,
+                distance: damageStep.distance + rangeModifier,
             };
         }
     );
 
     if (faceToFaceIsEquipped) {
-        if (fireData.DamageDistanceArray[0].Distance > 500) {
+        if (fireData.damageDistanceArray[0].distance > 500) {
             // Insert face to face's 5m range at the start of the array
-            fireData.DamageDistanceArray.unshift({
-                Damage:
-                    weapon.FireData.DamageDistanceArray[0].Damage *
+            fireData.damageDistanceArray.unshift({
+                damage:
+                    weapon.fireData.damageDistanceArray[0].damage *
                     (damageModifier + skills['face-to-face'].damageModifier),
-                Distance: 500,
+                distance: 500,
             });
-        } else if (fireData.DamageDistanceArray[0].Distance < 500) {
+        } else if (fireData.damageDistanceArray[0].distance < 500) {
             // Insert face to face's 5m range second in the array
             const damage =
-                weapon.FireData.DamageDistanceArray[1].Damage *
+                weapon.fireData.damageDistanceArray[1].damage *
                 (damageModifier + skills['face-to-face'].damageModifier);
 
-            fireData.DamageDistanceArray.splice(1, 0, {
-                Damage: damage,
-                Distance: 500,
+            fireData.damageDistanceArray.splice(1, 0, {
+                damage: damage,
+                distance: 500,
             });
         }
     }
@@ -695,32 +697,32 @@ function applyLoadout(weapon, equippedSkills, equippedAttachments) {
     // Long shot removes distance penalties on critical multipliers
     if (equippedSkills.includes('long-shot')) {
         console.log('long shot');
-        fireData.CriticalDamageMultiplierDistanceArray = [
+        fireData.criticalDamageMultiplierDistanceArray = [
             {
-                Multiplier:
-                    fireData.CriticalDamageMultiplierDistanceArray[0]
-                        .Multiplier,
-                Distance:
-                    fireData.CriticalDamageMultiplierDistanceArray.reverse()[0]
-                        .Distance,
+                multiplier:
+                    fireData.criticalDamageMultiplierDistanceArray[0]
+                        .multiplier,
+                distance:
+                    fireData.criticalDamageMultiplierDistanceArray.reverse()[0]
+                        .distance,
             },
         ];
     }
 
-    fireData.RoundsPerMinute = fireData.RoundsPerMinute ?? 600;
+    fireData.roundsPerMinute = fireData.roundsPerMinute ?? 600;
 
-    fireData.ArmorPenetration = fireData.ArmorPenetration ?? 0;
+    fireData.armorPenetration = fireData.armorPenetration ?? 0;
 
     if (equippedSkills.includes('high-grain'))
-        fireData.ArmorPenetration += skills['high-grain'].armorPenModifier;
+        fireData.armorPenetration += skills['high-grain'].armorPenModifier;
 
     if (modifiers['OverallReloadPlayRate']) {
-        updatedWeapon.ReloadNotifyTime /= getModData(
+        updatedWeapon.reloadTime /= getModData(
             'OverallReloadPlayRate',
             modifiers['OverallReloadPlayRate']
         );
 
-        updatedWeapon.ReloadEmptyNotifyTime /= getModData(
+        updatedWeapon.reloadEmptyTime /= getModData(
             'OverallReloadPlayRate',
             modifiers['OverallReloadPlayRate']
         );
@@ -736,27 +738,27 @@ function updateWeaponStats(selectedWeapon) {
         equippedAttachments
     );
 
-    document.querySelector('#rpm').innerHTML = weapon.FireData.RoundsPerMinute;
+    document.querySelector('#rpm').innerHTML = weapon.fireData.roundsPerMinute;
 
-    document.querySelector('#ap').innerHTML = weapon.FireData.ArmorPenetration;
+    document.querySelector('#ap').innerHTML = weapon.fireData.armorPenetration;
 
-    document.querySelector('#mag').innerHTML = weapon.FireData.AmmoLoaded;
+    document.querySelector('#mag').innerHTML = weapon.fireData.ammoLoaded;
     document.querySelector('#max-ammo').innerHTML =
-        weapon.FireData.AmmoInventoryMax;
+        weapon.fireData.ammoInventoryMax;
     document.querySelector('#ammo-pickup').innerHTML =
-        weapon.FireData.AmmoPickup.Min + '-' + weapon.FireData.AmmoPickup.Max;
+        weapon.fireData.ammoPickup.min + '-' + weapon.fireData.ammoPickup.max;
 
     document.querySelector('#reload').innerHTML =
-        Math.round(weapon.ReloadNotifyTime * 100) / 100 + 's';
+        Math.round(weapon.reloadTime * 100) / 100 + 's';
 
     document.querySelector('#full-reload').innerHTML =
-        Math.round(weapon.ReloadEmptyNotifyTime * 100) / 100 + 's';
+        Math.round(weapon.reloadEmptyTime * 100) / 100 + 's';
 
     const weaponDamageStats =
         document.querySelector('#weapon-damage').children[0];
     weaponDamageStats.innerHTML = '';
 
-    weapon.FireData.DamageDistanceArray.forEach((damageStep) => {
+    weapon.fireData.damageDistanceArray.forEach((damageStep) => {
         const damageStat = weaponDamageStats.appendChild(
             document.createElement('div')
         );
@@ -764,16 +766,16 @@ function updateWeaponStats(selectedWeapon) {
         damageStat.classList = ['weapon-stat'];
 
         damageStat.children[0].innerHTML =
-            Math.round(Math.min(damageStep.Distance, 100000)) / 100 + 'm';
+            Math.round(Math.min(damageStep.distance, 100000)) / 100 + 'm';
         damageStat.children[1].innerHTML =
-            Math.round(damageStep.Damage * 100) / 100;
+            Math.round(damageStep.damage * 100) / 100;
     });
 
     const weaponCritStats =
         document.querySelector('#weapon-damage').children[1];
     weaponCritStats.innerHTML = '';
 
-    weapon.FireData.CriticalDamageMultiplierDistanceArray.forEach(
+    weapon.fireData.criticalDamageMultiplierDistanceArray.forEach(
         (criticalDamageStep) => {
             const critStat = weaponCritStats.appendChild(
                 document.createElement('div')
@@ -782,9 +784,9 @@ function updateWeaponStats(selectedWeapon) {
             critStat.classList = ['weapon-stat'];
 
             critStat.children[0].innerHTML =
-                Math.min(criticalDamageStep.Distance, 100000) / 100 + 'm';
+                Math.min(criticalDamageStep.distance, 100000) / 100 + 'm';
             critStat.children[1].innerHTML =
-                criticalDamageStep.Multiplier + 'x';
+                criticalDamageStep.multiplier + 'x';
         }
     );
 }
