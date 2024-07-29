@@ -265,6 +265,11 @@ function applyLoadout(weapon, skills, attachments) {
         };
     });
 
+    viewKick.loopStart = viewKick.loopStart ?? 0;
+    viewKick.initialNum = viewKick.initialNum ?? 3;
+    viewKick.recoverWaitTime = viewKick.recoverWaitTime ?? 0;
+    viewKick.hipfireMultiplier = viewKick.hipfireMultiplier ?? 1;
+
     if (attributeModifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= convertAttributeModifier(
             'OverallReloadPlayRate',
@@ -691,6 +696,15 @@ function updateWeaponStats(selectedWeapon) {
             point.setAttribute('fill', 'white');
             point.setAttribute('style', 'transition: all 0.2s ease-in-out');
         }
+
+        document.querySelector('#loop-start').innerHTML =
+            weapon.recoilData.viewKick.loopStart;
+        document.querySelector('#reset-delay').innerHTML =
+            weapon.recoilData.viewKick.recoverWaitTime
+                .toString()
+                .replace('0.', '.') + 's';
+        document.querySelector('#hipfire-multiplier').innerHTML =
+            weapon.recoilData.viewKick.hipfireMultiplier + 'x';
     } else {
         for (const recoilPoint in recoilPattern) {
             const point =

@@ -372,7 +372,7 @@ h1 {
 
 #weapon-stats-recoil {
     grid-column-start: 1;
-    grid-column-end: 5;
+    grid-column-end: 9;
 }
 
 .weapon-stat-container, .damage-stat-container {
@@ -432,17 +432,17 @@ h1 {
     grid-template-columns: 1fr 1fr 1fr;
 }
 
+#weapon-stats-recoil > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 #damage-stats {
     margin-top: 2.618em;
 }
 
 .damage-stat-container {
     min-height: 10em;
-}
-
-#weapon-stats-recoil > div {
-    margin: 0;
-    padding: 0 0.5em;
 }
 
 /* */
