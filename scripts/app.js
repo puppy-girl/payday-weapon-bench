@@ -768,24 +768,21 @@ function updateWeaponStats(selectedWeapon) {
         firstPoint.setAttribute('fill', 'white');
 
         for (const recoilPoint of recoilPattern) {
-            const originalPoint = recoilPatternStat.appendChild(
-                document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-            );
+            for (let i = 0; i < 2; i++) {
+                const point = recoilPatternStat.appendChild(
+                    document.createElementNS(
+                        'http://www.w3.org/2000/svg',
+                        'circle'
+                    )
+                );
 
-            originalPoint.setAttribute('cx', recoilPoint.x * -0.8 + max * 0.5);
-            originalPoint.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
-            originalPoint.setAttribute('r', max / 80);
-            originalPoint.setAttribute('fill', 'white');
-            originalPoint.setAttribute('fill-opacity', '10%');
+                point.setAttribute('cx', recoilPoint.x * -0.8 + max * 0.5);
+                point.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
+                point.setAttribute('r', max / 80);
+                point.setAttribute('fill', 'white');
 
-            const point = recoilPatternStat.appendChild(
-                document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-            );
-
-            point.setAttribute('cx', recoilPoint.x * -0.8 + max * 0.5);
-            point.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
-            point.setAttribute('r', max / 80);
-            point.setAttribute('fill', 'white');
+                if (i == 0) point.setAttribute('fill-opacity', '10%');
+            }
         }
 
         document.querySelector('#loop-start').innerHTML =
@@ -799,8 +796,7 @@ function updateWeaponStats(selectedWeapon) {
 
         gunKickStat.innerHTML = '';
 
-        let loops = 2;
-        while (loops--) {
+        for (let i = 0; i < 2; i++) {
             const gunKick = gunKickStat.appendChild(
                 document.createElementNS('http://www.w3.org/2000/svg', 'rect')
             );
@@ -817,9 +813,9 @@ function updateWeaponStats(selectedWeapon) {
             );
             gunKick.setAttribute('fill', 'white');
             gunKick.setAttribute('fill-opacity', '30%');
-        }
 
-        gunKickStat.childNodes[0].setAttribute('fill-opacity', '10%');
+            if (i == 0) gunKick.setAttribute('fill-opacity', '10%');
+        }
 
         const center = gunKickStat.appendChild(
             document.createElementNS('http://www.w3.org/2000/svg', 'circle')
