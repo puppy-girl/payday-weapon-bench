@@ -461,7 +461,6 @@ function populateWeaponSelector() {
         weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
-            console.log('weapon selector');
             populateLoadout(event.target.value);
             updateWeaponStats(event.target.value);
         });
@@ -510,7 +509,6 @@ function populateSkills() {
         `;
 
         skillInput.addEventListener('change', (event) => {
-            console.log('skill selector');
             updateSkills(event.target.value);
             updateWeaponStats(
                 document.querySelector('.selectable-weapon input:checked').value
@@ -608,7 +606,6 @@ function populateLoadout(selectedWeapon) {
                 attachmentLabel.innerHTML = attachmentName;
 
                 attachmentInput.addEventListener('change', () => {
-                    console.log('attachment selector');
                     updateAttachments();
                     updateWeaponStats(selectedWeapon);
                 });
