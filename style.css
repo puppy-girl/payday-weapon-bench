@@ -307,7 +307,7 @@ h1 {
     border-radius: 0.2em;
 
     background: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
 
     user-select: none;
     cursor: pointer;
@@ -382,7 +382,7 @@ h1 {
     border-radius: 0.2em;
 
     background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
 }
 
 .weapon-stat-category-title {
