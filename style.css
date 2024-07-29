@@ -233,7 +233,7 @@ h1 {
 
 #content {
     display: grid;
-    grid-template-columns: 1fr 48rem;
+    grid-template-columns: 1fr 52rem;
     gap: 3rem;
 }
 
@@ -356,23 +356,23 @@ h1 {
 
 #weapon-stats {
     display: grid;
-    grid-template-columns: repeat(15, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
 }
 
 #weapon-stats-damage {
     grid-column-start: 1;
-    grid-column-end: 12;
+    grid-column-end: 4;
 }
 
 #weapon-stats-magazine {
-    grid-column-start: 12;
-    grid-column-end: 16;
+    grid-column-start: 4;
+    grid-column-end: 5;
 }
 
 #weapon-stats-recoil {
     grid-column-start: 1;
-    grid-column-end: 9;
+    grid-column-end: 3;
 }
 
 .weapon-stat-container, .damage-stat-container {
