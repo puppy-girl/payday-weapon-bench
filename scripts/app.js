@@ -279,14 +279,14 @@ function applyLoadout(weapon, skills, attachments) {
                     'VerticalGunkick',
                     (attributeModifiers['HorizoVerticalGunkickntalGunkick'] ??
                         0) + (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
         max:
             gunKick.verticalTop.max *
                 (convertAttributeModifier(
                     'VerticalGunkick',
                     (attributeModifiers['VerticalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
     };
     gunKick.verticalBottom = {
         min:
@@ -295,14 +295,14 @@ function applyLoadout(weapon, skills, attachments) {
                     'VerticalGunkick',
                     (attributeModifiers['VerticalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
         max:
             gunKick.verticalBottom.max *
                 (convertAttributeModifier(
                     'VerticalGunkick',
                     (attributeModifiers['VerticalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
     };
     gunKick.horizontalRight = {
         min:
@@ -311,14 +311,14 @@ function applyLoadout(weapon, skills, attachments) {
                     'HorizontalGunkick',
                     (attributeModifiers['HorizontalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
         max:
             gunKick.horizontalRight.max *
                 (convertAttributeModifier(
                     'HorizontalGunkick',
                     (attributeModifiers['HorizontalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
     };
     gunKick.horizontalLeft = {
         min:
@@ -327,14 +327,14 @@ function applyLoadout(weapon, skills, attachments) {
                     'HorizontalGunkick',
                     (attributeModifiers['HorizontalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
         max:
             gunKick.horizontalLeft.max *
                 (convertAttributeModifier(
                     'HorizontalGunkick',
                     (attributeModifiers['HorizontalGunkick'] ?? 0) +
                         (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) ?? 0,
+                ) || 1) || 0,
     };
     gunKick.verticalMultiplier = {
         start: gunKick.verticalMultiplier.start ?? 1,
