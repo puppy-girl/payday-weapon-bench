@@ -375,6 +375,10 @@ h1 {
     grid-column-end: 3;
 }
 
+#weapon-stats svg > * {
+    transition: all 0.2s ease-in-out;
+}
+
 .weapon-stat-container, .damage-stat-container {
     min-width: 0;
 

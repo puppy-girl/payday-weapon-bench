@@ -270,6 +270,85 @@ function applyLoadout(weapon, skills, attachments) {
     viewKick.recoverWaitTime = viewKick.recoverWaitTime ?? 0;
     viewKick.hipfireMultiplier = viewKick.hipfireMultiplier ?? 1;
 
+    const gunKick = updatedWeapon.recoilData.gunKick;
+
+    gunKick.verticalTop = {
+        min:
+            gunKick.verticalTop.min *
+                (convertAttributeModifier(
+                    'VerticalGunkick',
+                    (attributeModifiers['HorizoVerticalGunkickntalGunkick'] ??
+                        0) + (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+        max:
+            gunKick.verticalTop.max *
+                (convertAttributeModifier(
+                    'VerticalGunkick',
+                    (attributeModifiers['VerticalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+    };
+    gunKick.verticalBottom = {
+        min:
+            gunKick.verticalBottom.min *
+                (convertAttributeModifier(
+                    'VerticalGunkick',
+                    (attributeModifiers['VerticalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+        max:
+            gunKick.verticalBottom.max *
+                (convertAttributeModifier(
+                    'VerticalGunkick',
+                    (attributeModifiers['VerticalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+    };
+    gunKick.horizontalRight = {
+        min:
+            gunKick.horizontalRight.min *
+                (convertAttributeModifier(
+                    'HorizontalGunkick',
+                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+        max:
+            gunKick.horizontalRight.max *
+                (convertAttributeModifier(
+                    'HorizontalGunkick',
+                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+    };
+    gunKick.horizontalLeft = {
+        min:
+            gunKick.horizontalLeft.min *
+                (convertAttributeModifier(
+                    'HorizontalGunkick',
+                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+        max:
+            gunKick.horizontalLeft.max *
+                (convertAttributeModifier(
+                    'HorizontalGunkick',
+                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
+                        (attributeModifiers['OverallGunkick'] ?? 0)
+                ) || 1) ?? 0,
+    };
+    gunKick.verticalMultiplier = {
+        start: gunKick.verticalMultiplier.start ?? 1,
+        increment: gunKick.verticalMultiplier.increment ?? 0,
+        max: gunKick.verticalMultiplier.max ?? 1,
+        threshold: gunKick.verticalMultiplier.threshold ?? 1,
+    };
+    gunKick.horizontalMultiplier = {
+        start: gunKick.horizontalMultiplier.start ?? 1,
+        increment: gunKick.horizontalMultiplier.increment ?? 0,
+        max: gunKick.horizontalMultiplier.max ?? 1,
+        threshold: gunKick.horizontalMultiplier.threshold ?? 1,
+    };
+
     if (attributeModifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= convertAttributeModifier(
             'OverallReloadPlayRate',
@@ -657,6 +736,23 @@ function updateWeaponStats(selectedWeapon) {
         return Math.max(a, b);
     }, 0);
 
+    const gunKickStat = document.querySelector('svg#gunkick');
+
+    const gunKickLeft =
+        weapon.recoilData.gunKick.horizontalLeft.max -
+        weapon.recoilData.gunKick.horizontalRight.min;
+    const gunKickRight =
+        weapon.recoilData.gunKick.horizontalRight.max -
+        weapon.recoilData.gunKick.horizontalLeft.min;
+    const gunKickWidth = gunKickLeft + gunKickRight;
+    const gunKickUp =
+        weapon.recoilData.gunKick.verticalTop.max -
+        weapon.recoilData.gunKick.verticalBottom.min;
+    const gunKickDown =
+        weapon.recoilData.gunKick.verticalBottom.max -
+        weapon.recoilData.gunKick.verticalTop.min;
+    const gunKickHeight = gunKickUp + gunKickDown;
+
     if (selectedWeapon !== previousWeapon) {
         recoilPatternStat.innerHTML = '';
 
@@ -681,10 +777,6 @@ function updateWeaponStats(selectedWeapon) {
             originalPoint.setAttribute('r', max / 80);
             originalPoint.setAttribute('fill', 'white');
             originalPoint.setAttribute('fill-opacity', '10%');
-            originalPoint.setAttribute(
-                'style',
-                'transition: all 0.2s ease-in-out'
-            );
 
             const point = recoilPatternStat.appendChild(
                 document.createElementNS('http://www.w3.org/2000/svg', 'circle')
@@ -694,7 +786,6 @@ function updateWeaponStats(selectedWeapon) {
             point.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
             point.setAttribute('r', max / 80);
             point.setAttribute('fill', 'white');
-            point.setAttribute('style', 'transition: all 0.2s ease-in-out');
         }
 
         document.querySelector('#loop-start').innerHTML =
@@ -705,6 +796,41 @@ function updateWeaponStats(selectedWeapon) {
                 .replace('0.', '.') + 's';
         document.querySelector('#hipfire-multiplier').innerHTML =
             weapon.recoilData.viewKick.hipfireMultiplier + 'x';
+
+        gunKickStat.innerHTML = '';
+
+        let loops = 2;
+        while (loops--) {
+            const gunKick = gunKickStat.appendChild(
+                document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+            );
+
+            gunKick.setAttribute('width', gunKickWidth * 50);
+            gunKick.setAttribute('height', gunKickHeight * 50);
+            gunKick.setAttribute(
+                'x',
+                50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 12.5
+            );
+            gunKick.setAttribute(
+                'y',
+                50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 12.5
+            );
+            gunKick.setAttribute('fill', 'white');
+            gunKick.setAttribute('fill-opacity', '30%');
+        }
+
+        gunKickStat.childNodes[0].setAttribute('fill-opacity', '10%');
+
+        const center = gunKickStat.appendChild(
+            document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+        );
+
+        center.setAttribute('cx', 50);
+        center.setAttribute('cy', 50);
+        center.setAttribute('r', 2);
+        center.setAttribute('fill', 'none');
+        center.setAttribute('stroke', 'white');
+        center.setAttribute('stroke-width', 0.75);
     } else {
         for (const recoilPoint in recoilPattern) {
             const point =
@@ -719,6 +845,19 @@ function updateWeaponStats(selectedWeapon) {
                 recoilPattern[recoilPoint].y * -0.8 + max * 0.9
             );
         }
+
+        const gunKick = gunKickStat.childNodes[1];
+
+        gunKick.setAttribute('width', gunKickWidth * 50);
+        gunKick.setAttribute('height', gunKickHeight * 50);
+        gunKick.setAttribute(
+            'x',
+            50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 12.5
+        );
+        gunKick.setAttribute(
+            'y',
+            50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 12.5
+        );
     }
 
     previousWeapon = selectedWeapon;
