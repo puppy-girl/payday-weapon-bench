@@ -237,7 +237,7 @@ h1 {
     gap: 3rem;
 }
 
-#loadout {
+#loadout, #stats {
     max-height: calc(100vh - 9rem);
 
     overflow: scroll;
@@ -442,11 +442,52 @@ h1 {
 }
 
 #damage-stats {
+    display: flex;
+    flex-flow: column wrap;
+    gap: 1rem;
+
     margin-top: 2.618em;
 }
 
 .damage-stat-container {
+    display: grid;
+    grid-template-columns: 10em 1fr 1fr;
+
     min-height: 10em;
+}
+
+.enemy-info {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: end;
+
+    padding: 1rem;
+
+    border-right: var(--border);
+
+    background-color: rgba(60, 60, 60, 0.1);
+}
+
+.enemy-info .enemy-name {
+    font-weight: bold;
+}
+
+.optimal-ttk,
+.body-ttk {
+    padding: 0.5rem 1rem;
+
+    font-family: var(--font-mono);
+}
+
+.damage-stat-category-title {
+    color: var(--color-text-alt)
+}
+
+.ttk-stats {
+    display: flex;
+    flex-flow: column wrap;
+
+    margin-top: 0.5rem;
 }
 
 /* */

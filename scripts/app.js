@@ -108,6 +108,61 @@ const EDGE_DEPENDENT_SKILLS = [
     'painAsymbolia',
 ];
 
+const ENEMIES = {
+    swat: {
+        displayName: 'SWAT',
+        health: 150,
+        armor: 70,
+        armorHardness: 1.5,
+    },
+    heavySwat: {
+        displayName: 'Heavy SWAT',
+        health: 150,
+        armor: 70,
+        armorHardness: 1.5,
+    },
+    specials: {
+        displayName: 'Specials',
+        health: 150,
+        armor: 140,
+        armorHardness: 1.5,
+    },
+    shield: {
+        displayName: 'Shield',
+        health: 160,
+        armor: 180,
+        armorHardness: 2,
+        visorArmor: 250,
+        visorArmorHardness: 1.75,
+    },
+    bulldozer: {
+        displayName: 'Bulldozer',
+        health: 200,
+        armor: 3500,
+        armorHardness: 4,
+        visorArmor: 850,
+        visorArmorHardness: 4,
+    },
+    sniper: {
+        displayName: 'Sniper',
+        health: 40,
+        armor: 0,
+        armorHardness: 0,
+    },
+    cloaker: {
+        displayName: 'Cloaker',
+        health: 150,
+        armor: 0,
+        armorHardness: 0,
+    },
+    drone: {
+        displayName: 'Drone',
+        health: 50,
+        armor: 150,
+        armorHardness: 2,
+    },
+};
+
 /**
  * Modify a weapon's stats with magazine data and attribute modifiers
  * from skills and attachments
@@ -469,6 +524,7 @@ function populateWeaponSelector() {
 
         populateLoadout('CAR4');
         updateWeaponStats('CAR4');
+        updateDamageStats('CAR4');
     }
 }
 
@@ -854,6 +910,49 @@ function updateWeaponStats(selectedWeapon) {
     }
 
     previousWeapon = selectedWeapon;
+}
+
+const damageStatTemplate = document
+    .querySelector('template.damage-stat-container')
+    .cloneNode(true);
+document.querySelector('template.damage-stat-container').remove();
+
+function updateDamageStats(selectedWeapon) {
+    const weapon = applyLoadout(
+        selectedWeapon,
+        equippedSkills,
+        equippedAttachments
+    );
+
+    document.querySelector('#damage-stats').innerHTML = '';
+
+    for (enemy in ENEMIES) {
+        const enemyData = ENEMIES[enemy];
+
+        const damageStats = document
+            .querySelector('#damage-stats')
+            .appendChild(document.createElement('div'));
+
+        damageStats.innerHTML = damageStatTemplate.innerHTML;
+        damageStats.classList = ['damage-stat-container'];
+
+        const enemyInfo = damageStats.children[0];
+
+        const enemyName = enemyInfo.appendChild(document.createElement('span'));
+        enemyName.innerHTML = enemyData.displayName;
+        enemyName.classList = ['enemy-name'];
+
+        if (enemyData.armor)
+            enemyInfo.appendChild(document.createElement('span')).innerHTML =
+                enemyData.armor + ' Armor';
+
+        if (enemyData.armorHardness)
+            enemyInfo.appendChild(document.createElement('span')).innerHTML =
+                enemyData.armorHardness + ' Hardness';
+
+        enemyInfo.appendChild(document.createElement('span')).innerHTML =
+            enemyData.health + ' Health';
+    }
 }
 
 populateWeaponSelector();
