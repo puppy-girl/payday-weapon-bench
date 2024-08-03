@@ -404,6 +404,12 @@ function applyLoadout(weapon, skills, attachments) {
         threshold: gunKick.horizontalMultiplier.threshold ?? 1,
     };
 
+    // Bandaid fix for inaccurate reload notify time
+    if (weapon == 'MX63') {
+        updatedWeapon.reloadTime = 4.4999995;
+        updatedWeapon.reloadEmptyTime = 5.166667;
+    }
+
     if (attributeModifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= convertAttributeModifier(
             'OverallReloadPlayRate',
