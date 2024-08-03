@@ -845,11 +845,11 @@ function updateWeaponStats(selectedWeapon) {
         gunKick.setAttribute('height', gunKickHeight * 50);
         gunKick.setAttribute(
             'x',
-            50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 12.5
+            50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 25
         );
         gunKick.setAttribute(
             'y',
-            50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 12.5
+            50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
         );
     }
 
