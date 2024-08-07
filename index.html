@@ -14,22 +14,7 @@
     <script src="scripts/app.js" defer></script>
 </head>
 <body>
-    <aside id="sidebar">
-        <div id="sidebar-header">
-            <svg
-                id="collapse-button"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-            >
-                <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                />
-            </svg>              
-        </div>
-
+    <aside id="sidebar-weapon-selector">
         <fieldset id="weapon-list">
             <template
                 class="selectable-weapon"
@@ -46,9 +31,11 @@
 
         <div id="content">
             <section id="loadout">
-                <h2>Car-4</h2>
+                <div id="loadout-header">
+                    <h2>Car-4</h2>
+                </div>
+
                 <fieldset id="skill-selector" class="loadout-category">
-                    <legend>Skills</legend>
                     <div class="loadout-category-container">
                         <template class="skill">
                             <input
@@ -59,7 +46,7 @@
                         </template>
                     </div>
                 </fieldset>
-
+            
                 <div id="loadout-attachments">
                     <template id="attachment-selector" class="loadout-category">
                         <legend></legend>
@@ -74,90 +61,20 @@
             </section>
     
             <section id="stats">
-                <div id="weapon-stats">
-                    <div class="weapon-stat-container" id="weapon-stats-damage">
-                        <span class="weapon-stat-category-title">Damage</span>
-                        <div>
-                            <div class="weapon-stat-category"">
-                                <template class="weapon-stat">
-                                    <span>Range</span>
-                                    <span>Stat</span>
-                                </template>
-                            </div>
-                            <div class="weapon-stat-category">
-                            </div>
-                            <div class="weapon-stat-category">
-                                <div class="weapon-stat">
-                                    <span>RPM</span>
-                                    <span id="rpm"></span>
+                <div id="stats-header">
+                    <div id="weapon-stats">
+                        <div class="weapon-stat-container" id="weapon-stats-damage">
+                            <span class="weapon-stat-category-title">Damage</span>
+                            <div>
+                                <div class="weapon-stat-category"">
+                                    <template class="weapon-stat">
+                                        <span>Range</span>
+                                        <span>Stat</span>
+                                    </template>
                                 </div>
-                                <div class="weapon-stat">
-                                    <span>Armor Pen</span>
-                                    <span id="ap"></span>
+                                <div class="weapon-stat-category">
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    <div class="weapon-stat-container" id="weapon-stats-magazine">
-                        <span class="weapon-stat-category-title">Magazine</span>
-                        <div class="weapon-stat-category">
-                            <div class="weapon-stat">
-                                <span>Mag Size</span>
-                                <span id="mag"></span>
-                            </div>
-                            <div class="weapon-stat">
-                                <span>Max Ammo</span>
-                                <span id="max-ammo"></span>
-                            </div>
-                            <div class="weapon-stat">
-                                <span>Ammo Pickup</span>
-                                <span id="ammo-pickup"></span>
-                            </div>
-                            <div class="weapon-stat">
-                                <span>Reload</span>
-                                <span id="reload"></span>
-                            </div>
-                            <div class="weapon-stat">
-                                <span>From Empty</span>
-                                <span id="full-reload"></span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-stat-container" id="weapon-stats-recoil">
-                        <span class="weapon-stat-category-title">Recoil</span>
-                        <div>
-                            <div class="weapon-stat-category">
-                                <svg 
-                                    id="recoil-pattern"
-                                    viewBox="0 0 100 100"
-                                ></svg>
-                            </div>
-                            <div class="weapon-stat-category">
-                                <div class="weapon-stat">
-                                    <span>Loop Start</span>
-                                    <span id="loop-start"></span>
-                                </div>
-                                <div class="weapon-stat">
-                                    <span>Reset Delay</span>
-                                    <span id="reset-delay"></span>
-                                </div>
-                                <div class="weapon-stat">
-                                    <span>Hipfire</span>
-                                    <span id="hipfire-multiplier"></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="weapon-stat-container" id="weapon-stats-gunkick">
-                        <span class="weapon-stat-category-title">Gunkick</span>
-                        <div>
-                            <svg
-                                id="gunkick"
-                                viewBox="0 0 100 100"
-                            ></svg>
                         </div>
                     </div>
                 </div>
@@ -179,5 +96,56 @@
             </section>
         </div>
     </main>
+
+    <aside id="sidebar-stats">
+        <div id="stat-previews">
+            <div class="stat-container">
+                <div>
+                    <span>Damage</span>
+                    <span id="stat-base-damage">30.4/30m</span>
+                </div>
+                <div>
+                    <span>Multiplier</span>
+                    <span id="stat-base-multiplier">5x/10m</span>
+                </div>
+                <div>
+                    <span>Armor Pen</span>
+                    <span id="stat-armor-penetration">0.92</span>
+                </div>
+                <div>
+                    <span>Fire Rate</span>
+                    <span id="stat-rpm">720 RPM</span>
+                </div>
+                <div>
+                    <span>Magazine</span>
+                    <span id="stat-magazine">30/300</span>
+                </div>
+                <div>
+                    <span>Ammo Pickup</span>
+                    <span id="stat-ammo-pickup">3-5</span>
+                </div>
+                <div>
+                    <span>Reload</span>
+                    <span id="stat-reload">2.33s</span>
+                </div>
+                <div>
+                    <span>Full Reload</span>
+                    <span id="stat-full-reload">2.67s</span>
+                </div>
+            </div>
+            <div class="stat-container">
+                <svg 
+                    id="recoil-pattern"
+                    viewBox="0 0 100 100"
+                ></svg>
+            </div>
+            <div class="stat-container">
+                <svg
+                    id="gunkick"
+                    viewBox="0 0 100 100"
+                ></svg>
+            </div>
+        </div>
+    </aside>
 </body>
 </html>

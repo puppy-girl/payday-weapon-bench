@@ -724,21 +724,30 @@ function updateWeaponStats(selectedWeapon) {
         equippedAttachments
     );
 
-    document.querySelector('#rpm').innerHTML = weapon.fireData.roundsPerMinute;
+    const fireData = weapon.fireData;
 
-    document.querySelector('#ap').innerHTML = weapon.fireData.armorPenetration;
-
-    document.querySelector('#mag').innerHTML = weapon.fireData.ammoLoaded;
-    document.querySelector('#max-ammo').innerHTML =
-        weapon.fireData.ammoInventoryMax;
-    document.querySelector('#ammo-pickup').innerHTML =
-        weapon.fireData.ammoPickup.min + '-' + weapon.fireData.ammoPickup.max;
-
-    document.querySelector('#reload').innerHTML =
-        Math.round(weapon.reloadTime * 100) / 100 + 's';
-
-    document.querySelector('#full-reload').innerHTML =
-        Math.round(weapon.reloadEmptyTime * 100) / 100 + 's';
+    document.querySelector('#stat-base-damage').innerHTML =
+        fireData.damageDistanceArray[0].damage +
+        '/' +
+        fireData.damageDistanceArray[0].distance / 100 +
+        'm';
+    document.querySelector('#stat-base-multiplier').innerHTML =
+        fireData.criticalDamageMultiplierDistanceArray[0].multiplier +
+        '×/' +
+        fireData.criticalDamageMultiplierDistanceArray[0].distance / 100 +
+        'm';
+    document.querySelector('#stat-armor-penetration').innerHTML =
+        fireData.armorPenetration;
+    document.querySelector('#stat-rpm').innerHTML =
+        fireData.roundsPerMinute + ' RPM';
+    document.querySelector('#stat-magazine').innerHTML =
+        fireData.ammoLoaded + '/' + weapon.fireData.ammoInventoryMax;
+    document.querySelector('#stat-ammo-pickup').innerHTML =
+        fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
+    document.querySelector('#stat-reload').innerHTML =
+        Math.round(weapon.reloadTime * 1000) / 1000 + 's';
+    document.querySelector('#stat-full-reload').innerHTML =
+        Math.round(weapon.reloadEmptyTime * 1000) / 1000 + 's';
 
     const weaponDamageStats = document.querySelector(
         '#weapon-stats-damage > div'
@@ -843,15 +852,6 @@ function updateWeaponStats(selectedWeapon) {
                 if (i == 0) point.setAttribute('fill-opacity', '10%');
             }
         }
-
-        document.querySelector('#loop-start').innerHTML =
-            weapon.recoilData.viewKick.loopStart;
-        document.querySelector('#reset-delay').innerHTML =
-            weapon.recoilData.viewKick.recoverWaitTime
-                .toString()
-                .replace('0.', '.') + 's';
-        document.querySelector('#hipfire-multiplier').innerHTML =
-            weapon.recoilData.viewKick.hipfireMultiplier + 'x';
 
         gunKickStat.innerHTML = '';
 

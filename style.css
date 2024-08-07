@@ -54,13 +54,14 @@ body {
     max-height: 100vh;
 
     font-family: var(--font-body);
-
     color: var(--color-text);
+
+    background: var(--color-surface);
 }
 
 /* Weapon Selector */
 
-#sidebar {
+#sidebar-weapon-selector {
     flex-shrink: 0;
 
     position: relative;
@@ -75,23 +76,7 @@ body {
     overflow: hidden;
 }
 
-#sidebar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    height: 5rem;
-
-    padding-left: 1rem;
-}
-
-#sidebar #collapse-button {
-    height: 2.618rem;
-
-    color: var(--color-text-alt);
-}
-
-#sidebar:before {
+#sidebar-weapon-selector:before {
     position: absolute;
     top: 5rem;
     left: 0;
@@ -105,7 +90,7 @@ body {
     content: '';
 }
 
-#sidebar:after {
+#sidebar-weapon-selector:after {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -127,6 +112,7 @@ body {
 
     max-height: calc(100vh - 5rem);
 
+    margin-top: 5rem;
     padding: 0;
 
     border: none;
@@ -233,7 +219,7 @@ h1 {
 
 #content {
     display: grid;
-    grid-template-columns: 1fr 52rem;
+    grid-template-columns: 1fr 48rem;
     gap: 3rem;
 }
 
@@ -243,10 +229,26 @@ h1 {
     overflow: scroll;
 }
 
-#loadout h2 {
-    margin-top: 1.5em;
-    margin-bottom: 2.618rem;
+#loadout-header {
+    display: flex;
+    align-items: flex-end;
 
+    height: 21rem;
+
+    margin-bottom: 1rem;
+}
+
+#stats-header {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-end;
+
+    height: 21rem;
+
+    margin-bottom: 1rem;
+}
+
+#loadout-header h2 {
     font-family: var(--font-display);
     font-size: 6.854rem;
     line-height: 1em;
@@ -275,7 +277,7 @@ h1 {
     }
 }
 
-#skill-selector { margin-bottom: 1.618em; }
+#skill-selector { margin-bottom: 1.618em }
 .loadout-category legend { font-weight: 600; }
 
 .loadout-category {
@@ -354,26 +356,7 @@ h1 {
     padding: 0.25em 1em;
 }
 
-#weapon-stats {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
-}
-
-#weapon-stats-damage {
-    grid-column-start: 1;
-    grid-column-end: 4;
-}
-
-#weapon-stats-magazine {
-    grid-column-start: 4;
-    grid-column-end: 5;
-}
-
-#weapon-stats-recoil {
-    grid-column-start: 1;
-    grid-column-end: 3;
-}
+/* Stats */
 
 #weapon-stats svg > * {
     transition: all 0.2s ease-in-out;
@@ -385,8 +368,8 @@ h1 {
     border: var(--border);
     border-radius: 0.2em;
 
-    background-color: rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(5px);
+    background-color: rgba(9, 9, 11, 0.25);
+    backdrop-filter: blur(8px);
 }
 
 .weapon-stat-category-title {
@@ -433,7 +416,7 @@ h1 {
 
 #weapon-stats-damage > div {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
 }
 
 #weapon-stats-recoil > div {
@@ -445,8 +428,6 @@ h1 {
     display: flex;
     flex-flow: column wrap;
     gap: 1rem;
-
-    margin-top: 2.618em;
 }
 
 .damage-stat-container {
@@ -489,6 +470,62 @@ h1 {
 
     margin-top: 0.5rem;
 }
+
+/* Stats Sidebar */
+
+#sidebar-stats {
+    flex-shrink: 0;
+
+    width: 16rem;
+    height: 100vh;
+
+    border-left: var(--border);
+
+    background: rgba(9, 9, 11, 0.25);
+
+    overflow: hidden;
+}
+
+#stat-previews {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 1rem;
+
+    margin-top: 6rem;
+}
+
+.stat-container {
+    display: flex;
+    flex-flow: column wrap;
+
+    width: 14rem;
+
+    border: var(--border);
+    border-radius: 0.2em;
+
+    background: var(--color-surface);
+
+    font-family: var(--font-mono);
+}
+
+.stat-container div {
+    display: flex;
+    justify-content: space-between;
+
+    padding: 0.25em 0.5em;
+}
+
+.stat-container div:nth-child(even) {
+    background-color: rgba(9, 9, 11, 0.25);
+}
+
+.stat-container div:nth-child(5) {
+    margin-top: 1.618em;
+}
+
+.stat-container span:first-child { color: var(--color-text-alt); }
+.stat-container span:last-child { font-weight: 500; }
 
 /* */
 
