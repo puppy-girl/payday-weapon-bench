@@ -516,17 +516,17 @@ h1 {
     padding: 0.25em 0.5em;
 }
 
-.stat-container div:nth-child(even) {
+.stat-container span:first-child { color: var(--color-text-alt); }
+.stat-container span:last-child { font-weight: 500; }
+
+.stat-container#number-stats div:nth-child(even) {
     background-color: rgba(9, 9, 11, 0.25);
 }
 
-.stat-container div:nth-child(3),
-.stat-container div:nth-child(5) {
+.stat-container#number-stats div:nth-child(3),
+.stat-container#number-stats div:nth-child(5) {
     margin-top: 1.618em;
 }
-
-.stat-container span:first-child { color: var(--color-text-alt); }
-.stat-container span:last-child { font-weight: 500; }
 
 /* */
 
