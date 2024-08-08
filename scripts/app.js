@@ -741,7 +741,7 @@ function updateWeaponStats(selectedWeapon) {
     document.querySelector('#stat-rpm').innerHTML =
         fireData.roundsPerMinute + ' RPM';
     document.querySelector('#stat-magazine').innerHTML =
-        fireData.ammoLoaded + '/' + weapon.fireData.ammoInventoryMax;
+        fireData.ammoLoaded + '<br/>' + weapon.fireData.ammoInventoryMax;
     document.querySelector('#stat-ammo-pickup').innerHTML =
         fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
     document.querySelector('#stat-reload').innerHTML =
