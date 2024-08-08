@@ -727,9 +727,9 @@ function updateWeaponStats(selectedWeapon) {
     const fireData = weapon.fireData;
 
     document.querySelector('#stat-base-damage').innerHTML =
-        fireData.damageDistanceArray[0].damage +
+        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
         '/' +
-        fireData.damageDistanceArray[0].distance / 100 +
+        Math.round(fireData.damageDistanceArray[0].distance) / 100 +
         'm';
     document.querySelector('#stat-base-multiplier').innerHTML =
         fireData.criticalDamageMultiplierDistanceArray[0].multiplier +
