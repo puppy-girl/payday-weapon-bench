@@ -467,11 +467,14 @@ h1 {
 .ttk-stats {
     display: flex;
     flex-flow: column wrap;
+    gap: 0.5em;
 
     margin-top: 0.5rem;
+
+    line-height: 1em;
 }
 
-span.damage-type {
+span.damage-breakdown {
     color: #71717a;
 }
 

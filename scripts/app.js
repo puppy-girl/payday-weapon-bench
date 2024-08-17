@@ -1122,10 +1122,11 @@ function updateDamageStats(selectedWeapon) {
                 document.createElement('span')
             );
             damageStat.innerHTML = `
-                ${optimalDamageDistanceStats[distance].armoredCrits}<span class="damage-type">HS</span>
-                ${optimalDamageDistanceStats[distance].armoredNonCrits}<span class="damage-type">BS</span> + 
-                ${optimalDamageDistanceStats[distance].unarmoredCrits}<span class="damage-type">HS</span>
-                ${optimalDamageDistanceStats[distance].unarmoredNonCrits}<span class="damage-type">BS</span>
+                ${optimalDamageDistanceStats[distance].totalShots} shots<br/>
+                <span class="damage-breakdown">
+                    ${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + 
+                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B
+                </span>
             `;
         }
 
@@ -1152,8 +1153,11 @@ function updateDamageStats(selectedWeapon) {
                 document.createElement('span')
             );
             damageStat.innerHTML = `
-                ${bodyShotDamageDistanceStats[distance].armoredNonCrits}<span class="damage-type">BS</span> + 
-                ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}<span class="damage-type">BS</span>
+                ${bodyShotDamageDistanceStats[distance].totalShots} shots<br/>
+                <span class="damage-breakdown">
+                    ${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + 
+                    ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B
+                </span>
             `;
         }
     }
