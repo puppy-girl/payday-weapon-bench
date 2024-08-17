@@ -1127,7 +1127,7 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = distance / 100 + 'm';
+            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
 
             const damageStat = damageBreakpoint.appendChild(
                 document.createElement('span')
@@ -1171,7 +1171,7 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = distance / 100 + 'm';
+            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
 
             const damageStat = damageBreakpoint.appendChild(
                 document.createElement('span')
