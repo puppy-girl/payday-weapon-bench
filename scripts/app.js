@@ -605,6 +605,7 @@ function populateWeaponSelector() {
         weaponInput.addEventListener('change', (event) => {
             populateLoadout(event.target.value);
             updateWeaponStats(event.target.value);
+            updateDamageStats(event.target.value);
         });
 
         if (weapon == 'CAR4') weaponInput.checked = true;
@@ -654,6 +655,9 @@ function populateSkills() {
         skillInput.addEventListener('change', (event) => {
             updateSkills(event.target.value);
             updateWeaponStats(
+                document.querySelector('.selectable-weapon input:checked').value
+            );
+            updateDamageStats(
                 document.querySelector('.selectable-weapon input:checked').value
             );
         });
@@ -751,6 +755,7 @@ function populateLoadout(selectedWeapon) {
                 attachmentInput.addEventListener('change', () => {
                     updateAttachments();
                     updateWeaponStats(selectedWeapon);
+                    updateDamageStats(selectedWeapon);
                 });
             }
         }
@@ -1147,9 +1152,7 @@ function updateDamageStats(selectedWeapon) {
                 document.createElement('span')
             );
             damageStat.innerHTML = `
-                ${bodyShotDamageDistanceStats[distance].armoredCrits}HS
                 ${bodyShotDamageDistanceStats[distance].armoredNonCrits}BS + 
-                ${bodyShotDamageDistanceStats[distance].unarmoredCrits}HS
                 ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}BS
             `;
         }
