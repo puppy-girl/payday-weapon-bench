@@ -1046,8 +1046,18 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
                 enemy.armorHardness
             ),
             enemy.health,
-            enemy.armor
+            enemy.displayName == 'Bulldozer' && headshots ? 0 : enemy.armor
         );
+
+        if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
+            const shotsToBreakVisor =
+                weapon.fireData.armorPenetration <= enemy.visorArmorHardness - 1
+                    ? Math.ceil(enemy.visorArmor / damage)
+                    : 0;
+
+            shotsToKill.visorShots = shotsToBreakVisor;
+            shotsToKill.totalShots += shotsToBreakVisor;
+        }
 
         if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
             shotsToKillAtDistances[distance] = shotsToKill;
@@ -1055,6 +1065,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
         previous = shotsToKill;
     });
 
+    console.log(shotsToKillAtDistances);
     return shotsToKillAtDistances;
 }
 
@@ -1124,8 +1135,18 @@ function updateDamageStats(selectedWeapon) {
             damageStat.innerHTML = `
                 ${optimalDamageDistanceStats[distance].totalShots} shots<br/>
                 <span class="damage-breakdown">
-                    ${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + 
-                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B
+                    ${
+                        enemy == 'bulldozer' || enemy == 'shield'
+                            ? optimalDamageDistanceStats[distance].visorShots +
+                              'V +'
+                            : ''
+                    }
+                    ${optimalDamageDistanceStats[distance].armoredCrits}H${
+                optimalDamageDistanceStats[distance].armoredNonCrits
+            }B + 
+                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${
+                optimalDamageDistanceStats[distance].unarmoredNonCrits
+            }B
                 </span>
             `;
         }
