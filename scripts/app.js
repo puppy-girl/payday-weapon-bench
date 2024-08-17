@@ -1145,13 +1145,9 @@ function updateDamageStats(selectedWeapon) {
                     optimalDamageDistanceStats[distance].visorShots + 'V +';
 
             if (enemyData.armor)
-                damageBreakdown.innerHTML += `
-                    ${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B +
-                `;
+                damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + `;
 
-            damageBreakdown.innerHTML += ` 
-                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B
-            `;
+            damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
         }
 
         const bodyShotTtkStat = damageStats.children[2].children[1];
@@ -1186,13 +1182,9 @@ function updateDamageStats(selectedWeapon) {
             damageBreakdown.classList = ['damage-breakdown'];
 
             if (enemyData.armor)
-                damageBreakdown.innerHTML += `
-                    ${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + 
-                `;
+                damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + `;
 
-            damageBreakdown.innerHTML += `
-                ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B
-            `;
+            damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
         }
     }
 }
