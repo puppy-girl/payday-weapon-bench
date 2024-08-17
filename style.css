@@ -471,6 +471,8 @@ h1 {
 }
 
 span.damage-breakdown {
+    display: block;
+
     color: #71717a;
 }
 

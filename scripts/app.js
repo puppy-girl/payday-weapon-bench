@@ -1132,22 +1132,25 @@ function updateDamageStats(selectedWeapon) {
             const damageStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            damageStat.innerHTML = `
-                ${optimalDamageDistanceStats[distance].totalShots} shots<br/>
-                <span class="damage-breakdown">
-                    ${
-                        enemy == 'bulldozer' || enemy == 'shield'
-                            ? optimalDamageDistanceStats[distance].visorShots +
-                              'V +'
-                            : ''
-                    }
-                    ${optimalDamageDistanceStats[distance].armoredCrits}H${
-                optimalDamageDistanceStats[distance].armoredNonCrits
-            }B + 
-                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${
-                optimalDamageDistanceStats[distance].unarmoredNonCrits
-            }B
-                </span>
+            damageStat.innerHTML =
+                optimalDamageDistanceStats[distance].totalShots + ' shots';
+
+            const damageBreakdown = damageStat.appendChild(
+                document.createElement('span')
+            );
+            damageBreakdown.classList = ['damage-breakdown'];
+
+            if (enemy == 'bulldozer' || enemy == 'shield')
+                damageBreakdown.innerHTML +=
+                    optimalDamageDistanceStats[distance].visorShots + 'V +';
+
+            if (enemyData.armor)
+                damageBreakdown.innerHTML += `
+                    ${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B +
+                `;
+
+            damageBreakdown.innerHTML += ` 
+                    ${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B
             `;
         }
 
@@ -1173,12 +1176,22 @@ function updateDamageStats(selectedWeapon) {
             const damageStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            damageStat.innerHTML = `
-                ${bodyShotDamageDistanceStats[distance].totalShots} shots<br/>
-                <span class="damage-breakdown">
+
+            damageStat.innerHTML =
+                bodyShotDamageDistanceStats[distance].totalShots + ' shots';
+
+            const damageBreakdown = damageStat.appendChild(
+                document.createElement('span')
+            );
+            damageBreakdown.classList = ['damage-breakdown'];
+
+            if (enemyData.armor)
+                damageBreakdown.innerHTML += `
                     ${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + 
-                    ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B
-                </span>
+                `;
+
+            damageBreakdown.innerHTML += `
+                ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B
             `;
         }
     }
