@@ -522,15 +522,17 @@ h1 {
 .stat-group div {
     display: flex;
     justify-content: space-between;
-
-    padding: 0.25em 0.5em;
 }
 
-.stat-container span:first-child {
+#sidebar-stats .stat-group div {
+    padding: 0.25em 1em;
+}
+
+.stat-group span:first-child {
     color: var(--color-text-alt);
 }
 
-.stat-container span:last-child {
+.stat-group span:last-child {
     font-weight: 500;
     text-align: right;
 }

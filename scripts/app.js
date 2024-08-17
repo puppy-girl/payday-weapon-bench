@@ -999,6 +999,60 @@ function updateWeaponStats(selectedWeapon) {
     previousWeapon = selectedWeapon;
 }
 
+function shotsToKillAtDistances(weapon, enemy, headshots) {
+    const fireData = weapon.fireData;
+
+    const distanceArray = [
+        ...new Set([
+            ...fireData.damageDistanceArray.map(
+                (damageStep) => damageStep.distance
+            ),
+            ...fireData.criticalDamageMultiplierDistanceArray.map(
+                (critMultiplierStep) => critMultiplierStep.distance
+            ),
+        ]),
+    ].sort((a, b) => b - a);
+
+    let shotsToKillAtDistances = {},
+        previous = {};
+
+    distanceArray.forEach((distance) => {
+        const damage = (
+            fireData.damageDistanceArray.find(
+                (damageStep) => damageStep.distance >= distance
+            ) ?? fireData.damageDistanceArray.slice(-1)[0]
+        ).damage;
+
+        const multiplier = headshots
+            ? (
+                  fireData.criticalDamageMultiplierDistanceArray.find(
+                      (critMultiplierStep) =>
+                          critMultiplierStep.distance >= distance
+                  ) ??
+                  fireData.criticalDamageMultiplierDistanceArray.slice(-1)[0]
+              ).multiplier
+            : 1;
+
+        const shotsToKill = weaponShotsToKill(
+            damage,
+            multiplier,
+            effectiveArmorPenetration(
+                weapon.fireData.armorPenetration,
+                enemy.armorHardness
+            ),
+            enemy.health,
+            enemy.armor
+        );
+
+        if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
+            shotsToKillAtDistances[distance] = shotsToKill;
+
+        previous = shotsToKill;
+    });
+
+    return shotsToKillAtDistances;
+}
+
 const damageStatTemplate = document
     .querySelector('template.damage-stat-container')
     .cloneNode(true);
@@ -1039,6 +1093,66 @@ function updateDamageStats(selectedWeapon) {
 
         enemyInfo.appendChild(document.createElement('span')).innerHTML =
             enemyData.health + ' Health';
+
+        const optimalTtkStat = damageStats.children[1].children[1];
+        optimalTtkStat.innerHTML = '';
+
+        const optimalDamageDistanceStats = shotsToKillAtDistances(
+            weapon,
+            enemyData,
+            true
+        );
+
+        for (distance in optimalDamageDistanceStats) {
+            const damageBreakpoint = optimalTtkStat.appendChild(
+                document.createElement('div')
+            );
+
+            const distanceStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+            distanceStat.innerHTML = distance / 100 + 'm';
+
+            const damageStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+            damageStat.innerHTML = `
+                ${optimalDamageDistanceStats[distance].armoredCrits}HS
+                ${optimalDamageDistanceStats[distance].armoredNonCrits}BS + 
+                ${optimalDamageDistanceStats[distance].unarmoredCrits}HS
+                ${optimalDamageDistanceStats[distance].unarmoredNonCrits}BS
+            `;
+        }
+
+        const bodyShotTtkStat = damageStats.children[2].children[1];
+        bodyShotTtkStat.innerHTML = '';
+
+        const bodyShotDamageDistanceStats = shotsToKillAtDistances(
+            weapon,
+            enemyData,
+            false
+        );
+
+        for (distance in bodyShotDamageDistanceStats) {
+            const damageBreakpoint = bodyShotTtkStat.appendChild(
+                document.createElement('div')
+            );
+
+            const distanceStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+            distanceStat.innerHTML = distance / 100 + 'm';
+
+            const damageStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+            damageStat.innerHTML = `
+                ${bodyShotDamageDistanceStats[distance].armoredCrits}HS
+                ${bodyShotDamageDistanceStats[distance].armoredNonCrits}BS + 
+                ${bodyShotDamageDistanceStats[distance].unarmoredCrits}HS
+                ${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}BS
+            `;
+        }
     }
 }
 
