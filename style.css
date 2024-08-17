@@ -358,10 +358,6 @@ h1 {
 
 /* Stats */
 
-#weapon-stats svg > * {
-    transition: all 0.2s ease-in-out;
-}
-
 .weapon-stat-container, .damage-stat-container {
     min-width: 0;
 
@@ -491,6 +487,10 @@ span.damage-breakdown {
     background: rgba(9, 9, 11, 0.25);
 
     overflow: hidden;
+}
+
+#sidebar-stats svg > * {
+    transition: all 0.2s ease-in-out;
 }
 
 #stat-previews {
