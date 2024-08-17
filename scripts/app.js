@@ -459,6 +459,87 @@ function convertAttributeModifier(attribute, modifier) {
     return gradient * modifier + intercept;
 }
 
+/**
+ * Calculate the amount of damage dealt through armour against a specific enemy
+ *
+ * @param {number} armorPenetration The weapon's armor penetration stat
+ * @param {number} armorHardness The enemy's armor hardness stat
+ * @returns The weapon's EAP against the enemy
+ */
+function effectiveArmorPenetration(armorPenetration, armorHardness) {
+    return Math.max(0, Math.min(1, armorPenetration - armorHardness + 1));
+}
+
+/**
+ * Calculate how many shots it would take to defeat an enemy
+ *
+ * @param {number} weaponDamage The weapon's current damage
+ * @param {number} weaponCritMultiplier The weapon's current crit multiplier
+ * @param {number} effectiveArmorPenetration The weapon's EAP against the enemy
+ * @param {number} enemyHealth The enemy's health stat
+ * @param {number} enemyArmor The enemy's armor stat
+ */
+function weaponShotsToKill(
+    weaponDamage,
+    weaponCritMultiplier,
+    effectiveArmorPenetration,
+    enemyHealth,
+    enemyArmor
+) {
+    if (weaponCritMultiplier < 1) weaponCritMultiplier = 1;
+
+    const critDamage = weaponDamage * weaponCritMultiplier;
+    const apDamage = weaponDamage * effectiveArmorPenetration;
+    const critApDamage = critDamage * effectiveArmorPenetration;
+
+    const shotsOnArmor = Math.min(
+        Math.ceil(enemyArmor / weaponDamage),
+        Math.ceil(enemyHealth / critApDamage)
+    );
+
+    const remainingHealth = Math.max(
+        0,
+        Math.floor(enemyHealth - critApDamage * shotsOnArmor)
+    );
+
+    const shotsOnHealth = Math.ceil(remainingHealth / critDamage);
+
+    if (weaponCritMultiplier > 1) {
+        const overdamage =
+            critDamage - (remainingHealth % critDamage || critDamage);
+        const replaceableCrits = Math.min(
+            shotsOnHealth,
+            Math.floor(overdamage / (critDamage - weaponDamage))
+        );
+
+        const armorOverdamage =
+            overdamage - replaceableCrits * (critDamage - weaponDamage) ||
+            critApDamage - (enemyHealth % critApDamage || critApDamage);
+        const replaceableArmoredCrits = Math.min(
+            shotsOnArmor,
+            Math.floor(
+                armorOverdamage / (critApDamage - apDamage) || shotsOnArmor
+            )
+        );
+
+        return {
+            armoredCrits: shotsOnArmor - replaceableArmoredCrits,
+            armoredNonCrits: replaceableArmoredCrits,
+            unarmoredCrits: shotsOnHealth - replaceableCrits,
+            unarmoredNonCrits: replaceableCrits,
+            totalShots: shotsOnArmor + shotsOnHealth,
+        };
+    }
+
+    return {
+        armoredCrits: 0,
+        armoredNonCrits: shotsOnArmor,
+        unarmoredCrits: 0,
+        unarmoredNonCrits: shotsOnHealth,
+        totalShots: shotsOnArmor + shotsOnHealth,
+    };
+}
+
 let equippedSkills = [],
     equippedAttachments = [];
 
