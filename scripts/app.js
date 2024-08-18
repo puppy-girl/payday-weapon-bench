@@ -1147,7 +1147,7 @@ function updateDamageStats(selectedWeapon) {
 
             if (enemy == 'bulldozer' || enemy == 'shield')
                 damageBreakdown.innerHTML +=
-                    optimalDamageDistanceStats[distance].visorShots + 'V +';
+                    optimalDamageDistanceStats[distance].visorShots + 'V + ';
 
             if (enemyData.armor)
                 damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + `;
