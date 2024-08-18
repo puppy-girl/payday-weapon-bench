@@ -8,10 +8,10 @@ Still a work in progress! ૮ ・ﻌ・ა
   - weapon details
   - ~~skill selector~~
   - ~~attachment selector~~
-  - weapon stat info
-  - enemy damage info
-- update weapon stats with skill and attachment selection
-- update damage stats with skill and attachment selection
+  - ~~weapon stat info~~
+  - ~~enemy damage info~~
+- ~~update weapon stats with skill and attachment selection~~
+- ~~update damage stats with skill and attachment selection~~
 - add tooltips on hover to explain skills, attachments, and mechanics
   - implement tooltips
   - add tooltips for skills
