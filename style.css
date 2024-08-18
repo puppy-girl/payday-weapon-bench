@@ -33,8 +33,9 @@ p, h1, h2, h3, h4, h5, h6 {
 :root {
     --color-primary: #689c80;
 
-    --color-surface-dim: #09090b;
+    --color-background: #09090b;
     --color-surface: #18181b;
+    --color-surface-dim: #141416;
 
     --color-text: white;
     --color-text-alt: #e4e4e7;
@@ -53,6 +54,7 @@ body {
 
     max-height: 100vh;
 
+    font-size: 13px;
     font-family: var(--font-body);
     color: var(--color-text);
 
@@ -66,26 +68,26 @@ body {
 
     position: relative;
 
-    width: 22rem;
+    width: 18rem;
     height: 100vh;
 
     border-right: var(--border);
 
-    background: var(--color-surface-dim);
+    background: var(--color-background);
 
     overflow: hidden;
 }
 
 #sidebar-weapon-selector:before {
     position: absolute;
-    top: 5rem;
+    top: 4rem;
     left: 0;
     z-index: 1;
 
     width: 100%;
     height: 1rem;
 
-    background: linear-gradient(var(--color-surface-dim), transparent);
+    background: linear-gradient(var(--color-background), transparent);
 
     content: '';
 }
@@ -99,7 +101,7 @@ body {
     width: 100%;
     height: 1rem;
 
-    background: linear-gradient(transparent, var(--color-surface-dim));
+    background: linear-gradient(transparent, var(--color-background));
 
     content: '';
 }
@@ -110,9 +112,9 @@ body {
     align-items: center;
     gap: 1rem;
 
-    max-height: calc(100vh - 5rem);
+    max-height: calc(100vh - 4rem);
 
-    margin-top: 5rem;
+    margin-top: 4rem;
     padding: 0;
 
     border: none;
@@ -125,24 +127,23 @@ body {
 
     position: relative;
 
-    width: 20rem;
-    height: 10rem;
-
-    font-size: 1.618rem;
+    width: 16rem;
+    height: 8rem;
 
     border: var(--border);
-    border-radius: 0.2em;
+    border-radius: 0.15rem;
 
     background: url('images/weaponbg.jpg') center/cover no-repeat;
 }
 
 .selectable-weapon::before {
     position: absolute;
-    top: calc((10rem - 128px) / 2);
-    left: calc((20rem - 256px) / 2);
+    top: calc((8rem - 128px) / 2);
+    left: calc((16rem - 256px) / 2);
     
     width: 256px;
     height: 128px;
+    scale: 80%;
 
     background: var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat;
 
@@ -155,8 +156,8 @@ body {
 .selectable-weapon:last-child { margin-bottom: 1rem; }
 
 .selectable-weapon input {
-    width: 20rem;
-    height: 10rem;
+    width: 16rem;
+    height: 8rem;
 
     opacity: 0;
 
@@ -165,24 +166,23 @@ body {
 
 .selectable-weapon label.selectable-weapon-name {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
+    bottom: 0.25rem;
+    left: 0.25rem;
 
     padding: 0 0.5rem;
 
-    font-size: 1rem;
     font-weight: 600;
     line-height: 1.5rem;
 }
 
 .selectable-weapon label.selectable-weapon-dlc {
     position: absolute;
-    bottom: 0.5rem;
-    right: 0.5rem;
+    bottom: 0.25rem;
+    right: 0.25rem;
 
     padding: 0 0.5rem;
 
-    border-radius: 0.2em;
+    border-radius: 0.1rem;
 
     font-size: 0.8rem;
     font-weight: 600;
@@ -199,7 +199,7 @@ main {
 
     max-height: 100vh;
 
-    padding: 0 1rem 3rem 3rem;
+    padding: 0 1rem 3rem 2rem;
 
     background-color: var(--color-surface);
     background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2309090b' fill-opacity='0.25'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -211,20 +211,21 @@ h1 {
     margin-bottom: 1rem;
 
     font-family: var(--font-display);
-    font-size: 2.618rem;
+    font-size: 2.618em;
     font-weight: 500;
-    line-height: 5rem;
+    line-height: 4rem;
     color: var(--color-text-alt);
 }
 
 #content {
     display: grid;
-    grid-template-columns: 3fr 2fr;
-    gap: 3rem;
+    grid-template-columns: 1fr 36rem;
+    gap: 2rem;
 }
 
-#loadout, #stats {
-    max-height: calc(100vh - 9rem);
+#loadout,
+#stats {
+    max-height: calc(100vh - 8rem);
 
     overflow: scroll;
 }
@@ -233,9 +234,7 @@ h1 {
     display: flex;
     align-items: flex-end;
 
-    height: 21rem;
-
-    margin-bottom: 1rem;
+    height: 18rem;
 }
 
 #stats-header {
@@ -243,42 +242,48 @@ h1 {
     flex-flow: column wrap;
     justify-content: flex-end;
 
-    height: 21rem;
+    height: 17rem;
 
     margin-bottom: 1rem;
 }
 
 #loadout-header h2 {
     font-family: var(--font-display);
-    font-size: 6.854rem;
+    font-size: 6.854em;
     line-height: 1em;
+
+    padding-bottom: 1rem;
+
+    overflow: hidden;
+    overflow-wrap: break-word;
 }
 
-@media only screen and (max-width: 2000px) {
+@media only screen and (max-width: 1600px) {
     #content {
         display: flex;
         flex-flow: column nowrap;
 
-        max-height: calc(100vh - 9rem);
+        max-height: calc(100vh - 8rem);
 
         overflow: scroll;
     }
 
-    #loadout {
-        flex-shrink: 0;
+    #loadout,
+    #stats {
+        max-height: 100%;
 
-        max-height: fit-content;
-
-        overflow: hidden;
+        overflow: visible;
     }
-
-    #loadout h2 {
-        font-size: 4.236rem;
-    }
+    
+    #loadout h2 { font-size: 4.236em; }
 }
 
 #skill-selector { margin-bottom: 1.618em }
-.loadout-category legend { font-weight: 600; }
+
+.loadout-category legend {
+    margin-bottom: 0.25em;
+    font-weight: 600;
+}
 
 .loadout-category {
     padding: 0;
@@ -290,7 +295,6 @@ h1 {
     flex-flow: row wrap;
     gap: 0.5em;
 
-    margin-top: 0.25em;
     padding: 0;
 
     border: none;
@@ -306,9 +310,9 @@ h1 {
     display: inline-block;
 
     border: var(--border);
-    border-radius: 0.2em;
+    border-radius: 0.15rem;
 
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--color-surface-dim);
     backdrop-filter: blur(5px);
 
     user-select: none;
@@ -316,23 +320,23 @@ h1 {
 }
 
 .skill label {
-    width: 4.236rem;
-    height: 4.236rem;
+    width: 4.236em;
+    height: 4.236em;
 
-    font-size: 1rem;
     color: transparent;
 }
 
 .skill label::before {
     position: absolute;
-    width: 4.236rem;
-    height: 4.236rem;
+    top: calc((4.236em - 64px) / 2);
+    left: calc((4.236em - 64px) / 2);
 
-    scale: 90%;
+    width: 64px;
+    height: 64px;
+    scale: 70%;
 
     background:
-        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat,
-        rgba(0, 0, 0, 0.1);
+        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat;
 
     content: '';
 }
@@ -341,15 +345,14 @@ h1 {
     opacity: 25%;
     background:
         linear-gradient(to bottom right, transparent 49%, white 50%, transparent 51%),
-        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat,
-        rgba(0, 0, 0, 0.1);
+        var(--image-url) var(--image-x-offset) var(--image-y-offset) no-repeat;
 }
 
 #loadout-attachments {
     display: flex;
     flex: 1;
     flex-direction: column;
-    gap: 1.618rem;
+    gap: 1.618em;
 }
 
 .attachment label {
@@ -362,22 +365,21 @@ h1 {
     min-width: 0;
 
     border: var(--border);
-    border-radius: 0.2em;
+    border-radius: 0.15rem;
 
-    background-color: rgba(9, 9, 11, 0.25);
-    backdrop-filter: blur(8px);
+    background-color: var(--color-surface-dim);
 }
 
 .weapon-stat-category-title {
     display: block;
 
-    padding: 0.25rem 1rem;
+    padding: 0.25em 1em;
 
     font-weight: 600;
 
     border-bottom: var(--border);
 
-    background-color: rgba(60, 60, 60, 0.1);
+    background-color: var(--color-surface);
 }
 
 .weapon-stat-category {
@@ -415,11 +417,6 @@ h1 {
     grid-template-columns: 1fr 1fr;
 }
 
-#weapon-stats-recoil > div {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-}
-
 #damage-stats {
     display: flex;
     flex-flow: column wrap;
@@ -428,9 +425,9 @@ h1 {
 
 .damage-stat-container {
     display: grid;
-    grid-template-columns: 10em 1fr 1fr;
+    grid-template-columns: 9rem 1fr 1fr;
 
-    min-height: 10em;
+    min-height: 9rem;
 }
 
 .enemy-info {
@@ -438,11 +435,11 @@ h1 {
     flex-flow: column wrap;
     justify-content: end;
 
-    padding: 1rem;
+    padding: 0.5em 1em;
 
     border-right: var(--border);
 
-    background-color: rgba(60, 60, 60, 0.1);
+    background-color: var(--color-surface);
 }
 
 .enemy-info .enemy-name {
@@ -451,7 +448,7 @@ h1 {
 
 .optimal-ttk,
 .body-ttk {
-    padding: 0.5rem 1rem;
+    padding: 0.5em 1em;
 
     font-family: var(--font-mono);
 }
@@ -465,7 +462,7 @@ h1 {
     flex-flow: column wrap;
     gap: 0.5em;
 
-    margin-top: 0.5rem;
+    margin-top: 1em;
 
     line-height: 1em;
 }
@@ -481,12 +478,12 @@ span.damage-breakdown {
 #sidebar-stats {
     flex-shrink: 0;
 
-    width: 16rem;
+    width: 13rem;
     height: 100vh;
 
     border-left: var(--border);
 
-    background: rgba(9, 9, 11, 0.25);
+    background: var(--color-surface-dim);
 
     overflow: hidden;
 }
@@ -501,17 +498,17 @@ span.damage-breakdown {
     align-items: center;
     gap: 1rem;
 
-    margin-top: 6rem;
+    margin-top: 5rem;
 }
 
 .stat-container {
     display: flex;
     flex-flow: column wrap;
 
-    width: 14rem;
+    width: 11rem;
 
     border: var(--border);
-    border-radius: 0.2em;
+    border-radius: 0.15rem;
 
     background: var(--color-surface);
 
@@ -520,12 +517,16 @@ span.damage-breakdown {
 
 .stat-container#number-stats {
     justify-content: space-between;
-    height: 21rem;
+    
+    height: 17rem;
+
+    padding: 0.5em 0;
 }
 
 .stat-group {
     display: flex;
     flex-flow: column wrap;
+    gap: 0.5em;
 }
 
 .stat-group div {
@@ -534,7 +535,7 @@ span.damage-breakdown {
 }
 
 #sidebar-stats .stat-group div {
-    padding: 0.25em 1em;
+    padding: 0 1em;
 }
 
 .stat-group div > span:first-child {
@@ -563,7 +564,6 @@ span.damage-breakdown {
 
     border-top: 1em solid var(--color-primary);
     border-left: 1em solid transparent;
-    border-top-right-radius: 0.1em;
 
     content: '';
 }
