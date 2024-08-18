@@ -1038,6 +1038,11 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
               ).multiplier
             : 1;
 
+        let enemyArmor = enemy.armor;
+
+        if (enemy.displayName == 'Bulldozer' && headshots) enemyArmor = 0;
+        if (equippedSkills.includes('expose')) enemyArmor = 0;
+
         const shotsToKill = weaponShotsToKill(
             damage,
             multiplier,
@@ -1046,7 +1051,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
                 enemy.armorHardness
             ),
             enemy.health,
-            enemy.displayName == 'Bulldozer' && headshots ? 0 : enemy.armor
+            enemyArmor
         );
 
         if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
