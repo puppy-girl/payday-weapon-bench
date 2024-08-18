@@ -1080,7 +1080,7 @@ const damageStatTemplate = document
 document.querySelector('template.damage-stat-container').remove();
 
 function updateDamageStats(selectedWeapon) {
-    const weapon = applyLoadout(
+    let weapon = applyLoadout(
         selectedWeapon,
         equippedSkills,
         equippedAttachments
@@ -1089,6 +1089,13 @@ function updateDamageStats(selectedWeapon) {
     document.querySelector('#damage-stats').innerHTML = '';
 
     for (enemy in ENEMIES) {
+        if (enemy == 'bulldozer')
+            weapon = applyLoadout(
+                selectedWeapon,
+                equippedSkills.filter((skill) => skill != 'coupDeGrace'),
+                equippedAttachments
+            );
+
         const enemyData = ENEMIES[enemy];
 
         const damageStats = document
