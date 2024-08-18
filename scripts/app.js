@@ -956,10 +956,14 @@ function updateWeaponStats(selectedWeapon) {
                 'y',
                 50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
             );
-            gunKick.setAttribute('fill', 'white');
-            gunKick.setAttribute('fill-opacity', '30%');
+            gunKick.setAttribute('fill', 'transparent');
+            gunKick.setAttribute('stroke', 'white');
+            gunKick.setAttribute('stroke-width', 0.75);
+            gunKick.setAttribute('pathLength', '20');
+            gunKick.setAttribute('stroke-dasharray', '2 8');
+            gunKick.setAttribute('stroke-dashoffset', '1');
 
-            if (i == 0) gunKick.setAttribute('fill-opacity', '10%');
+            if (i == 0) gunKick.setAttribute('stroke-opacity', '25%');
         }
 
         const center = gunKickStat.appendChild(
