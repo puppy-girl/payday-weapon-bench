@@ -152,6 +152,10 @@ body {
     content: '';
 }
 
+.selectable-weapon::after {
+    font-size: 1.5em;
+}
+
 .selectable-weapon:first-child { margin-top: 1rem; }
 .selectable-weapon:last-child { margin-bottom: 1rem; }
 
