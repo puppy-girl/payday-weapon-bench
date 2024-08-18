@@ -1069,13 +1069,22 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
         }
 
         if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
-            shotsToKillAtDistances[distance] = shotsToKill;
+            shotsToKillAtDistances[Math.round(distance)] = shotsToKill;
 
         previous = shotsToKill;
     });
 
-    console.log(shotsToKillAtDistances);
-    return shotsToKillAtDistances;
+    console.log('unsorted ' + Object.keys(shotsToKillAtDistances));
+    console.log(
+        'sorted ' + Object.keys(shotsToKillAtDistances).sort((a, b) => a - b)
+    );
+
+    return Object.keys(shotsToKillAtDistances)
+        .sort()
+        .reduce((obj, key) => {
+            obj[key] = shotsToKillAtDistances[key];
+            return obj;
+        }, {});
 }
 
 const damageStatTemplate = document
