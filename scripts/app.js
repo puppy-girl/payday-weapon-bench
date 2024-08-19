@@ -1051,7 +1051,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
             damage,
             multiplier,
             effectiveArmorPenetration(
-                weapon.fireData.armorPenetration,
+                fireData.armorPenetration,
                 enemy.armorHardness
             ),
             enemy.health,
@@ -1060,12 +1060,21 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
 
         if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
             const shotsToBreakVisor =
-                weapon.fireData.armorPenetration <= enemy.visorArmorHardness - 1
+                fireData.armorPenetration <= enemy.visorArmorHardness - 1
                     ? Math.ceil(enemy.visorArmor / damage)
                     : 0;
 
             shotsToKill.visorShots = shotsToBreakVisor;
             shotsToKill.totalShots += shotsToBreakVisor;
+        }
+
+        if (
+            fireData.projectilesPerFiredRound &&
+            fireData.projectilesPerFiredRound > 1
+        ) {
+            shotsToKill.totalShots = Math.ceil(
+                shotsToKill.totalShots / fireData.projectilesPerFiredRound
+            );
         }
 
         if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
