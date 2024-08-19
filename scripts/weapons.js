@@ -1325,6 +1325,314 @@ const WEAPON_DATA = Object.freeze({
         "reloadTime": 2.3333333,
         "reloadEmptyTime": 2.6666667
     },
+    "CHS3": {
+        "displayName": "Chanit S3",
+        "class": "Assault Rifle",
+        "dlc": "3",
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 0
+            },
+            "source": "SS_UI_Weapons_00030-DLC0003.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 36.4,
+                    "distance": 2000
+                },
+                {
+                    "damage": 25,
+                    "distance": 4000
+                },
+                {
+                    "damage": 19,
+                    "distance": 6000
+                },
+                {
+                    "damage": 15.5,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 2000
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 4000
+                },
+                {
+                    "multiplier": 2.5,
+                    "distance": 6000
+                },
+                {
+                    "multiplier": 2.2,
+                    "distance": 10000
+                }
+            ],
+            "ammoLoaded": 30,
+            "ammoInventory": 120,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            },
+            "fireType": "Burst",
+            "armorPenetration": 0.9,
+            "roundsPerMinute": 1000
+        },
+        "spreadData": {
+            "start": 0.5,
+            "increase": 0.45,
+            "resetTime": 0.2,
+            "cap": 5,
+            "stanceMultipliers": {
+                "stand": {},
+                "standMove": {
+                    "start": 1.5,
+                    "cap": 1.5,
+                    "increment": 1.5
+                },
+                "crouch": {
+                    "start": 0.5,
+                    "cap": 0.5,
+                    "increment": 0.5
+                },
+                "crouchMove": {
+                    "start": 0.75,
+                    "cap": 0.75,
+                    "increment": 0.75
+                },
+                "target": {
+                    "spread": 0
+                },
+                "targetMove": {
+                    "start": 0.25,
+                    "cap": 0.25,
+                    "increment": 0.25
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 50,
+                "recoverSpeed": 30,
+                "recoverWaitTime": 0.075,
+                "recoilPattern": [
+                    {
+                        "x": -0.0375,
+                        "y": 0.075
+                    },
+                    {
+                        "x": 0.075,
+                        "y": 0.2625
+                    },
+                    {
+                        "x": 0.0375,
+                        "y": 0.4875
+                    },
+                    {
+                        "x": 0.15,
+                        "y": 0.675
+                    },
+                    {
+                        "x": -0.112500004,
+                        "y": 0.7875
+                    },
+                    {
+                        "x": 0.0375,
+                        "y": 1.0125
+                    },
+                    {
+                        "x": -0.2625,
+                        "y": 1.5
+                    },
+                    {
+                        "x": -0.41250002,
+                        "y": 2
+                    },
+                    {
+                        "x": -0.63750005,
+                        "y": 2.33
+                    },
+                    {
+                        "x": -0.82500005,
+                        "y": 2.55
+                    },
+                    {
+                        "x": -1.125,
+                        "y": 3.0625
+                    },
+                    {
+                        "x": -0.97499996,
+                        "y": 4.375
+                    },
+                    {
+                        "x": -1.1624999,
+                        "y": 4.8125
+                    },
+                    {
+                        "x": -1.2750001,
+                        "y": 5.359375
+                    },
+                    {
+                        "x": -1.0875001,
+                        "y": 6.625
+                    },
+                    {
+                        "x": -1.2750001,
+                        "y": 7.125166
+                    },
+                    {
+                        "x": -1.5,
+                        "y": 8.7
+                    },
+                    {
+                        "x": -1.3875,
+                        "y": 9.6
+                    },
+                    {
+                        "x": -1.6500001,
+                        "y": 10.05
+                    },
+                    {
+                        "x": -1.5374999,
+                        "y": 10.95
+                    }
+                ],
+                "resetTime": 0.5,
+                "loopStart": 12,
+                "initialNum": 0,
+                "hipfireMultiplier": 1.5
+            },
+            "gunKick": {
+                "deflectSpeed": 15,
+                "recoverSpeed": 7.5,
+                "verticalTop": {
+                    "min": 0.1,
+                    "max": 0.4
+                },
+                "verticalBottom": {
+                    "min": 0.1,
+                    "max": 0.4
+                },
+                "verticalMultiplier": {
+                    "start": 0.3,
+                    "max": 1.2,
+                    "threshold": 1.2
+                },
+                "horizontalRight": {
+                    "min": 0.1,
+                    "max": 0.3
+                },
+                "horizontalLeft": {
+                    "min": 0.1,
+                    "max": 0.3
+                },
+                "horizontalMultiplier": {
+                    "start": 0.3,
+                    "max": 1.2,
+                    "threshold": 1.2
+                }
+            }
+        },
+        "modularConfiguration": {
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_ClassicRDS",
+                    "Sight_Compact",
+                    "Sight_ViewPoint",
+                    "Sight_Lined",
+                    "Sight_Projection",
+                    "Sight_Tactical",
+                    "Sight_Sheath",
+                    "Sight_SquareClaim"
+                ]
+            },
+            "barrelExtension": {
+                "defaultPart": "CHS3_BarrelExt_Default",
+                "uniqueParts": [
+                    "BarrelExt_BeveledSilencer",
+                    "BarrelExt_Express",
+                    "BarrelExt_HybridMB",
+                    "BarrelExt_IndentComp",
+                    "BarrelExt_CylindricSilencer",
+                    "BarrelExt_PipedSilencer"
+                ]
+            },
+            "barrel": {
+                "defaultPart": "CHS3_Barrel_Default",
+                "uniqueParts": [
+                    "CHS3_Barrel_CQC",
+                    "CHS3_Barrel_Ranged"
+                ]
+            },
+            "body": {
+                "defaultPart": "CHS3_Body_Default",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "CHS3_Bolt_Default",
+                "uniqueParts": []
+            },
+            "foreGrip": {
+                "defaultPart": "CHS3_Foregrip_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "CHS3_Grip_Default",
+                "uniqueParts": [
+                    "Grip_Perforated"
+                ]
+            },
+            "mag": {
+                "defaultPart": "CHS3_Mag_Default",
+                "uniqueParts": [
+                    "CHS3_Mag_Quick",
+                    "CHS3_Mag_Compact",
+                    "CHS3_Mag_Extended"
+                ]
+            },
+            "stock": {
+                "defaultPart": "CHS3_Stock_Default",
+                "uniqueParts": [
+                    "CHS3_Stock_Refined",
+                    "CHS3_Stock_Fortified"
+                ]
+            },
+            "rearSight": {
+                "defaultPart": "CHS3_RearSight_Default",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "CHS3_FrontSight_Default",
+                "uniqueParts": []
+            },
+            "verticalGrip": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "VerticalGrip_Cylinder",
+                    "VerticalGrip_AngledGhost",
+                    "VerticalGrip_Stub",
+                    "VerticalGrip_QuickHold"
+                ]
+            },
+            "ammo": {
+                "defaultPart": "CHS3_Ammo_Default",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "CHS3_ChargingHandle_Default",
+                "uniqueParts": []
+            }
+        },
+        "reloadTime": 2.6666665,
+        "reloadEmptyTime": 2.8333333
+    },
     "Castigo44": {
         "displayName": "J&M Castigo 44",
         "class": "Revolver",
@@ -3084,6 +3392,304 @@ const WEAPON_DATA = Object.freeze({
         "reloadTime": 2.3333335,
         "reloadEmptyTime": 2.8350124
     },
+    "M7P": {
+        "displayName": "M7 Pursuivant",
+        "class": "Shotgun",
+        "dlc": "3",
+        "displayIcon": {
+            "offset": {
+                "x": 256,
+                "y": 0
+            },
+            "source": "SS_UI_Weapons_00030-DLC0003.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 26,
+                    "distance": 500
+                },
+                {
+                    "damage": 20,
+                    "distance": 1500
+                },
+                {
+                    "damage": 10,
+                    "distance": 3000
+                },
+                {
+                    "damage": 8,
+                    "distance": 4500
+                },
+                {
+                    "damage": 4.5,
+                    "distance": 7000
+                },
+                {
+                    "damage": 3.1,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 1500
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 3000
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 4500
+                },
+                {
+                    "multiplier": 1,
+                    "distance": 1000000
+                }
+            ],
+            "ammoLoaded": 12,
+            "ammoInventory": 48,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            },
+            "fireType": "Burst",
+            "projectilesPerFiredRound": 7,
+            "roundsPerMinute": 450
+        },
+        "spreadData": {
+            "increase": 0.2,
+            "resetTime": 0.3,
+            "decayRate": 0,
+            "cap": 3,
+            "stanceMultipliers": {
+                "standMove": {
+                    "spread": 1.5,
+                    "cap": 1.5,
+                    "increment": 1.2
+                },
+                "crouch": {
+                    "spread": 0.5
+                },
+                "crouchMove": {
+                    "cap": 1.25,
+                    "increment": 1.1
+                },
+                "target": {
+                    "start": 0.6,
+                    "cap": 0.7,
+                    "increment": 0.7
+                },
+                "targetMove": {
+                    "start": 0.6,
+                    "cap": 0.7,
+                    "increment": 0.7
+                }
+            },
+            "radiusMultipliers": {},
+            "shotgunPatterns": [
+                [
+                    {
+                        "x": 0.2,
+                        "y": -0.9
+                    },
+                    {
+                        "x": -1.5,
+                        "y": 0.9
+                    },
+                    {
+                        "x": 0.1,
+                        "y": 0.5
+                    },
+                    {
+                        "x": 1.6,
+                        "y": -1
+                    },
+                    {
+                        "x": -2,
+                        "y": -1.5
+                    },
+                    {
+                        "x": -1,
+                        "y": -0.4
+                    },
+                    {
+                        "x": 1.4,
+                        "y": 1
+                    }
+                ],
+                [
+                    {
+                        "x": 0.3,
+                        "y": -1.2
+                    },
+                    {
+                        "x": -1.3,
+                        "y": 0.6
+                    },
+                    {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    {
+                        "x": 1.4,
+                        "y": -0.7
+                    },
+                    {
+                        "x": -1.7,
+                        "y": -1.3
+                    },
+                    {
+                        "x": -0.6,
+                        "y": -0.6
+                    },
+                    {
+                        "x": 0.9,
+                        "y": 0.8
+                    }
+                ]
+            ]
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 75,
+                "recoverSpeed": 50,
+                "recoverWaitTime": 0.1,
+                "recoilPattern": [
+                    {
+                        "x": 0.5,
+                        "y": 0.75
+                    },
+                    {
+                        "x": 0.375,
+                        "y": 1.25
+                    },
+                    {
+                        "x": -0.125,
+                        "y": 1.75
+                    },
+                    {
+                        "x": 0.075,
+                        "y": 2.25
+                    }
+                ],
+                "resetTime": 0.3,
+                "loopStart": 1,
+                "initialNum": 1,
+                "hipfireMultiplier": 1.8
+            },
+            "gunKick": {
+                "deflectSpeed": 50,
+                "recoverSpeed": 35,
+                "verticalTop": {
+                    "min": 1,
+                    "max": 1.5
+                },
+                "verticalBottom": {
+                    "min": 0.02,
+                    "max": 0.1
+                },
+                "verticalMultiplier": {},
+                "horizontalRight": {
+                    "min": 0.2,
+                    "max": 0.8
+                },
+                "horizontalLeft": {
+                    "min": 0.2,
+                    "max": 0.8
+                },
+                "horizontalMultiplier": {}
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "M7P_Barrel_Default",
+                "uniqueParts": [
+                    "M7P_Barrel_CQC",
+                    "M7P_Barrel_Ranged"
+                ]
+            },
+            "rearSight": {
+                "defaultPart": "M7P_RearSight_Default",
+                "uniqueParts": []
+            },
+            "body": {
+                "defaultPart": "M7P_Body_Default",
+                "uniqueParts": []
+            },
+            "foreGrip": {
+                "defaultPart": "M7P_Foregrip_Default",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "M7P_FrontSight_Default",
+                "uniqueParts": []
+            },
+            "mag": {
+                "defaultPart": "M7P_Mag_Default",
+                "uniqueParts": [
+                    "M7P_Mag_Extended",
+                    "M7P_Mag_Compact",
+                    "M7P_Mag_Quick"
+                ]
+            },
+            "stock": {
+                "defaultPart": "M7P_Stock_Default",
+                "uniqueParts": [
+                    "M7P_Stock_Bolstered"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_ClassicRDS",
+                    "Sight_Compact",
+                    "Sight_Projection",
+                    "Sight_Sheath"
+                ]
+            },
+            "ammo": {
+                "defaultPart": "M7P_Ammo_Default",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": "M7P_BarrelExt_Default",
+                "uniqueParts": [
+                    "BarrelExt_12GObelisk",
+                    "BarrelExt_SedimentChoke",
+                    "BarrelExt_12GVentComp",
+                    "BarrelExt_JawChoke",
+                    "BarrelExt_Ridgecyl"
+                ]
+            },
+            "chargingHandle": {
+                "defaultPart": "M7P_ChargingHandle_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "M7P_Grip_Default",
+                "uniqueParts": [
+                    "Grip_Perforated"
+                ]
+            },
+            "verticalGrip": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "VerticalGrip_Cylinder",
+                    "VerticalGrip_AngledGhost",
+                    "VerticalGrip_Stub",
+                    "VerticalGrip_QuickHold"
+                ]
+            },
+            "bolt": {
+                "defaultPart": "M7P_Bolt_Default",
+                "uniqueParts": []
+            }
+        },
+        "reloadTime": 2.3999999,
+        "reloadEmptyTime": 2.6666667
+    },
     "MX63": {
         "displayName": "Blyspruta MX63",
         "class": "LMG",
@@ -4376,6 +4982,266 @@ const WEAPON_DATA = Object.freeze({
         },
         "reloadTime": 1.8333334,
         "reloadEmptyTime": 2.1666667
+    },
+    "PD5": {
+        "displayName": "Picchio Duro 5",
+        "class": "Pistol",
+        "dlc": "3",
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 128
+            },
+            "source": "SS_UI_Weapons_00030-DLC0003.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 44,
+                    "distance": 1500
+                },
+                {
+                    "damage": 30,
+                    "distance": 3000
+                },
+                {
+                    "damage": 20,
+                    "distance": 4500
+                },
+                {
+                    "damage": 12.5,
+                    "distance": 10000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 1500
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 3000
+                },
+                {
+                    "multiplier": 2,
+                    "distance": 4500
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 10000
+                }
+            ],
+            "ammoLoaded": 15,
+            "ammoInventory": 60,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            },
+            "fireType": "Burst",
+            "roundsPerMinute": 800
+        },
+        "spreadData": {
+            "increase": 0.3,
+            "decayRate": 0,
+            "cap": 4,
+            "stanceMultipliers": {
+                "stand": {
+                    "spread": 0.5
+                },
+                "standMove": {
+                    "spread": 0.75
+                },
+                "crouch": {
+                    "spread": 0.25
+                },
+                "crouchMove": {
+                    "spread": 0.5
+                },
+                "target": {
+                    "spread": 0.1
+                },
+                "targetMove": {
+                    "spread": 0.25
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 20,
+                "recoverSpeed": 17,
+                "recoverWaitTime": 0.08,
+                "recoilPattern": [
+                    {
+                        "x": 0.15,
+                        "y": 0.0375
+                    },
+                    {
+                        "x": 0.27,
+                        "y": 0.39
+                    },
+                    {
+                        "x": 0.345,
+                        "y": 1.005
+                    },
+                    {
+                        "x": 0.3075,
+                        "y": 1.9725001
+                    },
+                    {
+                        "x": 0.15,
+                        "y": 2.43
+                    },
+                    {
+                        "x": -0.052500002,
+                        "y": 3.1799998
+                    },
+                    {
+                        "x": 0.1275,
+                        "y": 3.7124999
+                    },
+                    {
+                        "x": 0.375,
+                        "y": 4.5
+                    },
+                    {
+                        "x": 0.39,
+                        "y": 5.3849998
+                    },
+                    {
+                        "x": 0.315,
+                        "y": 6.0225
+                    },
+                    {
+                        "x": 0.1275,
+                        "y": 6.3525
+                    },
+                    {
+                        "x": -0.075,
+                        "y": 7.2225
+                    },
+                    {
+                        "x": 0.255,
+                        "y": 7.6575003
+                    },
+                    {
+                        "x": 0.17999999,
+                        "y": 8.43
+                    },
+                    {
+                        "x": 0,
+                        "y": 9
+                    },
+                    {
+                        "x": -0.24,
+                        "y": 9.93
+                    },
+                    {
+                        "x": -0.0975,
+                        "y": 11.055
+                    }
+                ],
+                "resetTime": 0.25,
+                "hipfireMultiplier": 1.5
+            },
+            "gunKick": {
+                "deflectSpeed": 7,
+                "recoverSpeed": 3,
+                "verticalTop": {
+                    "max": 0.3
+                },
+                "verticalBottom": {},
+                "verticalMultiplier": {},
+                "horizontalRight": {
+                    "min": 0.2,
+                    "max": 0.6
+                },
+                "horizontalLeft": {
+                    "min": 0.2,
+                    "max": 0.6
+                },
+                "horizontalMultiplier": {}
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "PD5_Barrel_Default",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "PD5_Bolt_Default",
+                "uniqueParts": []
+            },
+            "body": {
+                "defaultPart": "PD5_Body_Default",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "PD5_ChargingHandle_Default",
+                "uniqueParts": []
+            },
+            "stock": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "PD5_Stock_Combat"
+                ]
+            },
+            "mag": {
+                "defaultPart": "PD5_Mag_Default",
+                "uniqueParts": [
+                    "PD5_Mag_Extended",
+                    "PD5_Mag_Quick"
+                ]
+            },
+            "verticalGrip": {
+                "defaultPart": "PD5_VertGrip_Default",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": "PD5_BarrelExt_Default",
+                "uniqueParts": [
+                    "BarrelExt_ObeliskSilencer",
+                    "BarrelExt_SnubSilencer",
+                    "BarrelExt_CompactComp",
+                    "BarrelExt_SkeletonizedComp",
+                    "BarrelExt_PartedComp",
+                    "BarrelExt_IDM2"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_Slate",
+                    "Sight_LED",
+                    "Sight_Box"
+                ]
+            },
+            "ammo": {
+                "defaultPart": "PD5_Ammo_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "PD5_Grip_Default",
+                "uniqueParts": [
+                    "PD5_Grip_Tac",
+                    "PD5_Grip_Premier"
+                ]
+            },
+            "sightMount": {
+                "defaultPart": "PD5_SightMount_Default",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "PD5_RearSight_Default",
+                "uniqueParts": []
+            },
+            "stockMount": {
+                "defaultPart": "PD5_StockMount_Default",
+                "uniqueParts": []
+            }
+        },
+        "reloadTime": 1.5000001,
+        "reloadEmptyTime": 1.8333334
     },
     "R880": {
         "displayName": "Reinfeld 880",
@@ -6203,6 +7069,273 @@ const WEAPON_DATA = Object.freeze({
         },
         "reloadTime": 1.3333335,
         "reloadEmptyTime": 1.5333333
+    },
+    "T32": {
+        "displayName": "Tribune 32",
+        "class": "Pistol",
+        "dlc": "3",
+        "displayIcon": {
+            "offset": {
+                "x": 256,
+                "y": 128
+            },
+            "source": "SS_UI_Weapons_00030-DLC0003.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 26,
+                    "distance": 500
+                },
+                {
+                    "damage": 23,
+                    "distance": 15
+                },
+                {
+                    "damage": 17.1,
+                    "distance": 3000
+                },
+                {
+                    "damage": 12.5,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 4,
+                    "distance": 1500
+                },
+                {
+                    "multiplier": 2.5,
+                    "distance": 3000
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 1000000
+                }
+            ],
+            "ammoLoaded": 33,
+            "ammoInventory": 132,
+            "ammoPickup": {
+                "min": 12,
+                "max": 14
+            },
+            "fireType": "Auto",
+            "roundsPerMinute": 900
+        },
+        "spreadData": {
+            "resetTime": 0.25,
+            "cap": 4,
+            "stanceMultipliers": {
+                "standMove": {
+                    "spread": 1.5
+                },
+                "crouch": {
+                    "spread": 0.5
+                },
+                "target": {
+                    "spread": 0.25
+                },
+                "targetMove": {
+                    "spread": 0.5
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "recoverSpeed": 50,
+                "recoilPattern": [
+                    {
+                        "x": 0.1875,
+                        "y": 0.15
+                    },
+                    {
+                        "x": 0.3,
+                        "y": 0.41250002
+                    },
+                    {
+                        "x": 0.525,
+                        "y": 0.7125
+                    },
+                    {
+                        "x": 0.82500005,
+                        "y": 0.75
+                    },
+                    {
+                        "x": 0.9375,
+                        "y": 1.2
+                    },
+                    {
+                        "x": 1.2,
+                        "y": 1.2750001
+                    },
+                    {
+                        "x": 1.05,
+                        "y": 1.7249999
+                    },
+                    {
+                        "x": 1.3499999,
+                        "y": 1.9124999
+                    },
+                    {
+                        "x": 1.2,
+                        "y": 2.25
+                    },
+                    {
+                        "x": 1.03125,
+                        "y": 2.53125
+                    },
+                    {
+                        "x": 0.76874995,
+                        "y": 2.625
+                    },
+                    {
+                        "x": 0.6,
+                        "y": 2.9250002
+                    },
+                    {
+                        "x": 0.90000004,
+                        "y": 3.0749998
+                    },
+                    {
+                        "x": 0.7125,
+                        "y": 3.375
+                    },
+                    {
+                        "x": 0.78749996,
+                        "y": 3.75
+                    },
+                    {
+                        "x": 0.525,
+                        "y": 3.8625002
+                    },
+                    {
+                        "x": 0.7125,
+                        "y": 4.125
+                    },
+                    {
+                        "x": 0.91875005,
+                        "y": 4.3500004
+                    },
+                    {
+                        "x": 0.97499996,
+                        "y": 4.7625
+                    },
+                    {
+                        "x": 0.7125,
+                        "y": 4.875
+                    },
+                    {
+                        "x": 0.90000004,
+                        "y": 5.25
+                    }
+                ],
+                "resetTime": 0.25,
+                "loopStart": 12,
+                "hipfireMultiplier": 2.1
+            },
+            "gunKick": {
+                "deflectSpeed": 15,
+                "recoverSpeed": 7.5,
+                "verticalTop": {
+                    "min": 0.12,
+                    "max": 0.6
+                },
+                "verticalBottom": {
+                    "min": 0.08,
+                    "max": 0.2
+                },
+                "verticalMultiplier": {
+                    "start": 0.3,
+                    "max": 1.2,
+                    "threshold": 1.2
+                },
+                "horizontalRight": {
+                    "min": 0.4,
+                    "max": 0.8
+                },
+                "horizontalLeft": {
+                    "min": 0.4,
+                    "max": 0.8
+                },
+                "horizontalMultiplier": {
+                    "start": 0.3,
+                    "threshold": 1.6
+                }
+            }
+        },
+        "modularConfiguration": {
+            "ammo": {
+                "defaultPart": "T32_Ammo_Default",
+                "uniqueParts": []
+            },
+            "barrel": {
+                "defaultPart": "T32_Barrel_Default",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": "T32_BarrelExtension_Default",
+                "uniqueParts": [
+                    "BarrelExt_ObeliskSilencer",
+                    "BarrelExt_SnubSilencer",
+                    "BarrelExt_CompactComp",
+                    "BarrelExt_SkeletonizedComp",
+                    "BarrelExt_PartedComp"
+                ]
+            },
+            "body": {
+                "defaultPart": "T32_Body_Default",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "T32_Bolt_Default",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "T32_ChargingHandle_Default",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "T32_FrontSight_Default",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "T32_RearSight_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "T32_Grip_Default",
+                "uniqueParts": []
+            },
+            "mag": {
+                "defaultPart": "T32_Mag_Default",
+                "uniqueParts": [
+                    "T32_Mag_Extended",
+                    "T32_Mag_Compact",
+                    "T32_Mag_QuickPull"
+                ]
+            },
+            "sightMount": {
+                "defaultPart": "T32_SightMount_Default",
+                "uniqueParts": []
+            },
+            "stock": {
+                "defaultPart": "T32_Stock_NoStock",
+                "uniqueParts": [
+                    "T32_Stock_Underline",
+                    "T32_Stock_Overline"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_Slate",
+                    "Sight_Box",
+                    "Sight_LED"
+                ]
+            }
+        }
     },
     "VF7S": {
         "displayName": "VF-7S",

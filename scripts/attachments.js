@@ -399,6 +399,23 @@ const ATTACHMENT_DATA = Object.freeze({
             }
         ]
     },
+    "BarrelExt_IDM2": {
+        "displayName": "Vent Catch IDM2",
+        "attributeModifierMap": [
+            {
+                "attribute": "VerticalRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "VerticalGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "HorizontalRecoil",
+                "value": -10
+            }
+        ]
+    },
     "BarrelExt_IndentComp": {
         "displayName": "Indent Compensator",
         "attributeModifierMap": [
@@ -472,6 +489,19 @@ const ATTACHMENT_DATA = Object.freeze({
             },
             {
                 "attribute": "HipfireSpread",
+                "value": -5
+            }
+        ]
+    },
+    "BarrelExt_Ridgecyl": {
+        "displayName": "Ridgecyl Silencer",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "DamageDistance",
                 "value": -5
             }
         ]
@@ -917,6 +947,166 @@ const ATTACHMENT_DATA = Object.freeze({
     "CAR4_RearSight_Default": {},
     "CAR4_StockMount_Default": {},
     "CAR4_stock_Default": {},
+    "CHS3_Ammo_Default": {},
+    "CHS3_BarrelExt_Default": {},
+    "CHS3_Barrel_CQC": {
+        "displayName": "CQC Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 5
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 10
+            },
+            {
+                "attribute": "DamageDistance",
+                "value": -5
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "CHS3_Barrel_Default": {},
+    "CHS3_Barrel_Ranged": {
+        "displayName": "Ranged Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "DamageDistance",
+                "value": 10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -5
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": -5
+            }
+        ]
+    },
+    "CHS3_Body_Default": {},
+    "CHS3_Bolt_Default": {},
+    "CHS3_ChargingHandle_Default": {},
+    "CHS3_Foregrip_Default": {},
+    "CHS3_FrontSight_Default": {},
+    "CHS3_Grip_Default": {},
+    "CHS3_Mag_Compact": {
+        "displayName": "Compact Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 5
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 25,
+            "ammoInventory": 200,
+            "ammoInventoryMax": 500,
+            "ammoPickup": {
+                "min": 9,
+                "max": 11
+            }
+        }
+    },
+    "CHS3_Mag_Default": {
+        "magazineData": {
+            "ammoLoaded": 30,
+            "ammoInventory": 120,
+            "ammoInventoryMax": 300,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "CHS3_Mag_Extended": {
+        "displayName": "Extended Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": -10
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 42,
+            "ammoInventory": 84,
+            "ammoInventoryMax": 252,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "CHS3_Mag_Quick": {
+        "displayName": "Quick-Pull Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 15
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 30,
+            "ammoInventory": 120,
+            "ammoInventoryMax": 300,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "CHS3_RearSight_Default": {},
+    "CHS3_Stock_Fortified": {
+        "displayName": "Fortified Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -10
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -10
+            }
+        ]
+    },
+    "CHS3_Stock_Refined": {
+        "displayName": "Refined Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 10
+            },
+            {
+                "attribute": "HipfireSpread",
+                "value": -10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "CHS3_stock_Default": {},
     "Castigo44_Barrel_CQC": {
         "displayName": "CQC Barrel",
         "attributeModifierMap": [
@@ -1638,6 +1828,141 @@ const ATTACHMENT_DATA = Object.freeze({
     "KU59_SightMount_Default": {},
     "KU59_StockMount_Default": {},
     "KU59_Stock_Default": {},
+    "M7P_Ammo_Default": {},
+    "M7P_BarrelExt_Default": {},
+    "M7P_Barrel_CQC": {
+        "displayName": "CQC Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 5
+            },
+            {
+                "attribute": "ViewKickRecoverySpeed",
+                "value": 10
+            },
+            {
+                "attribute": "OverallSpread",
+                "value": -5
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "M7P_Barrel_Default": {},
+    "M7P_Barrel_Ranged": {
+        "displayName": "Ranged Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "DamageDistance",
+                "value": 5
+            },
+            {
+                "attribute": "OverallSpread",
+                "value": 5
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": -10
+            }
+        ]
+    },
+    "M7P_Body_Default": {},
+    "M7P_Bolt_Default": {},
+    "M7P_ChargingHandle_Default": {},
+    "M7P_Foregrip_Default": {},
+    "M7P_FrontSight_Default": {},
+    "M7P_Grip_Default": {},
+    "M7P_Mag_Compact": {
+        "displayName": "Compact Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 5
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 9,
+            "ammoInventory": 72,
+            "ammoInventoryMax": 180,
+            "ammoPickup": {
+                "min": 4,
+                "max": 6
+            }
+        }
+    },
+    "M7P_Mag_Default": {
+        "magazineData": {
+            "ammoLoaded": 12,
+            "ammoInventory": 48,
+            "ammoInventoryMax": 120,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            }
+        }
+    },
+    "M7P_Mag_Extended": {
+        "displayName": "Extended Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": -10
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 21,
+            "ammoInventory": 42,
+            "ammoInventoryMax": 126,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            }
+        }
+    },
+    "M7P_Mag_Quick": {
+        "displayName": "Quick-Pull Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 15
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 12,
+            "ammoInventory": 48,
+            "ammoInventoryMax": 120,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            }
+        }
+    },
+    "M7P_RearSight_Default": {},
+    "M7P_Stock_Bolstered": {
+        "displayName": "Bolstered Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -10
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -10
+            }
+        ]
+    },
+    "M7P_Stock_Default": {},
     "MX63_Ammo_Default": {},
     "MX63_BarrelExt_Default": {},
     "MX63_Barrel_CQC": {
@@ -1971,6 +2296,164 @@ const ATTACHMENT_DATA = Object.freeze({
     "PC9_RearSight_Default": {},
     "PC9_StockMount_Default": {},
     "PC9_Stock_Default": {},
+    "PD5_Ammo_Default": {},
+    "PD5_BarrelExt_Default": {},
+    "PD5_Barrel_Default": {},
+    "PD5_Body_Default": {},
+    "PD5_Bolt_Default": {},
+    "PD5_ChargingHandle_Default": {},
+    "PD5_Grip_Default": {
+        "attributeModifierMap": [
+            {
+                "attribute": "VerticalRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "VerticalGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "HorizontalRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "PD5_Grip_Premier": {
+        "displayName": "Premier Grip",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "TargetingSpread",
+                "value": 5
+            },
+            {
+                "attribute": "VerticalRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "PD5_Grip_Tac": {
+        "displayName": "Tactical Grip",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "OverallSwapSpeed",
+                "value": 5
+            },
+            {
+                "attribute": "HipfireSpread",
+                "value": -5
+            }
+        ]
+    },
+    "PD5_Mag_Default": {
+        "magazineData": {
+            "ammoLoaded": 15,
+            "ammoInventory": 60,
+            "ammoInventoryMax": 150,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "PD5_Mag_Extended": {
+        "displayName": "Extended Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": -10
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 30,
+            "ammoInventory": 60,
+            "ammoInventoryMax": 180,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "PD5_Mag_Quick": {
+        "displayName": "Quick-Pull Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 15
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 15,
+            "ammoInventory": 60,
+            "ammoInventoryMax": 150,
+            "ammoPickup": {
+                "min": 7,
+                "max": 9
+            }
+        }
+    },
+    "PD5_RearSight_Default": {},
+    "PD5_SightMount_Default": {
+        "attributeModifierMap": [
+            {
+                "attribute": "VerticalRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "VerticalGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "HorizontalRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "PD5_StockMount_Default": {},
+    "PD5_Stock_Combat": {
+        "displayName": "Combat Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 10
+            },
+            {
+                "attribute": "HipfireSpread",
+                "value": -10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "PD5_VertGrip_Default": {
+        "attributeModifierMap": [
+            {
+                "attribute": "VerticalRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "VerticalGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "HorizontalRecoil",
+                "value": -5
+            }
+        ]
+    },
     "R880_Ammo_Default": {},
     "R880_Barrel_CQC": {
         "displayName": "CQC Barrel",
@@ -3011,6 +3494,27 @@ const ATTACHMENT_DATA = Object.freeze({
             "targetingOnTopMagnification": 1.15
         }
     },
+    "Sight_SquareClaim": {
+        "displayName": "Square Claim",
+        "attributeModifierMap": [
+            {
+                "attribute": "InitialRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -15
+            }
+        ],
+        "targetingData": {
+            "targetingMagnification": 1.2,
+            "targetingOnTopMagnification": 1.2
+        }
+    },
     "Sight_Tactical": {
         "displayName": "Tactical Sight",
         "attributeModifierMap": [
@@ -3280,6 +3784,124 @@ const ATTACHMENT_DATA = Object.freeze({
     },
     "Stryk7_RearSight_Default": {},
     "Stryk7_SightMount_Default": {},
+    "T32_Ammo_Default": {},
+    "T32_BarrelExtension_Default": {},
+    "T32_Barrel_Default": {},
+    "T32_Body_Default": {},
+    "T32_Bolt_Default": {},
+    "T32_ChargingHandle_Default": {},
+    "T32_FrontSight_Default": {},
+    "T32_Grip_Default": {},
+    "T32_Mag_Compact": {
+        "displayName": "Compact Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 5
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 17,
+            "ammoInventory": 136,
+            "ammoInventoryMax": 340,
+            "ammoPickup": {
+                "min": 14,
+                "max": 16
+            }
+        }
+    },
+    "T32_Mag_Default": {
+        "magazineData": {
+            "ammoLoaded": 33,
+            "ammoInventory": 132,
+            "ammoInventoryMax": 330,
+            "ammoPickup": {
+                "min": 12,
+                "max": 14
+            }
+        }
+    },
+    "T32_Mag_Extended": {
+        "displayName": "Extended Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": -10
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 45,
+            "ammoInventory": 90,
+            "ammoInventoryMax": 270,
+            "ammoPickup": {
+                "min": 12,
+                "max": 14
+            }
+        }
+    },
+    "T32_Mag_QuickPull": {
+        "displayName": "Quick-Pull Mag",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 15
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 33,
+            "ammoInventory": 132,
+            "ammoInventoryMax": 330,
+            "ammoPickup": {
+                "min": 12,
+                "max": 14
+            }
+        }
+    },
+    "T32_RearSight_Default": {},
+    "T32_SightMount_Default": {},
+    "T32_Stock_NoStock": {},
+    "T32_Stock_Overline": {
+        "displayName": "Overline Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -10
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -10
+            }
+        ]
+    },
+    "T32_Stock_Underline": {
+        "displayName": "Underline Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallSwapSpeed",
+                "value": 10
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 10
+            },
+            {
+                "attribute": "HipfireSpread",
+                "value": -5
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
     "VF7S_Ammo_Default": {},
     "VF7S_BarrelExt_Default": {},
     "VF7S_Barrel_CQC": {
