@@ -57,9 +57,11 @@ try {
             ? iconDataFile[1].Properties
             : iconDataFile[0].Properties;
 
-        const iconName = path
-            .basename(iconData.BakedSourceTexture.ObjectPath)
-            .replace('.0', '.png');
+        const sourceTexturePath = iconData.BakedSourceTexture.ObjectPath;
+
+        const iconName = path.basename(sourceTexturePath).replace('.0', '.png');
+
+        const iconFile = sourceTexturePath.replace('.0', '.png');
 
         const fireDataPath =
             weaponPath +
