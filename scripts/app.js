@@ -118,7 +118,7 @@ const ENEMIES = {
     heavySwat: {
         displayName: 'Heavy SWAT',
         health: 150,
-        armor: 70,
+        armor: 170,
         armorHardness: 1.5,
     },
     specials: {
