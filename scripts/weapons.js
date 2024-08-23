@@ -45,6 +45,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 12,
             "ammoInventory": 36,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -359,6 +360,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 30,
             "ammoInventory": 120,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 7,
                 "max": 9
@@ -635,6 +637,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 6,
             "ammoInventory": 24,
+            "ammoInventoryMax": 36,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -848,6 +851,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 5,
             "ammoInventory": 25,
+            "ammoInventoryMax": 35,
             "ammoPickup": {
                 "min": 0.5,
                 "max": 1
@@ -1064,6 +1068,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 30,
             "ammoInventory": 120,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 3,
                 "max": 5
@@ -1375,6 +1380,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 30,
             "ammoInventory": 120,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 7,
                 "max": 9
@@ -1675,6 +1681,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 6,
             "ammoInventory": 24,
+            "ammoInventoryMax": 36,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -1934,6 +1941,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
+            "ammoInventoryMax": 200,
             "ammoPickup": {
                 "min": 9,
                 "max": 12
@@ -2225,6 +2233,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
+            "ammoInventoryMax": 200,
             "ammoPickup": {
                 "min": 8
             },
@@ -2514,6 +2523,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
+            "ammoInventoryMax": 250,
             "ammoPickup": {
                 "min": 7,
                 "max": 9
@@ -3129,6 +3139,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 30,
             "ammoInventory": 120,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 3,
                 "max": 4
@@ -3450,6 +3461,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 12,
             "ammoInventory": 48,
+            "ammoInventoryMax": 120,
             "ammoPickup": {
                 "min": 2,
                 "max": 4
@@ -3736,6 +3748,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 100,
             "ammoInventory": 200,
+            "ammoInventoryMax": 400,
             "ammoPickup": {
                 "min": 8
             },
@@ -4126,6 +4139,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 2,
             "ammoInventory": 24,
+            "ammoInventoryMax": 36,
             "ammoPickup": {
                 "min": 1,
                 "max": 2
@@ -4422,6 +4436,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 30,
             "ammoInventory": 120,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "max": 7
             },
@@ -4720,6 +4735,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
+            "ammoInventoryMax": 200,
             "ammoPickup": {
                 "min": 7
             },
@@ -5033,6 +5049,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 15,
             "ammoInventory": 60,
+            "ammoInventoryMax": 150,
             "ammoPickup": {
                 "min": 7,
                 "max": 9
@@ -5293,6 +5310,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 7,
             "ammoInventory": 32,
+            "ammoInventoryMax": 48,
             "ammoPickup": {
                 "min": 1,
                 "max": 1
@@ -5572,6 +5590,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 5,
             "ammoInventory": 25,
+            "ammoInventoryMax": 50,
             "ammoPickup": {
                 "min": 0,
                 "max": 2
@@ -5762,6 +5781,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 20,
             "ammoInventory": 80,
+            "ammoInventoryMax": 200,
             "ammoPickup": {
                 "max": 7
             },
@@ -6082,6 +6102,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 12,
             "ammoInventory": 48,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -6345,6 +6366,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 17,
             "ammoInventory": 48,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -6608,6 +6630,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoInventory": 48,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
                 "min": 2,
                 "max": 3
@@ -6873,6 +6896,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 17,
             "ammoInventory": 68,
+            "ammoInventoryMax": 85,
             "ammoPickup": {
                 "min": 4,
                 "max": 5
@@ -7116,6 +7140,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 33,
             "ammoInventory": 132,
+            "ammoInventoryMax": 330,
             "ammoPickup": {
                 "min": 12,
                 "max": 14
@@ -7387,6 +7412,7 @@ const WEAPON_DATA = Object.freeze({
             ],
             "ammoLoaded": 20,
             "ammoInventory": 80,
+            "ammoInventoryMax": 200,
             "ammoPickup": {
                 "min": 2,
                 "max": 4
@@ -7697,6 +7723,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
+            "ammoInventoryMax": 250,
             "ammoPickup": {
                 "max": 7
             },

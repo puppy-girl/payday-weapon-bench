@@ -141,7 +141,7 @@ try {
                     ),
                 ammoLoaded: fireData.AmmoLoaded,
                 ammoInventory: fireData.AmmoInventory,
-                ammoInventoryMax: fireData.ammoInventoryMax,
+                ammoInventoryMax: fireData.AmmoInventoryMax,
                 ammoPickup: {
                     min: fireData.AmmoPickup.Min,
                     max: fireData.AmmoPickup.Max,
