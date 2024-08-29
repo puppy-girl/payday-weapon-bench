@@ -1199,7 +1199,6 @@ function updateDamageStats(selectedWeapon) {
                 !(enemy == 'bulldozer' && skill == 'coupDeGrace')
             );
         });
-        console.log(enemy + filteredSkills);
 
         let weapon = applyLoadout(
             selectedWeapon,
