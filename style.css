@@ -610,6 +610,7 @@ span.damage-breakdown {
 
     background-color: var(--color-surface-dim);
     border: var(--border);
+    border-radius: 0.15rem;
 
     pointer-events: none;
     z-index: 100;
