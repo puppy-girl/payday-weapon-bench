@@ -592,3 +592,38 @@ span.damage-breakdown {
 
     content: '';
 }
+
+#tooltip {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    visibility: hidden;
+
+    min-width: 16rem;
+    max-width: 24rem;
+
+    margin-top: 0.5em;
+    padding: 0.5rem 1rem;
+
+    line-height: 1.5em;
+
+    background-color: var(--color-surface-dim);
+    border: var(--border);
+
+    pointer-events: none;
+    z-index: 100;
+}
+
+#tooltip .tooltip-title {
+    font-family: var(--font-body);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+#tooltip span {
+    display: block;
+
+    font-family: var(--font-mono);
+    color: var(--color-text-alt);
+}

@@ -616,6 +616,15 @@ function populateWeaponSelector() {
     }
 }
 
+const tooltip = document.querySelector('#tooltip');
+
+function showTooltip(left, top, tooltipBody) {
+    tooltip.style.visibility = 'visible';
+    tooltip.style.left = left;
+    tooltip.style.top = top;
+    tooltip.innerHTML = tooltipBody;
+}
+
 const skillSelector = document.querySelector(
     '#skill-selector .loadout-category-container'
 );
@@ -629,7 +638,7 @@ function populateSkills() {
         );
 
         selectableSkill.innerHTML = skillTemplate.innerHTML;
-        selectableSkill.classList = ['skill'];
+        selectableSkill.classList = 'skill';
 
         const skillInput = selectableSkill.children[0];
         const skillLabel = selectableSkill.children[1];
@@ -660,6 +669,25 @@ function populateSkills() {
             updateDamageStats(
                 document.querySelector('.selectable-weapon input:checked').value
             );
+        });
+
+        skillLabel.addEventListener('mouseenter', (event) => {
+            const tooltipBody = `
+                <span class="tooltip-title">${SKILLS[skill].displayName}</span>
+                <span>${SKILLS[skill].description}</span>
+            `;
+
+            const rect = event.target.getBoundingClientRect();
+
+            showTooltip(
+                rect.left + 'px',
+                rect.top + event.target.clientHeight + 'px',
+                tooltipBody
+            );
+        });
+
+        skillLabel.addEventListener('mouseleave', (event) => {
+            tooltip.style.visibility = 'hidden';
         });
     }
 }
@@ -722,12 +750,14 @@ function populateLoadout(selectedWeapon) {
             attachmentFieldset.children[0].innerHTML = attachmentCategoryName;
 
             for (const attachment of attachments) {
+                const attachmentData = ATTACHMENT_DATA[attachment];
+
                 const attachmentButton =
                     attachmentFieldset.children[1].appendChild(
                         document.createElement('div')
                     );
                 attachmentButton.innerHTML = attachmentTemplate.innerHTML;
-                attachmentButton.classList = ['attachment'];
+                attachmentButton.classList = 'attachment';
 
                 const attachmentInput = attachmentButton.children[0];
                 const attachmentLabel = attachmentButton.children[1];
@@ -743,7 +773,7 @@ function populateLoadout(selectedWeapon) {
                 attachmentInput.checked = attachment == defaultAttachment;
 
                 let attachmentName =
-                    ATTACHMENT_DATA[attachment]?.displayName ??
+                    attachmentData?.displayName ??
                     attachment
                         .split('_')
                         .pop()
@@ -756,6 +786,66 @@ function populateLoadout(selectedWeapon) {
                     updateAttachments();
                     updateWeaponStats(selectedWeapon);
                     updateDamageStats(selectedWeapon);
+                });
+
+                attachmentLabel.addEventListener('mouseenter', (event) => {
+                    if (!attachmentData) return;
+
+                    let attachmentStats = [];
+
+                    if (attachmentData.targetingData) {
+                        attachmentStats.push(
+                            attachmentData.targetingData
+                                .targetingMagnification + '× Magnification'
+                        );
+                    }
+
+                    if (attachmentData.magazineData) {
+                        attachmentStats.push(
+                            (attachmentData.magazineData.ammoLoaded ?? 10) +
+                                '/' +
+                                (attachmentData.magazineData.ammoInventoryMax ??
+                                    200) +
+                                ' Magazine Size'
+                        );
+                        attachmentStats.push(
+                            (attachmentData.magazineData.ammoPickup.min ?? 5) +
+                                '–' +
+                                (attachmentData.magazineData.ammoPickup.max ??
+                                    10) +
+                                ' Ammo Pickup'
+                        );
+                    }
+
+                    attachmentData.attributeModifierMap?.forEach((modifier) => {
+                        const attribute = modifier.attribute.replace(
+                            /([a-z])([A-Z])/g,
+                            '$1 $2'
+                        );
+                        const value =
+                            modifier.value > 0
+                                ? '+' + modifier.value
+                                : modifier.value;
+                        attachmentStats.push(attribute + ' ' + value);
+                    });
+
+                    if (attachmentStats.length == 0) return;
+
+                    const tooltipBody = `
+                        <span>${attachmentStats.join('</br>')}</span>
+                    `;
+
+                    const rect = event.target.getBoundingClientRect();
+
+                    showTooltip(
+                        rect.left + 'px',
+                        rect.top + event.target.clientHeight + 'px',
+                        tooltipBody
+                    );
+                });
+
+                attachmentLabel.addEventListener('mouseleave', (event) => {
+                    tooltip.style.visibility = 'hidden';
                 });
             }
         }
@@ -1082,11 +1172,6 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
 
         previous = shotsToKill;
     });
-
-    console.log('unsorted ' + Object.keys(shotsToKillAtDistances));
-    console.log(
-        'sorted ' + Object.keys(shotsToKillAtDistances).sort((a, b) => a - b)
-    );
 
     return Object.keys(shotsToKillAtDistances)
         .sort()
