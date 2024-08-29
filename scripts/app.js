@@ -1194,9 +1194,10 @@ function updateDamageStats(selectedWeapon) {
 
     for (enemy in ENEMIES) {
         const filteredSkills = equippedSkills.filter((skill) => {
-            // In normal gameplay dozers cannot be stunned
-            if (enemy == 'bulldozer' && skill == 'coupDeGrace') return false;
-            return true;
+            return (
+                // In normal gameplay dozers cannot be stunned
+                !(enemy == 'bulldozer' && skill == 'coupDeGrace')
+            );
         });
         console.log(enemy + filteredSkills);
 
@@ -1269,10 +1270,17 @@ function updateDamageStats(selectedWeapon) {
             damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
         }
 
-        // Precision shot does not affect headshots
+        const headshotSkills = filteredSkills.filter((skill) => {
+            return (
+                // Precision shot does not affect headshots
+                skill != 'precisionShot' &&
+                // Bulldozer visors can't be shot from behind
+                !(skill == 'duckAndWeave' && enemy == 'bulldozer')
+            );
+        });
         weapon = applyLoadout(
             selectedWeapon,
-            filteredSkills.filter((skill) => skill != 'precisionShot'),
+            headshotSkills,
             equippedAttachments
         );
 
