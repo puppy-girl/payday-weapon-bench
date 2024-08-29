@@ -81,7 +81,7 @@ const SKILLS = {
     expose: {
         displayName: 'Expose',
         description:
-            'Shots fired at enemies affected by your flashbang will ignore armor for as long as they are stunned.',
+            'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
         iconOffset: {
             x: 254,
             y: 894,
