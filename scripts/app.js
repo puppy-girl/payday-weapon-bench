@@ -19,15 +19,6 @@ const SKILLS = {
             y: 319,
         },
     },
-    precisionShot: {
-        displayName: 'Precision Shot',
-        description:
-            'As long as you have EDGE and are aiming down a scope, your shot will deal extra damage based on your scope magnification.',
-        iconOffset: {
-            x: 191,
-            y: 319,
-        },
-    },
     faceToFace: {
         displayName: 'Face to Face',
         description:
@@ -68,6 +59,15 @@ const SKILLS = {
             y: 1216,
         },
     },
+    precisionShot: {
+        displayName: 'Precision Shot',
+        description:
+            'Whenever you perform 2 headshots without missing or swapping your weapon, your next body shot will do extra damage based on your scope magnification. Requires a 4× scope or greater.',
+        iconOffset: {
+            x: 191,
+            y: 319,
+        },
+    },
     highGrain: {
         displayName: 'High Grain',
         description:
@@ -101,7 +101,6 @@ const SKILLS = {
 
 const EDGE_DEPENDENT_SKILLS = [
     'longShot',
-    'precisionShot',
     'faceToFace',
     'coupDeGrace',
     'combatMarking',
@@ -221,7 +220,7 @@ function applyLoadout(weapon, skills, attachments) {
     // to the current scope's magnification
     if (
         skills.includes('precisionShot') &&
-        equippedSight?.targetingData?.targetingMagnification >= 5
+        equippedSight?.targetingData?.targetingMagnification > 4
     )
         damageModifier = equippedSight.targetingData.targetingMagnification;
 
@@ -1135,7 +1134,11 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
         let enemyArmor = enemy.armor;
 
         if (enemy.displayName == 'Bulldozer' && headshots) enemyArmor = 0;
-        if (equippedSkills.includes('expose')) enemyArmor = 0;
+        if (
+            equippedSkills.includes('expose') &&
+            enemy.displayName != 'Bulldozer'
+        )
+            enemyArmor = 0;
 
         const shotsToKill = weaponShotsToKill(
             damage,
@@ -1155,7 +1158,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
                     : 0;
 
             shotsToKill.visorShots = shotsToBreakVisor;
-            shotsToKill.totalShots += shotsToBreakVisor;
+            if (headshots) shotsToKill.totalShots += shotsToBreakVisor;
         }
 
         if (
@@ -1187,21 +1190,21 @@ const damageStatTemplate = document
 document.querySelector('template.damage-stat-container').remove();
 
 function updateDamageStats(selectedWeapon) {
-    let weapon = applyLoadout(
-        selectedWeapon,
-        equippedSkills,
-        equippedAttachments
-    );
-
     document.querySelector('#damage-stats').innerHTML = '';
 
     for (enemy in ENEMIES) {
-        if (enemy == 'bulldozer')
-            weapon = applyLoadout(
-                selectedWeapon,
-                equippedSkills.filter((skill) => skill != 'coupDeGrace'),
-                equippedAttachments
-            );
+        const filteredSkills = equippedSkills.filter((skill) => {
+            // In normal gameplay dozers cannot be stunned
+            if (enemy == 'bulldozer' && skill == 'coupDeGrace') return false;
+            return true;
+        });
+        console.log(enemy + filteredSkills);
+
+        let weapon = applyLoadout(
+            selectedWeapon,
+            filteredSkills,
+            equippedAttachments
+        );
 
         const enemyData = ENEMIES[enemy];
 
@@ -1228,6 +1231,50 @@ function updateDamageStats(selectedWeapon) {
 
         enemyInfo.appendChild(document.createElement('span')).innerHTML =
             enemyData.health + ' Health';
+
+        const bodyShotTtkStat = damageStats.children[2].children[1];
+        bodyShotTtkStat.innerHTML = '';
+
+        const bodyShotDamageDistanceStats = shotsToKillAtDistances(
+            weapon,
+            enemyData,
+            false
+        );
+
+        for (distance in bodyShotDamageDistanceStats) {
+            const damageBreakpoint = bodyShotTtkStat.appendChild(
+                document.createElement('div')
+            );
+
+            const distanceStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
+
+            const damageStat = damageBreakpoint.appendChild(
+                document.createElement('span')
+            );
+
+            damageStat.innerHTML =
+                bodyShotDamageDistanceStats[distance].totalShots + ' shots';
+
+            const damageBreakdown = damageStat.appendChild(
+                document.createElement('span')
+            );
+            damageBreakdown.classList = ['damage-breakdown'];
+
+            if (enemyData.armor)
+                damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + `;
+
+            damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
+        }
+
+        // Precision shot does not affect headshots
+        weapon = applyLoadout(
+            selectedWeapon,
+            filteredSkills.filter((skill) => skill != 'precisionShot'),
+            equippedAttachments
+        );
 
         const optimalTtkStat = damageStats.children[1].children[1];
         optimalTtkStat.innerHTML = '';
@@ -1267,43 +1314,6 @@ function updateDamageStats(selectedWeapon) {
                 damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + `;
 
             damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
-        }
-
-        const bodyShotTtkStat = damageStats.children[2].children[1];
-        bodyShotTtkStat.innerHTML = '';
-
-        const bodyShotDamageDistanceStats = shotsToKillAtDistances(
-            weapon,
-            enemyData,
-            false
-        );
-
-        for (distance in bodyShotDamageDistanceStats) {
-            const damageBreakpoint = bodyShotTtkStat.appendChild(
-                document.createElement('div')
-            );
-
-            const distanceStat = damageBreakpoint.appendChild(
-                document.createElement('span')
-            );
-            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
-
-            const damageStat = damageBreakpoint.appendChild(
-                document.createElement('span')
-            );
-
-            damageStat.innerHTML =
-                bodyShotDamageDistanceStats[distance].totalShots + ' shots';
-
-            const damageBreakdown = damageStat.appendChild(
-                document.createElement('span')
-            );
-            damageBreakdown.classList = ['damage-breakdown'];
-
-            if (enemyData.armor)
-                damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + `;
-
-            damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
         }
     }
 }
