@@ -291,6 +291,7 @@ function applyLoadout(weapon, skills, attachments) {
         ];
     }
 
+    fireData.fireType = fireData.fireType ?? 'Semi';
     fireData.roundsPerMinute = fireData.roundsPerMinute ?? 600;
 
     fireData.armorPenetration = fireData.armorPenetration ?? 0;
@@ -913,10 +914,13 @@ function updateWeaponStats(selectedWeapon) {
         'm';
     document.querySelector('#stat-armor-penetration').innerHTML =
         fireData.armorPenetration;
+    document.querySelector('#stat-fire-type').innerHTML = fireData.fireType;
     document.querySelector('#stat-rpm').innerHTML =
-        fireData.roundsPerMinute + ' RPM';
+        fireData.fireType == 'Burst'
+            ? fireData.roundsPerMinute + '/' + fireData.timeBetweenBursts + 's'
+            : fireData.roundsPerMinute + ' RPM';
     document.querySelector('#stat-magazine').innerHTML =
-        fireData.ammoLoaded + '<br/>' + weapon.fireData.ammoInventoryMax;
+        fireData.ammoLoaded + '/' + weapon.fireData.ammoInventoryMax;
     document.querySelector('#stat-ammo-pickup').innerHTML =
         fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
     document.querySelector('#stat-reload').innerHTML =
