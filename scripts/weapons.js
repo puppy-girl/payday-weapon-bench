@@ -1386,6 +1386,7 @@ const WEAPON_DATA = Object.freeze({
                 "max": 9
             },
             "fireType": "Burst",
+            "timeBetweenBursts": 0.3,
             "armorPenetration": 0.9,
             "roundsPerMinute": 1000
         },
@@ -3467,6 +3468,7 @@ const WEAPON_DATA = Object.freeze({
                 "max": 4
             },
             "fireType": "Burst",
+            "timeBetweenBursts": 0.5,
             "projectilesPerFiredRound": 7,
             "roundsPerMinute": 450
         },
@@ -5055,6 +5057,7 @@ const WEAPON_DATA = Object.freeze({
                 "max": 9
             },
             "fireType": "Burst",
+            "timeBetweenBursts": 0.2,
             "roundsPerMinute": 800
         },
         "spreadData": {

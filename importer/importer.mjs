@@ -147,6 +147,7 @@ try {
                     max: fireData.AmmoPickup.Max,
                 },
                 fireType: fireData.FireType?.split('::')[1],
+                timeBetweenBursts: fireData.TimeBetweenBurstsSeconds,
                 projectilesPerFiredRound: fireData.ProjectilesPerFiredRound,
                 maximumPenetrationCount: fireData.MaximumPenetrationCount,
                 armorPenetration: fireData.ArmorPenetration,
