@@ -301,27 +301,56 @@ function applyLoadout(weapon, skills, attachments) {
 
     const viewKick = updatedWeapon.recoilData.viewKick;
 
+    viewKick.initialNum = viewKick.initialNum ?? 3;
+
+    let currentPoint = 0,
+        initialRecoilOffsetX = 0,
+        initialRecoilOffsetY = 0;
+
+    const horizontalRecoilMultiplier =
+        convertAttributeModifier(
+            'HorizontalRecoil',
+            (attributeModifiers['HorizontalRecoil'] ?? 0) +
+                (attributeModifiers['OverallRecoil'] ?? 0)
+        ) || 1;
+    const verticalRecoilMultiplier =
+        convertAttributeModifier(
+            'VerticalRecoil',
+            (attributeModifiers['VerticalRecoil'] ?? 0) +
+                (attributeModifiers['OverallRecoil'] ?? 0)
+        ) || 1;
+    const initialRecoilMultiplier =
+        convertAttributeModifier(
+            'InitialRecoil',
+            attributeModifiers['InitialRecoil'] ?? 0
+        ) || 1;
+
     viewKick.recoilPattern = viewKick.recoilPattern.map((point) => {
-        return {
-            x:
-                point.x *
-                (convertAttributeModifier(
-                    'HorizontalRecoil',
-                    (attributeModifiers['HorizontalRecoil'] ?? 0) +
-                        (attributeModifiers['OverallRecoil'] ?? 0)
-                ) || 1),
-            y:
-                point.y *
-                (convertAttributeModifier(
-                    'VerticalRecoil',
-                    (attributeModifiers['VerticalRecoil'] ?? 0) +
-                        (attributeModifiers['OverallRecoil'] ?? 0)
-                ) || 1),
-        };
+        const pointX = point.x * horizontalRecoilMultiplier;
+        const pointY = point.y * verticalRecoilMultiplier;
+
+        if (currentPoint < viewKick.initialNum) {
+            const offsetX = pointX * initialRecoilMultiplier;
+            initialRecoilOffsetX = offsetX - pointX;
+
+            const offsetY = pointY * initialRecoilMultiplier;
+            initialRecoilOffsetY = offsetY - pointY;
+
+            currentPoint++;
+
+            return {
+                x: offsetX,
+                y: offsetY,
+            };
+        } else {
+            return {
+                x: pointX + initialRecoilOffsetX,
+                y: pointY + initialRecoilOffsetY,
+            };
+        }
     });
 
     viewKick.loopStart = viewKick.loopStart ?? 0;
-    viewKick.initialNum = viewKick.initialNum ?? 3;
     viewKick.recoverWaitTime = viewKick.recoverWaitTime ?? 0;
     viewKick.hipfireMultiplier = viewKick.hipfireMultiplier ?? 1;
 
