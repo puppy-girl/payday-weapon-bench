@@ -356,69 +356,34 @@ function applyLoadout(weapon, skills, attachments) {
 
     const gunKick = updatedWeapon.recoilData.gunKick;
 
+    const horizontalGunkickMultiplier =
+        convertAttributeModifier(
+            'HorizontalGunkick',
+            (attributeModifiers['HorizontalGunkick'] ?? 0) +
+                (attributeModifiers['OverallGunkick'] ?? 0)
+        ) || 1;
+    const verticalGunkickMultiplier =
+        convertAttributeModifier(
+            'VerticalGunkick',
+            (attributeModifiers['VerticalGunkick'] ?? 0) +
+                (attributeModifiers['OverallGunkick'] ?? 0)
+        ) || 1;
+
     gunKick.verticalTop = {
-        min:
-            gunKick.verticalTop.min *
-                (convertAttributeModifier(
-                    'VerticalGunkick',
-                    (attributeModifiers['HorizoVerticalGunkickntalGunkick'] ??
-                        0) + (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
-        max:
-            gunKick.verticalTop.max *
-                (convertAttributeModifier(
-                    'VerticalGunkick',
-                    (attributeModifiers['VerticalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
+        min: gunKick.verticalTop.min * verticalGunkickMultiplier || 0,
+        max: gunKick.verticalTop.max * verticalGunkickMultiplier || 0,
     };
     gunKick.verticalBottom = {
-        min:
-            gunKick.verticalBottom.min *
-                (convertAttributeModifier(
-                    'VerticalGunkick',
-                    (attributeModifiers['VerticalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
-        max:
-            gunKick.verticalBottom.max *
-                (convertAttributeModifier(
-                    'VerticalGunkick',
-                    (attributeModifiers['VerticalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
+        min: gunKick.verticalBottom.min * verticalGunkickMultiplier || 0,
+        max: gunKick.verticalBottom.max * verticalGunkickMultiplier || 0,
     };
     gunKick.horizontalRight = {
-        min:
-            gunKick.horizontalRight.min *
-                (convertAttributeModifier(
-                    'HorizontalGunkick',
-                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
-        max:
-            gunKick.horizontalRight.max *
-                (convertAttributeModifier(
-                    'HorizontalGunkick',
-                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
+        min: gunKick.horizontalRight.min * horizontalGunkickMultiplier || 0,
+        max: gunKick.horizontalRight.max * horizontalGunkickMultiplier || 0,
     };
     gunKick.horizontalLeft = {
-        min:
-            gunKick.horizontalLeft.min *
-                (convertAttributeModifier(
-                    'HorizontalGunkick',
-                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
-        max:
-            gunKick.horizontalLeft.max *
-                (convertAttributeModifier(
-                    'HorizontalGunkick',
-                    (attributeModifiers['HorizontalGunkick'] ?? 0) +
-                        (attributeModifiers['OverallGunkick'] ?? 0)
-                ) || 1) || 0,
+        min: gunKick.horizontalLeft.min * horizontalGunkickMultiplier || 0,
+        max: gunKick.horizontalLeft.max * horizontalGunkickMultiplier || 0,
     };
     gunKick.verticalMultiplier = {
         start: gunKick.verticalMultiplier.start ?? 1,
