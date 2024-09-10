@@ -1017,7 +1017,7 @@ function updateWeaponStats(selectedWeapon) {
                     )
                 );
 
-                point.setAttribute('cx', recoilPoint.x * -0.8 + max * 0.5);
+                point.setAttribute('cx', recoilPoint.x * 0.8 + max * 0.5);
                 point.setAttribute('cy', recoilPoint.y * -0.8 + max * 0.9);
                 point.setAttribute('r', max / 80);
                 point.setAttribute('fill', 'white');
@@ -1070,7 +1070,7 @@ function updateWeaponStats(selectedWeapon) {
 
             point.setAttribute(
                 'cx',
-                recoilPattern[recoilPoint].x * -0.8 + max * 0.5
+                recoilPattern[recoilPoint].x * 0.8 + max * 0.5
             );
             point.setAttribute(
                 'cy',
