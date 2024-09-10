@@ -9,6 +9,8 @@
 
 * {
     margin: 0;
+
+    scrollbar-width: thin;
 }
 
 body {
@@ -59,6 +61,8 @@ body {
     color: var(--color-text);
 
     background: var(--color-surface);
+
+    scrollbar-color: var(--color-outline) transparent;
 }
 
 /* Weapon Selector */
@@ -119,7 +123,7 @@ body {
 
     border: none;
 
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 .selectable-weapon {
@@ -231,7 +235,7 @@ h1 {
 #stats {
     max-height: calc(100vh - 8rem);
 
-    overflow: scroll;
+    overflow-y: scroll;
 }
 
 #loadout-header {
