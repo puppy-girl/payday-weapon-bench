@@ -1182,6 +1182,17 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
         }, {});
 }
 
+function timeToKill(weapon, shotsToKill) {
+    let TTK = (shotsToKill - 1) / (weapon.fireData.roundsPerMinute / 60);
+
+    if (shotsToKill > weapon.fireData.ammoLoaded)
+        TTK +=
+            weapon.reloadEmptyTime *
+            Math.floor(shotsToKill / weapon.fireData.ammoLoaded);
+
+    return TTK;
+}
+
 const damageStatTemplate = document
     .querySelector('template.damage-stat-container')
     .cloneNode(true);
@@ -1253,8 +1264,8 @@ function updateDamageStats(selectedWeapon) {
                 document.createElement('span')
             );
 
-            damageStat.innerHTML =
-                bodyShotDamageDistanceStats[distance].totalShots + ' shots';
+            const totalShots = bodyShotDamageDistanceStats[distance].totalShots;
+            damageStat.innerHTML = `${totalShots} shots`;
 
             const damageBreakdown = damageStat.appendChild(
                 document.createElement('span')
@@ -1265,6 +1276,19 @@ function updateDamageStats(selectedWeapon) {
                 damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].armoredNonCrits}B + `;
 
             damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
+
+            damageBreakdown.innerHTML += `</br>
+                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s TTK`;
+
+            if (totalShots > weapon.fireData.ammoLoaded) {
+                const reloads = Math.floor(
+                    totalShots / weapon.fireData.ammoLoaded
+                );
+
+                damageBreakdown.innerHTML += ` (${reloads} reload${
+                    reloads > 1 ? 's' : ''
+                })`;
+            }
         }
 
         const headshotSkills = filteredSkills.filter((skill) => {
@@ -1303,8 +1327,8 @@ function updateDamageStats(selectedWeapon) {
             const damageStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            damageStat.innerHTML =
-                optimalDamageDistanceStats[distance].totalShots + ' shots';
+            const totalShots = optimalDamageDistanceStats[distance].totalShots;
+            damageStat.innerHTML = `${totalShots} shots`;
 
             const damageBreakdown = damageStat.appendChild(
                 document.createElement('span')
@@ -1319,6 +1343,19 @@ function updateDamageStats(selectedWeapon) {
                 damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].armoredCrits}H${optimalDamageDistanceStats[distance].armoredNonCrits}B + `;
 
             damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
+
+            damageBreakdown.innerHTML += `</br>
+                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s TTK`;
+
+            if (totalShots > weapon.fireData.ammoLoaded) {
+                const reloads = Math.floor(
+                    totalShots / weapon.fireData.ammoLoaded
+                );
+
+                damageBreakdown.innerHTML += ` (${reloads} reload${
+                    reloads > 1 ? 's' : ''
+                })`;
+            }
         }
     }
 }
