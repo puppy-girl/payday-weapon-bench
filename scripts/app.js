@@ -1190,6 +1190,12 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
 function timeToKill(weapon, shotsToKill) {
     let TTK = (shotsToKill - 1) / (weapon.fireData.roundsPerMinute / 60);
 
+    if (weapon.fireData.fireType == 'Burst') {
+        TTK +=
+            weapon.fireData.timeBetweenBursts *
+            Math.floor((shotsToKill - 1) / 3);
+    }
+
     if (shotsToKill > weapon.fireData.ammoLoaded)
         TTK +=
             weapon.reloadEmptyTime *
@@ -1283,7 +1289,7 @@ function updateDamageStats(selectedWeapon) {
             damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
             damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s TTK`;
+                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
@@ -1350,7 +1356,7 @@ function updateDamageStats(selectedWeapon) {
             damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
             damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s TTK`;
+                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
