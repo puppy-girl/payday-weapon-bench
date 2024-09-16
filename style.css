@@ -84,7 +84,7 @@ body {
 
 #sidebar-weapon-selector:before {
     position: absolute;
-    top: 4rem;
+    top: 5rem;
     left: 0;
     z-index: 1;
 
@@ -110,6 +110,29 @@ body {
     content: '';
 }
 
+#sidebar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 4.618rem;
+
+    margin-bottom: calc(5rem - 4.618rem);
+    padding-left: 1rem;
+}
+
+#sidebar-collapse-toggle {
+    display: none;
+}
+
+#collapse-button {
+    height: 2.618rem;
+
+    color: var(--color-text-alt);
+
+    cursor: pointer;
+}
+
 #weapon-list {
     display: flex;
     flex-direction: column;
@@ -118,12 +141,19 @@ body {
 
     max-height: calc(100vh - 4rem);
 
-    margin-top: 4rem;
     padding: 0;
 
     border: none;
 
     overflow-y: scroll;
+}
+
+#sidebar-weapon-selector:has(#sidebar-collapse-toggle:checked) {
+    width: 4.618rem;
+}
+
+#sidebar-weapon-selector:has(#sidebar-collapse-toggle:checked) .selectable-weapon {
+    display: none;
 }
 
 .selectable-weapon {

@@ -15,6 +15,27 @@
 </head>
 <body>
     <aside id="sidebar-weapon-selector">
+        <div id="sidebar-header">
+            <input 
+                id="sidebar-collapse-toggle"
+                type="checkbox"
+            />
+            <label for="sidebar-collapse-toggle">
+                <svg
+                id="collapse-button"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                    />
+                </svg>
+            </label>            
+        </div>
+
         <fieldset id="weapon-list">
             <template
                 class="selectable-weapon"
