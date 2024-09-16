@@ -981,22 +981,22 @@ function updateWeaponStats(selectedWeapon) {
         return Math.max(a, b);
     }, 0);
 
-    const gunKickStat = document.querySelector('svg#gunkick');
+    // const gunKickStat = document.querySelector('svg#gunkick');
 
-    const gunKickLeft =
-        weapon.recoilData.gunKick.horizontalLeft.max -
-        weapon.recoilData.gunKick.horizontalRight.min;
-    const gunKickRight =
-        weapon.recoilData.gunKick.horizontalRight.max -
-        weapon.recoilData.gunKick.horizontalLeft.min;
-    const gunKickWidth = gunKickLeft + gunKickRight;
-    const gunKickUp =
-        weapon.recoilData.gunKick.verticalTop.max -
-        weapon.recoilData.gunKick.verticalBottom.min;
-    const gunKickDown =
-        weapon.recoilData.gunKick.verticalBottom.max -
-        weapon.recoilData.gunKick.verticalTop.min;
-    const gunKickHeight = gunKickUp + gunKickDown;
+    // const gunKickLeft =
+    //     weapon.recoilData.gunKick.horizontalLeft.max -
+    //     weapon.recoilData.gunKick.horizontalRight.min;
+    // const gunKickRight =
+    //     weapon.recoilData.gunKick.horizontalRight.max -
+    //     weapon.recoilData.gunKick.horizontalLeft.min;
+    // const gunKickWidth = gunKickLeft + gunKickRight;
+    // const gunKickUp =
+    //     weapon.recoilData.gunKick.verticalTop.max -
+    //     weapon.recoilData.gunKick.verticalBottom.min;
+    // const gunKickDown =
+    //     weapon.recoilData.gunKick.verticalBottom.max -
+    //     weapon.recoilData.gunKick.verticalTop.min;
+    // const gunKickHeight = gunKickUp + gunKickDown;
 
     if (selectedWeapon !== previousWeapon) {
         recoilPatternStat.innerHTML = '';
@@ -1030,43 +1030,43 @@ function updateWeaponStats(selectedWeapon) {
             }
         }
 
-        gunKickStat.innerHTML = '';
+        // gunKickStat.innerHTML = '';
 
-        for (let i = 0; i < 2; i++) {
-            const gunKick = gunKickStat.appendChild(
-                document.createElementNS('http://www.w3.org/2000/svg', 'rect')
-            );
+        // for (let i = 0; i < 2; i++) {
+        //     const gunKick = gunKickStat.appendChild(
+        //         document.createElementNS('http://www.w3.org/2000/svg', 'rect')
+        //     );
 
-            gunKick.setAttribute('width', gunKickWidth * 50);
-            gunKick.setAttribute('height', gunKickHeight * 50);
-            gunKick.setAttribute(
-                'x',
-                50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 25
-            );
-            gunKick.setAttribute(
-                'y',
-                50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
-            );
-            gunKick.setAttribute('fill', 'transparent');
-            gunKick.setAttribute('stroke', 'white');
-            gunKick.setAttribute('stroke-width', 0.75);
-            gunKick.setAttribute('pathLength', '20');
-            gunKick.setAttribute('stroke-dasharray', '2 8');
-            gunKick.setAttribute('stroke-dashoffset', '1');
+        //     gunKick.setAttribute('width', gunKickWidth * 50);
+        //     gunKick.setAttribute('height', gunKickHeight * 50);
+        //     gunKick.setAttribute(
+        //         'x',
+        //         50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 25
+        //     );
+        //     gunKick.setAttribute(
+        //         'y',
+        //         50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
+        //     );
+        //     gunKick.setAttribute('fill', 'transparent');
+        //     gunKick.setAttribute('stroke', 'white');
+        //     gunKick.setAttribute('stroke-width', 0.75);
+        //     gunKick.setAttribute('pathLength', '20');
+        //     gunKick.setAttribute('stroke-dasharray', '2 8');
+        //     gunKick.setAttribute('stroke-dashoffset', '1');
 
-            if (i == 0) gunKick.setAttribute('stroke-opacity', '25%');
-        }
+        //     if (i == 0) gunKick.setAttribute('stroke-opacity', '25%');
+        // }
 
-        const center = gunKickStat.appendChild(
-            document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-        );
+        // const center = gunKickStat.appendChild(
+        //     document.createElementNS('http://www.w3.org/2000/svg', 'circle')
+        // );
 
-        center.setAttribute('cx', 50);
-        center.setAttribute('cy', 50);
-        center.setAttribute('r', 2);
-        center.setAttribute('fill', 'none');
-        center.setAttribute('stroke', 'white');
-        center.setAttribute('stroke-width', 0.75);
+        // center.setAttribute('cx', 50);
+        // center.setAttribute('cy', 50);
+        // center.setAttribute('r', 2);
+        // center.setAttribute('fill', 'none');
+        // center.setAttribute('stroke', 'white');
+        // center.setAttribute('stroke-width', 0.75);
     } else {
         for (const recoilPoint in recoilPattern) {
             const point =
@@ -1082,18 +1082,18 @@ function updateWeaponStats(selectedWeapon) {
             );
         }
 
-        const gunKick = gunKickStat.childNodes[1];
+        // const gunKick = gunKickStat.childNodes[1];
 
-        gunKick.setAttribute('width', gunKickWidth * 50);
-        gunKick.setAttribute('height', gunKickHeight * 50);
-        gunKick.setAttribute(
-            'x',
-            50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 25
-        );
-        gunKick.setAttribute(
-            'y',
-            50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
-        );
+        // gunKick.setAttribute('width', gunKickWidth * 50);
+        // gunKick.setAttribute('height', gunKickHeight * 50);
+        // gunKick.setAttribute(
+        //     'x',
+        //     50 - gunKickWidth * 25 + (gunKickRight - gunKickLeft) * 25
+        // );
+        // gunKick.setAttribute(
+        //     'y',
+        //     50 - gunKickHeight * 25 + (gunKickDown - gunKickUp) * 25
+        // );
     }
 
     previousWeapon = selectedWeapon;
