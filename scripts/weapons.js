@@ -44,11 +44,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 12,
-            "ammoInventory": 36,
-            "ammoInventoryMax": 60,
+            "ammoInventory": 120,
+            "ammoInventoryMax": 120,
             "ammoPickup": {
-                "min": 2,
-                "max": 3
+                "min": 3,
+                "max": 5
             },
             "armorPenetration": 1.3,
             "roundsPerMinute": 450
@@ -359,7 +359,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventory": 120,
+            "ammoInventory": 300,
             "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 7,
@@ -636,11 +636,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 6,
-            "ammoInventory": 24,
-            "ammoInventoryMax": 36,
+            "ammoInventory": 60,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
-                "min": 2,
-                "max": 3
+                "min": 3,
+                "max": 5
             },
             "armorPenetration": 1.25,
             "roundsPerMinute": 400
@@ -850,11 +850,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 5,
-            "ammoInventory": 25,
-            "ammoInventoryMax": 35,
+            "ammoInventory": 50,
+            "ammoInventoryMax": 50,
             "ammoPickup": {
-                "min": 0.5,
-                "max": 1
+                "min": 1,
+                "max": 2
             },
             "armorPenetration": 2,
             "roundsPerMinute": 75
@@ -1067,11 +1067,10 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventory": 120,
+            "ammoInventory": 300,
             "ammoInventoryMax": 300,
             "ammoPickup": {
-                "min": 3,
-                "max": 5
+                "min": 8
             },
             "fireType": "Auto",
             "armorPenetration": 0.92,
@@ -1379,7 +1378,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventory": 120,
+            "ammoInventory": 300,
             "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 7,
@@ -1681,11 +1680,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 6,
-            "ammoInventory": 24,
-            "ammoInventoryMax": 36,
+            "ammoInventory": 60,
+            "ammoInventoryMax": 60,
             "ammoPickup": {
                 "min": 2,
-                "max": 3
+                "max": 4
             },
             "armorPenetration": 1,
             "roundsPerMinute": 300
@@ -1942,10 +1941,10 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
-            "ammoInventoryMax": 200,
+            "ammoInventory": 250,
+            "ammoInventoryMax": 250,
             "ammoPickup": {
-                "min": 9,
-                "max": 12
+                "min": 8
             },
             "fireType": "Auto",
             "armorPenetration": 0.5,
@@ -2234,7 +2233,8 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventoryMax": 200,
+            "ammoInventory": 300,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
                 "min": 8
             },
@@ -2524,6 +2524,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
+            "ammoInventory": 250,
             "ammoInventoryMax": 250,
             "ammoPickup": {
                 "min": 7,
@@ -2820,10 +2821,9 @@ const WEAPON_DATA = Object.freeze({
                     "distance": 10000
                 }
             ],
-            "ammoInventory": 40,
             "ammoPickup": {
                 "min": 3,
-                "max": 4
+                "max": 5
             },
             "projectilesPerFiredRound": 7,
             "roundsPerMinute": 300
@@ -3086,6 +3086,204 @@ const WEAPON_DATA = Object.freeze({
         "reloadTime": 1.9999999,
         "reloadEmptyTime": 2.3333335
     },
+    "GarstiniViper": {
+        "displayName": "Garstini Viper .50AE",
+        "class": "Pistol",
+        "dlc": "4",
+        "displayIcon": {
+            "offset": {
+                "x": 256,
+                "y": 0
+            },
+            "source": "SS_UI_Weapons_00080-DLC0004.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 125,
+                    "distance": 500
+                },
+                {
+                    "damage": 100,
+                    "distance": 2500
+                },
+                {
+                    "damage": 66,
+                    "distance": 5000
+                },
+                {
+                    "damage": 33,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 3,
+                    "distance": 4000
+                },
+                {
+                    "multiplier": 2,
+                    "distance": 1000000
+                }
+            ],
+            "ammoLoaded": 7,
+            "ammoInventory": 70,
+            "ammoInventoryMax": 70,
+            "ammoPickup": {
+                "min": 1,
+                "max": 3
+            },
+            "armorPenetration": 2,
+            "roundsPerMinute": 275
+        },
+        "spreadData": {
+            "stanceMultipliers": {
+                "standMove": {
+                    "spread": 1.5
+                },
+                "crouch": {
+                    "spread": 0.5
+                },
+                "target": {
+                    "spread": 0
+                },
+                "targetMove": {
+                    "spread": 0.5
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 25,
+                "recoverSpeed": 20,
+                "recoverWaitTime": 0.15,
+                "recoilPattern": [
+                    {
+                        "x": -0.3,
+                        "y": 1.2
+                    },
+                    {
+                        "x": 1,
+                        "y": 2.5
+                    },
+                    {
+                        "x": -0.6,
+                        "y": 4.5
+                    },
+                    {
+                        "x": 0.3,
+                        "y": 5.8
+                    },
+                    {
+                        "x": -2.4,
+                        "y": 7.2
+                    },
+                    {
+                        "x": -1.5,
+                        "y": 9.6
+                    },
+                    {
+                        "x": -3,
+                        "y": 10.4
+                    },
+                    {
+                        "x": -1.5,
+                        "y": 11.8
+                    },
+                    {
+                        "x": -2.3,
+                        "y": 13.832
+                    }
+                ],
+                "resetTime": 0.14,
+                "loopStart": 6,
+                "initialNum": 0,
+                "hipfireMultiplier": 1.5
+            },
+            "gunKick": {
+                "deflectSpeed": 100,
+                "recoverSpeed": 50,
+                "verticalTop": {
+                    "max": 10
+                },
+                "verticalBottom": {},
+                "verticalMultiplier": {},
+                "horizontalRight": {
+                    "min": 0.2,
+                    "max": 0.5
+                },
+                "horizontalLeft": {
+                    "min": 0.2,
+                    "max": 0.5
+                },
+                "horizontalMultiplier": {}
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "GarstiniViper_Barrel_GarstiniViper_Barrel_Standard",
+                "uniqueParts": [
+                    "GarstiniViper_Barrel_GarstiniViper_Barrel_Extended",
+                    "GarstiniViper_Barrel_GarstiniViper_Barrel_Fluted",
+                    "GarstiniViper_Barrel_GarstiniViper_Barrel_Ported",
+                    "GarstiniViper_Barrel_GarstiniViper_Barrel_Supressed"
+                ]
+            },
+            "body": {
+                "defaultPart": "GarstiniViper_Body_GarstiniViper_Body_Standard",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "GarstiniViper_Bolt_GarstiniViper_Bolt_Hammer_Standard",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "GarstiniViper_ChargingHandle_GarstiniViper_ChargingHandle_Standard",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "GarstiniViper_FrontSight_Standard",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "GarstiniViper_RearSight_Standard",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "GarstiniViper_Grip_GarstiniViper_Grip_Standard",
+                "uniqueParts": [
+                    "GarstiniViper_Grip_GarstiniViper_Grip_Ergonomic",
+                    "GarstiniViper_Grip_GarstiniViper_Grip_Wood"
+                ]
+            },
+            "mag": {
+                "defaultPart": "GarstiniViper_Mag_GarstiniViper_Mag_Standard",
+                "uniqueParts": [
+                    "GarstiniViper_Mag_GarstiniViper_Mag_extended"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_Box",
+                    "Sight_Voyeur",
+                    "Sight_LED",
+                    "Sight_Slate"
+                ]
+            },
+            "sightMount": {
+                "defaultPart": "GarstiniViper_SightMount",
+                "uniqueParts": []
+            },
+            "ammo": {
+                "defaultPart": "Ammo_50AE",
+                "uniqueParts": []
+            }
+        },
+        "reloadTime": 2.1000001,
+        "reloadEmptyTime": 2.5000002
+    },
     "KU59": {
         "displayName": "KU-59",
         "class": "Assault Rifle",
@@ -3139,11 +3337,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventory": 120,
+            "ammoInventory": 300,
             "ammoInventoryMax": 300,
             "ammoPickup": {
-                "min": 3,
-                "max": 4
+                "min": 6,
+                "max": 8
             },
             "fireType": "Auto",
             "armorPenetration": 0.9
@@ -3461,11 +3659,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 12,
-            "ammoInventory": 48,
+            "ammoInventory": 120,
             "ammoInventoryMax": 120,
             "ammoPickup": {
-                "min": 2,
-                "max": 4
+                "min": 3,
+                "max": 5
             },
             "fireType": "Burst",
             "timeBetweenBursts": 0.5,
@@ -3749,8 +3947,8 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 100,
-            "ammoInventory": 200,
-            "ammoInventoryMax": 400,
+            "ammoInventory": 500,
+            "ammoInventoryMax": 500,
             "ammoPickup": {
                 "min": 8
             },
@@ -4140,11 +4338,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 2,
-            "ammoInventory": 24,
-            "ammoInventoryMax": 36,
+            "ammoInventory": 40,
+            "ammoInventoryMax": 40,
             "ammoPickup": {
                 "min": 1,
-                "max": 2
+                "max": 3
             },
             "projectilesPerFiredRound": 7,
             "armorPenetration": 0.5,
@@ -4437,10 +4635,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventory": 120,
+            "ammoInventory": 300,
             "ammoInventoryMax": 300,
             "ammoPickup": {
-                "max": 7
+                "min": 10,
+                "max": 12
             },
             "fireType": "Auto",
             "armorPenetration": 0.75,
@@ -4737,9 +4936,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 30,
-            "ammoInventoryMax": 200,
+            "ammoInventory": 300,
+            "ammoInventoryMax": 300,
             "ammoPickup": {
-                "min": 7
+                "min": 9,
+                "max": 11
             },
             "fireType": "Auto",
             "armorPenetration": 0.75,
@@ -5050,7 +5251,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 15,
-            "ammoInventory": 60,
+            "ammoInventory": 150,
             "ammoInventoryMax": 150,
             "ammoPickup": {
                 "min": 7,
@@ -5312,11 +5513,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 7,
-            "ammoInventory": 32,
-            "ammoInventoryMax": 48,
+            "ammoInventory": 70,
+            "ammoInventoryMax": 70,
             "ammoPickup": {
-                "min": 1,
-                "max": 1
+                "min": 3,
+                "max": 5
             },
             "fireType": "Pump",
             "projectilesPerFiredRound": 7,
@@ -5592,10 +5793,10 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 5,
-            "ammoInventory": 25,
+            "ammoInventory": 50,
             "ammoInventoryMax": 50,
             "ammoPickup": {
-                "min": 0,
+                "min": 1,
                 "max": 2
             },
             "fireType": "Bolt",
@@ -5783,7 +5984,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 20,
-            "ammoInventory": 80,
+            "ammoInventory": 200,
             "ammoInventoryMax": 200,
             "ammoPickup": {
                 "max": 7
@@ -6104,11 +6305,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 12,
-            "ammoInventory": 48,
-            "ammoInventoryMax": 60,
+            "ammoInventory": 120,
+            "ammoInventoryMax": 120,
             "ammoPickup": {
-                "min": 2,
-                "max": 3
+                "min": 6,
+                "max": 8
             },
             "roundsPerMinute": 450
         },
@@ -6368,11 +6569,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 17,
-            "ammoInventory": 48,
-            "ammoInventoryMax": 60,
+            "ammoInventory": 170,
+            "ammoInventoryMax": 170,
             "ammoPickup": {
-                "min": 2,
-                "max": 3
+                "min": 6,
+                "max": 8
             },
             "roundsPerMinute": 375
         },
@@ -6580,6 +6781,255 @@ const WEAPON_DATA = Object.freeze({
         "reloadTime": 1.3333334,
         "reloadEmptyTime": 1.8333334
     },
+    "SE5": {
+        "displayName": "Jackknife SE5",
+        "class": "Pistol",
+        "dlc": "4",
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 128
+            },
+            "source": "SS_UI_Weapons_00080-DLC0004.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 125,
+                    "distance": 500
+                },
+                {
+                    "damage": 80,
+                    "distance": 2500
+                },
+                {
+                    "damage": 52.8,
+                    "distance": 5000
+                },
+                {
+                    "damage": 26.4,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 1500
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 3000
+                },
+                {
+                    "multiplier": 2,
+                    "distance": 4500
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 1000000
+                }
+            ],
+            "ammoPickup": {
+                "min": 3,
+                "max": 5
+            },
+            "roundsPerMinute": 400
+        },
+        "spreadData": {
+            "start": 0.7,
+            "resetTime": 0.3,
+            "cap": 4,
+            "stanceMultipliers": {
+                "standMove": {
+                    "spread": 1.5
+                },
+                "crouch": {
+                    "spread": 0.5
+                },
+                "target": {
+                    "spread": 0
+                },
+                "targetMove": {
+                    "spread": 0.5
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 25,
+                "recoverSpeed": 15,
+                "recoverWaitTime": 0.15,
+                "recoilPattern": [
+                    {
+                        "x": -0.075,
+                        "y": 1.05
+                    },
+                    {
+                        "x": -0.22500001,
+                        "y": 2.6999998
+                    },
+                    {
+                        "x": -0.45000002,
+                        "y": 2.775
+                    },
+                    {
+                        "x": -0.75,
+                        "y": 4.125
+                    },
+                    {
+                        "x": -0.525,
+                        "y": 4.6499996
+                    },
+                    {
+                        "x": -0.97499996,
+                        "y": 5.7
+                    },
+                    {
+                        "x": -0.75,
+                        "y": 6.75
+                    },
+                    {
+                        "x": -0.90000004,
+                        "y": 7.7999997
+                    },
+                    {
+                        "x": -0.7125,
+                        "y": 8.85
+                    },
+                    {
+                        "x": -1.05,
+                        "y": 9.674999
+                    },
+                    {
+                        "x": -1.05,
+                        "y": 10.875
+                    },
+                    {
+                        "x": -0.90000004,
+                        "y": 11.625
+                    },
+                    {
+                        "x": -1.2,
+                        "y": 12.900001
+                    },
+                    {
+                        "x": -0.90000004,
+                        "y": 13.950001
+                    },
+                    {
+                        "x": -1.05,
+                        "y": 15
+                    },
+                    {
+                        "x": -0.75,
+                        "y": 15.900001
+                    },
+                    {
+                        "x": -1.05,
+                        "y": 16.95
+                    },
+                    {
+                        "x": -0.86249995,
+                        "y": 18.3
+                    }
+                ],
+                "resetTime": 0.3,
+                "loopStart": 6,
+                "initialNum": 2,
+                "hipfireMultiplier": 1.3
+            },
+            "gunKick": {
+                "deflectSpeed": 7,
+                "recoverSpeed": 2.5,
+                "verticalTop": {
+                    "min": 0.2,
+                    "max": 0.6
+                },
+                "verticalBottom": {
+                    "min": 0.1,
+                    "max": 0.4
+                },
+                "verticalMultiplier": {},
+                "horizontalRight": {
+                    "min": 0.1,
+                    "max": 0.3
+                },
+                "horizontalLeft": {
+                    "min": 0.1,
+                    "max": 0.3
+                },
+                "horizontalMultiplier": {}
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "SE5_Barrel_Standard",
+                "uniqueParts": []
+            },
+            "body": {
+                "defaultPart": "SE5_Body_standard",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "SE5_ChargingHandle_standard",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "SE5_FrontSight_Standard",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "SE5_RearSight_Standard",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "SE5_Grip_Standard",
+                "uniqueParts": [
+                    "SE5_Grip_Ergonomic",
+                    "SE5_Grip_Simple",
+                    "SE5_Grip_Tactical"
+                ]
+            },
+            "mag": {
+                "defaultPart": "SE5_Mag_Standard",
+                "uniqueParts": [
+                    "SE5_Mag_Extended",
+                    "SE5_Mag_quickpull"
+                ]
+            },
+            "sightMount": {
+                "defaultPart": "SE5_SightMount_Standard",
+                "uniqueParts": []
+            },
+            "ammo": {
+                "defaultPart": "Ammo_9mm",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "BarrelExt_ObeliskSilencer",
+                    "BarrelExt_SnubSilencer",
+                    "BarrelExt_CompactComp",
+                    "BarrelExt_SkeletonizedComp",
+                    "BarrelExt_PartedComp",
+                    "BarrelExt_CratedMuzzle"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "SE5_Sight_Custom",
+                    "Sight_Slate",
+                    "Sight_LED",
+                    "Sight_Box"
+                ]
+            }
+        },
+        "reloadTime": 1.3999999,
+        "reloadEmptyTime": 1.7
+    },
     "SPM11": {
         "displayName": "SP Model 11",
         "class": "Pistol",
@@ -6632,11 +7082,9 @@ const WEAPON_DATA = Object.freeze({
                     "distance": 10000
                 }
             ],
-            "ammoInventory": 48,
-            "ammoInventoryMax": 60,
             "ammoPickup": {
-                "min": 2,
-                "max": 3
+                "min": 4,
+                "max": 6
             },
             "armorPenetration": 0.5,
             "roundsPerMinute": 300
@@ -6898,11 +7346,11 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 17,
-            "ammoInventory": 68,
-            "ammoInventoryMax": 85,
+            "ammoInventory": 170,
+            "ammoInventoryMax": 170,
             "ammoPickup": {
-                "min": 4,
-                "max": 5
+                "min": 7,
+                "max": 9
             },
             "roundsPerMinute": 450
         },
@@ -7142,7 +7590,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 33,
-            "ammoInventory": 132,
+            "ammoInventory": 330,
             "ammoInventoryMax": 330,
             "ammoPickup": {
                 "min": 12,
@@ -7365,6 +7813,436 @@ const WEAPON_DATA = Object.freeze({
             }
         }
     },
+    "TAS12": {
+        "displayName": "TAS-12",
+        "class": "Shotgun",
+        "dlc": "4",
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 0
+            },
+            "source": "SS_UI_Weapons_00080-DLC0004.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 25,
+                    "distance": 500
+                },
+                {
+                    "damage": 22.5,
+                    "distance": 2500
+                },
+                {
+                    "damage": 11,
+                    "distance": 5000
+                },
+                {
+                    "damage": 8,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 500
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 3500
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 1000000
+                }
+            ],
+            "ammoLoaded": 7,
+            "ammoInventory": 70,
+            "ammoInventoryMax": 70,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            },
+            "fireType": "Pump",
+            "projectilesPerFiredRound": 10,
+            "armorPenetration": 1,
+            "roundsPerMinute": 65
+        },
+        "spreadData": {
+            "increase": 1,
+            "resetTime": 0.35,
+            "stanceMultipliers": {
+                "stand": {
+                    "spread": 3
+                },
+                "standMove": {
+                    "spread": 3.25
+                },
+                "crouch": {
+                    "spread": 2
+                },
+                "crouchMove": {
+                    "spread": 2.25
+                },
+                "targetMove": {
+                    "spread": 1.25
+                }
+            },
+            "radiusMultipliers": {
+                "x": 0.1,
+                "y": 0.1
+            },
+            "shotgunPatterns": [
+                [
+                    {
+                        "x": -0.25,
+                        "y": 0.25
+                    },
+                    {
+                        "x": 7,
+                        "y": 3
+                    },
+                    {
+                        "x": 2,
+                        "y": 5.5
+                    },
+                    {
+                        "x": -8,
+                        "y": 4
+                    },
+                    {
+                        "x": -5,
+                        "y": 1
+                    },
+                    {
+                        "x": -6,
+                        "y": -5
+                    },
+                    {
+                        "x": 4,
+                        "y": -4
+                    },
+                    {
+                        "x": -5,
+                        "y": 3
+                    },
+                    {
+                        "x": -0.25,
+                        "y": 5.5
+                    },
+                    {
+                        "x": 2,
+                        "y": 3
+                    }
+                ],
+                [
+                    {
+                        "x": 0.25,
+                        "y": -0.25
+                    },
+                    {
+                        "x": 5,
+                        "y": -1
+                    },
+                    {
+                        "x": 8,
+                        "y": -4
+                    },
+                    {
+                        "x": 6,
+                        "y": 5
+                    },
+                    {
+                        "x": -4,
+                        "y": 4
+                    },
+                    {
+                        "x": -7,
+                        "y": -3
+                    },
+                    {
+                        "x": -2,
+                        "y": -5.5
+                    },
+                    {
+                        "x": 0.25,
+                        "y": -5.5
+                    },
+                    {
+                        "x": 5,
+                        "y": -3
+                    },
+                    {
+                        "x": 8,
+                        "y": 4
+                    }
+                ],
+                [
+                    {
+                        "x": 1,
+                        "y": 1
+                    },
+                    {
+                        "x": 2,
+                        "y": 6
+                    },
+                    {
+                        "x": 3,
+                        "y": 3
+                    },
+                    {
+                        "x": -3,
+                        "y": 4
+                    },
+                    {
+                        "x": 3,
+                        "y": -4
+                    },
+                    {
+                        "x": -3,
+                        "y": -3
+                    },
+                    {
+                        "x": -2,
+                        "y": -6
+                    },
+                    {
+                        "x": 1,
+                        "y": -6
+                    },
+                    {
+                        "x": 2,
+                        "y": -3
+                    },
+                    {
+                        "x": 3,
+                        "y": -4
+                    }
+                ],
+                [
+                    {
+                        "x": 0.2,
+                        "y": -0.9
+                    },
+                    {
+                        "x": -1.5,
+                        "y": 0.9
+                    },
+                    {
+                        "x": 0.1,
+                        "y": 0.5
+                    },
+                    {
+                        "x": 1.6,
+                        "y": -1
+                    },
+                    {
+                        "x": -2,
+                        "y": -1.5
+                    },
+                    {
+                        "x": -1,
+                        "y": -0.4
+                    },
+                    {
+                        "x": 1.4,
+                        "y": 1
+                    },
+                    {
+                        "x": 0.2,
+                        "y": 1
+                    },
+                    {
+                        "x": -1.5,
+                        "y": -0.4
+                    },
+                    {
+                        "x": 0.1,
+                        "y": -1.5
+                    }
+                ],
+                [
+                    {
+                        "x": 0.3,
+                        "y": -1.2
+                    },
+                    {
+                        "x": -1.3,
+                        "y": 0.6
+                    },
+                    {
+                        "x": 0.3,
+                        "y": 0.3
+                    },
+                    {
+                        "x": 1.4,
+                        "y": -0.7
+                    },
+                    {
+                        "x": -1.7,
+                        "y": -1.3
+                    },
+                    {
+                        "x": -0.6,
+                        "y": -0.6
+                    },
+                    {
+                        "x": 0.9,
+                        "y": 0.8
+                    },
+                    {
+                        "x": 0.3,
+                        "y": 0.8
+                    },
+                    {
+                        "x": -1.3,
+                        "y": -0.6
+                    },
+                    {
+                        "x": 0.3,
+                        "y": -1.3
+                    }
+                ]
+            ]
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 90,
+                "recoverSpeed": 30,
+                "recoverWaitTime": 0.1,
+                "recoilPattern": [
+                    {
+                        "x": 0,
+                        "y": 8
+                    },
+                    {
+                        "x": 4,
+                        "y": 16
+                    },
+                    {
+                        "x": 1,
+                        "y": 24
+                    },
+                    {
+                        "x": -2,
+                        "y": 32
+                    },
+                    {
+                        "x": 0,
+                        "y": 40
+                    },
+                    {
+                        "x": -3,
+                        "y": 44
+                    },
+                    {
+                        "x": 0,
+                        "y": 48
+                    },
+                    {
+                        "x": 4,
+                        "y": 52
+                    },
+                    {
+                        "x": 8,
+                        "y": 56
+                    }
+                ],
+                "resetTime": 25,
+                "loopStart": 5,
+                "initialNum": 0
+            },
+            "gunKick": {
+                "deflectSpeed": 50,
+                "recoverSpeed": 35,
+                "verticalTop": {},
+                "verticalBottom": {},
+                "verticalMultiplier": {
+                    "start": 2,
+                    "max": 2
+                },
+                "horizontalRight": {},
+                "horizontalLeft": {},
+                "horizontalMultiplier": {
+                    "start": 2,
+                    "max": 2
+                }
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "TAS12_Barrel_TAS12_Barrel_Standard",
+                "uniqueParts": [
+                    "TAS12_Barrel_TAS12_Barrel_Short"
+                ]
+            },
+            "barrelExtension": {
+                "defaultPart": "TAS12_BarrelExtension_TAS12_Barrel_Extension",
+                "uniqueParts": [
+                    "BarrelExt_12GObelisk",
+                    "BarrelExt_SedimentChoke",
+                    "BarrelExt_12GVentComp",
+                    "BarrelExt_JawChoke",
+                    "BarrelExt_12GCoronetMuzzle"
+                ]
+            },
+            "body": {
+                "defaultPart": "TAS12_Body_TAS12_Body_Receiver",
+                "uniqueParts": []
+            },
+            "ammo": {
+                "defaultPart": "Ammo_12gauge",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "TAS12_Bolt_TAS12_Bolt_Standard",
+                "uniqueParts": []
+            },
+            "chargingHandle": {
+                "defaultPart": "TAS12_ChargingHandle_TAS12_ChargingHandle",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "TAS12_FrontSight_TAS12_FrontSight_Standard",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "TAS12_RearSight_TAS12_RearSight_Standard",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "TAS12_Grip_TAS12_Grip_Standard",
+                "uniqueParts": [
+                    "TAS12_Grip_TAS12_Grip_Ergonomic",
+                    "TAS12_Grip_TAS12_Grip_Rubber",
+                    "TAS12_Grip_TAS12_Grip_Tactical"
+                ]
+            },
+            "sightMount": {
+                "defaultPart": "TAS12_SightMount_TAS12_SightMount",
+                "uniqueParts": []
+            },
+            "stock": {
+                "defaultPart": "TAS12_Stock_TAS12_Stock_Standard",
+                "uniqueParts": [
+                    "TAS12_Stock_TAS12_Stock_Fixed",
+                    "TAS12_Stock_TAS12_Stock_Foldable"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_ClassicRDS",
+                    "Sight_Compact",
+                    "Sight_Projection",
+                    "Sight_Sheath"
+                ]
+            }
+        },
+        "reloadTime": 1.5000001,
+        "reloadEmptyTime": 2.3333335
+    },
     "VF7S": {
         "displayName": "VF-7S",
         "class": "Assault Rifle",
@@ -7414,11 +8292,10 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 20,
-            "ammoInventory": 80,
+            "ammoInventory": 200,
             "ammoInventoryMax": 200,
             "ammoPickup": {
-                "min": 2,
-                "max": 4
+                "max": 7
             },
             "fireType": "Auto",
             "armorPenetration": 1.25,
@@ -7726,6 +8603,7 @@ const WEAPON_DATA = Object.freeze({
                 }
             ],
             "ammoLoaded": 25,
+            "ammoInventory": 250,
             "ammoInventoryMax": 250,
             "ammoPickup": {
                 "max": 7

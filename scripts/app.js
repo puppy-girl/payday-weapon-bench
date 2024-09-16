@@ -1,4 +1,9 @@
-const DLC = ['Syntax Error', 'Boys in Blue', 'Houston Breakout'];
+const DLC = [
+    'Syntax Error',
+    'Boys in Blue',
+    'Houston Breakout',
+    'Fear & Greed',
+];
 
 const SKILLS = {
     edge: {
