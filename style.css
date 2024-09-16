@@ -41,6 +41,7 @@ p, h1, h2, h3, h4, h5, h6 {
 
     --color-text: white;
     --color-text-alt: #e4e4e7;
+    --color-text-dim: #71717a;
 
     --color-outline: #3f3f46;
 
@@ -285,15 +286,34 @@ h1 {
     margin-bottom: 1rem;
 }
 
-#loadout-header h2 {
+#weapon-name {
+    position: relative;
+}
+
+#weapon-name h3 {
+    position: absolute;
+    top: -0.5em;
+
+    font-family: var(--font-display);
+    font-size: 2em;
+    font-weight: 500;
+    color: var(--color-text-dim);
+    line-height: 1em;
+}
+
+#weapon-name h2 {
+    position: relative;
+
+    padding-bottom: 1rem;
+
     font-family: var(--font-display);
     font-size: 6.854em;
     line-height: 1em;
 
-    padding-bottom: 1rem;
-
     overflow: hidden;
     overflow-wrap: break-word;
+
+    z-index: 1;
 }
 
 @media only screen and (max-width: 1600px) {
@@ -529,7 +549,7 @@ footer span:last-child {
 span.damage-breakdown {
     display: block;
 
-    color: #71717a;
+    color: var(--color-text-dim);
 }
 
 /* Stats Sidebar */

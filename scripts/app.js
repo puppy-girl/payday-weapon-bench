@@ -717,6 +717,7 @@ function populateLoadout(selectedWeapon) {
     const weapon = WEAPON_DATA[selectedWeapon];
 
     document.querySelector('#loadout h2').innerHTML = weapon.displayName;
+    document.querySelector('#loadout h3').innerHTML = weapon.class;
 
     attachmentsSection.innerHTML = '';
 
