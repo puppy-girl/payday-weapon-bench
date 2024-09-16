@@ -398,10 +398,14 @@ function applyLoadout(weapon, skills, attachments) {
         threshold: gunKick.horizontalMultiplier.threshold ?? 1,
     };
 
-    // Bandaid fix for inaccurate reload notify time
+    // Bandaid fix for inaccurate reload notify times
     if (weapon == 'MX63') {
         updatedWeapon.reloadTime = 4.4999995;
         updatedWeapon.reloadEmptyTime = 5.166667;
+    }
+    if (weapon == 'T32') {
+        updatedWeapon.reloadTime = 1.4666667;
+        updatedWeapon.reloadEmptyTime = 1.9999999;
     }
 
     if (attributeModifiers['OverallReloadPlayRate']) {
