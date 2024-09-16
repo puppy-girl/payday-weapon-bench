@@ -382,8 +382,8 @@ try {
     );
 
     fs.writeFile(
-        '../scripts/moddata.js',
-        'const MOD_DATA = Object.freeze(' +
+        '../scripts/curve-data.js',
+        'const CURVE_DATA = Object.freeze(' +
             JSON.stringify(modDataOutput, null, 4) +
             ');'
     );

@@ -1,4 +1,4 @@
-const MOD_DATA = Object.freeze({
+const CURVE_DATA = Object.freeze({
     "HorizontalRecoil": [
         {
             "point": -250,

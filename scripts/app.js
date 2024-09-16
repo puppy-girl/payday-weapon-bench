@@ -432,7 +432,7 @@ function applyLoadout(weapon, skills, attachments) {
  * @returns {number} Stat modifier
  */
 function convertAttributeModifier(attribute, modifier) {
-    const attributeModifierCurve = MOD_DATA[attribute];
+    const attributeModifierCurve = CURVE_DATA[attribute];
 
     if (modifier == 0 || modifier == undefined) return 0;
 
