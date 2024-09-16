@@ -85,7 +85,7 @@ body {
 
 #sidebar-weapon-selector:before {
     position: absolute;
-    top: 5rem;
+    top: 4rem;
     left: 0;
     z-index: 1;
 
@@ -116,9 +116,8 @@ body {
     align-items: center;
     justify-content: space-between;
 
-    height: 4.618rem;
+    height: 4rem;
 
-    margin-bottom: calc(5rem - 4.618rem);
     padding-left: 1rem;
 }
 
