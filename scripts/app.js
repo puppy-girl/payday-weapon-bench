@@ -7,8 +7,8 @@ const DLC = [
 
 const SKILLS = {
     edge: {
-        displayName: 'Edge',
-        description: 'You deal 10% extra damage for 20 seconds.',
+        name: 'skills-edge',
+        description: 'skills-edge-desc',
         modifier: 0.1,
         iconOffset: {
             x: 0,
@@ -16,18 +16,16 @@ const SKILLS = {
         },
     },
     longShot: {
-        displayName: 'Long Shot',
-        description:
-            'As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.',
+        name: 'skills-long-shot',
+        description: 'skills-long-shot-desc',
         iconOffset: {
             x: 127,
             y: 319,
         },
     },
     faceToFace: {
-        displayName: 'Face to Face',
-        description:
-            'As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.',
+        name: 'skills-face-to-face',
+        description: 'skills-face-to-face-desc',
         modifier: 0.1,
         iconOffset: {
             x: 127,
@@ -35,9 +33,8 @@ const SKILLS = {
         },
     },
     coupDeGrace: {
-        displayName: 'Coup de Grâce',
-        description:
-            'If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.',
+        name: 'skills-coup-de-grace',
+        description: 'skills-coup-de-grace-desc',
         modifier: 0.1,
         iconOffset: {
             x: 126,
@@ -45,9 +42,8 @@ const SKILLS = {
         },
     },
     combatMarking: {
-        displayName: 'Combat Marking',
-        description:
-            'As long as you have EDGE, you deal an extra 20% damage against any marked target.',
+        name: 'skills-combat-marking',
+        description: 'skills-combat-marking-desc',
         modifier: 0.2,
         iconOffset: {
             x: 64,
@@ -55,9 +51,8 @@ const SKILLS = {
         },
     },
     painAsymbolia: {
-        displayName: 'Pain Asymbolia',
-        description:
-            'As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.',
+        name: 'skills-pain-asymbolia',
+        description: 'skills-pain-asymbolia-desc',
         modifier: 0.1,
         iconOffset: {
             x: 316,
@@ -65,18 +60,16 @@ const SKILLS = {
         },
     },
     precisionShot: {
-        displayName: 'Precision Shot',
-        description:
-            'Whenever you perform 2 headshots without missing or swapping your weapon, your next body shot will do extra damage based on your scope magnification. Requires a 4× scope or greater.',
+        name: 'skills-precision-shot',
+        description: 'skills-precision-shot-desc',
         iconOffset: {
             x: 191,
             y: 319,
         },
     },
     highGrain: {
-        displayName: 'High Grain',
-        description:
-            'All placed Ammo Bags increase armor penetration for 30 seconds after interaction for you and all your teammates. Each additional crew member equipped with this skill increases weapon damage by 5% on top of that.',
+        name: 'skills-high-grain',
+        description: 'skills-high-grain-desc',
         modifier: 0.2,
         iconOffset: {
             x: 255,
@@ -84,18 +77,16 @@ const SKILLS = {
         },
     },
     expose: {
-        displayName: 'Expose',
-        description:
-            'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
+        name: 'skills-expose',
+        description: 'skills-expose-desc',
         iconOffset: {
             x: 254,
             y: 894,
         },
     },
     duckAndWeave: {
-        displayName: 'Duck and Weave',
-        description:
-            'As long as you have RUSH, you deal 25% more damage to enemies from behind. This bonus is reduced by 5% for each armor chunk you currently have beyond the first.',
+        name: 'skills-duck-and-weave',
+        description: 'skills-duck-and-weave-desc',
         modifier: 0.25,
         iconOffset: {
             x: 190,
@@ -547,7 +538,7 @@ let equippedSkills = [],
     equippedAttachments = [];
 
 const weaponClasses = [
-    'AssaultRifle',
+    'Assault Rifle',
     'Marksman',
     'Shotgun',
     'Pistol',
@@ -602,7 +593,10 @@ function populateWeaponSelector() {
         weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
         weaponName.setAttribute('for', id);
 
-        weaponDLC.innerHTML = DLC[WEAPON_DATA[weapon].dlc - 1] ?? '';
+        weaponDLC.setAttribute(
+            'data-localisation-key',
+            'dlc-' + WEAPON_DATA[weapon].dlc
+        );
         weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
@@ -676,8 +670,10 @@ function populateSkills() {
 
         skillLabel.addEventListener('mouseenter', (event) => {
             const tooltipBody = `
-                <span class="tooltip-title">${SKILLS[skill].displayName}</span>
-                <span>${SKILLS[skill].description}</span>
+                <span class="tooltip-title">${getLocalisation(
+                    SKILLS[skill].name
+                )}</span>
+                <span>${getLocalisation(SKILLS[skill].description)}</span>
             `;
 
             const rect = event.target.getBoundingClientRect();
@@ -722,7 +718,14 @@ function populateLoadout(selectedWeapon) {
     const weapon = WEAPON_DATA[selectedWeapon];
 
     document.querySelector('#loadout h2').innerHTML = weapon.displayName;
-    document.querySelector('#loadout h3').innerHTML = weapon.class;
+
+    document
+        .querySelector('#loadout h3')
+        .setAttribute(
+            'data-localisation-key',
+            'weapon-class-' + weapon.class.toLowerCase().replace(' ', '-')
+        );
+    localise(document.querySelector('#loadout h3'));
 
     attachmentsSection.innerHTML = '';
 
@@ -1243,8 +1246,11 @@ function updateDamageStats(selectedWeapon) {
         const enemyInfo = damageStats.children[0];
 
         const enemyName = enemyInfo.appendChild(document.createElement('span'));
-        enemyName.innerHTML = enemyData.displayName;
         enemyName.classList = ['enemy-name'];
+        enemyName.setAttribute(
+            'data-localisation-key',
+            'enemy-' + enemyData.displayName.toLowerCase().replace(' ', '-')
+        );
 
         if (enemyData.armor)
             enemyInfo.appendChild(document.createElement('span')).innerHTML =
@@ -1374,7 +1380,20 @@ function updateDamageStats(selectedWeapon) {
             }
         }
     }
+
+    setLocale(currentLocale);
 }
 
 populateWeaponSelector();
 populateSkills();
+
+const localeSwitcher = document.querySelector('#locale-switcher');
+
+localeSwitcher.value = currentLocale;
+
+localeSwitcher.onchange = (event) => {
+    console.log('hi');
+    setLocale(event.target.value);
+};
+
+setLocale(currentLocale);

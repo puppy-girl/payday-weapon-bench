@@ -245,6 +245,12 @@ main {
     overflow: hidden;
 }
 
+#main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 h1 {
     margin-bottom: 1rem;
 
@@ -253,6 +259,30 @@ h1 {
     font-weight: 500;
     line-height: 4rem;
     color: var(--color-text-alt);
+}
+
+#locale {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#locale svg {
+    height: 2em;
+}
+
+#locale-switcher {
+    height: 2.618em;
+
+    padding: 0.25em 1em;
+
+    color: var(--color-text);
+
+    border: var(--border);
+    border-radius: 0.15rem;
+
+    background: var(--color-surface-dim);
+    backdrop-filter: blur(5px);
 }
 
 #content {
