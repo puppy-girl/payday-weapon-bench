@@ -2,7 +2,7 @@ const localisations = {
     en: {
         title: 'Payday 3 Weapon Bench',
         credits:
-            'Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317',
+            'Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317 and Lunar Pearl',
         'dlc-1': 'Syntax Error',
         'dlc-2': 'Boys in Blue',
         'dlc-3': 'Houston Breakout',
@@ -66,7 +66,7 @@ const localisations = {
     uwu: {
         title: 'P-Payday 3 Weapon Bench >w<',
         credits:
-            'Made by Jade 🌺 ✦ >w< Skiww Icons by Sydch ✦ >w< Special Thanks to Price9317',
+            'Made by Jade 🌺 ✦ >w< Skiww Icons by Sydch ✦ >w< Special Thanks to Price9317 and Lunar Pearl',
         'dlc-1': 'Syntax Ewwow',
         'dlc-2': 'Boys in Bwue',
         'dlc-3': 'Houston Bweakout',
