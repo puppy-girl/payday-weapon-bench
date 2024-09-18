@@ -261,17 +261,23 @@ h1 {
     color: var(--color-text-alt);
 }
 
-#locale {
+#options {
+    display: flex;
+    align-items: center;
+    gap: 3em;
+}
+
+#options > div {
     display: flex;
     align-items: center;
     gap: 0.5em;
 }
 
-#locale svg {
+#options svg {
     height: 2em;
 }
 
-#locale-switcher {
+#options select {
     height: 2.618em;
 
     padding: 0.25em 1em;
