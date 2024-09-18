@@ -144,7 +144,7 @@ const localisations = {
         'enemy-stats-visor-armor': '{{armor}} Visow Awmow',
         'enemy-stats-visor-armor-hardness': '{{hardness}} V. Hawdnyess',
     },
-    chinese:{
+    chinese: {
         title: 'Payday 3 武器数据站',
         credits:
             '由Jade制作 🌺 ✦ 技能图标由Sydch设计 ✦ 特别感谢Price9317和Lunar Pearl',
@@ -253,7 +253,7 @@ const localisations = {
             'Flaş bombasından veya şok bombasından etkilenen düşmanlara açılan ateşler, düşman sersemlemiş olduğu sürece zırhlarını yok sayar.',
         'skills-duck-and-weave': 'Çömel ve Kaçın',
         'skills-duck-and-weave-desc':
-            'ÇEVİKLİK sahibi olduğun sürece düşmanlara arkadan %25 daha fazla hasar verirsin. Bu takviye, ilk zırhın dışında sahip olduğun her zırh parçası için %5 azalır.'
+            'ÇEVİKLİK sahibi olduğun sürece düşmanlara arkadan %25 daha fazla hasar verirsin. Bu takviye, ilk zırhın dışında sahip olduğun her zırh parçası için %5 azalır.',
         'weapon-class-assault-rifle': 'Taarruz Tüfeği',
         'weapon-class-marksman': 'Nişancı Tüfeği',
         'weapon-class-shotgun': 'Pompalı Tüfek',
@@ -289,7 +289,7 @@ const localisations = {
         'enemy-stats-armor-hardness': '{{hardness}} Sertlik',
         'enemy-stats-visor-armor': '{{armor}} Vizör Dayanıklılığı',
         'enemy-stats-visor-armor-hardness': '{{hardness}} Vizör Sertliği',
-    }
+    },
 };
 
 const defaultLocale = 'en';
