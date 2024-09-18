@@ -127,6 +127,71 @@ const localisations = {
         'enemy-cloaker': 'Cwoakew',
         'enemy-drone': 'Dwonye ^w^',
     },
+    chinese:{
+        title: 'Payday 3 Weapon Bench',
+        credits:
+            'Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317 and Lunar Pearl',
+        'dlc-1': 'Syntax Error',
+        'dlc-2': 'Boys in Blue',
+        'dlc-3': 'Houston Breakout',
+        'dlc-4': 'Fear & Greed',
+        'skills-edge': 'Edge',
+        'skills-edge-desc': 'You deal 10% extra damage for 20 seconds.',
+        'skills-long-shot': 'Long Shot',
+        'skills-long-shot-desc':
+            'As long as you have EDGE and are aiming down sights distance penalties do not apply to headshot multipliers.',
+        'skills-face-to-face': 'Face to Face',
+        'skills-face-to-face-desc':
+            'As long as you have both EDGE and GRIT you deal 10% extra damage to targets within 5 meters of you.',
+        'skills-coup-de-grace': 'Coup de Grâce',
+        'skills-coup-de-grace-desc':
+            'As long as you have EDGE you deal 10% extra damage to staggered or stunned targets.',
+        'skills-combat-marking': 'Combat Marking',
+        'skills-combat-marking-desc':
+            'As long as you have EDGE you deal 20% extra damage to marked targets.',
+        'skills-pain-asymbolia': 'Pain Asymbolia',
+        'skills-pain-asymbolia-desc':
+            'As long as you have Adrenaline the effects of EDGE, GRIT, and RUSH are doubled and you take 10% less damage to your Adrenaline.',
+        'skills-precision-shot': 'Precision Shot',
+        'skills-precision-shot-desc':
+            'Whenever you perform 2 headshots without missing or swapping your weapon your next body shot will deal extra damage based on your scope magnification. Requires a 4× scope or greater.',
+        'skills-high-grain': 'High Grain',
+        'skills-high-grain-desc':
+            'All placed Ammo Bags increase armor penetration for 30 seconds upon interaction for you and your teammates. Each additional crew member equipped with this skill increases weapon damage by 5%.',
+        'skills-expose': 'Expose',
+        'skills-expose-desc':
+            'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
+        'skills-duck-and-weave': 'Duck and Weave',
+        'skills-duck-and-weave-desc':
+            'As long as you have RUSH you deal 25% extra damage to targets from behind. Each armor chunk equipped beyond the first reduces this bonus by 5%.',
+        'weapon-class-assault-rifle': 'Assault Rifle',
+        'weapon-class-marksman': 'Marksman Rifle',
+        'weapon-class-shotgun': 'Shotgun',
+        'weapon-class-pistol': 'Pistol',
+        'weapon-class-revolver': 'Revolver',
+        'weapon-class-smg': 'SMG',
+        'weapon-class-lmg': 'Light Machine Gun',
+        'stats-damage': 'Damage',
+        'stats-critical-multiplier': 'Multiplier',
+        'stats-armor-penetration': 'Armor Pen',
+        'stats-fire-mode': 'Fire Mode',
+        'stats-fire-rate': 'Fire Rate',
+        'stats-magazine': 'Magazine',
+        'stats-ammo-pickup': 'Ammo Pickup',
+        'stats-reload': 'Reload',
+        'stats-reload-from-empty': 'Full Reload',
+        'stats-optimal-ttk': 'Optimal Shots to Kill',
+        'stats-body-ttk': 'Body Shots to Kill',
+        'enemy-swat': 'SWAT',
+        'enemy-heavy-swat': 'Heavy SWAT',
+        'enemy-specials': 'Specials',
+        'enemy-shield': 'Shield',
+        'enemy-bulldozer': 'Bulldozer',
+        'enemy-sniper': 'Sniper',
+        'enemy-cloaker': 'Cloaker',
+        'enemy-drone': 'Drone',
+
+    }
 };
 
 const defaultLocale = 'en';
