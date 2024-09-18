@@ -245,6 +245,12 @@ main {
     overflow: hidden;
 }
 
+#main-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 h1 {
     margin-bottom: 1rem;
 
@@ -253,6 +259,30 @@ h1 {
     font-weight: 500;
     line-height: 4rem;
     color: var(--color-text-alt);
+}
+
+#locale {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+#locale svg {
+    height: 2em;
+}
+
+#locale-switcher {
+    height: 2.618em;
+
+    padding: 0.25em 1em;
+
+    color: var(--color-text);
+
+    border: var(--border);
+    border-radius: 0.15rem;
+
+    background: var(--color-surface-dim);
+    backdrop-filter: blur(5px);
 }
 
 #content {
@@ -503,7 +533,7 @@ footer span:last-child {
 
 .damage-stat-container {
     display: grid;
-    grid-template-columns: 9rem 1fr 1fr;
+    grid-template-columns: 10rem 1fr 1fr;
 
     min-height: 9rem;
 }
@@ -545,7 +575,18 @@ footer span:last-child {
     line-height: 1em;
 }
 
-span.damage-breakdown {
+.shot-stats {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
+
+.shot-stats > span {
+    font-weight: bold;
+}
+
+span.damage-breakdown,
+span.damage-breakdown span {
     display: block;
 
     color: var(--color-text-dim);
@@ -607,7 +648,7 @@ span.damage-breakdown {
     gap: 0.5em;
 }
 
-.stat-group div {
+.stat-group > div {
     display: flex;
     justify-content: space-between;
 }

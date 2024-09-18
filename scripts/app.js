@@ -1,14 +1,7 @@
-const DLC = [
-    'Syntax Error',
-    'Boys in Blue',
-    'Houston Breakout',
-    'Fear & Greed',
-];
-
 const SKILLS = {
     edge: {
-        displayName: 'Edge',
-        description: 'You deal 10% extra damage for 20 seconds.',
+        name: 'skills-edge',
+        description: 'skills-edge-desc',
         modifier: 0.1,
         iconOffset: {
             x: 0,
@@ -16,18 +9,16 @@ const SKILLS = {
         },
     },
     longShot: {
-        displayName: 'Long Shot',
-        description:
-            'As long as you have EDGE and are aiming down sights, distance penalties do not apply to headshot multipliers.',
+        name: 'skills-long-shot',
+        description: 'skills-long-shot-desc',
         iconOffset: {
             x: 127,
             y: 319,
         },
     },
     faceToFace: {
-        displayName: 'Face to Face',
-        description:
-            'As long as you have both EDGE and GRIT, you deal 10% extra damage to targets within 5 meters of you.',
+        name: 'skills-face-to-face',
+        description: 'skills-face-to-face-desc',
         modifier: 0.1,
         iconOffset: {
             x: 127,
@@ -35,9 +26,8 @@ const SKILLS = {
         },
     },
     coupDeGrace: {
-        displayName: 'Coup de Grâce',
-        description:
-            'If you have EDGE, you will deal 10% more damage when you shoot a staggered or stunned enemy.',
+        name: 'skills-coup-de-grace',
+        description: 'skills-coup-de-grace-desc',
         modifier: 0.1,
         iconOffset: {
             x: 126,
@@ -45,9 +35,8 @@ const SKILLS = {
         },
     },
     combatMarking: {
-        displayName: 'Combat Marking',
-        description:
-            'As long as you have EDGE, you deal an extra 20% damage against any marked target.',
+        name: 'skills-combat-marking',
+        description: 'skills-combat-marking-desc',
         modifier: 0.2,
         iconOffset: {
             x: 64,
@@ -55,9 +44,8 @@ const SKILLS = {
         },
     },
     painAsymbolia: {
-        displayName: 'Pain Asymbolia',
-        description:
-            'As long as you have Adrenaline and either EDGE, GRIT, RUSH, the effects of these buffs are doubled, and you take 10% less damage to your Adrenaline.',
+        name: 'skills-pain-asymbolia',
+        description: 'skills-pain-asymbolia-desc',
         modifier: 0.1,
         iconOffset: {
             x: 316,
@@ -65,18 +53,16 @@ const SKILLS = {
         },
     },
     precisionShot: {
-        displayName: 'Precision Shot',
-        description:
-            'Whenever you perform 2 headshots without missing or swapping your weapon, your next body shot will do extra damage based on your scope magnification. Requires a 4× scope or greater.',
+        name: 'skills-precision-shot',
+        description: 'skills-precision-shot-desc',
         iconOffset: {
             x: 191,
             y: 319,
         },
     },
     highGrain: {
-        displayName: 'High Grain',
-        description:
-            'All placed Ammo Bags increase armor penetration for 30 seconds after interaction for you and all your teammates. Each additional crew member equipped with this skill increases weapon damage by 5% on top of that.',
+        name: 'skills-high-grain',
+        description: 'skills-high-grain-desc',
         modifier: 0.2,
         iconOffset: {
             x: 255,
@@ -84,18 +70,16 @@ const SKILLS = {
         },
     },
     expose: {
-        displayName: 'Expose',
-        description:
-            'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
+        name: 'skills-expose',
+        description: 'skills-expose-desc',
         iconOffset: {
             x: 254,
             y: 894,
         },
     },
     duckAndWeave: {
-        displayName: 'Duck and Weave',
-        description:
-            'As long as you have RUSH, you deal 25% more damage to enemies from behind. This bonus is reduced by 5% for each armor chunk you currently have beyond the first.',
+        name: 'skills-duck-and-weave',
+        description: 'skills-duck-and-weave-desc',
         modifier: 0.25,
         iconOffset: {
             x: 190,
@@ -547,7 +531,7 @@ let equippedSkills = [],
     equippedAttachments = [];
 
 const weaponClasses = [
-    'AssaultRifle',
+    'Assault Rifle',
     'Marksman',
     'Shotgun',
     'Pistol',
@@ -602,7 +586,10 @@ function populateWeaponSelector() {
         weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
         weaponName.setAttribute('for', id);
 
-        weaponDLC.innerHTML = DLC[WEAPON_DATA[weapon].dlc - 1] ?? '';
+        weaponDLC.setAttribute(
+            'data-localisation-key',
+            'dlc-' + WEAPON_DATA[weapon].dlc
+        );
         weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
@@ -676,8 +663,10 @@ function populateSkills() {
 
         skillLabel.addEventListener('mouseenter', (event) => {
             const tooltipBody = `
-                <span class="tooltip-title">${SKILLS[skill].displayName}</span>
-                <span>${SKILLS[skill].description}</span>
+                <span class="tooltip-title">${getLocalisation(
+                    SKILLS[skill].name
+                )}</span>
+                <span>${getLocalisation(SKILLS[skill].description)}</span>
             `;
 
             const rect = event.target.getBoundingClientRect();
@@ -722,7 +711,14 @@ function populateLoadout(selectedWeapon) {
     const weapon = WEAPON_DATA[selectedWeapon];
 
     document.querySelector('#loadout h2').innerHTML = weapon.displayName;
-    document.querySelector('#loadout h3').innerHTML = weapon.class;
+
+    document
+        .querySelector('#loadout h3')
+        .setAttribute(
+            'data-localisation-key',
+            'weapon-class-' + weapon.class.toLowerCase().replace(' ', '-')
+        );
+    localise(document.querySelector('#loadout h3'));
 
     attachmentsSection.innerHTML = '';
 
@@ -906,31 +902,80 @@ function updateWeaponStats(selectedWeapon) {
 
     const fireData = weapon.fireData;
 
-    document.querySelector('#stat-base-damage').innerHTML =
-        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
-        '/' +
-        Math.round(fireData.damageDistanceArray[0].distance) / 100 +
-        'm';
-    document.querySelector('#stat-base-multiplier').innerHTML =
-        fireData.criticalDamageMultiplierDistanceArray[0].multiplier +
-        '×/' +
-        fireData.criticalDamageMultiplierDistanceArray[0].distance / 100 +
-        'm';
+    const baseDamageStat = document.querySelector('#stat-base-damage');
+    baseDamageStat.innerHTML =
+        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '/';
+
+    const baseDamageRange = baseDamageStat.appendChild(
+        document.createElement('span')
+    );
+    baseDamageRange.setAttribute('data-localisation-key', 'stats-range');
+    baseDamageRange.setAttribute(
+        'data-localisation-var',
+        `{"distance":"${
+            Math.round(fireData.damageDistanceArray[0].distance) / 100
+        }"}`
+    );
+
+    const baseMultiplierStat = document.querySelector('#stat-base-multiplier');
+    baseMultiplierStat.innerHTML =
+        fireData.criticalDamageMultiplierDistanceArray[0].multiplier + '×/';
+
+    const baseMultiplierRange = baseMultiplierStat.appendChild(
+        document.createElement('span')
+    );
+    baseMultiplierRange.setAttribute('data-localisation-key', 'stats-range');
+    baseMultiplierRange.setAttribute(
+        'data-localisation-var',
+        `{"distance":"${
+            fireData.criticalDamageMultiplierDistanceArray[0].distance / 100
+        }"}`
+    );
+
     document.querySelector('#stat-armor-penetration').innerHTML =
         fireData.armorPenetration;
-    document.querySelector('#stat-fire-type').innerHTML = fireData.fireType;
-    document.querySelector('#stat-rpm').innerHTML =
-        fireData.fireType == 'Burst'
-            ? fireData.roundsPerMinute + '/' + fireData.timeBetweenBursts + 's'
-            : fireData.roundsPerMinute + ' RPM';
+
+    const fireModeStat = document.querySelector('#stat-fire-type');
+    fireModeStat.innerHTML = fireData.fireType;
+
+    if (fireData.fireType == 'Burst') {
+        fireModeStat.innerHTML += '<br/>';
+
+        const burstStat = fireModeStat.appendChild(
+            document.createElement('span')
+        );
+        burstStat.setAttribute('data-localisation-key', 'stats-time');
+        burstStat.setAttribute(
+            'data-localisation-var',
+            `{"duration": "${fireData.timeBetweenBursts}"}`
+        );
+    }
+
+    const rpmStat = document.querySelector('#stat-rpm');
+    rpmStat.setAttribute('data-localisation-key', 'stats-fire-rate-value');
+    rpmStat.setAttribute(
+        'data-localisation-var',
+        `{"rpm":"${fireData.roundsPerMinute}"}`
+    );
+
     document.querySelector('#stat-magazine').innerHTML =
         fireData.ammoLoaded + '/' + weapon.fireData.ammoInventoryMax;
     document.querySelector('#stat-ammo-pickup').innerHTML =
         fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
-    document.querySelector('#stat-reload').innerHTML =
-        Math.round(weapon.reloadTime * 1000) / 1000 + 's';
-    document.querySelector('#stat-full-reload').innerHTML =
-        Math.round(weapon.reloadEmptyTime * 1000) / 1000 + 's';
+
+    const reloadStat = document.querySelector('#stat-reload');
+    reloadStat.setAttribute('data-localisation-key', 'stats-time');
+    reloadStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.reloadTime * 1000) / 1000}"}`
+    );
+
+    const fullReloadStat = document.querySelector('#stat-full-reload');
+    fullReloadStat.setAttribute('data-localisation-key', 'stats-time');
+    fullReloadStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.reloadEmptyTime * 1000) / 1000}"}`
+    );
 
     const weaponDamageStats = document.querySelector(
         '#weapon-stats-damage > div'
@@ -944,8 +989,17 @@ function updateWeaponStats(selectedWeapon) {
         damageStat.innerHTML = weaponStatTemplate.innerHTML;
         damageStat.classList = ['weapon-stat'];
 
-        damageStat.children[0].innerHTML =
-            Math.round(Math.min(damageStep.distance, 100000)) / 100 + 'm';
+        damageStat.children[0].setAttribute(
+            'data-localisation-key',
+            'stats-range'
+        );
+        damageStat.children[0].setAttribute(
+            'data-localisation-var',
+            `{"distance": "${
+                Math.round(Math.min(damageStep.distance, 100000)) / 100
+            }"}`
+        );
+
         damageStat.children[1].innerHTML =
             Math.round(damageStep.damage * 100) / 100;
     });
@@ -962,8 +1016,18 @@ function updateWeaponStats(selectedWeapon) {
             critStat.innerHTML = weaponStatTemplate.innerHTML;
             critStat.classList = ['weapon-stat'];
 
-            critStat.children[0].innerHTML =
-                Math.min(criticalDamageStep.distance, 100000) / 100 + 'm';
+            critStat.children[0].setAttribute(
+                'data-localisation-key',
+                'stats-range'
+            );
+            critStat.children[0].setAttribute(
+                'data-localisation-var',
+                `{"distance": "${
+                    Math.round(Math.min(criticalDamageStep.distance, 100000)) /
+                    100
+                }"}`
+            );
+
             critStat.children[1].innerHTML =
                 criticalDamageStep.multiplier + 'x';
         }
@@ -1243,19 +1307,76 @@ function updateDamageStats(selectedWeapon) {
         const enemyInfo = damageStats.children[0];
 
         const enemyName = enemyInfo.appendChild(document.createElement('span'));
-        enemyName.innerHTML = enemyData.displayName;
         enemyName.classList = ['enemy-name'];
+        enemyName.setAttribute(
+            'data-localisation-key',
+            'enemy-' + enemyData.displayName.toLowerCase().replace(' ', '-')
+        );
 
-        if (enemyData.armor)
-            enemyInfo.appendChild(document.createElement('span')).innerHTML =
-                enemyData.armor + ' Armor';
+        if (enemyData.armor) {
+            const enemyArmor = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyArmor.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-armor'
+            );
+            enemyArmor.setAttribute(
+                'data-localisation-var',
+                `{"armor":"${enemyData.armor}"}`
+            );
+        }
 
-        if (enemyData.armorHardness)
-            enemyInfo.appendChild(document.createElement('span')).innerHTML =
-                enemyData.armorHardness + ' Hardness';
+        if (enemyData.armorHardness) {
+            const enemyArmorHardness = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyArmorHardness.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-armor-hardness'
+            );
+            enemyArmorHardness.setAttribute(
+                'data-localisation-var',
+                `{"hardness":"${enemyData.armorHardness}"}`
+            );
+        }
 
-        enemyInfo.appendChild(document.createElement('span')).innerHTML =
-            enemyData.health + ' Health';
+        if (enemyData.visorArmor) {
+            const enemyVisorArmor = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyVisorArmor.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-visor-armor'
+            );
+            enemyVisorArmor.setAttribute(
+                'data-localisation-var',
+                `{"armor":"${enemyData.visorArmor}"}`
+            );
+        }
+
+        if (enemyData.visorArmorHardness) {
+            const enemyVisorArmorHardness = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyVisorArmorHardness.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-visor-armor-hardness'
+            );
+            enemyVisorArmorHardness.setAttribute(
+                'data-localisation-var',
+                `{"hardness":"${enemyData.visorArmorHardness}"}`
+            );
+        }
+
+        const enemyHealth = enemyInfo.appendChild(
+            document.createElement('span')
+        );
+        enemyHealth.setAttribute('data-localisation-key', 'enemy-stats-health');
+        enemyHealth.setAttribute(
+            'data-localisation-var',
+            `{"health":"${enemyData.health}"}`
+        );
 
         const bodyShotTtkStat = damageStats.children[2].children[1];
         bodyShotTtkStat.innerHTML = '';
@@ -1274,16 +1395,29 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
+            distanceStat.setAttribute('data-localisation-key', 'stats-range');
+            distanceStat.setAttribute(
+                'data-localisation-var',
+                `{"distance": "${Math.min(distance, 100000) / 100}"}`
+            );
 
-            const damageStat = damageBreakpoint.appendChild(
+            const shotStats = damageBreakpoint.appendChild(
+                document.createElement('div')
+            );
+            shotStats.classList = 'shot-stats';
+
+            const damageStat = shotStats.appendChild(
                 document.createElement('span')
             );
 
             const totalShots = bodyShotDamageDistanceStats[distance].totalShots;
-            damageStat.innerHTML = `${totalShots} shots`;
+            damageStat.setAttribute('data-localisation-key', 'stats-shots');
+            damageStat.setAttribute(
+                'data-localisation-var',
+                `{"shots": "${totalShots}"}`
+            );
 
-            const damageBreakdown = damageStat.appendChild(
+            const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
             );
             damageBreakdown.classList = ['damage-breakdown'];
@@ -1293,8 +1427,16 @@ function updateDamageStats(selectedWeapon) {
 
             damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
-            damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
+            const ttk = damageBreakdown.appendChild(
+                document.createElement('span')
+            );
+            ttk.setAttribute('data-localisation-key', 'stats-time');
+            ttk.setAttribute(
+                'data-localisation-var',
+                `{"duration": "${
+                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
+                }"}`
+            );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
@@ -1338,15 +1480,29 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
+            distanceStat.setAttribute('data-localisation-key', 'stats-range');
+            distanceStat.setAttribute(
+                'data-localisation-var',
+                `{"distance": "${Math.min(distance, 100000) / 100}"}`
+            );
 
-            const damageStat = damageBreakpoint.appendChild(
+            const shotStats = damageBreakpoint.appendChild(
+                document.createElement('div')
+            );
+            shotStats.classList = 'shot-stats';
+
+            const damageStat = shotStats.appendChild(
                 document.createElement('span')
             );
-            const totalShots = optimalDamageDistanceStats[distance].totalShots;
-            damageStat.innerHTML = `${totalShots} shots`;
 
-            const damageBreakdown = damageStat.appendChild(
+            const totalShots = optimalDamageDistanceStats[distance].totalShots;
+            damageStat.setAttribute('data-localisation-key', 'stats-shots');
+            damageStat.setAttribute(
+                'data-localisation-var',
+                `{"shots": "${totalShots}"}`
+            );
+
+            const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
             );
             damageBreakdown.classList = ['damage-breakdown'];
@@ -1360,8 +1516,16 @@ function updateDamageStats(selectedWeapon) {
 
             damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
-            damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
+            const ttk = damageBreakdown.appendChild(
+                document.createElement('span')
+            );
+            ttk.setAttribute('data-localisation-key', 'stats-time');
+            ttk.setAttribute(
+                'data-localisation-var',
+                `{"duration": "${
+                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
+                }"}`
+            );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
@@ -1374,7 +1538,20 @@ function updateDamageStats(selectedWeapon) {
             }
         }
     }
+
+    setLocale(currentLocale);
 }
 
 populateWeaponSelector();
 populateSkills();
+
+const localeSwitcher = document.querySelector('#locale-switcher');
+
+localeSwitcher.value = currentLocale;
+
+localeSwitcher.onchange = (event) => {
+    console.log('hi');
+    setLocale(event.target.value);
+};
+
+setLocale(currentLocale);
