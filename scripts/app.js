@@ -1313,16 +1313,42 @@ function updateDamageStats(selectedWeapon) {
             'enemy-' + enemyData.displayName.toLowerCase().replace(' ', '-')
         );
 
-        if (enemyData.armor)
-            enemyInfo.appendChild(document.createElement('span')).innerHTML =
-                enemyData.armor + ' Armor';
+        if (enemyData.armor) {
+            const enemyArmor = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyArmor.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-armor'
+            );
+            enemyArmor.setAttribute(
+                'data-localisation-var',
+                `{"armor":"${enemyData.armor}"}`
+            );
+        }
 
-        if (enemyData.armorHardness)
-            enemyInfo.appendChild(document.createElement('span')).innerHTML =
-                enemyData.armorHardness + ' Hardness';
+        if (enemyData.armorHardness) {
+            const enemyArmorHardness = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyArmorHardness.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-armor-hardness'
+            );
+            enemyArmorHardness.setAttribute(
+                'data-localisation-var',
+                `{"hardness":"${enemyData.armorHardness}"}`
+            );
+        }
 
-        enemyInfo.appendChild(document.createElement('span')).innerHTML =
-            enemyData.health + ' Health';
+        const enemyHealth = enemyInfo.appendChild(
+            document.createElement('span')
+        );
+        enemyHealth.setAttribute('data-localisation-key', 'enemy-stats-health');
+        enemyHealth.setAttribute(
+            'data-localisation-var',
+            `{"health":"${enemyData.health}"}`
+        );
 
         const bodyShotTtkStat = damageStats.children[2].children[1];
         bodyShotTtkStat.innerHTML = '';

@@ -66,6 +66,9 @@ const localisations = {
         'enemy-sniper': 'Sniper',
         'enemy-cloaker': 'Cloaker',
         'enemy-drone': 'Drone',
+        'enemy-stats-health': '{{health}} Health',
+        'enemy-stats-armor': '{{armor}} Armor',
+        'enemy-stats-armor-hardness': '{{hardness}} Hardness',
     },
     uwu: {
         title: 'P-Payday 3 Weapon Bench >w<',
