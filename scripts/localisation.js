@@ -153,34 +153,34 @@ const localisations = {
         'dlc-3': '解救休斯顿',
         'dlc-4': '恐惧与贪婪',
         'skills-edge': '锋锐',
-        'skills-edge-desc': 'You deal 10% extra damage for 20 seconds.',
+        'skills-edge-desc': '20秒内造成的伤害增加10%。',
         'skills-long-shot': '百步穿杨',
         'skills-long-shot-desc':
-            'As long as you have EDGE and are aiming down sights distance penalties do not apply to headshot multipliers.',
+            '当你拥有锋锐状态并通过瞄具瞄准时，你的爆头倍率将不会附加距离惩罚。',
         'skills-face-to-face': '近身缠斗',
         'skills-face-to-face-desc':
-            'As long as you have both EDGE and GRIT you deal 10% extra damage to targets within 5 meters of you.',
+            '当你拥有锋锐与坚毅状态时，对距离你5米范围内的目标造成10%额外伤害。',
         'skills-coup-de-grace': '恩赐解脱',
         'skills-coup-de-grace-desc':
-            'As long as you have EDGE you deal 10% extra damage to staggered or stunned targets.',
-        'skills-combat-marking': 'Combat Marking',
+            '当你拥有锋锐状态时，你的射击对瘫痪的敌人造成10%额外伤害。',
+        'skills-combat-marking': '战斗标记',
         'skills-combat-marking-desc':
-            'As long as you have EDGE you deal 20% extra damage to marked targets.',
-        'skills-pain-asymbolia': 'Pain Asymbolia',
+            '当你拥有锋锐状态时，对已标记的目标额外造成20%伤害。',
+        'skills-pain-asymbolia': '无痛症',
         'skills-pain-asymbolia-desc':
-            'As long as you have Adrenaline the effects of EDGE, GRIT, and RUSH are doubled and you take 10% less damage to your Adrenaline.',
-        'skills-precision-shot': 'Precision Shot',
+            '只要你在拥有肾上腺素的前提下，存在锋锐、坚毅，或疾驰状态，这些增益效果都将翻倍，且自身肾上腺素受到的伤害减少10%。',
+        'skills-precision-shot': '精准射击',
         'skills-precision-shot-desc':
-            'Whenever you perform 2 headshots without missing or swapping your weapon your next body shot will deal extra damage based on your scope magnification. Requires a 4× scope or greater.',
+            '2次爆头击杀后，若你没有切换武器或失手打空，则下一次命中身体的射击将根据瞄镜倍率造成额外伤害。需要装备至少4X倍或以上的瞄准镜才能生效。',
         'skills-high-grain': '重磅弹头',
         'skills-high-grain-desc':
-            'All placed Ammo Bags increase armor penetration for 30 seconds upon interaction for you and your teammates. Each additional crew member equipped with this skill increases weapon damage by 5%.',
+            '你和队友使用任何放置的弹药箱后，都会为所有人增加0.2穿甲，持续30秒。每增加一名装备此技能的队友，就会额外增加5%武器伤害。',
         'skills-expose': '破绽百出',
         'skills-expose-desc':
-            'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
-        'skills-duck-and-weave': 'Duck and Weave',
+            '向被你的闪光弹或电击手雷影响的敌人开枪射击时，在其眩晕期间无视其护甲。',
+        'skills-duck-and-weave': '迂回战术',
         'skills-duck-and-weave-desc':
-            'As long as you have RUSH you deal 25% extra damage to targets from behind. Each armor chunk equipped beyond the first reduces this bonus by 5%.',
+            '疾驰状态下，从背后攻击敌人造成25%额外伤害，你每拥有一格额外护甲，该伤害降低5%。',
         'weapon-class-assault-rifle': 'Assault Rifle',
         'weapon-class-marksman': 'Marksman Rifle',
         'weapon-class-shotgun': 'Shotgun',
