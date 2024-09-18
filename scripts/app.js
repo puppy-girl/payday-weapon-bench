@@ -1275,14 +1275,23 @@ function updateDamageStats(selectedWeapon) {
             );
             distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
 
-            const damageStat = damageBreakpoint.appendChild(
+            const shotStats = damageBreakpoint.appendChild(
+                document.createElement('div')
+            );
+            shotStats.classList = 'shot-stats';
+
+            const damageStat = shotStats.appendChild(
                 document.createElement('span')
             );
 
             const totalShots = bodyShotDamageDistanceStats[distance].totalShots;
-            damageStat.innerHTML = `${totalShots} shots`;
+            damageStat.setAttribute('data-localisation-key', 'stats-shots');
+            damageStat.setAttribute(
+                'data-localisation-var',
+                `{"shots": "${totalShots}"}`
+            );
 
-            const damageBreakdown = damageStat.appendChild(
+            const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
             );
             damageBreakdown.classList = ['damage-breakdown'];
@@ -1339,13 +1348,23 @@ function updateDamageStats(selectedWeapon) {
             );
             distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
 
-            const damageStat = damageBreakpoint.appendChild(
+            const shotStats = damageBreakpoint.appendChild(
+                document.createElement('div')
+            );
+            shotStats.classList = 'shot-stats';
+
+            const damageStat = shotStats.appendChild(
                 document.createElement('span')
             );
-            const totalShots = optimalDamageDistanceStats[distance].totalShots;
-            damageStat.innerHTML = `${totalShots} shots`;
 
-            const damageBreakdown = damageStat.appendChild(
+            const totalShots = optimalDamageDistanceStats[distance].totalShots;
+            damageStat.setAttribute('data-localisation-key', 'stats-shots');
+            damageStat.setAttribute(
+                'data-localisation-var',
+                `{"shots": "${totalShots}"}`
+            );
+
+            const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
             );
             damageBreakdown.classList = ['damage-breakdown'];

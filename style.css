@@ -575,9 +575,17 @@ footer span:last-child {
     line-height: 1em;
 }
 
-span.damage-breakdown {
-    display: block;
+.shot-stats {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+}
 
+.shot-stats > span {
+    font-weight: bold;
+}
+
+span.damage-breakdown {
     color: var(--color-text-dim);
 }
 
@@ -637,7 +645,7 @@ span.damage-breakdown {
     gap: 0.5em;
 }
 
-.stat-group div {
+.stat-group > div {
     display: flex;
     justify-content: space-between;
 }

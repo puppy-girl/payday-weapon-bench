@@ -54,6 +54,7 @@ const localisations = {
         'stats-reload-from-empty': 'Full Reload',
         'stats-optimal-ttk': 'Optimal Shots to Kill',
         'stats-body-ttk': 'Body Shots to Kill',
+        'stats-shots': '{{shots}} shots',
         'enemy-swat': 'SWAT',
         'enemy-heavy-swat': 'Heavy SWAT',
         'enemy-specials': 'Specials',
@@ -118,6 +119,7 @@ const localisations = {
         'stats-reload-from-empty': 'Fuww Wewoad',
         'stats-optimal-ttk': 'Optimaw Shots to Kiww',
         'stats-body-ttk': 'Body Shots to Kiww',
+        'stats-shots': '{{shots}} showts :3',
         'enemy-swat': 'SWAT',
         'enemy-heavy-swat': 'Heavy SWAT',
         'enemy-specials': 'Speciaws',
@@ -150,7 +152,21 @@ function setLocale(locale) {
 function localise(element) {
     const key = element.getAttribute('data-localisation-key');
 
-    element.innerHTML = getLocalisation(key) || '';
+    let localisation = getLocalisation(key) || '';
+
+    const variables = JSON.parse(element.getAttribute('data-localisation-var'));
+
+    if (variables) {
+        for (const variable in variables) {
+            console.log(variable);
+            localisation = localisation.replaceAll(
+                `{{${variable}}}`,
+                variables[variable]
+            );
+        }
+    }
+
+    return (element.innerText = localisation);
 }
 
 function getLocalisation(key) {
