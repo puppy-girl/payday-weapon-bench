@@ -63,7 +63,12 @@ const SKILLS = {
     highGrain: {
         name: 'skills-high-grain',
         description: 'skills-high-grain-desc',
-        modifier: 0.2,
+        attributeModifierMap: [
+            {
+                attribute: 'ArmorPenetration',
+                value: 10,
+            },
+        ],
         iconOffset: {
             x: 256,
             y: 64,
@@ -168,6 +173,16 @@ function applyLoadout(weapon, skills, attachments) {
         if (!ATTACHMENT_DATA[attachment]?.attributeModifierMap) return;
 
         ATTACHMENT_DATA[attachment].attributeModifierMap.forEach((modifier) => {
+            return attributeModifiers[modifier.attribute]
+                ? (attributeModifiers[modifier.attribute] += modifier.value)
+                : (attributeModifiers[modifier.attribute] = modifier.value);
+        });
+    });
+
+    skills.forEach((skill) => {
+        if (!SKILLS[skill]?.attributeModifierMap) return;
+
+        SKILLS[skill].attributeModifierMap.forEach((modifier) => {
             return attributeModifiers[modifier.attribute]
                 ? (attributeModifiers[modifier.attribute] += modifier.value)
                 : (attributeModifiers[modifier.attribute] = modifier.value);
@@ -283,10 +298,12 @@ function applyLoadout(weapon, skills, attachments) {
     fireData.fireType = fireData.fireType ?? 'Semi';
     fireData.roundsPerMinute = fireData.roundsPerMinute ?? 600;
 
-    fireData.armorPenetration = fireData.armorPenetration ?? 0;
-
-    if (skills.includes('highGrain'))
-        fireData.armorPenetration += SKILLS['highGrain'].modifier;
+    fireData.armorPenetration =
+        (fireData.armorPenetration ?? 0) +
+        convertAttributeModifier(
+            'ArmorPenetration',
+            attributeModifiers['ArmorPenetration'] ?? 0
+        );
 
     const viewKick = updatedWeapon.recoilData.viewKick;
 
