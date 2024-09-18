@@ -162,7 +162,7 @@ const ENEMIES = {
     drone: {
         displayName: 'Drone',
         health: 50,
-        armor: 150,
+        armor: 50,
         armorHardness: 2,
     },
 };
