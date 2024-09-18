@@ -36,6 +36,9 @@ const localisations = {
         'skills-duck-and-weave': 'Duck and Weave',
         'skills-duck-and-weave-desc':
             'As long as you have RUSH you deal 25% extra damage to targets from behind. Each armor chunk equipped beyond the first reduces this bonus by 5%.',
+        'skills-quick-reload': 'Quick Reload',
+        'skills-quick-reload-desc':
+            'As long as you have both EDGE and GRIT you have increased reload speed.',
         'weapon-class-assault-rifle': 'Assault Rifle',
         'weapon-class-marksman': 'Marksman Rifle',
         'weapon-class-shotgun': 'Shotgun',

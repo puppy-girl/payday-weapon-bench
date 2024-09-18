@@ -91,6 +91,20 @@ const SKILLS = {
             y: 1280,
         },
     },
+    quickReload: {
+        name: 'skills-quick-reload',
+        description: 'skills-quick-reload-desc',
+        attributeModifierMap: [
+            {
+                attribute: 'OverallReloadPlayRate',
+                value: 20,
+            },
+        ],
+        iconOffset: {
+            x: 64,
+            y: 512,
+        },
+    },
 };
 
 const EDGE_DEPENDENT_SKILLS = [
