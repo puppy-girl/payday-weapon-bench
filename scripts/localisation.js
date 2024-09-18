@@ -270,7 +270,7 @@ const localisations = {
         'stats-magazine': 'Şarjör',
         'stats-ammo-pickup': 'Cephane Alım',
         'stats-reload': 'Doldurma Süresi',
-        'stats-reload-from-empty': 'Sıfırdan Dolum Süresi',
+        'stats-reload-from-empty': 'Sıfırdan',
         'stats-optimal-ttk': 'Leş için İdeal Atım Sayısı',
         'stats-body-ttk': 'Leş için Vücut Atım Sayısı',
         'stats-range': '{{distance}}m',
