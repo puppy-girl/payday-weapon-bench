@@ -152,15 +152,15 @@ const localisations = {
         'dlc-2': '警钟长鸣',
         'dlc-3': '解救休斯顿',
         'dlc-4': '恐惧与贪婪',
-        'skills-edge': 'Edge',
+        'skills-edge': '锋锐',
         'skills-edge-desc': 'You deal 10% extra damage for 20 seconds.',
-        'skills-long-shot': 'Long Shot',
+        'skills-long-shot': '百步穿杨',
         'skills-long-shot-desc':
             'As long as you have EDGE and are aiming down sights distance penalties do not apply to headshot multipliers.',
-        'skills-face-to-face': 'Face to Face',
+        'skills-face-to-face': '近身缠斗',
         'skills-face-to-face-desc':
             'As long as you have both EDGE and GRIT you deal 10% extra damage to targets within 5 meters of you.',
-        'skills-coup-de-grace': 'Coup de Grâce',
+        'skills-coup-de-grace': '恩赐解脱',
         'skills-coup-de-grace-desc':
             'As long as you have EDGE you deal 10% extra damage to staggered or stunned targets.',
         'skills-combat-marking': 'Combat Marking',
@@ -172,10 +172,10 @@ const localisations = {
         'skills-precision-shot': 'Precision Shot',
         'skills-precision-shot-desc':
             'Whenever you perform 2 headshots without missing or swapping your weapon your next body shot will deal extra damage based on your scope magnification. Requires a 4× scope or greater.',
-        'skills-high-grain': 'High Grain',
+        'skills-high-grain': '重磅弹头',
         'skills-high-grain-desc':
             'All placed Ammo Bags increase armor penetration for 30 seconds upon interaction for you and your teammates. Each additional crew member equipped with this skill increases weapon damage by 5%.',
-        'skills-expose': 'Expose',
+        'skills-expose': '破绽百出',
         'skills-expose-desc':
             'Shots fired at enemies affected by your flashbang or shock grenade will ignore armor for as long as they are stunned.',
         'skills-duck-and-weave': 'Duck and Weave',
@@ -198,8 +198,8 @@ const localisations = {
         'stats-ammo-pickup': 'Ammo Pickup',
         'stats-reload': '装弹时间',
         'stats-reload-from-empty': '空仓装弹时间',
-        'stats-optimal-ttk': 'Optimal Shots to Kill',
-        'stats-body-ttk': 'Body Shots to Kill',
+        'stats-optimal-ttk': '最优击杀射击数',
+        'stats-body-ttk': '躯干击杀射击数',
         'stats-range': '{{distance}}米',
         'stats-time': '{{duration}}秒',
         'stats-shots': '{{shots}} shots',
