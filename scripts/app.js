@@ -621,9 +621,9 @@ const skillSelector = document.querySelector(
 const skillTemplate = document.querySelector('template.skill').cloneNode(true);
 document.querySelector('template.skill').remove();
 
-const defaultSkillImage = 'sydch';
-let skillImage = defaultSkillImage;
-if (localStorage.getItem('icons')) skillImage = localStorage.getItem('icons');
+const defaultSkillIcons = 'sydch';
+let skillIcons = defaultSkillIcons;
+if (localStorage.getItem('icons')) skillIcons = localStorage.getItem('icons');
 
 function populateSkills() {
     for (const skill in SKILLS) {
@@ -651,7 +651,9 @@ function populateSkills() {
             --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
             --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
             --image-url: url("images/${
-                skill == 'edge' ? 'edge.png' : skillImage + '-skills.png'
+                skill == 'edge'
+                    ? skillIcons + '-edge.png'
+                    : skillIcons + '-skills.png'
             }");
         `;
 
@@ -690,20 +692,26 @@ function populateSkills() {
 
 function updateSkillIcons() {
     document.querySelectorAll('.skill label').forEach((element) => {
-        if (element.getAttribute('for') == 'edge') return;
-        element.style.setProperty(
-            '--image-url',
-            `url("images/${skillImage}-skills.png")`
-        );
+        if (element.getAttribute('for') == 'edge') {
+            element.style.setProperty(
+                '--image-url',
+                `url("images/${skillIcons}-edge.png")`
+            );
+        } else {
+            element.style.setProperty(
+                '--image-url',
+                `url("images/${skillIcons}-skills.png")`
+            );
+        }
     });
 }
 
 const iconSwitcher = document.querySelector('#icons-switcher');
 
-iconSwitcher.value = skillImage;
+iconSwitcher.value = skillIcons;
 
 iconSwitcher.onchange = (event) => {
-    skillImage = event.target.value;
+    skillIcons = event.target.value;
 
     localStorage.setItem('icons', event.target.value);
 
