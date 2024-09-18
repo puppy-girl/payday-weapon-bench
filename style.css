@@ -533,7 +533,7 @@ footer span:last-child {
 
 .damage-stat-container {
     display: grid;
-    grid-template-columns: 9rem 1fr 1fr;
+    grid-template-columns: 10rem 1fr 1fr;
 
     min-height: 9rem;
 }

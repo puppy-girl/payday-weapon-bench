@@ -1341,6 +1341,34 @@ function updateDamageStats(selectedWeapon) {
             );
         }
 
+        if (enemyData.visorArmor) {
+            const enemyVisorArmor = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyVisorArmor.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-visor-armor'
+            );
+            enemyVisorArmor.setAttribute(
+                'data-localisation-var',
+                `{"armor":"${enemyData.visorArmor}"}`
+            );
+        }
+
+        if (enemyData.visorArmorHardness) {
+            const enemyVisorArmorHardness = enemyInfo.appendChild(
+                document.createElement('span')
+            );
+            enemyVisorArmorHardness.setAttribute(
+                'data-localisation-key',
+                'enemy-stats-visor-armor-hardness'
+            );
+            enemyVisorArmorHardness.setAttribute(
+                'data-localisation-var',
+                `{"hardness":"${enemyData.visorArmorHardness}"}`
+            );
+        }
+
         const enemyHealth = enemyInfo.appendChild(
             document.createElement('span')
         );

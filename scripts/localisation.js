@@ -69,6 +69,8 @@ const localisations = {
         'enemy-stats-health': '{{health}} Health',
         'enemy-stats-armor': '{{armor}} Armor',
         'enemy-stats-armor-hardness': '{{hardness}} Hardness',
+        'enemy-stats-visor-armor': '{{armor}} Visor Armor',
+        'enemy-stats-visor-armor-hardness': '{{hardness}} Visor Hardness',
     },
     uwu: {
         title: 'P-Payday 3 Weapon Bench >w<',
@@ -139,6 +141,8 @@ const localisations = {
         'enemy-stats-health': '{{health}} H-Heawth',
         'enemy-stats-armor': '{{armor}} Awmow',
         'enemy-stats-armor-hardness': '{{hardness}} Hawdnyess',
+        'enemy-stats-visor-armor': '{{armor}} Visow Awmow',
+        'enemy-stats-visor-armor-hardness': '{{hardness}} V. Hawdnyess',
     },
 };
 
