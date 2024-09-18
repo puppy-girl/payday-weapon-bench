@@ -12,8 +12,8 @@ const SKILLS = {
         name: 'skills-long-shot',
         description: 'skills-long-shot-desc',
         iconOffset: {
-            x: 127,
-            y: 319,
+            x: 128,
+            y: 320,
         },
     },
     faceToFace: {
@@ -21,8 +21,8 @@ const SKILLS = {
         description: 'skills-face-to-face-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 127,
-            y: 511,
+            x: 128,
+            y: 512,
         },
     },
     coupDeGrace: {
@@ -30,8 +30,8 @@ const SKILLS = {
         description: 'skills-coup-de-grace-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 126,
-            y: 895,
+            x: 128,
+            y: 896,
         },
     },
     combatMarking: {
@@ -48,7 +48,7 @@ const SKILLS = {
         description: 'skills-pain-asymbolia-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 316,
+            x: 320,
             y: 1216,
         },
     },
@@ -56,8 +56,8 @@ const SKILLS = {
         name: 'skills-precision-shot',
         description: 'skills-precision-shot-desc',
         iconOffset: {
-            x: 191,
-            y: 319,
+            x: 192,
+            y: 322,
         },
     },
     highGrain: {
@@ -65,16 +65,16 @@ const SKILLS = {
         description: 'skills-high-grain-desc',
         modifier: 0.2,
         iconOffset: {
-            x: 255,
-            y: 62,
+            x: 256,
+            y: 64,
         },
     },
     expose: {
         name: 'skills-expose',
         description: 'skills-expose-desc',
         iconOffset: {
-            x: 254,
-            y: 894,
+            x: 256,
+            y: 896,
         },
     },
     duckAndWeave: {
@@ -83,7 +83,7 @@ const SKILLS = {
         modifier: 0.25,
         iconOffset: {
             x: 190,
-            y: 1279,
+            y: 1280,
         },
     },
 };
@@ -621,6 +621,10 @@ const skillSelector = document.querySelector(
 const skillTemplate = document.querySelector('template.skill').cloneNode(true);
 document.querySelector('template.skill').remove();
 
+const defaultSkillImage = 'sydch';
+let skillImage = defaultSkillImage;
+if (localStorage.getItem('icons')) skillImage = localStorage.getItem('icons');
+
 function populateSkills() {
     for (const skill in SKILLS) {
         const selectableSkill = skillSelector.appendChild(
@@ -647,7 +651,7 @@ function populateSkills() {
             --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
             --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
             --image-url: url("images/${
-                skill == 'edge' ? 'edge.png' : 'skills.png'
+                skill == 'edge' ? 'edge.png' : skillImage + '-skills.png'
             }");
         `;
 
@@ -683,6 +687,28 @@ function populateSkills() {
         });
     }
 }
+
+function updateSkillIcons() {
+    document.querySelectorAll('.skill label').forEach((element) => {
+        if (element.getAttribute('for') == 'edge') return;
+        element.style.setProperty(
+            '--image-url',
+            `url("images/${skillImage}-skills.png")`
+        );
+    });
+}
+
+const iconSwitcher = document.querySelector('#icons-switcher');
+
+iconSwitcher.value = skillImage;
+
+iconSwitcher.onchange = (event) => {
+    skillImage = event.target.value;
+
+    localStorage.setItem('icons', event.target.value);
+
+    updateSkillIcons();
+};
 
 const attachmentsSection = document.querySelector('#loadout-attachments');
 
@@ -1550,7 +1576,6 @@ const localeSwitcher = document.querySelector('#locale-switcher');
 localeSwitcher.value = currentLocale;
 
 localeSwitcher.onchange = (event) => {
-    console.log('hi');
     setLocale(event.target.value);
 };
 
