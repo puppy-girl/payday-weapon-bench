@@ -259,6 +259,7 @@ h1 {
     font-weight: 500;
     line-height: 4rem;
     color: var(--color-text-alt);
+    text-transform: uppercase;
 }
 
 #options {
