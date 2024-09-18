@@ -147,7 +147,7 @@ const localisations = {
     chinese:{
         title: 'Payday 3 武器数据站',
         credits:
-            'Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317 and Lunar Pearl',
+            '由Jade制作 🌺 ✦ 技能图标由Sydch设计 ✦ 特别感谢Price9317和Lunar Pearl',
         'dlc-1': '语法错误',
         'dlc-2': '警钟长鸣',
         'dlc-3': '解救休斯顿',
