@@ -939,7 +939,7 @@ function updateWeaponStats(selectedWeapon) {
     fireModeStat.innerHTML = fireData.fireType;
 
     if (fireData.fireType == 'Burst') {
-        fireModeStat.innerHTML += '<br/>';
+        fireModeStat.innerHTML += '/';
 
         const burstStat = fireModeStat.appendChild(
             document.createElement('span')

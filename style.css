@@ -626,10 +626,10 @@ span.damage-breakdown span {
 
     width: 11rem;
 
-    border: var(--border);
+    /* border: var(--border);
     border-radius: 0.15rem;
 
-    background: var(--color-surface);
+    background: var(--color-surface); */
 
     font-family: var(--font-mono);
 }
@@ -638,8 +638,13 @@ span.damage-breakdown span {
     justify-content: space-between;
     
     height: 17rem;
+}
 
-    padding: 0.5em 0;
+.stat-container svg {
+    border: var(--border);
+    border-radius: 0.15rem;
+
+    background: var(--color-surface);
 }
 
 .stat-group {
@@ -653,9 +658,9 @@ span.damage-breakdown span {
     justify-content: space-between;
 }
 
-#sidebar-stats .stat-group div {
+/* #sidebar-stats .stat-group div {
     padding: 0 1em;
-}
+} */
 
 .stat-group div > span:first-child {
     color: var(--color-text-alt);
