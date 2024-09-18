@@ -136,6 +136,9 @@ const localisations = {
         'enemy-sniper': 'Snyipew',
         'enemy-cloaker': 'Cwoakew',
         'enemy-drone': 'Dwonye ^w^',
+        'enemy-stats-health': '{{health}} H-Heawth',
+        'enemy-stats-armor': '{{armor}} Awmow',
+        'enemy-stats-armor-hardness': '{{hardness}} Hawdnyess',
     },
 };
 
