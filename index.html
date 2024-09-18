@@ -11,6 +11,7 @@
     <script src="scripts/weapons.js" defer></script>
     <script src="scripts/attachments.js" defer></script>
     <script src="scripts/curve-data.js" defer></script>
+    <script src="scripts/localisation.js" defer></script>
     <script src="scripts/app.js" defer></script>
 </head>
 <body>
@@ -48,7 +49,29 @@
         </fieldset>
     </aside>
     <main>
-        <h1>Payday 3 Weapon Bench</h1>
+        <div id="main-header">
+            <h1 data-localisation-key="title">Payday 3 Weapon Bench</h1>
+            <div id="locale">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    class="size-6"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="m10.5 21 5.25-11.25L21 21m-9-3h7.5M3 5.621a48.474 48.474 0 0 1 6-.371m0 0c1.12 0 2.233.038 3.334.114M9 5.25V3m3.334 2.364C11.176 10.658 7.69 15.08 3 17.502m9.334-12.138c.896.061 1.785.147 2.666.257m-4.589 8.495a18.023 18.023 0 0 1-3.827-5.802"
+                    />
+                </svg>
+                <select name="locale-switcher" id="locale-switcher">
+                    <option value="en">English</option>
+                    <option value="uwu">uwu</option>
+                </select>
+            </div>
+        </div>
 
         <div id="content">
             <section id="loadout">
@@ -88,7 +111,7 @@
                 <div id="stats-header">
                     <div id="weapon-stats">
                         <div class="weapon-stat-container" id="weapon-stats-damage">
-                            <span class="weapon-stat-category-title">Damage</span>
+                            <span class="weapon-stat-category-title" data-localisation-key="stats-damage"></span>
                             <div>
                                 <div class="weapon-stat-category"">
                                     <template class="weapon-stat">
@@ -108,11 +131,11 @@
                         <div class="enemy-info">
                         </div>
                         <div class="optimal-ttk">
-                            <span class="damage-stat-category-title">Optimal Shots to Kill</span>
+                            <span class="damage-stat-category-title" data-localisation-key="stats-optimal-ttk"></span>
                             <div class="ttk-stats stat-group"></div>
                         </div>
                         <div class="body-ttk">
-                            <span class="damage-stat-category-title">Body Shots to Kill</span>
+                            <span class="damage-stat-category-title" data-localisation-key="stats-body-ttk"></span>
                             <div class="ttk-stats stat-group"></div>
                         </div>
                     </template>
@@ -121,7 +144,7 @@
         </div>
 
         <footer>
-            <span>Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317</span>
+            <span data-localisation-key="credits"></span>
             <span>Updated to Fear & Greed</span>
         </footer>
 
@@ -133,43 +156,43 @@
             <div id="number-stats" class="stat-container">
                 <div class="stat-group">
                     <div>
-                        <span>Damage</span>
+                        <span data-localisation-key="stats-damage"></span>
                         <span id="stat-base-damage">30.4/30m</span>
                     </div>
                     <div>
-                        <span>Multiplier</span>
+                        <span data-localisation-key="stats-critical-multiplier"></span>
                         <span id="stat-base-multiplier">5x/10m</span>
                     </div>
                     <div>
-                        <span>Armor Pen</span>
+                        <span data-localisation-key="stats-armor-penetration"></span>
                         <span id="stat-armor-penetration">0.92</span>
                     </div>
                 </div>
                 <div class="stat-group">
                     <div>
-                        <span>Firing Mode</span>
+                        <span data-localisation-key="stats-fire-mode"></span>
                         <span id="stat-fire-type">Auto</span>
                     </div>
                     <div>
-                        <span>Fire Rate</span>
+                        <span data-localisation-key="stats-fire-rate"></span>
                         <span id="stat-rpm">720 RPM</span>
                     </div>
                 </div>
                 <div class="stat-group">
                     <div>
-                        <span>Magazine</span>
+                        <span data-localisation-key="stats-magazine"></span>
                         <span id="stat-magazine">30/300</span>
                     </div>
                     <div>
-                        <span>Ammo Pickup</span>
+                        <span data-localisation-key="stats-ammo-pickup"></span>
                         <span id="stat-ammo-pickup">3-5</span>
                     </div>
                     <div>
-                        <span>Reload</span>
+                        <span data-localisation-key="stats-reload"></span>
                         <span id="stat-reload">2.33s</span>
                     </div>
                     <div>
-                        <span>Full Reload</span>
+                        <span data-localisation-key="stats-reload-from-empty"></span>
                         <span id="stat-full-reload">2.67s</span>
                     </div>
                 </div>
