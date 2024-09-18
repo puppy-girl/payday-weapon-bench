@@ -902,31 +902,80 @@ function updateWeaponStats(selectedWeapon) {
 
     const fireData = weapon.fireData;
 
-    document.querySelector('#stat-base-damage').innerHTML =
-        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
-        '/' +
-        Math.round(fireData.damageDistanceArray[0].distance) / 100 +
-        'm';
-    document.querySelector('#stat-base-multiplier').innerHTML =
-        fireData.criticalDamageMultiplierDistanceArray[0].multiplier +
-        '×/' +
-        fireData.criticalDamageMultiplierDistanceArray[0].distance / 100 +
-        'm';
+    const baseDamageStat = document.querySelector('#stat-base-damage');
+    baseDamageStat.innerHTML =
+        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '/';
+
+    const baseDamageRange = baseDamageStat.appendChild(
+        document.createElement('span')
+    );
+    baseDamageRange.setAttribute('data-localisation-key', 'stats-range');
+    baseDamageRange.setAttribute(
+        'data-localisation-var',
+        `{"distance":"${
+            Math.round(fireData.damageDistanceArray[0].distance) / 100
+        }"}`
+    );
+
+    const baseMultiplierStat = document.querySelector('#stat-base-multiplier');
+    baseMultiplierStat.innerHTML =
+        fireData.criticalDamageMultiplierDistanceArray[0].multiplier + '×/';
+
+    const baseMultiplierRange = baseMultiplierStat.appendChild(
+        document.createElement('span')
+    );
+    baseMultiplierRange.setAttribute('data-localisation-key', 'stats-range');
+    baseMultiplierRange.setAttribute(
+        'data-localisation-var',
+        `{"distance":"${
+            fireData.criticalDamageMultiplierDistanceArray[0].distance / 100
+        }"}`
+    );
+
     document.querySelector('#stat-armor-penetration').innerHTML =
         fireData.armorPenetration;
-    document.querySelector('#stat-fire-type').innerHTML = fireData.fireType;
-    document.querySelector('#stat-rpm').innerHTML =
-        fireData.fireType == 'Burst'
-            ? fireData.roundsPerMinute + '/' + fireData.timeBetweenBursts + 's'
-            : fireData.roundsPerMinute + ' RPM';
+
+    const fireModeStat = document.querySelector('#stat-fire-type');
+    fireModeStat.innerHTML = fireData.fireType;
+
+    if (fireData.fireType == 'Burst') {
+        fireModeStat.innerHTML += '<br/>';
+
+        const burstStat = fireModeStat.appendChild(
+            document.createElement('span')
+        );
+        burstStat.setAttribute('data-localisation-key', 'stats-time');
+        burstStat.setAttribute(
+            'data-localisation-var',
+            `{"duration": "${fireData.timeBetweenBursts}"}`
+        );
+    }
+
+    const rpmStat = document.querySelector('#stat-rpm');
+    rpmStat.setAttribute('data-localisation-key', 'stats-fire-rate-value');
+    rpmStat.setAttribute(
+        'data-localisation-var',
+        `{"rpm":"${fireData.roundsPerMinute}"}`
+    );
+
     document.querySelector('#stat-magazine').innerHTML =
         fireData.ammoLoaded + '/' + weapon.fireData.ammoInventoryMax;
     document.querySelector('#stat-ammo-pickup').innerHTML =
         fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
-    document.querySelector('#stat-reload').innerHTML =
-        Math.round(weapon.reloadTime * 1000) / 1000 + 's';
-    document.querySelector('#stat-full-reload').innerHTML =
-        Math.round(weapon.reloadEmptyTime * 1000) / 1000 + 's';
+
+    const reloadStat = document.querySelector('#stat-reload');
+    reloadStat.setAttribute('data-localisation-key', 'stats-time');
+    reloadStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.reloadTime * 1000) / 1000}"}`
+    );
+
+    const fullReloadStat = document.querySelector('#stat-full-reload');
+    fullReloadStat.setAttribute('data-localisation-key', 'stats-time');
+    fullReloadStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.reloadEmptyTime * 1000) / 1000}"}`
+    );
 
     const weaponDamageStats = document.querySelector(
         '#weapon-stats-damage > div'
@@ -940,8 +989,17 @@ function updateWeaponStats(selectedWeapon) {
         damageStat.innerHTML = weaponStatTemplate.innerHTML;
         damageStat.classList = ['weapon-stat'];
 
-        damageStat.children[0].innerHTML =
-            Math.round(Math.min(damageStep.distance, 100000)) / 100 + 'm';
+        damageStat.children[0].setAttribute(
+            'data-localisation-key',
+            'stats-range'
+        );
+        damageStat.children[0].setAttribute(
+            'data-localisation-var',
+            `{"distance": "${
+                Math.round(Math.min(damageStep.distance, 100000)) / 100
+            }"}`
+        );
+
         damageStat.children[1].innerHTML =
             Math.round(damageStep.damage * 100) / 100;
     });
@@ -958,8 +1016,18 @@ function updateWeaponStats(selectedWeapon) {
             critStat.innerHTML = weaponStatTemplate.innerHTML;
             critStat.classList = ['weapon-stat'];
 
-            critStat.children[0].innerHTML =
-                Math.min(criticalDamageStep.distance, 100000) / 100 + 'm';
+            critStat.children[0].setAttribute(
+                'data-localisation-key',
+                'stats-range'
+            );
+            critStat.children[0].setAttribute(
+                'data-localisation-var',
+                `{"distance": "${
+                    Math.round(Math.min(criticalDamageStep.distance, 100000)) /
+                    100
+                }"}`
+            );
+
             critStat.children[1].innerHTML =
                 criticalDamageStep.multiplier + 'x';
         }
@@ -1273,7 +1341,11 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
+            distanceStat.setAttribute('data-localisation-key', 'stats-range');
+            distanceStat.setAttribute(
+                'data-localisation-var',
+                `{"distance": "${Math.min(distance, 100000) / 100}"}`
+            );
 
             const shotStats = damageBreakpoint.appendChild(
                 document.createElement('div')
@@ -1301,8 +1373,16 @@ function updateDamageStats(selectedWeapon) {
 
             damageBreakdown.innerHTML += `${bodyShotDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
-            damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
+            const ttk = damageBreakdown.appendChild(
+                document.createElement('span')
+            );
+            ttk.setAttribute('data-localisation-key', 'stats-time');
+            ttk.setAttribute(
+                'data-localisation-var',
+                `{"duration": "${
+                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
+                }"}`
+            );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
@@ -1346,7 +1426,11 @@ function updateDamageStats(selectedWeapon) {
             const distanceStat = damageBreakpoint.appendChild(
                 document.createElement('span')
             );
-            distanceStat.innerHTML = Math.min(distance, 100000) / 100 + 'm';
+            distanceStat.setAttribute('data-localisation-key', 'stats-range');
+            distanceStat.setAttribute(
+                'data-localisation-var',
+                `{"distance": "${Math.min(distance, 100000) / 100}"}`
+            );
 
             const shotStats = damageBreakpoint.appendChild(
                 document.createElement('div')
@@ -1378,8 +1462,16 @@ function updateDamageStats(selectedWeapon) {
 
             damageBreakdown.innerHTML += `${optimalDamageDistanceStats[distance].unarmoredCrits}H${optimalDamageDistanceStats[distance].unarmoredNonCrits}B`;
 
-            damageBreakdown.innerHTML += `</br>
-                ${Math.round(timeToKill(weapon, totalShots) * 100) / 100}s`;
+            const ttk = damageBreakdown.appendChild(
+                document.createElement('span')
+            );
+            ttk.setAttribute('data-localisation-key', 'stats-time');
+            ttk.setAttribute(
+                'data-localisation-var',
+                `{"duration": "${
+                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
+                }"}`
+            );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
                 const reloads = Math.floor(
