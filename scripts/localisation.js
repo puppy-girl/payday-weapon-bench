@@ -48,12 +48,16 @@ const localisations = {
         'stats-armor-penetration': 'Armor Pen',
         'stats-fire-mode': 'Fire Mode',
         'stats-fire-rate': 'Fire Rate',
+        'stats-fire-rate-value': '{{rpm}} RPM',
         'stats-magazine': 'Magazine',
         'stats-ammo-pickup': 'Ammo Pickup',
         'stats-reload': 'Reload',
         'stats-reload-from-empty': 'Full Reload',
         'stats-optimal-ttk': 'Optimal Shots to Kill',
         'stats-body-ttk': 'Body Shots to Kill',
+        'stats-range': '{{distance}}m',
+        'stats-time': '{{duration}}s',
+        'stats-shots': '{{shots}} shots',
         'enemy-swat': 'SWAT',
         'enemy-heavy-swat': 'Heavy SWAT',
         'enemy-specials': 'Specials',
@@ -62,6 +66,11 @@ const localisations = {
         'enemy-sniper': 'Sniper',
         'enemy-cloaker': 'Cloaker',
         'enemy-drone': 'Drone',
+        'enemy-stats-health': '{{health}} Health',
+        'enemy-stats-armor': '{{armor}} Armor',
+        'enemy-stats-armor-hardness': '{{hardness}} Hardness',
+        'enemy-stats-visor-armor': '{{armor}} Visor Armor',
+        'enemy-stats-visor-armor-hardness': '{{hardness}} Visor Hardness',
     },
     uwu: {
         title: 'P-Payday 3 Weapon Bench >w<',
@@ -118,6 +127,9 @@ const localisations = {
         'stats-reload-from-empty': 'Fuww Wewoad',
         'stats-optimal-ttk': 'Optimaw Shots to Kiww',
         'stats-body-ttk': 'Body Shots to Kiww',
+        'stats-range': '{{distance}}uwu',
+        'stats-time': '{{duration}}s',
+        'stats-shots': '{{shots}} showts :3',
         'enemy-swat': 'SWAT',
         'enemy-heavy-swat': 'Heavy SWAT',
         'enemy-specials': 'Speciaws',
@@ -126,6 +138,11 @@ const localisations = {
         'enemy-sniper': 'Snyipew',
         'enemy-cloaker': 'Cwoakew',
         'enemy-drone': 'Dwonye ^w^',
+        'enemy-stats-health': '{{health}} H-Heawth',
+        'enemy-stats-armor': '{{armor}} Awmow',
+        'enemy-stats-armor-hardness': '{{hardness}} Hawdnyess',
+        'enemy-stats-visor-armor': '{{armor}} Visow Awmow',
+        'enemy-stats-visor-armor-hardness': '{{hardness}} V. Hawdnyess',
     },
     chinese:{
         title: 'Payday 3 Weapon Bench',
@@ -215,7 +232,21 @@ function setLocale(locale) {
 function localise(element) {
     const key = element.getAttribute('data-localisation-key');
 
-    element.innerHTML = getLocalisation(key) || '';
+    let localisation = getLocalisation(key) || '';
+
+    const variables = JSON.parse(element.getAttribute('data-localisation-var'));
+
+    if (variables) {
+        for (const variable in variables) {
+            console.log(variable);
+            localisation = localisation.replaceAll(
+                `{{${variable}}}`,
+                variables[variable]
+            );
+        }
+    }
+
+    return (element.innerText = localisation);
 }
 
 function getLocalisation(key) {
