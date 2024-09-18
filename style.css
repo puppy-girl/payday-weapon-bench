@@ -329,9 +329,8 @@ h1 {
     position: absolute;
     top: -0.5em;
 
-    font-family: var(--font-display);
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 1000;
     color: var(--color-text-dim);
     line-height: 1em;
 }
