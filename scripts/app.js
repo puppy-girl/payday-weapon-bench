@@ -440,6 +440,24 @@ function applyLoadout(weapon, skills, attachments) {
         );
     }
 
+    if (attributeModifiers['OverallSwapSpeed']) {
+        updatedWeapon.equipTime /= convertAttributeModifier(
+            'OverallSwapSpeed',
+            attributeModifiers['OverallSwapSpeed']
+        );
+
+        updatedWeapon.unequipTime /= convertAttributeModifier(
+            'OverallSwapSpeed',
+            attributeModifiers['OverallSwapSpeed']
+        );
+    }
+
+    if (attributeModifiers['SprintExitPlayRate'])
+        updatedWeapon.sprintExitTime /= convertAttributeModifier(
+            'SprintExitPlayRate',
+            attributeModifiers['SprintExitPlayRate']
+        );
+
     return updatedWeapon;
 }
 
@@ -452,6 +470,8 @@ function applyLoadout(weapon, skills, attachments) {
  * @returns {number} Stat modifier
  */
 function convertAttributeModifier(attribute, modifier) {
+    if (attribute == 'OverallSwapSpeed') attribute = 'EquipPlayRate';
+
     const attributeModifierCurve = CURVE_DATA[attribute];
 
     if (modifier == 0 || modifier == undefined) return 0;
@@ -1232,6 +1252,36 @@ function updateWeaponStats(selectedWeapon) {
     }
 
     previousWeapon = selectedWeapon;
+
+    const hipfireMultiplierStat = document.querySelector(
+        '#stat-hipfire-multiplier'
+    );
+    hipfireMultiplierStat.innerHTML =
+        weapon.recoilData.viewKick.hipfireMultiplier + '×';
+
+    const initialNumStat = document.querySelector('#stat-initial-num');
+    initialNumStat.innerHTML = weapon.recoilData.viewKick.initialNum;
+
+    const equipTimeStat = document.querySelector('#stat-equip-time');
+    equipTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    equipTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.equipTime * 1000) / 1000}"}`
+    );
+
+    const unequipTimeStat = document.querySelector('#stat-unequip-time');
+    unequipTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    unequipTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.unequipTime * 1000) / 1000}"}`
+    );
+
+    const sprintExitTimeStat = document.querySelector('#stat-sprint-exit-time');
+    sprintExitTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    sprintExitTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.sprintExitTime * 1000) / 1000}"}`
+    );
 }
 
 function shotsToKillAtDistances(weapon, enemy, headshots) {

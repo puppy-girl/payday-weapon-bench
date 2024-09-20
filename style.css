@@ -650,7 +650,7 @@ span.damage-breakdown span {
     font-family: var(--font-mono);
 }
 
-.stat-container#number-stats {
+.stat-container#main-stats {
     justify-content: space-between;
     
     height: 17rem;
@@ -667,6 +667,10 @@ span.damage-breakdown span {
     display: flex;
     flex-flow: column wrap;
     gap: 0.5em;
+}
+
+.stat-group:not(#main-stats .stat-group) {
+    padding-bottom: 2em;
 }
 
 .stat-group > div {
