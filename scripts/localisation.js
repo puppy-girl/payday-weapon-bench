@@ -3,6 +3,7 @@ const localisations = {
         title: 'Payday 3 Weapon Bench',
         credits:
             'Made by Jade 🌺 ✦ Skill Icons by Sydch ✦ Special Thanks to Price9317 and Lunar Pearl',
+        'whats-new': 'Updated to Fear & Greed',
         'dlc-1': 'Syntax Error',
         'dlc-2': 'Boys in Blue',
         'dlc-3': 'Houston Breakout',
@@ -46,6 +47,14 @@ const localisations = {
         'weapon-class-revolver': 'Revolver',
         'weapon-class-smg': 'SMG',
         'weapon-class-lmg': 'Light Machine Gun',
+        'sight': 'Sight',
+        'mag': 'Mag',
+        'barrelExtension': 'Barrel Extension',
+        'barrel': 'Barrel',
+        'verticalGrip': 'Vertical Grip',
+        'foreGrip': 'Fore Grip',
+        'grip': 'Grip',
+        'stock': 'Stock',
         'stats-damage': 'Damage',
         'stats-critical-multiplier': 'Multiplier',
         'stats-armor-penetration': 'Armor Pen',
@@ -302,6 +311,7 @@ const localisations = {
         title: 'Оружейная мастерская PAYDAY 3',
         credits:
             'Сделано Jade 🌺 ✦ Иконки навыков от Sydch ✦ Специальная благодарность Price9317 и Lunar Pearl',
+        'whats-new': 'Обновлено до "Страх и Жадность"',
         'dlc-1': 'Ошибка Синтаксиса',
         'dlc-2': 'Люди в Синем',
         'dlc-3': 'Спасение Хьюстона',
@@ -345,6 +355,14 @@ const localisations = {
         'weapon-class-revolver': 'Револьвер',
         'weapon-class-smg': 'Автомат',
         'weapon-class-lmg': 'Ручной пулемет',
+        'sight': 'Прицел',
+        'mag': 'Магазин',
+        'barrelExtension': 'Насадка',
+        'barrel': 'Ствол',
+        'verticalGrip': 'Вертикальная рукоять',
+        'foreGrip': 'Передняя рукоять',
+        'grip': 'Рукоять',
+        'stock': 'Приклад',
         'stats-damage': 'Урон',
         'stats-critical-multiplier': 'Множитель',
         'stats-armor-penetration': 'Пробивание брони',
@@ -362,9 +380,11 @@ const localisations = {
         'stats-sprint-exit': 'Выход из бега',
         'stats-optimal-ttk': 'Оптимальное количество выстрелов для убийства',
         'stats-body-ttk': 'Выстрелы в тело для убийства',
-        'stats-range': '{{distance}}м',
-        'stats-time': '{{duration}}с',
-        'stats-shots': '{{shots}} выстрелов',
+        'stats-range': '{{distance}}м.',
+        'stats-time': '{{duration}}с.',
+        'stats-1shot': 'выстрел',
+        'stats-few-shots': 'выстрела',
+        'stats-many-shots': 'выстрелов',
         'enemy-swat': 'SWAT',
         'enemy-heavy-swat': 'Тяжелый SWAT',
         'enemy-specials': 'Спец. юниты',
@@ -399,6 +419,8 @@ function setLocale(locale) {
         });
 }
 
+
+
 function localise(element) {
     const key = element.getAttribute('data-localisation-key');
 
@@ -407,8 +429,11 @@ function localise(element) {
     const variables = JSON.parse(element.getAttribute('data-localisation-var'));
 
     if (variables) {
+
+        if (key == "stats-shots" && ["russian", "polish"].includes(currentLocale)) return (element.innerText = shotsDeclension(variables));
+
         for (const variable in variables) {
-            console.log(variable);
+            console.log(localisation);
             localisation = localisation.replaceAll(
                 `{{${variable}}}`,
                 variables[variable]
@@ -425,4 +450,21 @@ function getLocalisation(key) {
     if (!localisations[currentLocale][key]) locale = 'en';
 
     return localisations[locale][key];
+}
+
+function shotsDeclension(count) {
+    count = count.shots;
+    const lastDigit = count % 10;
+    const lastTwoDigits = count % 100;
+
+    if (lastDigit === 1 && lastTwoDigits !== 11) {
+        let shotsTranslated = getLocalisation('stats-1shot') || '';
+        return `${count} ${shotsTranslated}`;
+    } else if ([2, 3, 4].includes(lastDigit) && ![12, 13, 14].includes(lastTwoDigits)) {
+        let shotsTranslated = getLocalisation('stats-few-shots') || '';
+        return `${count} ${shotsTranslated}`;
+    } else {
+        let shotsTranslated = getLocalisation('stats-many-shots') || '';
+        return `${count} ${shotsTranslated}`;
+    }
 }
