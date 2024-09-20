@@ -299,6 +299,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.3333335,
         "reloadEmptyTime": 2.6666665
     },
@@ -592,6 +595,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.1666665,
         "reloadEmptyTime": 2.3333335
     },
@@ -810,6 +816,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.5,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 3.1666665,
         "reloadEmptyTime": 3.1666665
     },
@@ -1019,6 +1028,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.5,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 2.8333333,
         "reloadEmptyTime": 2.8333333
     },
@@ -1326,6 +1338,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.3333333,
         "reloadEmptyTime": 2.6666667
     },
@@ -1636,6 +1651,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.6666665,
         "reloadEmptyTime": 2.8333333
     },
@@ -1885,6 +1903,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.466667,
+        "unequipTime": 0.56666666,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 2.4999998,
         "reloadEmptyTime": 2.4999998
     },
@@ -2185,6 +2206,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.16666666,
+        "unequipTime": 0.33333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.5000001,
         "reloadEmptyTime": 1.8333334
     },
@@ -2476,6 +2500,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.43333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.9000001,
         "reloadEmptyTime": 1.9945579
     },
@@ -2770,6 +2797,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.43333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.333333,
         "reloadEmptyTime": 2.666667
     },
@@ -3083,6 +3113,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.9999999,
         "reloadEmptyTime": 2.3333335
     },
@@ -3281,6 +3314,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.5,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 2.1000001,
         "reloadEmptyTime": 2.5000002
     },
@@ -3599,6 +3635,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.3333335,
         "reloadEmptyTime": 2.8350124
     },
@@ -3899,6 +3938,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.3999999,
         "reloadEmptyTime": 2.6666667
     },
@@ -4286,6 +4328,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.6666665,
         "reloadEmptyTime": 2.8333333
     },
@@ -4587,6 +4632,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.41715267,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.3333333,
         "reloadEmptyTime": 1.9999999
     },
@@ -4892,6 +4940,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.43333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.8333334,
         "reloadEmptyTime": 2.1666665
     },
@@ -5199,6 +5250,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.43333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.8333334,
         "reloadEmptyTime": 2.1666667
     },
@@ -5461,6 +5515,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.16666666,
+        "unequipTime": 0.33333334,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.5000001,
         "reloadEmptyTime": 1.8333334
     },
@@ -5749,6 +5806,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.3666668,
         "reloadEmptyTime": 1.8333334
     },
@@ -5928,6 +5988,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.41715267,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.4999998,
         "reloadEmptyTime": 2.9999998
     },
@@ -6249,6 +6312,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.6666665,
         "reloadEmptyTime": 2.8333333
     },
@@ -6513,6 +6579,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.4,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 1.3333333,
         "reloadEmptyTime": 1.8333333
     },
@@ -6778,6 +6847,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.26666665,
+        "unequipTime": 0.4,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 1.3333334,
         "reloadEmptyTime": 1.8333334
     },
@@ -7027,6 +7099,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.33333334,
+        "unequipTime": 0.46666667,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 1.3999999,
         "reloadEmptyTime": 1.7
     },
@@ -7294,6 +7369,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.39999998,
+        "unequipTime": 0.56666666,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 1.6666667,
         "reloadEmptyTime": 2.1666667
     },
@@ -7542,6 +7620,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.16666666,
+        "unequipTime": 0.3,
+        "sprintExitTime": 0.29999998,
         "reloadTime": 1.3333335,
         "reloadEmptyTime": 1.5333333
     },
@@ -8240,6 +8321,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 1.5000001,
         "reloadEmptyTime": 2.3333335
     },
@@ -8559,6 +8643,9 @@ const WEAPON_DATA = Object.freeze({
                 "uniqueParts": []
             }
         },
+        "equipTime": 0.46666664,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.8333335,
         "reloadEmptyTime": 3.1666665
     },
@@ -8845,6 +8932,9 @@ const WEAPON_DATA = Object.freeze({
                 ]
             }
         },
+        "equipTime": 0.40000004,
+        "unequipTime": 0.53333336,
+        "sprintExitTime": 0.3333333,
         "reloadTime": 2.1666667,
         "reloadEmptyTime": 2.5000002
     }

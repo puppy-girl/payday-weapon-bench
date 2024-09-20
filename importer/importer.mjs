@@ -251,6 +251,9 @@ try {
                     ];
                 })
             ),
+            equipTime: weaponData.EquipNotifyTime,
+            unequipTime: weaponData.UnequipNotifyTime,
+            sprintExitTime: weaponData.SprintExitNotifyTime,
             reloadTime: weaponData.ReloadNotifyTime,
             reloadEmptyTime: weaponData.ReloadEmptyNotifyTime,
         };
