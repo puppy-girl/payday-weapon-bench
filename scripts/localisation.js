@@ -433,7 +433,7 @@ function localise(element) {
         if (key == "stats-shots" && ["russian", "polish"].includes(currentLocale)) return (element.innerText = shotsDeclension(variables));
 
         for (const variable in variables) {
-            console.log(localisation);
+            console.log(variable);
             localisation = localisation.replaceAll(
                 `{{${variable}}}`,
                 variables[variable]
