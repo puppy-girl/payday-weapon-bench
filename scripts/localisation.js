@@ -262,6 +262,9 @@ const localisations = {
         'skills-duck-and-weave': 'Çömel ve Kaçın',
         'skills-duck-and-weave-desc':
             'ÇEVİKLİK sahibi olduğun sürece düşmanlara arkadan %25 daha fazla hasar verirsin. Bu takviye, ilk zırhın dışında sahip olduğun her zırh parçası için %5 azalır.',
+        'skills-quick-reload': 'Hızlı Şarjör Yenileme',
+        'skills-quick-reload-desc':
+            'METANET ve KESKİNLİK sahibi olduğun sürece şarjör yenileme hızın artar.',
         'weapon-class-assault-rifle': 'Taarruz Tüfeği',
         'weapon-class-marksman': 'Nişancı Tüfeği',
         'weapon-class-shotgun': 'Pompalı Tüfek',
@@ -279,6 +282,11 @@ const localisations = {
         'stats-ammo-pickup': 'Cephane Alım',
         'stats-reload': 'Doldurma Süresi',
         'stats-reload-from-empty': 'Sıfırdan',
+        'stats-hipfire-multiplier': 'Alçak Atım Tepmesi',
+        'stats-initial-num': 'İlk Numara',
+        'stats-equip': 'Donanma Süresi',
+        'stats-unequip': 'Kaldırma Süresi',
+        'stats-sprint-exit': 'Depar Çıkışı',
         'stats-optimal-ttk': 'Leş için İdeal Atım Sayısı',
         'stats-body-ttk': 'Leş için Vücut Atım Sayısı',
         'stats-range': '{{distance}}m',
