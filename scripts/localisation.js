@@ -374,7 +374,7 @@ const localisations = {
         'stats-reload': 'Перезарядка',
         'stats-reload-from-empty': 'Полная перезарядка',
         'stats-hipfire-multiplier': 'Разброс при стрельбе от бедра',
-        'stats-initial-num': 'Начальное число.',
+        'stats-initial-num': 'Количество первых выстрелов в очереди без раздачи',
         'stats-equip': 'Время экипировки',
         'stats-unequip': 'Время снятия',
         'stats-sprint-exit': 'Выход из бега',
