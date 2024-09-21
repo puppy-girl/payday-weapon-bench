@@ -224,7 +224,7 @@ const localisations = {
         'stats-reload': '装弹时间',
         'stats-reload-from-empty': '空仓装弹时间',
         'stats-hipfire-multiplier': '腰射后坐力倍率',
-        'stats-initial-num': '初始后坐力',
+        'stats-initial-num': '初始后坐力影响射击数',
         'stats-equip': '装备武器时间',
         'stats-unequip': '卸下武器时间',
         'stats-sprint-exit': '冲刺举枪速度',
