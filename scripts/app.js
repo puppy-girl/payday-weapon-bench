@@ -821,10 +821,6 @@ function populateLoadout(selectedWeapon) {
             ...weapon.modularConfiguration[slot].uniqueParts,
         ];
 
-        const attachmentCategoryName = (
-            slot.charAt(0).toUpperCase() + slot.slice(1)
-        ).replace(/([a-z])([A-Z])/g, '$1 $2');
-
         if (weapon.modularConfiguration[slot].uniqueParts.length > 0) {
             const attachmentFieldset = attachmentsSection.appendChild(
                 document.createElement('fieldset')
@@ -832,7 +828,11 @@ function populateLoadout(selectedWeapon) {
             attachmentFieldset.innerHTML = attachmentSelectorTemplate.innerHTML;
             attachmentFieldset.classList = ['loadout-category'];
 
-            attachmentFieldset.children[0].innerHTML = attachmentCategoryName;
+            attachmentFieldset.children[0].setAttribute(
+                'data-localisation-key',
+                'attachment-category-' +
+                    slot.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase()
+            );
 
             for (const attachment of attachments) {
                 const attachmentData = ATTACHMENT_DATA[attachment];
