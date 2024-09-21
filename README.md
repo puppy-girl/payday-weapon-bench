@@ -2,6 +2,13 @@ A supplementary tool for Payday 3's loadouts to view weapon details, mechanics, 
 
 Still being developed! ૮ ・ﻌ・ა
 
+### Contributing
+If desired, include your modworkshop username in your pull request to be added to the mod page ૮˶• ﻌ •˶ა
+
+To contribute localisations:
+1. in `scripts/localisations.js`, duplicate the `en` entry to the bottom of the localisations object, replace `en` with your language, and translate the value of each key
+2. in `index.html`, under the `<select>` element, create a new `<option>` above uwu with a value matching your entry in the localisations file
+
 ### importing weapon data:
 1. Open Payday 3's files in FModel
 2. For all weapons to be imported, navigate to "Gameplay/Weapons," right click on the directory, and export as json
