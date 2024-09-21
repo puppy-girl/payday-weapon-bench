@@ -210,7 +210,7 @@ const localisations = {
         'attachment-category-barrel-extension': '枪口',
         'attachment-category-barrel': '枪管',
         'attachment-category-vertical-grip': '垂直握把',
-        'attachment-category-fore-grip': 'Fore Grip',
+        'attachment-category-fore-grip': '前握把',
         'attachment-category-grip': '握把',
         'attachment-category-stock': '枪托',
         'stats-damage': '伤害',
