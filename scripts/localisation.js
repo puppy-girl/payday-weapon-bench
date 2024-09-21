@@ -47,14 +47,14 @@ const localisations = {
         'weapon-class-revolver': 'Revolver',
         'weapon-class-smg': 'SMG',
         'weapon-class-lmg': 'Light Machine Gun',
-        'sight': 'Sight',
-        'mag': 'Mag',
-        'barrelExtension': 'Barrel Extension',
-        'barrel': 'Barrel',
-        'verticalGrip': 'Vertical Grip',
-        'foreGrip': 'Fore Grip',
-        'grip': 'Grip',
-        'stock': 'Stock',
+        'attachment-category-sight': 'Sight',
+        'attachment-category-mag': 'Mag',
+        'attachment-category-barrel-extension': 'Barrel Extension',
+        'attachment-category-barrel': 'Barrel',
+        'attachment-category-vertical-grip': 'Vertical Grip',
+        'attachment-category-fore-grip': 'Fore Grip',
+        'attachment-category-grip': 'Grip',
+        'attachment-category-stock': 'Stock',
         'stats-damage': 'Damage',
         'stats-critical-multiplier': 'Multiplier',
         'stats-armor-penetration': 'Armor Pen',
@@ -317,7 +317,8 @@ const localisations = {
         'dlc-3': 'Спасение Хьюстона',
         'dlc-4': 'Страх и жадность',
         'skills-edge': 'Козырь',
-        'skills-edge-desc': 'Вы наносите на 10% больше урона в течении 20 секунд.',
+        'skills-edge-desc':
+            'Вы наносите на 10% больше урона в течении 20 секунд.',
         'skills-long-shot': 'Стрельба издалека',
         'skills-long-shot-desc':
             'Пока у вас есть КОЗЫРЬ, когда вы используете прицел, штраф за расстояние не уменьшает коэффициент при выстреле в голову.',
@@ -355,14 +356,14 @@ const localisations = {
         'weapon-class-revolver': 'Револьвер',
         'weapon-class-smg': 'Автомат',
         'weapon-class-lmg': 'Ручной пулемет',
-        'sight': 'Прицел',
-        'mag': 'Магазин',
-        'barrelExtension': 'Насадка',
-        'barrel': 'Ствол',
-        'verticalGrip': 'Вертикальная рукоять',
-        'foreGrip': 'Передняя рукоять',
-        'grip': 'Рукоять',
-        'stock': 'Приклад',
+        'attachment-category-sight': 'Прицел',
+        'attachment-category-mag': 'Магазин',
+        'attachment-category-barrel-extension': 'Насадка',
+        'attachment-category-barrel': 'Ствол',
+        'attachment-category-vertical-grip': 'Вертикальная рукоять',
+        'attachment-category-fore-grip': 'Передняя рукоять',
+        'attachment-category-grip': 'Рукоять',
+        'attachment-category-stock': 'Приклад',
         'stats-damage': 'Урон',
         'stats-critical-multiplier': 'Множитель',
         'stats-armor-penetration': 'Пробивание брони',
@@ -397,8 +398,9 @@ const localisations = {
         'enemy-stats-armor': '{{armor}} Брони',
         'enemy-stats-armor-hardness': '{{hardness}} Понижения урона',
         'enemy-stats-visor-armor': '{{armor}} Броня визора',
-        'enemy-stats-visor-armor-hardness': '{{hardness}} Понижение урона визора',
-    }
+        'enemy-stats-visor-armor-hardness':
+            '{{hardness}} Понижение урона визора',
+    },
 };
 
 const defaultLocale = 'en';
@@ -419,8 +421,6 @@ function setLocale(locale) {
         });
 }
 
-
-
 function localise(element) {
     const key = element.getAttribute('data-localisation-key');
 
@@ -429,8 +429,11 @@ function localise(element) {
     const variables = JSON.parse(element.getAttribute('data-localisation-var'));
 
     if (variables) {
-
-        if (key == "stats-shots" && ["russian", "polish"].includes(currentLocale)) return (element.innerText = shotsDeclension(variables));
+        if (
+            key == 'stats-shots' &&
+            ['russian', 'polish'].includes(currentLocale)
+        )
+            return (element.innerText = shotsDeclension(variables));
 
         for (const variable in variables) {
             console.log(variable);
@@ -460,7 +463,10 @@ function shotsDeclension(count) {
     if (lastDigit === 1 && lastTwoDigits !== 11) {
         let shotsTranslated = getLocalisation('stats-1shot') || '';
         return `${count} ${shotsTranslated}`;
-    } else if ([2, 3, 4].includes(lastDigit) && ![12, 13, 14].includes(lastTwoDigits)) {
+    } else if (
+        [2, 3, 4].includes(lastDigit) &&
+        ![12, 13, 14].includes(lastTwoDigits)
+    ) {
         let shotsTranslated = getLocalisation('stats-few-shots') || '';
         return `${count} ${shotsTranslated}`;
     } else {

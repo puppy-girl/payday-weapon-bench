@@ -828,8 +828,11 @@ function populateLoadout(selectedWeapon) {
             attachmentFieldset.innerHTML = attachmentSelectorTemplate.innerHTML;
             attachmentFieldset.classList = ['loadout-category'];
 
-            attachmentFieldset.children[0].setAttribute('data-localisation-key', slot);
-            
+            attachmentFieldset.children[0].setAttribute(
+                'data-localisation-key',
+                'attachment-category-' +
+                    slot.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase()
+            );
 
             for (const attachment of attachments) {
                 const attachmentData = ATTACHMENT_DATA[attachment];
