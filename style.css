@@ -126,7 +126,7 @@ body {
 }
 
 #collapse-button {
-    height: 2.618rem;
+    height: 2.618em;
 
     color: var(--color-text-alt);
 
@@ -149,7 +149,7 @@ body {
 }
 
 #sidebar-weapon-selector:has(#sidebar-collapse-toggle:checked) {
-    width: 4.618rem;
+    width: 4rem;
 }
 
 #sidebar-weapon-selector:has(#sidebar-collapse-toggle:checked) .selectable-weapon {
@@ -237,7 +237,7 @@ main {
 
     max-height: 100vh;
 
-    padding: 0 1rem 0 2rem;
+    padding: 0 1rem 0 1rem;
 
     background-color: var(--color-surface);
     background-image: url("data:image/svg+xml,%3Csvg width='50' height='50' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2309090b' fill-opacity='0.25'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
@@ -247,31 +247,43 @@ main {
 
 #main-header {
     display: flex;
+    flex-flow: row wrap;
     align-items: center;
     justify-content: space-between;
+
+    height: 4rem;
+
+    margin-bottom: 1rem;
 }
 
 h1 {
-    margin-bottom: 1rem;
-
     font-family: var(--font-display);
     font-size: 2.618em;
     font-weight: 500;
-    line-height: 4rem;
     color: var(--color-text-alt);
+    text-transform: uppercase;
 }
 
-#locale {
+#options {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    gap: 2em;
+}
+
+#options > div {
     display: flex;
     align-items: center;
     gap: 0.5em;
 }
 
-#locale svg {
+#options svg {
+    flex-shrink: 0;
+
     height: 2em;
 }
 
-#locale-switcher {
+#options select {
     height: 2.618em;
 
     padding: 0.25em 1em;
@@ -323,9 +335,8 @@ h1 {
     position: absolute;
     top: -0.5em;
 
-    font-family: var(--font-display);
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 1000;
     color: var(--color-text-dim);
     line-height: 1em;
 }
@@ -362,7 +373,12 @@ h1 {
         overflow: visible;
     }
     
+    h1 { font-size: 2em; }
+    #options select { height: 2em; }
+    #options svg { height: 1.618em; }
+
     #loadout h2 { font-size: 4.236em; }
+    #loadout h3 { font-size: 1.618em; }
 }
 
 #skill-selector { margin-bottom: 1.618em }
@@ -622,24 +638,29 @@ span.damage-breakdown span {
 
 .stat-container {
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column nowrap;
 
     width: 11rem;
 
-    border: var(--border);
+    /* border: var(--border);
     border-radius: 0.15rem;
 
-    background: var(--color-surface);
+    background: var(--color-surface); */
 
     font-family: var(--font-mono);
 }
 
-.stat-container#number-stats {
+.stat-container#main-stats {
     justify-content: space-between;
     
     height: 17rem;
+}
 
-    padding: 0.5em 0;
+.stat-container svg {
+    border: var(--border);
+    border-radius: 0.15rem;
+
+    background: var(--color-surface);
 }
 
 .stat-group {
@@ -648,14 +669,18 @@ span.damage-breakdown span {
     gap: 0.5em;
 }
 
+.stat-group:not(#main-stats .stat-group) {
+    padding-bottom: 2em;
+}
+
 .stat-group > div {
     display: flex;
     justify-content: space-between;
 }
 
-#sidebar-stats .stat-group div {
+/* #sidebar-stats .stat-group div {
     padding: 0 1em;
-}
+} */
 
 .stat-group div > span:first-child {
     color: var(--color-text-alt);

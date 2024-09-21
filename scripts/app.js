@@ -12,8 +12,8 @@ const SKILLS = {
         name: 'skills-long-shot',
         description: 'skills-long-shot-desc',
         iconOffset: {
-            x: 127,
-            y: 319,
+            x: 128,
+            y: 320,
         },
     },
     faceToFace: {
@@ -21,8 +21,8 @@ const SKILLS = {
         description: 'skills-face-to-face-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 127,
-            y: 511,
+            x: 128,
+            y: 512,
         },
     },
     coupDeGrace: {
@@ -30,8 +30,8 @@ const SKILLS = {
         description: 'skills-coup-de-grace-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 126,
-            y: 895,
+            x: 128,
+            y: 896,
         },
     },
     combatMarking: {
@@ -48,7 +48,7 @@ const SKILLS = {
         description: 'skills-pain-asymbolia-desc',
         modifier: 0.1,
         iconOffset: {
-            x: 316,
+            x: 320,
             y: 1216,
         },
     },
@@ -56,25 +56,30 @@ const SKILLS = {
         name: 'skills-precision-shot',
         description: 'skills-precision-shot-desc',
         iconOffset: {
-            x: 191,
-            y: 319,
+            x: 192,
+            y: 322,
         },
     },
     highGrain: {
         name: 'skills-high-grain',
         description: 'skills-high-grain-desc',
-        modifier: 0.2,
+        attributeModifierMap: [
+            {
+                attribute: 'ArmorPenetration',
+                value: 10,
+            },
+        ],
         iconOffset: {
-            x: 255,
-            y: 62,
+            x: 256,
+            y: 64,
         },
     },
     expose: {
         name: 'skills-expose',
         description: 'skills-expose-desc',
         iconOffset: {
-            x: 254,
-            y: 894,
+            x: 256,
+            y: 896,
         },
     },
     duckAndWeave: {
@@ -83,7 +88,21 @@ const SKILLS = {
         modifier: 0.25,
         iconOffset: {
             x: 190,
-            y: 1279,
+            y: 1280,
+        },
+    },
+    quickReload: {
+        name: 'skills-quick-reload',
+        description: 'skills-quick-reload-desc',
+        attributeModifierMap: [
+            {
+                attribute: 'OverallReloadPlayRate',
+                value: 20,
+            },
+        ],
+        iconOffset: {
+            x: 64,
+            y: 512,
         },
     },
 };
@@ -168,6 +187,16 @@ function applyLoadout(weapon, skills, attachments) {
         if (!ATTACHMENT_DATA[attachment]?.attributeModifierMap) return;
 
         ATTACHMENT_DATA[attachment].attributeModifierMap.forEach((modifier) => {
+            return attributeModifiers[modifier.attribute]
+                ? (attributeModifiers[modifier.attribute] += modifier.value)
+                : (attributeModifiers[modifier.attribute] = modifier.value);
+        });
+    });
+
+    skills.forEach((skill) => {
+        if (!SKILLS[skill]?.attributeModifierMap) return;
+
+        SKILLS[skill].attributeModifierMap.forEach((modifier) => {
             return attributeModifiers[modifier.attribute]
                 ? (attributeModifiers[modifier.attribute] += modifier.value)
                 : (attributeModifiers[modifier.attribute] = modifier.value);
@@ -283,10 +312,12 @@ function applyLoadout(weapon, skills, attachments) {
     fireData.fireType = fireData.fireType ?? 'Semi';
     fireData.roundsPerMinute = fireData.roundsPerMinute ?? 600;
 
-    fireData.armorPenetration = fireData.armorPenetration ?? 0;
-
-    if (skills.includes('highGrain'))
-        fireData.armorPenetration += SKILLS['highGrain'].modifier;
+    fireData.armorPenetration =
+        (fireData.armorPenetration ?? 0) +
+        convertAttributeModifier(
+            'ArmorPenetration',
+            attributeModifiers['ArmorPenetration'] ?? 0
+        );
 
     const viewKick = updatedWeapon.recoilData.viewKick;
 
@@ -409,6 +440,24 @@ function applyLoadout(weapon, skills, attachments) {
         );
     }
 
+    if (attributeModifiers['OverallSwapSpeed']) {
+        updatedWeapon.equipTime /= convertAttributeModifier(
+            'OverallSwapSpeed',
+            attributeModifiers['OverallSwapSpeed']
+        );
+
+        updatedWeapon.unequipTime /= convertAttributeModifier(
+            'OverallSwapSpeed',
+            attributeModifiers['OverallSwapSpeed']
+        );
+    }
+
+    if (attributeModifiers['SprintExitPlayRate'])
+        updatedWeapon.sprintExitTime /= convertAttributeModifier(
+            'SprintExitPlayRate',
+            attributeModifiers['SprintExitPlayRate']
+        );
+
     return updatedWeapon;
 }
 
@@ -421,6 +470,8 @@ function applyLoadout(weapon, skills, attachments) {
  * @returns {number} Stat modifier
  */
 function convertAttributeModifier(attribute, modifier) {
+    if (attribute == 'OverallSwapSpeed') attribute = 'EquipPlayRate';
+
     const attributeModifierCurve = CURVE_DATA[attribute];
 
     if (modifier == 0 || modifier == undefined) return 0;
@@ -621,6 +672,10 @@ const skillSelector = document.querySelector(
 const skillTemplate = document.querySelector('template.skill').cloneNode(true);
 document.querySelector('template.skill').remove();
 
+const defaultSkillIcons = 'sydch';
+let skillIcons = defaultSkillIcons;
+if (localStorage.getItem('icons')) skillIcons = localStorage.getItem('icons');
+
 function populateSkills() {
     for (const skill in SKILLS) {
         const selectableSkill = skillSelector.appendChild(
@@ -647,7 +702,9 @@ function populateSkills() {
             --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
             --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
             --image-url: url("images/${
-                skill == 'edge' ? 'edge.png' : 'skills.png'
+                skill == 'edge'
+                    ? skillIcons + '-edge.png'
+                    : skillIcons + '-skills.png'
             }");
         `;
 
@@ -683,6 +740,34 @@ function populateSkills() {
         });
     }
 }
+
+function updateSkillIcons() {
+    document.querySelectorAll('.skill label').forEach((element) => {
+        if (element.getAttribute('for') == 'edge') {
+            element.style.setProperty(
+                '--image-url',
+                `url("images/${skillIcons}-edge.png")`
+            );
+        } else {
+            element.style.setProperty(
+                '--image-url',
+                `url("images/${skillIcons}-skills.png")`
+            );
+        }
+    });
+}
+
+const iconSwitcher = document.querySelector('#icons-switcher');
+
+iconSwitcher.value = skillIcons;
+
+iconSwitcher.onchange = (event) => {
+    skillIcons = event.target.value;
+
+    localStorage.setItem('icons', event.target.value);
+
+    updateSkillIcons();
+};
 
 const attachmentsSection = document.querySelector('#loadout-attachments');
 
@@ -736,10 +821,6 @@ function populateLoadout(selectedWeapon) {
             ...weapon.modularConfiguration[slot].uniqueParts,
         ];
 
-        const attachmentCategoryName = (
-            slot.charAt(0).toUpperCase() + slot.slice(1)
-        ).replace(/([a-z])([A-Z])/g, '$1 $2');
-
         if (weapon.modularConfiguration[slot].uniqueParts.length > 0) {
             const attachmentFieldset = attachmentsSection.appendChild(
                 document.createElement('fieldset')
@@ -747,7 +828,11 @@ function populateLoadout(selectedWeapon) {
             attachmentFieldset.innerHTML = attachmentSelectorTemplate.innerHTML;
             attachmentFieldset.classList = ['loadout-category'];
 
-            attachmentFieldset.children[0].innerHTML = attachmentCategoryName;
+            attachmentFieldset.children[0].setAttribute(
+                'data-localisation-key',
+                'attachment-category-' +
+                    slot.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase()
+            );
 
             for (const attachment of attachments) {
                 const attachmentData = ATTACHMENT_DATA[attachment];
@@ -939,7 +1024,7 @@ function updateWeaponStats(selectedWeapon) {
     fireModeStat.innerHTML = fireData.fireType;
 
     if (fireData.fireType == 'Burst') {
-        fireModeStat.innerHTML += '<br/>';
+        fireModeStat.innerHTML += '/';
 
         const burstStat = fireModeStat.appendChild(
             document.createElement('span')
@@ -1167,6 +1252,36 @@ function updateWeaponStats(selectedWeapon) {
     }
 
     previousWeapon = selectedWeapon;
+
+    const hipfireMultiplierStat = document.querySelector(
+        '#stat-hipfire-multiplier'
+    );
+    hipfireMultiplierStat.innerHTML =
+        weapon.recoilData.viewKick.hipfireMultiplier + '×';
+
+    const initialNumStat = document.querySelector('#stat-initial-num');
+    initialNumStat.innerHTML = weapon.recoilData.viewKick.initialNum;
+
+    const equipTimeStat = document.querySelector('#stat-equip-time');
+    equipTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    equipTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.equipTime * 1000) / 1000}"}`
+    );
+
+    const unequipTimeStat = document.querySelector('#stat-unequip-time');
+    unequipTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    unequipTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.unequipTime * 1000) / 1000}"}`
+    );
+
+    const sprintExitTimeStat = document.querySelector('#stat-sprint-exit-time');
+    sprintExitTimeStat.setAttribute('data-localisation-key', 'stats-time');
+    sprintExitTimeStat.setAttribute(
+        'data-localisation-var',
+        `{"duration": "${Math.round(weapon.sprintExitTime * 1000) / 1000}"}`
+    );
 }
 
 function shotsToKillAtDistances(weapon, enemy, headshots) {
@@ -1550,7 +1665,6 @@ const localeSwitcher = document.querySelector('#locale-switcher');
 localeSwitcher.value = currentLocale;
 
 localeSwitcher.onchange = (event) => {
-    console.log('hi');
     setLocale(event.target.value);
 };
 
