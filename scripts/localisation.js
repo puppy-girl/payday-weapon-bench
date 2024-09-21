@@ -66,7 +66,7 @@ const localisations = {
         'stats-reload': 'Reload',
         'stats-reload-from-empty': 'Full Reload',
         'stats-hipfire-multiplier': 'Hipfire Recoil',
-        'stats-initial-num': 'Initial Num.',
+        'stats-initial-num': 'Initial Recoil Affected Shots',
         'stats-equip': 'Equip Time',
         'stats-unequip': 'Unequip Time',
         'stats-sprint-exit': 'Sprint Exit',
