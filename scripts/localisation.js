@@ -561,7 +561,6 @@ function localise(element) {
             return (element.innerText = shotsDeclension(variables));
 
         for (const variable in variables) {
-            console.log(variable);
             localisation = localisation.replaceAll(
                 `{{${variable}}}`,
                 variables[variable]
