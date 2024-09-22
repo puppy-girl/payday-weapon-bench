@@ -757,18 +757,6 @@ function updateSkillIcons() {
     });
 }
 
-const iconSwitcher = document.querySelector('#icons-switcher');
-
-iconSwitcher.value = skillIcons;
-
-iconSwitcher.onchange = (event) => {
-    skillIcons = event.target.value;
-
-    localStorage.setItem('icons', event.target.value);
-
-    updateSkillIcons();
-};
-
 const attachmentsSection = document.querySelector('#loadout-attachments');
 
 const attachmentSelectorTemplate = document
@@ -1657,15 +1645,29 @@ function updateDamageStats(selectedWeapon) {
     setLocale(currentLocale);
 }
 
-populateWeaponSelector();
-populateSkills();
+document.addEventListener('DOMContentLoaded', async () => {
+    await initialiseDefaultLocale();
 
-const localeSwitcher = document.querySelector('#locale-switcher');
+    populateWeaponSelector();
+    populateSkills();
 
-localeSwitcher.value = currentLocale;
+    const localeSwitcher = document.querySelector('#locale-switcher');
 
-localeSwitcher.onchange = (event) => {
-    setLocale(event.target.value);
-};
+    localeSwitcher.value = currentLocale;
 
-setLocale(currentLocale);
+    localeSwitcher.onchange = (event) => {
+        setLocale(event.target.value);
+    };
+
+    const iconSwitcher = document.querySelector('#icons-switcher');
+
+    iconSwitcher.value = skillIcons;
+
+    iconSwitcher.onchange = (event) => {
+        skillIcons = event.target.value;
+
+        localStorage.setItem('icons', event.target.value);
+
+        updateSkillIcons();
+    };
+});
