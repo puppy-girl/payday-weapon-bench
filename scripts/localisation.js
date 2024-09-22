@@ -1,8 +1,16 @@
 const defaultLocale = 'en';
+const supportedLocales = ['en', 'cn', 'tr', 'ru', 'pl'];
 
 let currentLocale = defaultLocale;
-if (localStorage.getItem('locale'))
+
+if (localStorage.getItem('locale')) {
+    const storedLocale = localStorage.getItem('locale');
+
+    if (!supportedLocales.includes(storedLocale))
+        return localStorage.removeItem('locale');
+
     currentLocale = localStorage.getItem('locale');
+}
 
 let localisations = {};
 
