@@ -7,7 +7,7 @@ If desired, include your modworkshop username in your pull request to be added t
 
 To contribute localisations:
 1. in the `lang` directory, duplicate `en.json`, rename it to your language's language code, and translate the value of each key
-2. in `index.html`, under the `<select>` element, create a new `<option>` above uwu with a value matching your new localisation file
+2. in `localisation.js`, add your locale to the `supportedLocales` object above `uwu`
 
 ### importing weapon data:
 1. Open Payday 3's files in FModel

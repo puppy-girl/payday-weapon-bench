@@ -1653,6 +1653,14 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     const localeSwitcher = document.querySelector('#locale-switcher');
 
+    for (const locale in supportedLocales) {
+        const option = localeSwitcher.appendChild(
+            document.createElement('option')
+        );
+        option.value = locale;
+        option.textContent = supportedLocales[locale];
+    }
+
     localeSwitcher.value = currentLocale;
 
     localeSwitcher.onchange = (event) => {

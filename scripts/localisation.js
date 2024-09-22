@@ -1,12 +1,20 @@
 const defaultLocale = 'en';
-const supportedLocales = ['en', 'cn', 'tr', 'ru', 'pl'];
+
+const supportedLocales = {
+    en: 'English',
+    cn: '简体中文',
+    tr: 'Türkçe',
+    ru: 'Русский',
+    pl: 'Polski',
+    uwu: 'uwu',
+};
 
 let currentLocale = defaultLocale;
 
 if (localStorage.getItem('locale')) {
     const storedLocale = localStorage.getItem('locale');
 
-    if (!supportedLocales.includes(storedLocale)) {
+    if (!Object.keys(supportedLocales).includes(storedLocale)) {
         localStorage.removeItem('locale');
     } else {
         currentLocale = localStorage.getItem('locale');
