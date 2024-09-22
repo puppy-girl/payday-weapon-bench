@@ -198,6 +198,9 @@ const localisations = {
         'skills-duck-and-weave': '迂回战术',
         'skills-duck-and-weave-desc':
             '疾驰状态下，从背后攻击敌人造成25%额外伤害，你每拥有一格额外护甲，该伤害降低5%。',
+        'skills-quick-reload': '快速装弹',
+        'skills-quick-reload-desc':
+            '当你拥有锋锐与坚毅状态时，你的装弹速度提升。',
         'weapon-class-assault-rifle': '突击步枪',
         'weapon-class-marksman': '精确步枪',
         'weapon-class-shotgun': '霰弹枪',
