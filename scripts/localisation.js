@@ -6,10 +6,11 @@ let currentLocale = defaultLocale;
 if (localStorage.getItem('locale')) {
     const storedLocale = localStorage.getItem('locale');
 
-    if (!supportedLocales.includes(storedLocale))
-        return localStorage.removeItem('locale');
-
-    currentLocale = localStorage.getItem('locale');
+    if (!supportedLocales.includes(storedLocale)) {
+        localStorage.removeItem('locale');
+    } else {
+        currentLocale = localStorage.getItem('locale');
+    }
 }
 
 let localisations = {};
