@@ -29,7 +29,7 @@ async function setLocale(locale) {
 }
 
 async function fetchLocalisation(locale) {
-    const response = await fetch(`/lang/${locale}.json`);
+    const response = await fetch(`./lang/${locale}.json`);
 
     return await response.json();
 }
