@@ -62,7 +62,14 @@
     "stats-body-ttk": "Body Shots *runs away* to Kiww",
     "stats-range": "{{distance}}m",
     "stats-time": "{{duration}}s",
-    "stats-shots": "{{shots}} shots",
+    "stats-shots": {
+        "one": "{{count}} shot",
+        "many": "{{count}} shots"
+    },
+    "stats-reloads": {
+        "one": "{{count}} wewoad",
+        "many": "{{count}} wewoads"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Heavy S-SWAT",
     "enemy-specials": "Speciaws",
