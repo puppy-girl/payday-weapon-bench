@@ -66,6 +66,10 @@
         "one": "{{count}} shot",
         "many": "{{count}} shots"
     },
+    "stats-reloads": {
+        "one": "{{count}} reload",
+        "many": "{{count}} reloads"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Heavy SWAT",
     "enemy-specials": "Specials",

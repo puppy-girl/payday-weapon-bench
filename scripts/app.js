@@ -1547,9 +1547,18 @@ function updateDamageStats(selectedWeapon) {
                     totalShots / weapon.fireData.ammoLoaded
                 );
 
-                damageBreakdown.innerHTML += ` (${reloads} reload${
-                    reloads > 1 ? 's' : ''
-                })`;
+                const ttkReloads = damageBreakdown.appendChild(
+                    document.createElement('span')
+                );
+                ttkReloads.setAttribute(
+                    'data-localisation-key',
+                    'stats-reloads'
+                );
+                ttkReloads.setAttribute(
+                    'data-localisation-var',
+                    `{"count": "${reloads}"}`
+                );
+                ttkReloads.setAttribute('data-localisation-count', reloads);
             }
         }
 
@@ -1637,9 +1646,18 @@ function updateDamageStats(selectedWeapon) {
                     totalShots / weapon.fireData.ammoLoaded
                 );
 
-                damageBreakdown.innerHTML += ` (${reloads} reload${
-                    reloads > 1 ? 's' : ''
-                })`;
+                const ttkReloads = damageBreakdown.appendChild(
+                    document.createElement('span')
+                );
+                ttkReloads.setAttribute(
+                    'data-localisation-key',
+                    'stats-reloads'
+                );
+                ttkReloads.setAttribute(
+                    'data-localisation-var',
+                    `{"count": "${reloads}"}`
+                );
+                ttkReloads.setAttribute('data-localisation-count', reloads);
             }
         }
     }
