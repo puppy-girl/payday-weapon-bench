@@ -83,7 +83,7 @@ function getPluralForm(localisation, count) {
             [2, 3, 4].includes(count % 10) &&
             ![12, 13, 14].includes(count % 100)
         )
-            return localisation['few'];
+            return localisation['few'] || localisation['many'];
     }
 
     if (count == 1) return localisation['one'];
