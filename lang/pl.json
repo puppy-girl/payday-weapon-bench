@@ -62,9 +62,11 @@
     "stats-body-ttk": "Liczba strzałów w ciało do zabicia",
     "stats-range": "{{distance}}m",
     "stats-time": "{{duration}}s",
-    "stats-1shot": "strzał",
-    "stats-few-shots": "strzały",
-    "stats-many-shots": "strzałów",
+    "stats-shots": {
+        "one": "{{count}} strzał",
+        "few": "{{count}} strzały",
+        "many": "{{count}} strzałów"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Ciężki SWAT",
     "enemy-specials": "Jednostki specjalne",

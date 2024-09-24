@@ -61,7 +61,7 @@
     "stats-body-ttk": "躯干击杀所需子弹数",
     "stats-range": "{{distance}}米",
     "stats-time": "{{duration}}秒",
-    "stats-shots": "{{shots}} 发",
+    "stats-shots": "{{count}} 发",
     "enemy-swat": "特警",
     "enemy-heavy-swat": "重型特警",
     "enemy-specials": "特种特警",

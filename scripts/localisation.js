@@ -55,22 +55,14 @@ function localise(element) {
 
     let localisation = getLocalisation(key) || '';
 
+    if (typeof localisation == 'object')
+        localisation = getPluralForm(
+            localisation,
+            element.getAttribute('data-localisation-count')
+        );
+
     const variables = JSON.parse(element.getAttribute('data-localisation-var'));
-
-    if (variables) {
-        if (
-            key == 'stats-shots' &&
-            ['russian', 'polish'].includes(currentLocale)
-        )
-            return (element.innerText = shotsDeclension(variables));
-
-        for (const variable in variables) {
-            localisation = localisation.replaceAll(
-                `{{${variable}}}`,
-                variables[variable]
-            );
-        }
-    }
+    localisation = interpolateLocalisation(localisation, variables);
 
     return (element.innerText = localisation);
 }
@@ -83,22 +75,29 @@ function getLocalisation(key) {
     return localisations[locale][key];
 }
 
-function shotsDeclension(count) {
-    count = count.shots;
-    const lastDigit = count % 10;
-    const lastTwoDigits = count % 100;
+function getPluralForm(localisation, count) {
+    if (['ru', 'pl'].includes(currentLocale)) {
+        if (count % 10 == 1 && count % 100 != 11) return localisation['one'];
 
-    if (lastDigit === 1 && lastTwoDigits !== 11) {
-        let shotsTranslated = getLocalisation('stats-1shot') || '';
-        return `${count} ${shotsTranslated}`;
-    } else if (
-        [2, 3, 4].includes(lastDigit) &&
-        ![12, 13, 14].includes(lastTwoDigits)
-    ) {
-        let shotsTranslated = getLocalisation('stats-few-shots') || '';
-        return `${count} ${shotsTranslated}`;
-    } else {
-        let shotsTranslated = getLocalisation('stats-many-shots') || '';
-        return `${count} ${shotsTranslated}`;
+        if (
+            [2, 3, 4].includes(count % 10) &&
+            ![12, 13, 14].includes(count % 100)
+        )
+            return localisation['few'];
     }
+
+    if (count == 1) return localisation['one'];
+
+    return localisation['many'];
+}
+
+function interpolateLocalisation(localisation, variables) {
+    for (const variable in variables) {
+        localisation = localisation.replaceAll(
+            `{{${variable}}}`,
+            variables[variable]
+        );
+    }
+
+    return localisation;
 }

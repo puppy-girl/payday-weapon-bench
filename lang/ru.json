@@ -62,9 +62,11 @@
     "stats-body-ttk": "Выстрелы в тело для убийства",
     "stats-range": "{{distance}}м.",
     "stats-time": "{{duration}}с.",
-    "stats-1shot": "выстрел",
-    "stats-few-shots": "выстрела",
-    "stats-many-shots": "выстрелов",
+    "stats-shots": {
+        "one": "{{count}} выстрел",
+        "few": "{{count}} выстрела",
+        "many": "{{count}} выстрелов"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Тяжелый SWAT",
     "enemy-specials": "Спец. юниты",

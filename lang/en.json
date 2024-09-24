@@ -62,7 +62,10 @@
     "stats-body-ttk": "Body Shots to Kill",
     "stats-range": "{{distance}}m",
     "stats-time": "{{duration}}s",
-    "stats-shots": "{{shots}} shots",
+    "stats-shots": {
+        "one": "{{count}} shot",
+        "many": "{{count}} shots"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Heavy SWAT",
     "enemy-specials": "Specials",

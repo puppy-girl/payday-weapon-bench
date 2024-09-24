@@ -1517,8 +1517,9 @@ function updateDamageStats(selectedWeapon) {
             damageStat.setAttribute('data-localisation-key', 'stats-shots');
             damageStat.setAttribute(
                 'data-localisation-var',
-                `{"shots": "${totalShots}"}`
+                `{"count": "${totalShots}"}`
             );
+            damageStat.setAttribute('data-localisation-count', totalShots);
 
             const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
@@ -1602,8 +1603,9 @@ function updateDamageStats(selectedWeapon) {
             damageStat.setAttribute('data-localisation-key', 'stats-shots');
             damageStat.setAttribute(
                 'data-localisation-var',
-                `{"shots": "${totalShots}"}`
+                `{"count": "${totalShots}"}`
             );
+            damageStat.setAttribute('data-localisation-count', totalShots);
 
             const damageBreakdown = shotStats.appendChild(
                 document.createElement('span')
