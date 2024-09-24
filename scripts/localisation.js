@@ -46,10 +46,7 @@ async function setLocale(locale) {
 }
 
 async function fetchLocalisation(locale) {
-    const response =
-        (await fetch(`./lang/${locale}.json`)) ||
-        (await fetch(`./payday-weapon-bench/lang/${locale}.json`));
-
+    const response = await fetch(`./lang/${locale}.json`, window.location);
     return await response.json();
 }
 
