@@ -62,7 +62,14 @@
     "stats-body-ttk": "Leş için Vücut Atım Sayısı",
     "stats-range": "{{distance}}m",
     "stats-time": "{{duration}}sn",
-    "stats-shots": "{{count}} atım",
+    "stats-shots": {
+        "one": "{{count}} atım",
+        "many": "{{count}} atım"
+    },
+    "stats-reloads": {
+        "one": "{{count}} şarjör",
+        "many": "{{count}} şarjör"
+    },
     "enemy-swat": "SWAT",
     "enemy-heavy-swat": "Ağır SWAT",
     "enemy-specials": "Özel Timler",
