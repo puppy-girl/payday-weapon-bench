@@ -1565,11 +1565,12 @@ function updateDamageStats(selectedWeapon) {
         const headshotSkills = filteredSkills.filter((skill) => {
             return (
                 // Precision shot does not affect headshots
-                skill != 'precisionShot' &&
+                (skill != 'precisionShot' || enemy == 'bulldozer') &&
                 // Bulldozer visors can't be shot from behind
                 !(skill == 'duckAndWeave' && enemy == 'bulldozer')
             );
         });
+
         weapon = applyLoadout(
             selectedWeapon,
             headshotSkills,
