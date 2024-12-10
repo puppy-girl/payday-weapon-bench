@@ -54,127 +54,123 @@ const WEAPON_DATA = Object.freeze({
             "roundsPerMinute": 450
         },
         "spreadData": {
-            "start": 0.1,
-            "increase": 0.6,
-            "decayRate": 12,
-            "cap": 2.5,
+            "start": 0.25,
+            "increase": 0.15,
+            "resetTime": 0.25,
+            "cap": 1,
             "stanceMultipliers": {
-                "stand": {
-                    "spread": 4,
-                    "start": 2
-                },
                 "standMove": {
-                    "spread": 6,
-                    "start": 4
+                    "start": 1.5,
+                    "cap": 1.5,
+                    "increment": 1.5
                 },
                 "crouch": {
-                    "spread": 2,
-                    "start": 2
+                    "start": 0.5,
+                    "cap": 0.5,
+                    "increment": 0.5
                 },
                 "crouchMove": {
-                    "spread": 4,
-                    "start": 4
+                    "start": 0.75,
+                    "cap": 0.75,
+                    "increment": 0.75
                 },
                 "target": {
-                    "spread": 0.25
+                    "spread": 0
                 },
                 "targetMove": {
-                    "spread": 0.5
+                    "start": 0.25,
+                    "cap": 0.25,
+                    "increment": 0.25
                 }
             },
             "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 25,
-                "recoverSpeed": 15,
+                "deflectSpeed": 75,
+                "recoverSpeed": 28,
                 "recoverWaitTime": 0.12,
                 "recoilPattern": [
                     {
-                        "x": 0.1,
-                        "y": 0.43
-                    },
-                    {
                         "x": 0.2,
-                        "y": 1.2
+                        "y": 3.6
                     },
                     {
                         "x": -0.1,
-                        "y": 2.3
+                        "y": 6.9
                     },
                     {
                         "x": 0.3,
-                        "y": 3.2
+                        "y": 9.6
                     },
                     {
                         "x": 0.7,
-                        "y": 3.61
+                        "y": 10.829999
                     },
                     {
                         "x": 0.8,
-                        "y": 4.9
+                        "y": 14.700001
                     },
                     {
                         "x": 1.1,
-                        "y": 5.8
+                        "y": 17.400002
                     },
                     {
                         "x": 0.8,
-                        "y": 6.5
+                        "y": 19.5
                     },
                     {
                         "x": 1.05,
-                        "y": 7.3
+                        "y": 21.900002
                     },
                     {
                         "x": 0.75,
-                        "y": 7.9
+                        "y": 23.700003
                     },
                     {
                         "x": 0.85,
-                        "y": 8.9
+                        "y": 26.699999
                     },
                     {
                         "x": 0.5,
-                        "y": 9.2
+                        "y": 27.599998
                     },
                     {
                         "x": 0.3,
-                        "y": 10.3
+                        "y": 30.900002
                     },
                     {
                         "x": -0.05,
-                        "y": 10
+                        "y": 30
                     },
                     {
                         "x": -0.25,
-                        "y": 10.8
+                        "y": 32.4
                     },
                     {
                         "x": -0.55,
-                        "y": 10.7
+                        "y": 32.1
                     },
                     {
                         "x": -0.55,
-                        "y": 11.9
+                        "y": 35.699997
                     },
                     {
                         "x": -0.9,
-                        "y": 12
+                        "y": 36
                     },
                     {
                         "x": -0.9,
-                        "y": 12.7
+                        "y": 38.1
                     },
                     {
                         "x": -1.1,
-                        "y": 13.7
+                        "y": 41.1
                     }
                 ],
-                "resetTime": 0.25,
+                "resetTime": 0.2,
                 "loopStart": 10,
-                "initialNum": 0,
-                "hipfireMultiplier": 1.5
+                "initialNum": 0
             },
             "gunKick": {
                 "deflectSpeed": 40,
@@ -1671,15 +1667,15 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
-                    "damage": 90,
+                    "damage": 91,
                     "distance": 1500
                 },
                 {
-                    "damage": 48,
+                    "damage": 50,
                     "distance": 3000
                 },
                 {
-                    "damage": 33.300003,
+                    "damage": 35,
                     "distance": 4500
                 },
                 {
@@ -1689,12 +1685,16 @@ const WEAPON_DATA = Object.freeze({
             ],
             "criticalDamageMultiplierDistanceArray": [
                 {
+                    "multiplier": 4,
+                    "distance": 3000
+                },
+                {
                     "multiplier": 3,
                     "distance": 4500
                 },
                 {
                     "multiplier": 1.5,
-                    "distance": 10000
+                    "distance": 1000000
                 }
             ],
             "ammoLoaded": 6,
@@ -1730,93 +1730,93 @@ const WEAPON_DATA = Object.freeze({
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 20,
-                "recoverSpeed": 15,
-                "recoverWaitTime": 0.2,
+                "deflectSpeed": 37.5,
+                "recoverSpeed": 25,
+                "recoverWaitTime": 0.1,
                 "recoilPattern": [
                     {
-                        "x": 0.6264844,
-                        "y": 0.56953126
+                        "x": 0.626484,
+                        "y": 0.569531
                     },
                     {
-                        "x": 0.47460938,
-                        "y": 1.5187501
+                        "x": 0.474609,
+                        "y": 1.51875
                     },
                     {
-                        "x": 0.18984376,
-                        "y": 3.7399216
+                        "x": 0.189844,
+                        "y": 3.739922
                     },
                     {
-                        "x": -0.6644531,
-                        "y": 5.6953125
+                        "x": -0.664453,
+                        "y": 5.695312
                     },
                     {
-                        "x": -0.037968747,
+                        "x": -0.037969,
                         "y": 7.59375
                     },
                     {
-                        "x": 0.9302343,
+                        "x": 0.930234,
                         "y": 9.757969
                     },
                     {
-                        "x": 0.7214063,
+                        "x": 0.721406,
                         "y": 12.11203
                     },
                     {
-                        "x": 0.28476563,
+                        "x": 0.284766,
                         "y": 13.668749
                     },
                     {
-                        "x": -0.8732813,
+                        "x": -0.873281,
                         "y": 15.1875
                     },
                     {
-                        "x": -0.30374998,
+                        "x": -0.30375,
                         "y": 17.01
                     },
                     {
-                        "x": 0.1708594,
+                        "x": 0.170859,
                         "y": 18.680624
                     },
                     {
-                        "x": -0.28476563,
+                        "x": -0.284766,
                         "y": 20.579062
                     },
                     {
-                        "x": -0.05695312,
+                        "x": -0.056953,
                         "y": 22.572424
                     },
                     {
-                        "x": 0.26578125,
+                        "x": 0.265781,
                         "y": 24.489841
                     },
                     {
-                        "x": -0.075937495,
+                        "x": -0.075937,
                         "y": 26.027578
                     },
                     {
-                        "x": -0.39867187,
+                        "x": -0.398672,
                         "y": 27.603281
                     },
                     {
-                        "x": 0.28476563,
+                        "x": 0.284766,
                         "y": 29.463753
                     },
                     {
-                        "x": 0.81632805,
+                        "x": 0.816328,
                         "y": 31.001484
                     },
                     {
-                        "x": -0.3227344,
+                        "x": -0.322734,
                         "y": 33.37453
                     },
                     {
-                        "x": -0.09492188,
+                        "x": -0.094922,
                         "y": 35.064137
                     }
                 ],
-                "resetTime": 0.25,
-                "hipfireMultiplier": 1.5
+                "resetTime": 0.15,
+                "hipfireMultiplier": 1.2
             },
             "gunKick": {
                 "deflectSpeed": 50,
@@ -2520,16 +2520,20 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
-                    "damage": 25,
-                    "distance": 3500
+                    "damage": 33,
+                    "distance": 2000
                 },
                 {
-                    "damage": 18.5,
+                    "damage": 27,
+                    "distance": 4000
+                },
+                {
+                    "damage": 22,
                     "distance": 7000
                 },
                 {
-                    "damage": 14.3,
-                    "distance": 10000
+                    "damage": 17,
+                    "distance": 1000000
                 }
             ],
             "criticalDamageMultiplierDistanceArray": [
@@ -2543,7 +2547,7 @@ const WEAPON_DATA = Object.freeze({
                 },
                 {
                     "multiplier": 2,
-                    "distance": 6000
+                    "distance": 7000
                 },
                 {
                     "multiplier": 1.5,
@@ -2561,127 +2565,128 @@ const WEAPON_DATA = Object.freeze({
             "roundsPerMinute": 900
         },
         "spreadData": {
-            "start": 0.1,
-            "increase": 0.3,
-            "decayRate": 12,
-            "cap": 2.5,
+            "start": 0.25,
+            "increase": 0.15,
+            "resetTime": 0.25,
+            "cap": 1,
             "stanceMultipliers": {
-                "stand": {
-                    "spread": 3,
-                    "start": 2
-                },
                 "standMove": {
-                    "spread": 5,
-                    "start": 4
+                    "start": 1.5,
+                    "cap": 1.5,
+                    "increment": 1.5
                 },
                 "crouch": {
-                    "spread": 2,
-                    "start": 2
+                    "start": 0.5,
+                    "cap": 0.5,
+                    "increment": 0.5
                 },
                 "crouchMove": {
-                    "spread": 3,
-                    "start": 4
+                    "start": 0.75,
+                    "cap": 0.75,
+                    "increment": 0.75
                 },
                 "target": {
-                    "spread": 0.25
+                    "spread": 0
                 },
                 "targetMove": {
-                    "spread": 0.5
+                    "start": 0.25,
+                    "cap": 0.25,
+                    "increment": 0.25
                 }
             },
             "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 25,
+                "deflectSpeed": 40,
                 "recoverSpeed": 25,
                 "recoverWaitTime": 0.12,
                 "recoilPattern": [
                     {
-                        "x": 0.05544,
-                        "y": 0.238392
+                        "x": 0.027697,
+                        "y": 0.289967
                     },
                     {
-                        "x": 0.11088,
-                        "y": 0.66528
+                        "x": 0.044309,
+                        "y": 0.6
                     },
                     {
-                        "x": 0.05544,
-                        "y": 1.27512
+                        "x": 0.052616,
+                        "y": 1.2
                     },
                     {
-                        "x": 0.16632,
-                        "y": 1.77408
+                        "x": 0.160595,
+                        "y": 2
                     },
                     {
-                        "x": 0.38808,
-                        "y": 2.001384
+                        "x": 0.351635,
+                        "y": 4.084026
                     },
                     {
-                        "x": 0.44352,
-                        "y": 2.71656
+                        "x": 0.484533,
+                        "y": 5.728118
                     },
                     {
-                        "x": 0.50984,
-                        "y": 3.21552
+                        "x": 0.509451,
+                        "y": 7.214121
                     },
                     {
-                        "x": 0.44352,
-                        "y": 3.6036
+                        "x": 0.409778,
+                        "y": 8.383949
                     },
                     {
                         "x": 0.50212,
-                        "y": 4.047121
+                        "y": 9.713091
                     },
                     {
                         "x": 0.4158,
-                        "y": 4.37976
+                        "y": 10.511424
                     },
                     {
                         "x": 0.35124,
-                        "y": 4.93416
+                        "y": 11.841985
                     },
                     {
                         "x": 0.2772,
-                        "y": 5.100481
+                        "y": 12.241155
                     },
                     {
                         "x": 0.16632,
-                        "y": 5.710321
+                        "y": 13.70477
                     },
                     {
                         "x": -0.02772,
-                        "y": 5.544
+                        "y": 13.3056
                     },
                     {
                         "x": -0.1386,
-                        "y": 5.98752
+                        "y": 14.370049
                     },
                     {
                         "x": -0.30492,
-                        "y": 5.93208
+                        "y": 14.236992
                     },
                     {
                         "x": -0.35492,
-                        "y": 6.3736
+                        "y": 15.296641
                     },
                     {
                         "x": -0.49896,
-                        "y": 6.6528
+                        "y": 15.966721
                     },
                     {
                         "x": -0.49896,
-                        "y": 7.04088
+                        "y": 16.898113
                     },
                     {
                         "x": -0.60984,
-                        "y": 7.595281
+                        "y": 18.228676
                     }
                 ],
-                "resetTime": 0.25,
+                "resetTime": 0.18,
                 "loopStart": 10,
                 "initialNum": 0,
-                "hipfireMultiplier": 1.5
+                "hipfireMultiplier": 1.25
             },
             "gunKick": {
                 "deflectSpeed": 40,
@@ -2817,6 +2822,10 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
+                    "damage": 40,
+                    "distance": 500
+                },
+                {
                     "damage": 20,
                     "distance": 1500
                 },
@@ -2855,107 +2864,39 @@ const WEAPON_DATA = Object.freeze({
                 "min": 3,
                 "max": 5
             },
-            "projectilesPerFiredRound": 7,
+            "projectilesPerFiredRound": 10,
             "roundsPerMinute": 300
         },
         "spreadData": {
             "increase": 0.2,
-            "resetTime": 0.3,
-            "decayRate": 0,
-            "cap": 3,
+            "resetTime": 0.25,
             "stanceMultipliers": {
                 "stand": {
-                    "spread": 1.5
+                    "spread": 3
                 },
                 "standMove": {
-                    "spread": 1.5,
-                    "cap": 1.5,
-                    "increment": 1.2
+                    "spread": 3.5
+                },
+                "crouch": {
+                    "spread": 2.5
                 },
                 "crouchMove": {
-                    "cap": 1.25,
-                    "increment": 1.1
+                    "spread": 3
                 },
                 "target": {
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 },
                 "targetMove": {
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 }
             },
-            "radiusMultipliers": {},
-            "shotgunPatterns": [
-                [
-                    {
-                        "x": 0.2,
-                        "y": -0.9
-                    },
-                    {
-                        "x": -1.5,
-                        "y": 0.9
-                    },
-                    {
-                        "x": 0.1,
-                        "y": 0.5
-                    },
-                    {
-                        "x": 1.6,
-                        "y": -1
-                    },
-                    {
-                        "x": -2,
-                        "y": -1.5
-                    },
-                    {
-                        "x": -1,
-                        "y": -0.4
-                    },
-                    {
-                        "x": 1.4,
-                        "y": 1
-                    }
-                ],
-                [
-                    {
-                        "x": 0.3,
-                        "y": -1.2
-                    },
-                    {
-                        "x": -1.3,
-                        "y": 0.6
-                    },
-                    {
-                        "x": 0.3,
-                        "y": 0.3
-                    },
-                    {
-                        "x": 1.4,
-                        "y": -0.7
-                    },
-                    {
-                        "x": -1.7,
-                        "y": -1.3
-                    },
-                    {
-                        "x": -0.6,
-                        "y": -0.6
-                    },
-                    {
-                        "x": 0.9,
-                        "y": 0.8
-                    }
-                ]
-            ]
+            "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
                 "deflectSpeed": 35,
                 "recoverSpeed": 35,
-                "recoverWaitTime": 0.25,
+                "recoverWaitTime": 0.15,
                 "recoilPattern": [
                     {
                         "x": 0,
@@ -2997,7 +2938,7 @@ const WEAPON_DATA = Object.freeze({
                 "resetTime": 25,
                 "loopStart": 5,
                 "initialNum": 0,
-                "hipfireMultiplier": 1.2
+                "hipfireMultiplier": 2.3
             },
             "gunKick": {
                 "deflectSpeed": 50,
@@ -3655,10 +3596,6 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
-                    "damage": 26,
-                    "distance": 500
-                },
-                {
                     "damage": 20,
                     "distance": 1500
                 },
@@ -3706,150 +3643,68 @@ const WEAPON_DATA = Object.freeze({
             },
             "fireType": "Burst",
             "timeBetweenBursts": 0.5,
-            "projectilesPerFiredRound": 7,
+            "projectilesPerFiredRound": 10,
             "roundsPerMinute": 450
         },
         "spreadData": {
-            "increase": 0.2,
-            "resetTime": 0.3,
-            "decayRate": 0,
-            "cap": 3,
+            "increase": 0.133333,
+            "resetTime": 0.25,
             "stanceMultipliers": {
+                "stand": {
+                    "spread": 3
+                },
                 "standMove": {
-                    "spread": 1.5,
-                    "cap": 1.5,
-                    "increment": 1.2
+                    "spread": 3.5
                 },
                 "crouch": {
-                    "spread": 0.5
+                    "spread": 2.5
                 },
                 "crouchMove": {
-                    "cap": 1.25,
-                    "increment": 1.1
+                    "spread": 3
                 },
                 "target": {
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 },
                 "targetMove": {
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 }
             },
-            "radiusMultipliers": {},
-            "shotgunPatterns": [
-                [
-                    {
-                        "x": 0.2,
-                        "y": -0.9
-                    },
-                    {
-                        "x": -1.5,
-                        "y": 0.9
-                    },
-                    {
-                        "x": 0.1,
-                        "y": 0.5
-                    },
-                    {
-                        "x": 1.6,
-                        "y": -1
-                    },
-                    {
-                        "x": -2,
-                        "y": -1.5
-                    },
-                    {
-                        "x": -1,
-                        "y": -0.4
-                    },
-                    {
-                        "x": 1.4,
-                        "y": 1
-                    }
-                ],
-                [
-                    {
-                        "x": 0.3,
-                        "y": -1.2
-                    },
-                    {
-                        "x": -1.3,
-                        "y": 0.6
-                    },
-                    {
-                        "x": 0.3,
-                        "y": 0.3
-                    },
-                    {
-                        "x": 1.4,
-                        "y": -0.7
-                    },
-                    {
-                        "x": -1.7,
-                        "y": -1.3
-                    },
-                    {
-                        "x": -0.6,
-                        "y": -0.6
-                    },
-                    {
-                        "x": 0.9,
-                        "y": 0.8
-                    }
-                ]
-            ]
+            "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 75,
+                "deflectSpeed": 125,
                 "recoverSpeed": 50,
                 "recoverWaitTime": 0.1,
                 "recoilPattern": [
                     {
-                        "x": 0.5,
-                        "y": 0.75
+                        "x": 1,
+                        "y": 1.5
                     },
                     {
-                        "x": 0.375,
-                        "y": 1.25
+                        "x": 0.75,
+                        "y": 2.5
                     },
                     {
-                        "x": -0.125,
-                        "y": 1.75
+                        "x": -0.25,
+                        "y": 3.5
                     },
                     {
-                        "x": 0.075,
-                        "y": 2.25
+                        "x": 0.15,
+                        "y": 4.5
                     }
                 ],
                 "resetTime": 0.3,
                 "loopStart": 1,
                 "initialNum": 1,
-                "hipfireMultiplier": 1.8
+                "hipfireMultiplier": 2.1
             },
             "gunKick": {
-                "deflectSpeed": 50,
-                "recoverSpeed": 35,
-                "verticalTop": {
-                    "min": 1,
-                    "max": 1.5
-                },
-                "verticalBottom": {
-                    "min": 0.02,
-                    "max": 0.1
-                },
+                "verticalTop": {},
+                "verticalBottom": {},
                 "verticalMultiplier": {},
-                "horizontalRight": {
-                    "min": 0.2,
-                    "max": 0.8
-                },
-                "horizontalLeft": {
-                    "min": 0.2,
-                    "max": 0.8
-                },
+                "horizontalRight": {},
+                "horizontalLeft": {},
                 "horizontalMultiplier": {}
             }
         },
@@ -4348,7 +4203,7 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
-                    "damage": 50,
+                    "damage": 40,
                     "distance": 1000
                 },
                 {
@@ -4389,157 +4244,56 @@ const WEAPON_DATA = Object.freeze({
                 "min": 1,
                 "max": 3
             },
-            "projectilesPerFiredRound": 7,
-            "armorPenetration": 0.5,
+            "projectilesPerFiredRound": 10,
+            "maximumPenetrationCount": 2,
             "roundsPerMinute": 200
         },
         "spreadData": {
-            "start": 0.5,
-            "increase": 0,
-            "resetTime": 1.1,
-            "decayRate": 0,
-            "cap": 3,
+            "start": 0.66,
+            "resetTime": 0.25,
             "stanceMultipliers": {
+                "stand": {
+                    "spread": 3
+                },
                 "standMove": {
-                    "spread": 1.1
+                    "spread": 3.5
                 },
                 "crouch": {
-                    "spread": 0.8
+                    "spread": 2.5
                 },
                 "crouchMove": {
-                    "spread": 0.9
+                    "spread": 3
                 },
                 "target": {
-                    "spread": 0.6,
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 },
                 "targetMove": {
-                    "spread": 0.7,
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 }
             },
-            "radiusMultipliers": {
-                "x": 0.4,
-                "y": 0.4
-            },
-            "shotgunPatterns": [
-                [
-                    {
-                        "x": -0.25,
-                        "y": 0.25
-                    },
-                    {
-                        "x": 7,
-                        "y": 3
-                    },
-                    {
-                        "x": 2,
-                        "y": 5.5
-                    },
-                    {
-                        "x": -8,
-                        "y": 4
-                    },
-                    {
-                        "x": -5,
-                        "y": 1
-                    },
-                    {
-                        "x": -6,
-                        "y": -5
-                    },
-                    {
-                        "x": 4,
-                        "y": -4
-                    }
-                ],
-                [
-                    {
-                        "x": 0.25,
-                        "y": -0.25
-                    },
-                    {
-                        "x": 5,
-                        "y": -1
-                    },
-                    {
-                        "x": 8,
-                        "y": -4
-                    },
-                    {
-                        "x": 6,
-                        "y": 5
-                    },
-                    {
-                        "x": -4,
-                        "y": 4
-                    },
-                    {
-                        "x": -7,
-                        "y": -3
-                    },
-                    {
-                        "x": -2,
-                        "y": -5.5
-                    }
-                ],
-                [
-                    {
-                        "x": 1,
-                        "y": 1
-                    },
-                    {
-                        "x": 2,
-                        "y": 6
-                    },
-                    {
-                        "x": 3,
-                        "y": 3
-                    },
-                    {
-                        "x": -3,
-                        "y": 4
-                    },
-                    {
-                        "x": 3,
-                        "y": -4
-                    },
-                    {
-                        "x": -3,
-                        "y": -3
-                    },
-                    {
-                        "x": -2,
-                        "y": -6
-                    }
-                ]
-            ]
+            "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 75,
-                "recoverSpeed": 10,
+                "deflectSpeed": 150,
+                "recoverSpeed": 30,
                 "recoverWaitTime": 0.1,
                 "recoilPattern": [
                     {
-                        "x": 2,
-                        "y": 3
+                        "x": 3.2,
+                        "y": 4.8
                     },
                     {
-                        "x": 1.5,
-                        "y": 5
+                        "x": 2.4,
+                        "y": 8
                     },
                     {
-                        "x": -0.5,
-                        "y": 7
+                        "x": -0.8,
+                        "y": 11.2
                     },
                     {
-                        "x": 0.3,
-                        "y": 9
+                        "x": 0.48,
+                        "y": 14.400001
                     }
                 ],
                 "resetTime": 0.3,
@@ -4666,11 +4420,15 @@ const WEAPON_DATA = Object.freeze({
             ],
             "criticalDamageMultiplierDistanceArray": [
                 {
-                    "multiplier": 5,
-                    "distance": 1000
+                    "multiplier": 6,
+                    "distance": 1500
                 },
                 {
-                    "multiplier": 3,
+                    "multiplier": 5,
+                    "distance": 2500
+                },
+                {
+                    "multiplier": 4,
                     "distance": 3500
                 },
                 {
@@ -4690,7 +4448,7 @@ const WEAPON_DATA = Object.freeze({
                 "max": 12
             },
             "fireType": "Auto",
-            "armorPenetration": 0.75,
+            "armorPenetration": 0.8,
             "roundsPerMinute": 750
         },
         "spreadData": {
@@ -4815,7 +4573,7 @@ const WEAPON_DATA = Object.freeze({
                         "y": 7
                     }
                 ],
-                "resetTime": 0.25,
+                "resetTime": 0.15,
                 "loopStart": 11,
                 "hipfireMultiplier": 2.2
             },
@@ -4840,7 +4598,6 @@ const WEAPON_DATA = Object.freeze({
                 },
                 "horizontalMultiplier": {
                     "start": 0.45,
-                    "max": 1.5,
                     "threshold": 1.2
                 }
             }
@@ -5535,6 +5292,10 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
+                    "damage": 40,
+                    "distance": 500
+                },
+                {
                     "damage": 25,
                     "distance": 1500
                 },
@@ -5577,143 +5338,60 @@ const WEAPON_DATA = Object.freeze({
                 "max": 5
             },
             "fireType": "Pump",
-            "projectilesPerFiredRound": 7,
+            "projectilesPerFiredRound": 10,
+            "maximumPenetrationCount": 1,
             "roundsPerMinute": 75
         },
         "spreadData": {
-            "increase": 0.2,
-            "resetTime": 1.1,
-            "decayRate": 0,
-            "cap": 3,
+            "resetTime": 0.3,
             "stanceMultipliers": {
+                "stand": {
+                    "spread": 3
+                },
+                "standMove": {
+                    "spread": 3.5
+                },
                 "crouch": {
-                    "spread": 0.5
+                    "spread": 2.5
+                },
+                "crouchMove": {
+                    "spread": 3
                 },
                 "target": {
-                    "spread": 0.75,
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 },
                 "targetMove": {
-                    "start": 0.6,
-                    "cap": 0.7,
-                    "increment": 0.7
+                    "spread": 2
                 }
             },
-            "radiusMultipliers": {
-                "x": 0.7,
-                "y": 0.7
-            },
-            "shotgunPatterns": [
-                [
-                    {
-                        "x": 0.2,
-                        "y": -0.9
-                    },
-                    {
-                        "x": -1.5,
-                        "y": 0.9
-                    },
-                    {
-                        "x": 0.1,
-                        "y": 0.5
-                    },
-                    {
-                        "x": 1.6,
-                        "y": -1
-                    },
-                    {
-                        "x": -2,
-                        "y": -1.5
-                    },
-                    {
-                        "x": -1,
-                        "y": -0.4
-                    },
-                    {
-                        "x": 1.4,
-                        "y": 1
-                    }
-                ],
-                [
-                    {
-                        "x": 0.3,
-                        "y": -1.2
-                    },
-                    {
-                        "x": -1.3,
-                        "y": 0.6
-                    },
-                    {
-                        "x": 0.3,
-                        "y": 0.3
-                    },
-                    {
-                        "x": 1.4,
-                        "y": -0.7
-                    },
-                    {
-                        "x": -1.7,
-                        "y": -1.3
-                    },
-                    {
-                        "x": -0.6,
-                        "y": -0.6
-                    },
-                    {
-                        "x": 0.9,
-                        "y": 0.8
-                    }
-                ]
-            ]
+            "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 45,
-                "recoverSpeed": 9,
-                "recoverWaitTime": 0.25,
+                "deflectSpeed": 75,
+                "recoverSpeed": 40,
+                "recoverWaitTime": 0.1,
                 "recoilPattern": [
                     {
                         "x": 0,
-                        "y": 4
+                        "y": 3
                     },
                     {
-                        "x": 2,
-                        "y": 8
+                        "x": 1.5,
+                        "y": 6
                     },
                     {
-                        "x": 0.5,
+                        "x": 0.375,
+                        "y": 9
+                    },
+                    {
+                        "x": -0.75,
                         "y": 12
-                    },
-                    {
-                        "x": -1,
-                        "y": 16
-                    },
-                    {
-                        "x": 0,
-                        "y": 20
-                    },
-                    {
-                        "x": -1.5,
-                        "y": 22
-                    },
-                    {
-                        "x": 0,
-                        "y": 24
-                    },
-                    {
-                        "x": 2,
-                        "y": 26
-                    },
-                    {
-                        "x": 4,
-                        "y": 28
                     }
                 ],
-                "resetTime": 25,
-                "loopStart": 5,
-                "initialNum": 0
+                "resetTime": 1,
+                "initialNum": 0,
+                "hipfireMultiplier": 2
             },
             "gunKick": {
                 "deflectSpeed": 50,
@@ -7908,7 +7586,7 @@ const WEAPON_DATA = Object.freeze({
         "fireData": {
             "damageDistanceArray": [
                 {
-                    "damage": 25,
+                    "damage": 40,
                     "distance": 500
                 },
                 {
@@ -7947,292 +7625,58 @@ const WEAPON_DATA = Object.freeze({
             },
             "fireType": "Pump",
             "projectilesPerFiredRound": 10,
-            "armorPenetration": 1,
+            "maximumPenetrationCount": 1,
             "roundsPerMinute": 65
         },
         "spreadData": {
-            "increase": 1,
-            "resetTime": 0.35,
             "stanceMultipliers": {
                 "stand": {
                     "spread": 3
                 },
                 "standMove": {
-                    "spread": 3.25
+                    "spread": 3.5
                 },
                 "crouch": {
-                    "spread": 2
+                    "spread": 2.5
                 },
                 "crouchMove": {
-                    "spread": 2.25
+                    "spread": 3
+                },
+                "target": {
+                    "spread": 2
                 },
                 "targetMove": {
-                    "spread": 1.25
+                    "spread": 2
                 }
             },
-            "radiusMultipliers": {
-                "x": 0.1,
-                "y": 0.1
-            },
-            "shotgunPatterns": [
-                [
-                    {
-                        "x": -0.25,
-                        "y": 0.25
-                    },
-                    {
-                        "x": 7,
-                        "y": 3
-                    },
-                    {
-                        "x": 2,
-                        "y": 5.5
-                    },
-                    {
-                        "x": -8,
-                        "y": 4
-                    },
-                    {
-                        "x": -5,
-                        "y": 1
-                    },
-                    {
-                        "x": -6,
-                        "y": -5
-                    },
-                    {
-                        "x": 4,
-                        "y": -4
-                    },
-                    {
-                        "x": -5,
-                        "y": 3
-                    },
-                    {
-                        "x": -0.25,
-                        "y": 5.5
-                    },
-                    {
-                        "x": 2,
-                        "y": 3
-                    }
-                ],
-                [
-                    {
-                        "x": 0.25,
-                        "y": -0.25
-                    },
-                    {
-                        "x": 5,
-                        "y": -1
-                    },
-                    {
-                        "x": 8,
-                        "y": -4
-                    },
-                    {
-                        "x": 6,
-                        "y": 5
-                    },
-                    {
-                        "x": -4,
-                        "y": 4
-                    },
-                    {
-                        "x": -7,
-                        "y": -3
-                    },
-                    {
-                        "x": -2,
-                        "y": -5.5
-                    },
-                    {
-                        "x": 0.25,
-                        "y": -5.5
-                    },
-                    {
-                        "x": 5,
-                        "y": -3
-                    },
-                    {
-                        "x": 8,
-                        "y": 4
-                    }
-                ],
-                [
-                    {
-                        "x": 1,
-                        "y": 1
-                    },
-                    {
-                        "x": 2,
-                        "y": 6
-                    },
-                    {
-                        "x": 3,
-                        "y": 3
-                    },
-                    {
-                        "x": -3,
-                        "y": 4
-                    },
-                    {
-                        "x": 3,
-                        "y": -4
-                    },
-                    {
-                        "x": -3,
-                        "y": -3
-                    },
-                    {
-                        "x": -2,
-                        "y": -6
-                    },
-                    {
-                        "x": 1,
-                        "y": -6
-                    },
-                    {
-                        "x": 2,
-                        "y": -3
-                    },
-                    {
-                        "x": 3,
-                        "y": -4
-                    }
-                ],
-                [
-                    {
-                        "x": 0.2,
-                        "y": -0.9
-                    },
-                    {
-                        "x": -1.5,
-                        "y": 0.9
-                    },
-                    {
-                        "x": 0.1,
-                        "y": 0.5
-                    },
-                    {
-                        "x": 1.6,
-                        "y": -1
-                    },
-                    {
-                        "x": -2,
-                        "y": -1.5
-                    },
-                    {
-                        "x": -1,
-                        "y": -0.4
-                    },
-                    {
-                        "x": 1.4,
-                        "y": 1
-                    },
-                    {
-                        "x": 0.2,
-                        "y": 1
-                    },
-                    {
-                        "x": -1.5,
-                        "y": -0.4
-                    },
-                    {
-                        "x": 0.1,
-                        "y": -1.5
-                    }
-                ],
-                [
-                    {
-                        "x": 0.3,
-                        "y": -1.2
-                    },
-                    {
-                        "x": -1.3,
-                        "y": 0.6
-                    },
-                    {
-                        "x": 0.3,
-                        "y": 0.3
-                    },
-                    {
-                        "x": 1.4,
-                        "y": -0.7
-                    },
-                    {
-                        "x": -1.7,
-                        "y": -1.3
-                    },
-                    {
-                        "x": -0.6,
-                        "y": -0.6
-                    },
-                    {
-                        "x": 0.9,
-                        "y": 0.8
-                    },
-                    {
-                        "x": 0.3,
-                        "y": 0.8
-                    },
-                    {
-                        "x": -1.3,
-                        "y": -0.6
-                    },
-                    {
-                        "x": 0.3,
-                        "y": -1.3
-                    }
-                ]
-            ]
+            "radiusMultipliers": {}
         },
         "recoilData": {
             "viewKick": {
-                "deflectSpeed": 90,
-                "recoverSpeed": 30,
+                "deflectSpeed": 150,
+                "recoverSpeed": 50,
                 "recoverWaitTime": 0.1,
                 "recoilPattern": [
                     {
-                        "x": 0,
+                        "x": 3.2,
+                        "y": 4.8
+                    },
+                    {
+                        "x": 2.4,
                         "y": 8
                     },
                     {
-                        "x": 4,
-                        "y": 16
+                        "x": -0.8,
+                        "y": 11.2
                     },
                     {
-                        "x": 1,
-                        "y": 24
-                    },
-                    {
-                        "x": -2,
-                        "y": 32
-                    },
-                    {
-                        "x": 0,
-                        "y": 40
-                    },
-                    {
-                        "x": -3,
-                        "y": 44
-                    },
-                    {
-                        "x": 0,
-                        "y": 48
-                    },
-                    {
-                        "x": 4,
-                        "y": 52
-                    },
-                    {
-                        "x": 8,
-                        "y": 56
+                        "x": 0.48,
+                        "y": 14.400001
                     }
                 ],
-                "resetTime": 25,
-                "loopStart": 5,
-                "initialNum": 0
+                "resetTime": 2,
+                "initialNum": 0,
+                "hipfireMultiplier": 2.1
             },
             "gunKick": {
                 "deflectSpeed": 50,
