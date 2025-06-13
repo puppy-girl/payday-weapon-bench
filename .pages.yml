@@ -8,12 +8,16 @@ content:
     fields:
       - name: title
         label: Page Title
+        type: string
       - name: credits
         label: Page Credits
+        type: string
       - name: last-update
         label: Last game version
+        type: string
       - name: dlc
         label: DLC Titles
+        type: string
         list: true
       - name: skills
         label: Skills
@@ -21,160 +25,229 @@ content:
         fields:
           - name: UI_SKILLS_Edge
             description: Edge Label
+            type: string
           - name: UI_SKILLS_Edge_DESC
             description: Edge Description
+            type: string
           - name: UI_SKILLS_AmmoSpecialist_HighGrain
             description: High Grain Label
+            type: string
           - name: UI_SKILLS_AmmoSpecialist_HighGrain_DESC
             description: High Grain Description
+            type: string
           - name: UI_SKILLS_Sharpshooter_LongShot
             description: Long Shot Label
+            type: string
           - name: UI_SKILLS_Sharpshooter_LongShot_DESC
             description: Long Shot Description
+            type: string
           - name: UI_SKILLS_Sharpshooter_PrecisionShot
             description: Precision Shot Label
+            type: string
           - name: UI_SKILLS_Sharpshooter_PrecisionShot_DESC
             description: Precision Shot Description
+            type: string
           - name: UI_SKILLS_Enforcer_QuickReload
             description: Quick Reload Label
+            type: string
           - name: UI_SKILLS_Enforcer_QuickReload_DESC
             description: Quick Reload Description
+            type: string
           - name: UI_SKILLS_Enforcer_FaceToFace
             description: Face to Face Label
+            type: string
           - name: UI_SKILLS_Enforcer_FaceToFace_DESC
             description: Face to Face Description
+            type: string
           - name: UI_SKILLS_Tactician_CoupDeGrace
             description: Coup de Grâce Label
+            type: string
           - name: UI_SKILLS_Tactician_CoupDeGrace_DESC
             description: Coup de Grâce Description
+            type: string
           - name: UI_SKILLS_Tactician_Expose
             description: Expose Label
+            type: string
           - name: UI_SKILLS_Tactician_Expose_DESC
             description: Expose Description
+            type: string
           - name: UI_SKILLS_Strategist_CombatMarking
             description: Combat Marking Label
+            type: string
           - name: UI_SKILLS_Strategist_CombatMarking_DESC
             description: Combat Marking Description
+            type: string
           - name: UI_SKILLS_Fortitude_Painkiller
             description: Pain Asymbolia Label
+            type: string
           - name: UI_SKILLS_Fortitude_Painkiller_DESC
             description: Pain Asymbolia Description
+            type: string
           - name: UI_SKILLS_Assassin_DuckAndWeave
             description: Duck and Weave Label
+            type: string
           - name: UI_SKILLS_Assassin_DuckAndWeave_DESC
             description: Duck and Weave Description
+            type: string
       - name: attachment-slots
         label: Attachment Slots
         type: object
         fields:
           - name: Barrel
             label: Barrel
+            type: string
           - name: Bolt
             label: Bolt
+            type: string
           - name: UpperReceiver
             label: Upper Receiver
+            type: string
           - name: ChargingHandle
             label: Charging Handle
+            type: string
           - name: FrontSight
             label: Front Sight
+            type: string
           - name: Mag
             label: Magazine
+            type: string
           - name: RearSight
             label: Rear Sight
+            type: string
           - name: BarrelExtension
             label: Barrel Extension
+            type: string
           - name: Sight
             label: Sight
+            type: string
           - name: Ammo
             label: Ammo
+            type: string
           - name: SightMount
             label: Sight Mount
+            type: string
           - name: Body
             label: Body
+            type: string
           - name: Grip
             label: Grip
+            type: string
           - name: VerticalGrip
             label: Vertical Grip
+            type: string
           - name: Stock
             label: Stock
+            type: string
           - name: StockMount
             label: Stock Mount
+            type: string
           - name: Trigger
             label: Trigger
+            type: string
       - name: enemies
         label: Enemies
         type: object
         fields:
           - name: swat
             label: SWAT
+            type: string
           - name: heavy-swat
             label: Heavy SWAT
+            type: string
           - name: bulldozer
             label: Bulldozer
+            type: string
           - name: cloaker
             label: Cloaker
+            type: string
           - name: shield
             label: Shield
+            type: string
           - name: nader
             label: Nader
+            type: string
           - name: zapper
             label: Zapper
+            type: string
           - name: sniper
             label: Sniper
+            type: string
           - name: techie
             label: Techie
+            type: string
           - name: drone
             label: Drone
+            type: string
       - name: stats
         label: Stats
         type: object
         fields:
           - name: damage
             label: Damage
+            type: string
           - name: critical-multiplier
             label: Critical Multiplier
+            type: string
           - name: armor-penetration
             label: Armor Penetration
+            type: string
           - name: fire-mode
             label: Fire Mode
+            type: string
           - name: fire-rate
             label: Fire Rate
+            type: string
           - name: fire-rate-value
             label: Fire Rate Stat
+            type: string
             default: >
               {$rpm} RPM
           - name: magazine
             label: Magazine
+            type: string
           - name: ammo-pickup
             label: Ammo Pickup
+            type: string
           - name: reload
             label: Reload Speed
+            type: string
           - name: reload-from-empty
             label: Full Reload Speed
+            type: string
           - name: hipfire-multiplier
             label: Hipfire Recoil Multiplier
+            type: string
           - name: initial-num
             label: Initial Recoil Affected Shots
+            type: string
           - name: equip
             label: Equip Time
+            type: string
           - name: unequip
             label: Stow Time
+            type: string
           - name: sprint-exit
             label: Exit Sprint Time
+            type: string
           - name: optimal-ttk
             label: Optimal Shots to Kill
+            type: string
           - name: body-ttk
             label: Body Shots to Kill
+            type: string
           - name: range
             label: Range Values
+            type: string
             default: >
               {$distance}m
           - name: time
             label: Duration Values
+            type: string
             default: >
               {$duration}s
           - name: shots
             label: Shots Required
+            type: string
             default: >
               {$count ->
                 [one] $count shot
@@ -182,6 +255,7 @@ content:
               }
           - name: reloads
             label: Reloads Required
+            type: string
             default: >
               {$count ->
                 [one] $count reload
@@ -189,21 +263,26 @@ content:
               }
           - name: enemy-health
             label: Enemy Health
+            type: string
             default: >
               {$health} Health
           - name: enemy-armor
             label: Enemy Armor
+            type: string
             default: >
               {$health} Armor
           - name: enemy-armor-hardness
             label: Enemy Armor Hardness
+            type: string
             default: >
               {$health} Hardness
           - name: enemy-visor-armor
             label: Enemy Visor Armor
+            type: string
             default: >
               {$health} Visor Armor
           - name: enemy-visor-armor-hardness
             label: Enemy Visor Armor Hardness
+            type: string
             default: >
               {$health} Visor Hardness
