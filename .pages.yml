@@ -13,7 +13,7 @@ content:
         label: Page Credits
         type: string
       - name: last-update
-        label: Last game version
+        label: Last Game Version
         type: string
       - name: dlc
         label: DLC Titles
@@ -237,17 +237,17 @@ content:
             type: string
           - name: range
             label: Range Values
-            type: string
+            type: text
             default: >
               {$distance}m
           - name: time
             label: Duration Values
-            type: string
+            type: text
             default: >
               {$duration}s
           - name: shots
             label: Shots Required
-            type: string
+            type: text
             default: >
               {$count ->
                 [one] $count shot
@@ -255,7 +255,7 @@ content:
               }
           - name: reloads
             label: Reloads Required
-            type: string
+            type: text
             default: >
               {$count ->
                 [one] $count reload
