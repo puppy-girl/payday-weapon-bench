@@ -1,0 +1,209 @@
+content:
+  - name: locales
+    label: Locales
+    type: collection
+    path: locales
+    filename: "{primary}.json"
+    format: json
+    fields:
+      - name: title
+        label: Page Title
+      - name: credits
+        label: Page Credits
+      - name: last-update
+        label: Last game version
+      - name: dlc
+        label: DLC Titles
+        list: true
+      - name: skills
+        label: Skills
+        type: object
+        fields:
+          - name: UI_SKILLS_Edge
+            description: Edge Label
+          - name: UI_SKILLS_Edge_DESC
+            description: Edge Description
+          - name: UI_SKILLS_AmmoSpecialist_HighGrain
+            description: High Grain Label
+          - name: UI_SKILLS_AmmoSpecialist_HighGrain_DESC
+            description: High Grain Description
+          - name: UI_SKILLS_Sharpshooter_LongShot
+            description: Long Shot Label
+          - name: UI_SKILLS_Sharpshooter_LongShot_DESC
+            description: Long Shot Description
+          - name: UI_SKILLS_Sharpshooter_PrecisionShot
+            description: Precision Shot Label
+          - name: UI_SKILLS_Sharpshooter_PrecisionShot_DESC
+            description: Precision Shot Description
+          - name: UI_SKILLS_Enforcer_QuickReload
+            description: Quick Reload Label
+          - name: UI_SKILLS_Enforcer_QuickReload_DESC
+            description: Quick Reload Description
+          - name: UI_SKILLS_Enforcer_FaceToFace
+            description: Face to Face Label
+          - name: UI_SKILLS_Enforcer_FaceToFace_DESC
+            description: Face to Face Description
+          - name: UI_SKILLS_Tactician_CoupDeGrace
+            description: Coup de Grâce Label
+          - name: UI_SKILLS_Tactician_CoupDeGrace_DESC
+            description: Coup de Grâce Description
+          - name: UI_SKILLS_Tactician_Expose
+            description: Expose Label
+          - name: UI_SKILLS_Tactician_Expose_DESC
+            description: Expose Description
+          - name: UI_SKILLS_Strategist_CombatMarking
+            description: Combat Marking Label
+          - name: UI_SKILLS_Strategist_CombatMarking_DESC
+            description: Combat Marking Description
+          - name: UI_SKILLS_Fortitude_Painkiller
+            description: Pain Asymbolia Label
+          - name: UI_SKILLS_Fortitude_Painkiller_DESC
+            description: Pain Asymbolia Description
+          - name: UI_SKILLS_Assassin_DuckAndWeave
+            description: Duck and Weave Label
+          - name: UI_SKILLS_Assassin_DuckAndWeave_DESC
+            description: Duck and Weave Description
+      - name: attachment-slots
+        label: Attachment Slots
+        type: object
+        fields:
+          - name: Barrel
+            label: Barrel
+          - name: Bolt
+            label: Bolt
+          - name: UpperReceiver
+            label: Upper Receiver
+          - name: ChargingHandle
+            label: Charging Handle
+          - name: FrontSight
+            label: Front Sight
+          - name: Mag
+            label: Magazine
+          - name: RearSight
+            label: Rear Sight
+          - name: BarrelExtension
+            label: Barrel Extension
+          - name: Sight
+            label: Sight
+          - name: Ammo
+            label: Ammo
+          - name: SightMount
+            label: Sight Mount
+          - name: Body
+            label: Body
+          - name: Grip
+            label: Grip
+          - name: VerticalGrip
+            label: Vertical Grip
+          - name: Stock
+            label: Stock
+          - name: StockMount
+            label: Stock Mount
+          - name: Trigger
+            label: Trigger
+      - name: enemies
+        label: Enemies
+        type: object
+        fields:
+          - name: swat
+            label: SWAT
+          - name: heavy-swat
+            label: Heavy SWAT
+          - name: bulldozer
+            label: Bulldozer
+          - name: cloaker
+            label: Cloaker
+          - name: shield
+            label: Shield
+          - name: nader
+            label: Nader
+          - name: zapper
+            label: Zapper
+          - name: sniper
+            label: Sniper
+          - name: techie
+            label: Techie
+          - name: drone
+            label: Drone
+      - name: stats
+        label: Stats
+        type: object
+        fields:
+          - name: damage
+            label: Damage
+          - name: critical-multiplier
+            label: Critical Multiplier
+          - name: armor-penetration
+            label: Armor Penetration
+          - name: fire-mode
+            label: Fire Mode
+          - name: fire-rate
+            label: Fire Rate
+          - name: fire-rate-value
+            label: Fire Rate Stat
+            default: >
+              {$rpm} RPM
+          - name: magazine
+            label: Magazine
+          - name: ammo-pickup
+            label: Ammo Pickup
+          - name: reload
+            label: Reload Speed
+          - name: reload-from-empty
+            label: Full Reload Speed
+          - name: hipfire-multiplier
+            label: Hipfire Recoil Multiplier
+          - name: initial-num
+            label: Initial Recoil Affected Shots
+          - name: equip
+            label: Equip Time
+          - name: unequip
+            label: Stow Time
+          - name: sprint-exit
+            label: Exit Sprint Time
+          - name: optimal-ttk
+            label: Optimal Shots to Kill
+          - name: body-ttk
+            label: Body Shots to Kill
+          - name: range
+            label: Range Values
+            default: >
+              {$distance}m
+          - name: time
+            label: Duration Values
+            default: >
+              {$duration}s
+          - name: shots
+            label: Shots Required
+            default: >
+              {$count ->
+                [one] $count shot
+               *[other] $count shots
+              }
+          - name: reloads
+            label: Reloads Required
+            default: >
+              {$count ->
+                [one] $count reload
+               *[other] $count reloads
+              }
+          - name: enemy-health
+            label: Enemy Health
+            default: >
+              {$health} Health
+          - name: enemy-armor
+            label: Enemy Armor
+            default: >
+              {$health} Armor
+          - name: enemy-armor-hardness
+            label: Enemy Armor Hardness
+            default: >
+              {$health} Hardness
+          - name: enemy-visor-armor
+            label: Enemy Visor Armor
+            default: >
+              {$health} Visor Armor
+          - name: enemy-visor-armor-hardness
+            label: Enemy Visor Armor Hardness
+            default: >
+              {$health} Visor Hardness
