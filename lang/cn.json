@@ -74,5 +74,6 @@
     "enemy-stats-armor": "{{armor}} 护甲",
     "enemy-stats-armor-hardness": "{{hardness}} 护甲硬度",
     "enemy-stats-visor-armor": "{{armor}} 观察窗护甲",
-    "enemy-stats-visor-armor-hardness": "{{hardness}} 观察窗护甲硬度"
+    "enemy-stats-visor-armor-hardness": "{{hardness}} 观察窗护甲硬度",
+    "enemy-techies": "技术人员"
 }

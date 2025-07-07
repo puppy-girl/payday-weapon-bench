@@ -82,5 +82,6 @@
     "enemy-stats-armor": "{{armor}} Armor",
     "enemy-stats-armor-hardness": "{{hardness}} Hardness",
     "enemy-stats-visor-armor": "{{armor}} Visor Armor",
-    "enemy-stats-visor-armor-hardness": "{{hardness}} Visor Hardness"
+    "enemy-stats-visor-armor-hardness": "{{hardness}} Visor Hardness",
+    "enemy-techies": "Techies"
 }
