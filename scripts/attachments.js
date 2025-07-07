@@ -294,6 +294,7 @@ const ATTACHMENT_DATA = Object.freeze({
     "Ammo_12gauge": {},
     "Ammo_357magnum": {},
     "Ammo_40mm": {},
+    "Ammo_410Bore": {},
     "Ammo_44magnum": {},
     "Ammo_500Magnum": {},
     "Ammo_50AE": {},
@@ -572,6 +573,19 @@ const ATTACHMENT_DATA = Object.freeze({
             },
             {
                 "attribute": "OverallGunkick",
+                "value": -5
+            }
+        ]
+    },
+    "BarrelExt_SilentKiller": {
+        "displayName": "The Silent Killer",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "DamageDistance",
                 "value": -5
             }
         ]
@@ -1843,6 +1857,124 @@ const ATTACHMENT_DATA = Object.freeze({
         }
     },
     "HET5_Stock_Default": {},
+    "Justicar_Barrel_Default": {},
+    "Justicar_Barrel_Extended": {
+        "displayName": "Potshot Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "DamageDistance",
+                "value": 10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -5
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": -5
+            }
+        ]
+    },
+    "Justicar_Barrel_Long": {
+        "displayName": "Big Game Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "DamageDistance",
+                "value": 5
+            },
+            {
+                "attribute": "OverallSpread",
+                "value": 5
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": -10
+            }
+        ]
+    },
+    "Justicar_Barrel_Short": {
+        "displayName": "12G Snub Barrel",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 5
+            },
+            {
+                "attribute": "ViewKickRecoverySpeed",
+                "value": 10
+            },
+            {
+                "attribute": "OverallSpread",
+                "value": -5
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "Justicar_Body_Default": {},
+    "Justicar_Bolt_Default": {},
+    "Justicar_FrontSight_Default": {},
+    "Justicar_Grip_Default": {},
+    "Justicar_Grip_Tactical": {
+        "displayName": "Gorge Grip ",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallRecoil",
+                "value": 5
+            },
+            {
+                "attribute": "OverallSwapSpeed",
+                "value": 5
+            },
+            {
+                "attribute": "HipfireSpread",
+                "value": -5
+            }
+        ]
+    },
+    "Justicar_Grip_Wood": {
+        "displayName": "Greenwood Grip ",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "TargetingSpread",
+                "value": 5
+            },
+            {
+                "attribute": "VerticalRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "Justicar_Grip_WoodAgain": {
+        "displayName": "Bluewood Grip ",
+        "attributeModifierMap": [
+            {
+                "attribute": "VerticalRecoil",
+                "value": 10
+            },
+            {
+                "attribute": "VerticalGunkick",
+                "value": 5
+            },
+            {
+                "attribute": "HorizontalRecoil",
+                "value": -5
+            }
+        ]
+    },
+    "Justicar_Mag_Default": {},
+    "Justicar_RearSight_Default": {},
+    "Justicar_Speedloader_Default": {},
     "KU59_Ammo_Default": {},
     "KU59_BarrelExt_Default": {},
     "KU59_Barrel_Default": {},
@@ -3664,6 +3796,27 @@ const ATTACHMENT_DATA = Object.freeze({
             "targetingMagnification": 1.1
         }
     },
+    "Sight_LPVO": {
+        "displayName": "Magi Sight",
+        "attributeModifierMap": [
+            {
+                "attribute": "OverallGunkick",
+                "value": -5
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -15
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 10
+            }
+        ],
+        "targetingData": {
+            "targetingMagnification": 2,
+            "targetingOnTopMagnification": 2
+        }
+    },
     "Sight_LightHolographic": {
         "displayName": "Light Holographic Sight",
         "attributeModifierMap": [
@@ -3913,6 +4066,183 @@ const ATTACHMENT_DATA = Object.freeze({
         "targetingData": {
             "targetingMagnification": 1.5,
             "targetingOnTopMagnification": 2.3
+        }
+    },
+    "Spearfish_Ammo_Default": {},
+    "Spearfish_BarrelExtension_Default": {},
+    "Spearfish_Barrel_Default": {},
+    "Spearfish_Body_Default": {},
+    "Spearfish_Bolt_Default": {},
+    "Spearfish_ForeGrip_Default": {},
+    "Spearfish_ForeGrip_Slitted": {
+        "displayName": "Slitted Rail Guard",
+        "attributeModifierMap": [
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -15
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 15
+            },
+            {
+                "attribute": "TargetingSpread",
+                "value": 15
+            }
+        ]
+    },
+    "Spearfish_ForeGrip_Vented": {
+        "displayName": "Vented Rail Guard",
+        "attributeModifierMap": [
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 15
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -15
+            },
+            {
+                "attribute": "TargetingSpread",
+                "value": -15
+            }
+        ]
+    },
+    "Spearfish_FrontSight_Default": {},
+    "Spearfish_Grip_Artisan": {
+        "displayName": "Artisan Grip",
+        "attributeModifierMap": [
+            {
+                "attribute": "EndCycleReloadPlayRate",
+                "value": -20
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -20
+            },
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 20
+            },
+            {
+                "attribute": "OverallReloadPlayRate",
+                "value": 20
+            }
+        ]
+    },
+    "Spearfish_Grip_Knotted": {
+        "displayName": "Knotted Grip",
+        "attributeModifierMap": [
+            {
+                "attribute": "EndCycleReloadPlayRate",
+                "value": 40
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -10
+            },
+            {
+                "attribute": "OverallSwapSpeed",
+                "value": 20
+            }
+        ]
+    },
+    "Spearfish_RearSight_Default": {},
+    "Spearfish_Stock_CQC": {
+        "displayName": "CQC Slant Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": 40
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": 30
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": -30
+            },
+            {
+                "attribute": "EndCycleReloadPlayRate",
+                "value": 20
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": -40
+            },
+            {
+                "attribute": "OverallSwapSpeed",
+                "value": 30
+            }
+        ]
+    },
+    "Spearfish_Stock_Default": {},
+    "Spearfish_Stock_Padded": {
+        "displayName": "Padded Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -25
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -20
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 50
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 30
+            },
+            {
+                "attribute": "EndCycleReloadPlayRate",
+                "value": -20
+            }
+        ]
+    },
+    "Spearfish_Stock_Supported": {
+        "displayName": "Supported Stock",
+        "attributeModifierMap": [
+            {
+                "attribute": "SprintExitPlayRate",
+                "value": -20
+            },
+            {
+                "attribute": "TargetingTransitionTime",
+                "value": -10
+            },
+            {
+                "attribute": "OverallRecoil",
+                "value": 15
+            },
+            {
+                "attribute": "OverallGunkick",
+                "value": 10
+            },
+            {
+                "attribute": "TargetingSpread",
+                "value": 20
+            }
+        ],
+        "magazineData": {
+            "ammoLoaded": 8,
+            "ammoInventory": 62,
+            "ammoInventoryMax": 62,
+            "ammoPickup": {
+                "min": 1,
+                "max": 3
+            }
         }
     },
     "Stock_HQ": {

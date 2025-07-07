@@ -3261,6 +3261,213 @@ const WEAPON_DATA = Object.freeze({
         "reloadTime": 2.1000001,
         "reloadEmptyTime": 2.5000002
     },
+    "Justicar": {
+        "displayName": "Justicar",
+        "class": "Shotgun",
+        "dlc": "2",
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 0
+            },
+            "source": "SS_UI_WeaponsSecondary_00110-DLCWEAP0002.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 40,
+                    "distance": 1000
+                },
+                {
+                    "damage": 32.5,
+                    "distance": 2000
+                },
+                {
+                    "damage": 12.5,
+                    "distance": 3000
+                },
+                {
+                    "damage": 4,
+                    "distance": 4000
+                },
+                {
+                    "damage": 2,
+                    "distance": 10000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 5,
+                    "distance": 1000
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 3500
+                },
+                {
+                    "multiplier": 1.5,
+                    "distance": 10000
+                }
+            ],
+            "ammoLoaded": 5,
+            "ammoInventory": 35,
+            "ammoInventoryMax": 35,
+            "ammoPickup": {
+                "min": 0.3,
+                "max": 0.7
+            },
+            "projectilesPerFiredRound": 8,
+            "roundsPerMinute": 500
+        },
+        "spreadData": {
+            "start": 0.66,
+            "resetTime": 0.35,
+            "stanceMultipliers": {
+                "stand": {
+                    "spread": 3
+                },
+                "standMove": {
+                    "spread": 3.5
+                },
+                "crouch": {
+                    "spread": 2.5
+                },
+                "crouchMove": {
+                    "spread": 3
+                },
+                "target": {
+                    "spread": 2
+                },
+                "targetMove": {
+                    "spread": 2
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 75,
+                "recoverSpeed": 22,
+                "recoverWaitTime": 0.1,
+                "recoilPattern": [
+                    {
+                        "x": -0.5,
+                        "y": 3
+                    },
+                    {
+                        "x": 1.5,
+                        "y": 6
+                    },
+                    {
+                        "x": 0.375,
+                        "y": 9
+                    },
+                    {
+                        "x": -0.75,
+                        "y": 12
+                    }
+                ],
+                "resetTime": 1.5,
+                "initialNum": 0,
+                "hipfireMultiplier": 2
+            },
+            "gunKick": {
+                "deflectSpeed": 50,
+                "recoverSpeed": 35,
+                "verticalTop": {
+                    "min": 0.1,
+                    "max": 0.3
+                },
+                "verticalBottom": {
+                    "min": 0.1,
+                    "max": 0.2
+                },
+                "verticalMultiplier": {},
+                "horizontalRight": {
+                    "min": 0.2,
+                    "max": 0.3
+                },
+                "horizontalLeft": {
+                    "min": 0.2,
+                    "max": 0.3
+                },
+                "horizontalMultiplier": {}
+            }
+        },
+        "modularConfiguration": {
+            "barrel": {
+                "defaultPart": "Justicar_Barrel_Default",
+                "uniqueParts": [
+                    "Justicar_Barrel_Short",
+                    "Justicar_Barrel_Long",
+                    "Justicar_Barrel_Extended"
+                ]
+            },
+            "body": {
+                "defaultPart": "Justicar_Body_Default",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "Justicar_Bolt_Default",
+                "uniqueParts": []
+            },
+            "frontSight": {
+                "defaultPart": "Justicar_FrontSight_Default",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "Justicar_RearSight_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": "Justicar_Grip_Default",
+                "uniqueParts": [
+                    "Justicar_Grip_Tactical",
+                    "Justicar_Grip_Wood",
+                    "Justicar_Grip_WoodAgain"
+                ]
+            },
+            "speedloader": {
+                "defaultPart": "Justicar_Speedloader_Default",
+                "uniqueParts": []
+            },
+            "mag": {
+                "defaultPart": "Justicar_Mag_Default",
+                "uniqueParts": []
+            },
+            "ammo": {
+                "defaultPart": "Ammo_410Bore",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "BarrelExt_SilentKiller",
+                    "BarrelExt_12GObelisk",
+                    "BarrelExt_SedimentChoke",
+                    "BarrelExt_12GVentComp",
+                    "BarrelExt_JawChoke"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_Slate",
+                    "Sight_Box",
+                    "Sight_LED"
+                ]
+            },
+            "trigger": {
+                "defaultPart": null,
+                "uniqueParts": []
+            }
+        },
+        "equipTime": 0.39999998,
+        "unequipTime": 0.56666666,
+        "sprintExitTime": 0.29999998,
+        "reloadTime": 2.6666665,
+        "reloadEmptyTime": 2.6666665
+    },
     "KU59": {
         "displayName": "KU-59",
         "class": "Assault Rifle",
@@ -7052,6 +7259,317 @@ const WEAPON_DATA = Object.freeze({
         "sprintExitTime": 0.29999998,
         "reloadTime": 1.6666667,
         "reloadEmptyTime": 2.1666667
+    },
+    "Spearfish": {
+        "displayName": "Spearfish 1895",
+        "class": "Marksman",
+        "dlc": null,
+        "displayIcon": {
+            "offset": {
+                "x": 0,
+                "y": 0
+            },
+            "source": "SS_UI_WeaponsPrimary_00170-Weapon3_Spearfish.png"
+        },
+        "fireData": {
+            "damageDistanceArray": [
+                {
+                    "damage": 100,
+                    "distance": 1500
+                },
+                {
+                    "damage": 90,
+                    "distance": 2000
+                },
+                {
+                    "damage": 65,
+                    "distance": 3000
+                },
+                {
+                    "damage": 45,
+                    "distance": 1000000
+                }
+            ],
+            "criticalDamageMultiplierDistanceArray": [
+                {
+                    "multiplier": 6,
+                    "distance": 500
+                },
+                {
+                    "multiplier": 4,
+                    "distance": 1000
+                },
+                {
+                    "multiplier": 3,
+                    "distance": 4500
+                },
+                {
+                    "multiplier": 2,
+                    "distance": 6000
+                },
+                {
+                    "multiplier": 1,
+                    "distance": 1000000
+                }
+            ],
+            "ammoLoaded": 8,
+            "ammoInventory": 40,
+            "ammoInventoryMax": 56,
+            "ammoPickup": {
+                "min": 2,
+                "max": 4
+            },
+            "fireType": "Bolt",
+            "maximumPenetrationCount": 1,
+            "armorPenetration": 1.75
+        },
+        "spreadData": {
+            "start": 0.4,
+            "increase": 0.6,
+            "decayRate": 2.5,
+            "cap": 4.2,
+            "stanceMultipliers": {
+                "stand": {
+                    "spread": 1.5
+                },
+                "standMove": {
+                    "spread": 2.5,
+                    "cap": 3
+                },
+                "crouch": {
+                    "spread": 0.5
+                },
+                "crouchMove": {
+                    "start": 0.75,
+                    "cap": 1.5
+                },
+                "target": {
+                    "spread": 0
+                },
+                "targetMove": {
+                    "spread": 0.25,
+                    "start": 0.4,
+                    "cap": 0.4,
+                    "increment": 0.4
+                }
+            },
+            "radiusMultipliers": {}
+        },
+        "recoilData": {
+            "viewKick": {
+                "deflectSpeed": 45,
+                "recoverSpeed": 17,
+                "recoverWaitTime": 0.075,
+                "recoilPattern": [
+                    {
+                        "x": -0.024132,
+                        "y": -0.0155
+                    },
+                    {
+                        "x": -0.322645,
+                        "y": 1.50968
+                    },
+                    {
+                        "x": -0.355813,
+                        "y": 2.424788
+                    },
+                    {
+                        "x": -0.621158,
+                        "y": 3.688509
+                    },
+                    {
+                        "x": -0.007548,
+                        "y": 4.342157
+                    },
+                    {
+                        "x": 0.539725,
+                        "y": 3.775662
+                    },
+                    {
+                        "x": 0.556309,
+                        "y": 2.991283
+                    },
+                    {
+                        "x": 0.829442,
+                        "y": 5.542065
+                    },
+                    {
+                        "x": -0.007913,
+                        "y": 6.55299
+                    },
+                    {
+                        "x": -0.528431,
+                        "y": 7.682847
+                    },
+                    {
+                        "x": 0.127874,
+                        "y": 8.336975
+                    },
+                    {
+                        "x": 0.253791,
+                        "y": 10.732403
+                    },
+                    {
+                        "x": 1.010491,
+                        "y": 10.120961
+                    },
+                    {
+                        "x": 1.405177,
+                        "y": 12.516615
+                    },
+                    {
+                        "x": 0.694712,
+                        "y": 14.923946
+                    },
+                    {
+                        "x": -0.140761,
+                        "y": 16.389133
+                    },
+                    {
+                        "x": -0.938459,
+                        "y": 17.627708
+                    },
+                    {
+                        "x": -0.285798,
+                        "y": 18.48518
+                    },
+                    {
+                        "x": 0.040533,
+                        "y": 20.009575
+                    },
+                    {
+                        "x": -0.720905,
+                        "y": 20.390675
+                    },
+                    {
+                        "x": -1.409826,
+                        "y": 19.437927
+                    }
+                ],
+                "resetTime": 0.3,
+                "loopStart": 14,
+                "hipfireMultiplier": 1.7
+            },
+            "gunKick": {
+                "deflectSpeed": 12,
+                "recoverSpeed": 6,
+                "verticalTop": {
+                    "min": 0.06,
+                    "max": 0.4
+                },
+                "verticalBottom": {
+                    "min": 0.04,
+                    "max": 0.1
+                },
+                "verticalMultiplier": {
+                    "start": 0.6,
+                    "max": 1.2,
+                    "threshold": 1.2
+                },
+                "horizontalRight": {
+                    "min": 0.3,
+                    "max": 0.6
+                },
+                "horizontalLeft": {
+                    "min": 0.3,
+                    "max": 0.6
+                },
+                "horizontalMultiplier": {
+                    "start": 0.55,
+                    "max": 1.75,
+                    "threshold": 1.5
+                }
+            }
+        },
+        "modularConfiguration": {
+            "body": {
+                "defaultPart": "Spearfish_Body_Default",
+                "uniqueParts": []
+            },
+            "barrel": {
+                "defaultPart": "Spearfish_Barrel_Default",
+                "uniqueParts": []
+            },
+            "bolt": {
+                "defaultPart": "Spearfish_Bolt_Default",
+                "uniqueParts": []
+            },
+            "foreGrip": {
+                "defaultPart": "Spearfish_ForeGrip_Default",
+                "uniqueParts": [
+                    "Spearfish_ForeGrip_Slitted",
+                    "Spearfish_ForeGrip_Vented"
+                ]
+            },
+            "stock": {
+                "defaultPart": "Spearfish_Stock_Default",
+                "uniqueParts": [
+                    "Spearfish_Stock_CQC",
+                    "Spearfish_Stock_Padded",
+                    "Spearfish_Stock_Supported"
+                ]
+            },
+            "frontSight": {
+                "defaultPart": "Spearfish_FrontSight_Default",
+                "uniqueParts": []
+            },
+            "rearSight": {
+                "defaultPart": "Spearfish_RearSight_Default",
+                "uniqueParts": []
+            },
+            "grip": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Spearfish_Grip_Artisan",
+                    "Spearfish_Grip_Knotted"
+                ]
+            },
+            "ammo": {
+                "defaultPart": "Spearfish_Ammo_Default",
+                "uniqueParts": []
+            },
+            "barrelExtension": {
+                "defaultPart": "Spearfish_BarrelExtension_Default",
+                "uniqueParts": [
+                    "BarrelExt_Torque",
+                    "BarrelExt_Ridged",
+                    "BarrelExt_Express",
+                    "BarrelExt_HybridMB",
+                    "BarrelExt_IndentComp",
+                    "BarrelExt_PipedSilencer",
+                    "BarrelExt_CylindricSilencer"
+                ]
+            },
+            "verticalGrip": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "VerticalGrip_Cylinder",
+                    "VerticalGrip_AngledGhost",
+                    "VerticalGrip_Stub",
+                    "VerticalGrip_QuickHold"
+                ]
+            },
+            "sight": {
+                "defaultPart": null,
+                "uniqueParts": [
+                    "Sight_ClassicRDS",
+                    "Sight_Compact",
+                    "Sight_Sheath",
+                    "Sight_Tactical",
+                    "Sight_Lined",
+                    "Sight_Fluted",
+                    "Sight_Primed",
+                    "Sight_LPVO",
+                    "Sight_Projection",
+                    "Sight_ViewPoint"
+                ]
+            }
+        },
+        "equipTime": 0.41715267,
+        "unequipTime": 0.6666667,
+        "sprintExitTime": 0.3333333,
+        "reloadTime": 1.5999999,
+        "reloadEmptyTime": 2.5000002
     },
     "Stryk7": {
         "displayName": "Stryk 7",
