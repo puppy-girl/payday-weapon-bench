@@ -3264,7 +3264,7 @@ const WEAPON_DATA = Object.freeze({
     "Justicar": {
         "displayName": "Justicar",
         "class": "Shotgun",
-        "dlc": "2",
+        "dlc": "5",
         "displayIcon": {
             "offset": {
                 "x": 0,
