@@ -151,7 +151,7 @@ const ENEMIES = {
     bulldozer: {
         displayName: 'Bulldozer',
         health: 200,
-        armor: 3500,
+        armor: 4000,
         armorHardness: 4,
         visorArmor: 850,
         visorArmorHardness: 4,
