@@ -64,7 +64,7 @@ const SKILLS = {
         name: 'skills-high-grain',
         description: 'skills-high-grain-desc',
         attributeModifierMap: [
-            {
+            {        
                 attribute: 'ArmorPenetration',
                 value: 10,
             },
@@ -146,7 +146,7 @@ const ENEMIES = {
         armor: 180,
         armorHardness: 2.5,
         visorArmor: 250,
-        visorArmorHardness: 1.75,
+        visorArmorHardness: 2.5,
     },
     bulldozer: {
         displayName: 'Bulldozer',
