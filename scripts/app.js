@@ -1334,7 +1334,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
 
         if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
             const shotsToBreakVisor =
-                fireData.armorPenetration <= enemy.visorArmorHardness - 1
+                fireData.armorPenetration < enemy.visorArmorHardness - 1
                     ? Math.ceil(enemy.visorArmor / damage)
                     : 0;
 
