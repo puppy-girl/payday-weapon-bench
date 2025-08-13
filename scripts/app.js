@@ -64,7 +64,7 @@ const SKILLS = {
         name: 'skills-high-grain',
         description: 'skills-high-grain-desc',
         attributeModifierMap: [
-            {
+            {        
                 attribute: 'ArmorPenetration',
                 value: 10,
             },
@@ -132,20 +132,26 @@ const ENEMIES = {
         displayName: 'Specials',
         health: 150,
         armor: 140,
+        armorHardness: 2,
+    },
+    techies: {
+        displayName:'Techies',
+        health: 150,
+        armor: 140,
         armorHardness: 1.5,
     },
     shield: {
         displayName: 'Shield',
         health: 160,
         armor: 180,
-        armorHardness: 2,
+        armorHardness: 2.5,
         visorArmor: 250,
-        visorArmorHardness: 1.75,
+        visorArmorHardness: 2.5,
     },
     bulldozer: {
         displayName: 'Bulldozer',
         health: 200,
-        armor: 3500,
+        armor: 4000,
         armorHardness: 4,
         visorArmor: 850,
         visorArmorHardness: 4,
@@ -1328,7 +1334,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
 
         if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
             const shotsToBreakVisor =
-                fireData.armorPenetration <= enemy.visorArmorHardness - 1
+                fireData.armorPenetration < enemy.visorArmorHardness - 0.99
                     ? Math.ceil(enemy.visorArmor / damage)
                     : 0;
 
