@@ -982,8 +982,19 @@ function updateWeaponStats(selectedWeapon) {
     const fireData = weapon.fireData;
 
     const baseDamageStat = document.querySelector('#stat-base-damage');
-    baseDamageStat.innerHTML =
-        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '/';
+    if (
+            fireData.projectilesPerFiredRound &&
+            fireData.projectilesPerFiredRound > 1
+        ) {
+            baseDamageStat.innerHTML =
+            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '*' + Math.round(fireData.projectilesPerFiredRound) + '/';
+            //如果是霰弹枪则加上弹丸数
+        }
+        else{
+            baseDamageStat.innerHTML =
+            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '/';
+        }
+    
 
     const baseDamageRange = baseDamageStat.appendChild(
         document.createElement('span')
@@ -1339,6 +1350,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
                     : 0;
 
             shotsToKill.visorShots = shotsToBreakVisor;
+            shotsToKill.ShotsOnNoVisor = shotsToKill.totalShots;
             if (headshots) shotsToKill.totalShots += shotsToBreakVisor;
         }
 
@@ -1346,9 +1358,25 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
             fireData.projectilesPerFiredRound &&
             fireData.projectilesPerFiredRound > 1
         ) {
+            if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield'){
+                if (headshots){//是否打头
+                    shotsToKill.totalShots = Math.ceil(
+                        shotsToKill.visorShots / fireData.projectilesPerFiredRound
+                    )+Math.ceil(
+                        shotsToKill.ShotsOnNoVisor / fireData.projectilesPerFiredRound
+                    );
+                }
+                else{
+                    shotsToKill.totalShots = Math.ceil(
+                        shotsToKill.totalShots / fireData.projectilesPerFiredRound
+                    );
+                }
+            }
+            else{
             shotsToKill.totalShots = Math.ceil(
                 shotsToKill.totalShots / fireData.projectilesPerFiredRound
             );
+            }
         }
 
         if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
@@ -1615,7 +1643,7 @@ function updateDamageStats(selectedWeapon) {
                 document.createElement('span')
             );
 
-            const totalShots = optimalDamageDistanceStats[distance].totalShots;
+            const totalShots = optimalDamageDistanceStats[distance].totalShots ;
             damageStat.setAttribute('data-localisation-key', 'stats-shots');
             damageStat.setAttribute(
                 'data-localisation-var',
