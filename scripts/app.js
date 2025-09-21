@@ -64,7 +64,7 @@ const SKILLS = {
         name: 'skills-high-grain',
         description: 'skills-high-grain-desc',
         attributeModifierMap: [
-            {        
+            {
                 attribute: 'ArmorPenetration',
                 value: 10,
             },
@@ -135,7 +135,7 @@ const ENEMIES = {
         armorHardness: 2,
     },
     techies: {
-        displayName:'Techies',
+        displayName: 'Techies',
         health: 150,
         armor: 140,
         armorHardness: 1.5,
@@ -982,8 +982,20 @@ function updateWeaponStats(selectedWeapon) {
     const fireData = weapon.fireData;
 
     const baseDamageStat = document.querySelector('#stat-base-damage');
-    baseDamageStat.innerHTML =
-        Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 + '/';
+    if (
+        fireData.projectilesPerFiredRound &&
+        fireData.projectilesPerFiredRound > 1
+    ) {
+        baseDamageStat.innerHTML =
+            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
+            '*' +
+            Math.round(fireData.projectilesPerFiredRound) +
+            '/';
+    } else {
+        baseDamageStat.innerHTML =
+            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
+            '/';
+    }
 
     const baseDamageRange = baseDamageStat.appendChild(
         document.createElement('span')
@@ -1339,6 +1351,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
                     : 0;
 
             shotsToKill.visorShots = shotsToBreakVisor;
+            shotsToKill.nonVisorShots = shotsToKill.totalShots;
             if (headshots) shotsToKill.totalShots += shotsToBreakVisor;
         }
 
@@ -1346,9 +1359,31 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
             fireData.projectilesPerFiredRound &&
             fireData.projectilesPerFiredRound > 1
         ) {
-            shotsToKill.totalShots = Math.ceil(
-                shotsToKill.totalShots / fireData.projectilesPerFiredRound
-            );
+            if (
+                enemy.displayName == 'Bulldozer' ||
+                enemy.displayName == 'Shield'
+            ) {
+                if (headshots) {
+                    shotsToKill.totalShots =
+                        Math.ceil(
+                            shotsToKill.visorShots /
+                                fireData.projectilesPerFiredRound
+                        ) +
+                        Math.ceil(
+                            shotsToKill.nonVisorShots /
+                                fireData.projectilesPerFiredRound
+                        );
+                } else {
+                    shotsToKill.totalShots = Math.ceil(
+                        shotsToKill.totalShots /
+                            fireData.projectilesPerFiredRound
+                    );
+                }
+            } else {
+                shotsToKill.totalShots = Math.ceil(
+                    shotsToKill.totalShots / fireData.projectilesPerFiredRound
+                );
+            }
         }
 
         if (previous && JSON.stringify(shotsToKill) != JSON.stringify(previous))
