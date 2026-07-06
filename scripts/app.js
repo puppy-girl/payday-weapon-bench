@@ -335,6 +335,7 @@ const SKILLS = {
             y: 1280,
         },
         distancemodifier:500,
+        Mdistancemodifier:300,
         basemodifier: 0.2,
         masteredmodifier: 0.5,
         allowedClasses: ['Shotgun'],
@@ -661,11 +662,13 @@ function applyLoadout(weapon, skills, attachments) {
     fireData.damageDistanceArray = fireData.damageDistanceArray.map(
         (damageStep) => {
             let damage = damageStep.damage;
-
+            let distance = isSkillMastered('PointBlank')
+                ? SKILLS['PointBlank'].Mdistancemodifier
+                : SKILLS['PointBlank'].distancemodifier
             // Face to Face adds to the damage modifier within 5 metres
             if (
                 isSkillEquipped('PointBlank') &&
-                damageStep.distance + rangeModifier <= SKILLS['PointBlank'].distancemodifier
+                damageStep.distance + rangeModifier <= distance
             ){const pointBlankModifier = isSkillMastered('PointBlank') 
                 ? SKILLS['PointBlank'].masteredmodifier 
                 : SKILLS['PointBlank'].basemodifier;
@@ -692,18 +695,21 @@ function applyLoadout(weapon, skills, attachments) {
     });
 
     if (isSkillEquipped('PointBlank')) {
+             let distance = isSkillMastered('PointBlank')
+                ? SKILLS['PointBlank'].Mdistancemodifier
+                : SKILLS['PointBlank'].distancemodifier
             const pointBlankModifier = isSkillMastered('PointBlank') 
                 ? SKILLS['PointBlank'].masteredmodifier 
                 : SKILLS['PointBlank'].basemodifier;
-        if (fireData.damageDistanceArray[0].distance > SKILLS['PointBlank'].distancemodifier) {
+        if (fireData.damageDistanceArray[0].distance > distance) {
             // Insert face to face's 5m range at the start of the array
             fireData.damageDistanceArray.unshift({
                 damage:
                     WEAPON_DATA[weapon].fireData.damageDistanceArray[0].damage *
                     (damageModifier + pointBlankModifier),
-                distance: SKILLS['PointBlank'].distancemodifier,
+                distance: distance,
             });
-        } else if (fireData.damageDistanceArray[0].distance < SKILLS['PointBlank'].distancemodifier) {
+        } else if (fireData.damageDistanceArray[0].distance < distance) {
             // Insert face to face's 5m range second in the array
             const damage =
                 WEAPON_DATA[weapon].fireData.damageDistanceArray[1].damage *
@@ -711,7 +717,7 @@ function applyLoadout(weapon, skills, attachments) {
 
             fireData.damageDistanceArray.splice(1, 0, {
                 damage: damage,
-                distance: SKILLS['PointBlank'].distancemodifier,
+                distance: distance,
             });
             
             const uniqueDamageArray = [];
