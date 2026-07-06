@@ -1,110 +1,460 @@
+
+/**
+ *
+ * @param {string} tag
+ * @param {object} attributes
+ * @param {Array} children
+ * @returns {HTMLElement}
+ */
+function createElementWithAttributes(tag, attributes, children) {
+    const element = document.createElement(tag);
+    Object.entries(attributes).forEach(([key, value]) => {
+        element.setAttribute(key, value);
+    });
+    children?.forEach(child => element.appendChild(child));
+    return element;
+}
+
+/**
+ *
+ * @param {number} value
+ * @param {number} decimals
+ * @returns {number}
+ */
+function formatNumber(value, decimals = 2) {
+    if (typeof value !== 'number' || isNaN(value)) {
+        return 0;
+    }
+    return Math.round(value * Math.pow(10, decimals)) / Math.pow(10, decimals);
+}
+
+/**
+ * @returns {string|null} 
+ */
+function getCurrentWeapon() {
+    try {
+        const weaponInput = document.querySelector('.selectable-weapon input:checked');
+        return weaponInput ? weaponInput.value : null;
+    } catch (error) {
+        console.error('获取当前武器时出错:', error);
+        return null;
+    }
+}
+
+/**
+ * @param {HTMLElement} element
+ * @param {string} tooltipContent
+ */
+function addTooltipEvents(element, tooltipContent) {
+    element.addEventListener('mouseenter', (event) => {
+        const rect = event.target.getBoundingClientRect();
+        showTooltip(
+            rect.left + 'px', 
+            rect.top + event.target.clientHeight + 'px', 
+            tooltipContent
+        );
+    });
+    element.addEventListener('mouseleave', () => {
+        tooltip.style.visibility = 'hidden';
+    });
+}
+
+/**
+ * @param {HTMLElement} element
+ * @param {string} key
+ * @param {object} variables
+ */
+function setLocalizationAttributes(element, key, variables = {}) {
+    if (!element) {
+        console.warn('setLocalizationAttributes: 元素不存在');
+        return;
+    }
+    
+    if (typeof key !== 'string' || key.trim() === '') {
+        console.warn('setLocalizationAttributes: 本地化键无效');
+        return;
+    }
+    
+    element.setAttribute('data-localisation-key', key);
+    if (variables && typeof variables === 'object' && Object.keys(variables).length > 0) {
+        try {
+            element.setAttribute('data-localisation-var', JSON.stringify(variables));
+        } catch (error) {
+            console.error('setLocalizationAttributes: 序列化变量时出错', error);
+        }
+    }
+}
+
+/**
+ */
+function updateStatsAfterChange() {
+    const currentWeapon = getCurrentWeapon();
+    if (currentWeapon) {
+        try {
+            updateWeaponStats(currentWeapon);
+            updateDamageStats(currentWeapon);
+        } catch (error) {
+            console.error('更新统计数据时出错:', error);
+        }
+    }
+}
+/**
+ * @param {string} skillName
+ * @returns {boolean} - isSkillMastered
+ */
+function isSkillMastered(skillName) {
+    return equippedSkills.includes(skillName) && equippedSkillsMastered.has(skillName);
+}
+
+/**
+ * @param {string} skillName
+ * @returns {boolean} - isSkillEquipped
+ */
+function isSkillEquipped(skillName) {
+    return equippedSkills.includes(skillName);
+}
+
+/**
+ * 获取技能修饰符，根据是否精通返回相应值
+ * @param {string} skillName - 技能名称
+ * @param {string} modifierType - 修饰符类型 ('modifier', 'basemodifier', 'masteredmodifier' 等)
+ * @returns {number} - 修饰符值
+ */
+function getSkillModifier(skillName, modifierType = 'modifier') {
+    const skill = SKILLS[skillName];
+    if (!skill) return 0;
+
+    if (modifierType === 'basemodifier' || modifierType === 'masteredmodifier') {
+        return isSkillMastered(skillName)
+            ? (skill.masteredmodifier ?? 0)
+            : (skill.basemodifier ?? 0);
+    }
+
+    return skill[modifierType] ?? 0;
+}
+function preloadImages(imageUrls) {
+    imageUrls.forEach(url => {
+        const img = new Image();
+        img.src = url;
+    });
+}
+
+const SKILL_ICONS_TO_PRELOAD = [
+        'images/payday/AR_AR_Proficency.png',
+        'images/payday/AR_AR_Proficency_ACED.png',
+        'images/payday/AR_Crack_Open.png',
+        'images/payday/AR_Crack_Open_ACED.png',
+        'images/payday/AR__Hollow_Point_Rounds.png',
+        'images/payday/AR__Hollow_Point_Rounds_ACED.png',
+        'images/payday/Skills2_Profesional_Sniper_Sniper_Expert.png',
+        'images/payday/Skills2_Profesional_Sniper_Sniper_Expert_ACED.png',
+        'images/payday/Skills2_Ninja_SMG_SMG_Proficiency.png',
+        'images/payday/Skills2_Ninja_SMG_SMG_Proficiency_ACED.png',
+        'images/payday/Skills2_Ninja_SMG_Brick_Buster.png',
+        'images/payday/Skills2_Ninja_SMG_Brick_Buster_ACED.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Expert.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Expert_ACED.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Point_Blank.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Point_Blank_ACED.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Obilterator.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Obilterator_ACED.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Expert.png',
+        'images/payday/Skills2_Mechanic_Shotgun_Shotgun_Expert_ACED.png',
+        'images/payday/Skills2_Profesional_Ammo_High_Quality_Bag.png',
+        'images/payday/Skills2_Profesional_Ammo_High_Quality_Bag_ACED.png',
+        'images/payday/Skills2_Hacking_Pistol_Pistol_Exploiter.png',
+        'images/payday/Skills2_Hacking_Pistol_Pistol_Exploiter_ACED.png',   
+        'images/payday/Skills2_Profesional_Sniper_Graze.png',
+        'images/payday/Skills2_Profesional_Sniper_Graze_ACED.png',
+        'images/payday/Skills2_Ninja_SMG_SMG_Master.png',
+        'images/payday/Skills2_Ninja_SMG_SMG_Master_ACED.png',
+        'images/payday/Skills2_Conman_Casing_Hulk_Out.png',
+        'images/payday/Skills2_Conman_Casing_Hulk_Out_ACED.png',
+        'images/payday/Skills2_Hacking_Flashbang_Flashbang_Master.png',
+        'images/payday/Skills2_Hacking_Flashbang_Flashbang_Master_ACED.png',
+        'images/Skills2.0/Skills2_Mechanic_Shock_Electric_Tenderiser.png',
+        'images/Skills2.0/Skills2_Mechanic_Shock_Electric_Tenderiser_ACED.png'
+        ];
+
 const SKILLS = {
-    edge: {
-        name: 'skills-edge',
-        description: 'skills-edge-desc',
-        modifier: 0.1,
-        iconOffset: {
-            x: 0,
-            y: 0,
+    
+////////////////////skill2.0/////////////////////    
+    Rifleman: {
+        name: 'skills-Rifleman',
+        description: 'skills-Rifleman-desc',
+        icons: {
+            base: 'images/Skills2.0/AR_AR_Proficency.png',
+            mastered: 'images/Skills2.0/AR_AR_Proficency_ACED.png',
         },
-    },
-    longShot: {
-        name: 'skills-long-shot',
-        description: 'skills-long-shot-desc',
-        iconOffset: {
-            x: 128,
-            y: 320,
-        },
-    },
-    faceToFace: {
-        name: 'skills-face-to-face',
-        description: 'skills-face-to-face-desc',
-        modifier: 0.1,
-        iconOffset: {
-            x: 128,
-            y: 512,
-        },
-    },
-    coupDeGrace: {
-        name: 'skills-coup-de-grace',
-        description: 'skills-coup-de-grace-desc',
-        modifier: 0.1,
-        iconOffset: {
-            x: 128,
-            y: 896,
-        },
-    },
-    combatMarking: {
-        name: 'skills-combat-marking',
-        description: 'skills-combat-marking-desc',
-        modifier: 0.2,
-        iconOffset: {
-            x: 64,
-            y: 960,
-        },
-    },
-    painAsymbolia: {
-        name: 'skills-pain-asymbolia',
-        description: 'skills-pain-asymbolia-desc',
-        modifier: 0.1,
-        iconOffset: {
-            x: 320,
-            y: 1216,
-        },
-    },
-    precisionShot: {
-        name: 'skills-precision-shot',
-        description: 'skills-precision-shot-desc',
         iconOffset: {
             x: 192,
-            y: 322,
-        },
-    },
-    highGrain: {
-        name: 'skills-high-grain',
-        description: 'skills-high-grain-desc',
-        attributeModifierMap: [
-            {
-                attribute: 'ArmorPenetration',
-                value: 10,
-            },
-        ],
-        iconOffset: {
-            x: 256,
-            y: 64,
-        },
-    },
-    expose: {
-        name: 'skills-expose',
-        description: 'skills-expose-desc',
-        iconOffset: {
-            x: 256,
-            y: 896,
-        },
-    },
-    duckAndWeave: {
-        name: 'skills-duck-and-weave',
-        description: 'skills-duck-and-weave-desc',
-        modifier: 0.25,
-        iconOffset: {
-            x: 190,
             y: 1280,
         },
+        modifier: 0.1,
+        reloadSpeedModifier: 0.025,
+        allowedClasses: ['Assault Rifle','LMG'],
     },
-    quickReload: {
-        name: 'skills-quick-reload',
-        description: 'skills-quick-reload-desc',
-        attributeModifierMap: [
-            {
-                attribute: 'OverallReloadPlayRate',
-                value: 20,
-            },
-        ],
-        iconOffset: {
-            x: 64,
-            y: 512,
+    BreakingPoint: {
+        name: 'skills-breaking-point',
+        description: 'skills-breaking-point-desc',
+        basemodifier: 0.05,
+        masteredmodifier: 0.15,
+        icons: {
+            base: 'images/Skills2.0/AR_Crack_Open.png',
+            mastered: 'images/Skills2.0/AR_Crack_Open_ACED.png',
         },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        allowedClasses: ['Assault Rifle','LMG'],
     },
+    HollowPointRounds: {
+        name: 'skills-HollowPointRounds',
+        description: 'skills-HollowPointRounds-desc',
+        basemodifier: 0.15,
+        masteredmodifier: 0.40,
+        icons: {
+            base: 'images/Skills2.0/AR__Hollow_Point_Rounds.png',
+            mastered: 'images/Skills2.0/AR__Hollow_Point_Rounds_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        allowedClasses: ['Assault Rifle','LMG'],
+    },    
+    HeadGames: {
+        name: 'skills-HeadGames',
+        description: 'skills-HeadGames-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Profesional_Sniper_Sniper_Expert.png',
+            mastered: 'images/Skills2.0/Skills2_Profesional_Sniper_Sniper_Expert_ACED.png',
+        },
+        iconOffset: {
+            x: 192,
+            y: 1280,
+        },
+        modifier: 0.1,
+        allowedClasses: ['Marksman'],
+    },
+    SkullTrauma:{
+        name: 'skills-SkullTrauma',
+        description: 'skills-SkullTrauma-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Profesional_Sniper_Graze.png',
+            mastered: 'images/Skills2.0/Skills2_Profesional_Sniper_Graze_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        modifier: 0.15,
+        reloadSpeedModifier: 0.2,
+        allowedClasses: ['Marksman'],
+    },
+    ArmorPiercing:{
+        name: 'skills-ArmorPiercing',
+        description: 'skills-ArmorPiercing-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Profesional_Sniper_Piercing_Ammo.png',
+            mastered: 'images/Skills2.0/Skills2_Profesional_Sniper_Piercing_Ammo_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        allowedClasses: ['Marksman'],
+        directBasiced: true,
+    },
+    SMGAdept: {
+        name: 'skills-SMGAdept',
+        description: 'skills-SMGAdept-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Ninja_SMG_SMG_Proficiency.png',
+            mastered: 'images/Skills2.0/Skills2_Ninja_SMG_SMG_Proficiency_ACED.png',
+        },
+        iconOffset: {
+            x: 192,
+            y: 1280,
+        },
+        modifier: 0.02,
+        allowedClasses: ['SMG'], 
+    },
+    Cracked: {
+        name: 'skills-Cracked',
+        description: 'skills-Cracked-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Ninja_SMG_Brick_Buster.png',
+            mastered: 'images/Skills2.0/Skills2_Ninja_SMG_Brick_Buster_ACED.png',
+        },
+        basemodifier: 0.1,
+        masteredmodifier: 0.3,
+        allowedClasses: ['SMG'],
+    },
+    SMGenius: {
+        name: 'skills-SMGenius',
+        description: 'skills-SMGenius-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Ninja_SMG_SMG_Master.png',
+            mastered: 'images/Skills2.0/Skills2_Ninja_SMG_SMG_Master_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        modifier: 0.08,
+        allowedClasses: ['SMG'],
+        baseMaxValue: 5,
+        masteredMaxValue: 10,
+    },
+    CallingShotgun:{
+        name: 'skills-CallingShotgun',
+        description: 'skills-CallingShotgun-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Shotgun_Expert.png',
+            mastered: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Shotgun_Expert_ACED.png',
+        },
+        iconOffset: {
+            x: 192,
+            y: 1280,
+        },
+        modifier: 0.025,
+        allowedClasses: ['Shotgun'],
+        directBasiced: true,
+    },
+    PointBlank: {
+        name: 'skills-PointBlank',
+        description: 'skills-PointBlank-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Point_Blank.png',
+            mastered: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Point_Blank_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        distancemodifier:500,
+        Mdistancemodifier:300,
+        basemodifier: 0.2,
+        masteredmodifier: 0.5,
+        allowedClasses: ['Shotgun'],
+    },
+    Annihilation: {
+        name: 'skills-Annihilation',
+        description: 'skills-Annihilation-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Shotgun_Obilterator.png',
+            mastered: 'images/Skills2.0/Skills2_Mechanic_Shotgun_Shotgun_Obilterator_ACED.png',
+        },
+        iconOffset: {
+            x: 320,
+            y: 1280,
+        },
+        basemodifier: 0.04,
+        masteredmodifier: 0.1,
+        allowedClasses: ['Shotgun'],
+    },
+    Bullseye:{
+        name: 'skills-Bullseye',
+        description: 'skills-Bullseye-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Hacking_Pistol_Pistol_Export.png',
+            mastered: 'images/Skills2.0/Skills2_Hacking_Pistol_Pistol_Export_ACED.png',
+        },
+        iconOffset: {
+            x: 192,
+            y: 1280,
+        },
+        Unmarkmodifier: 0.045,
+        Markmodifier: 0.12,
+        directBasiced: true,
+        allowedClasses: ['Pistol','Revolver'],
+    },
+    CheapTrick:{
+        name: 'skills-CheapTrick',
+        description: 'skills-CheapTrick-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Hacking_Pistol_Pistol_Exploiter.png',
+            mastered: 'images/Skills2.0/Skills2_Hacking_Pistol_Pistol_Exploiter_ACED.png',
+        },
+        modifier: 1.0,
+        allowedClasses: ['Pistol','Revolver'],
+        directMastered: true,
+    },
+    Sunburn:{
+        name: 'skills-Sunburn',
+        description: 'skills-Sunburn-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Hacking_Flashbang_Flashbang_Master.png',
+            mastered: 'images/Skills2.0/Skills2_Hacking_Flashbang_Flashbang_Master_ACED.png',
+        },
+        modifier: 0.1,
+        allowedClasses: ['Assault Rifle','Marksman','Shotgun','Pistol','Revolver','SMG','LMG'],
+    },
+    ElecTenderizer:{
+        name: 'skills-ElecTenderizer',
+        description: 'skills-ElecTenderizer-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Mechanic_Shock_Electric_Tenderiser.png',
+            mastered: 'images/Skills2.0/Skills2_Mechanic_Shock_Electric_Tenderiser_ACED.png',
+        },
+        basemodifier: 0.1,
+        masteredmodifier: 0.25,
+        allowedClasses: ['Assault Rifle','Marksman','Shotgun','Pistol','Revolver','SMG','LMG'],
+    },
+    HulkOut:{
+        name: 'skills-HulkOut',
+        description: 'skills-HulkOut-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Conman_Casing_Hulk_Out.png',
+            mastered: 'images/Skills2.0/Skills2_Conman_Casing_Hulk_Out_ACED.png',
+        },
+        basemodifier: 0.02,
+        masteredmodifier: 0.05,
+        allowedClasses: ['Assault Rifle','Marksman','Shotgun','Pistol','Revolver','SMG','LMG'],
+    },
+    BulletFrenzy:{
+        name: 'skills-BulletFrenzy',
+        description: 'skills-BulletFrenzy-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Profesional_Ammo_High_Grain_Ammo.png',
+            mastered: 'images/Skills2.0/Skills2_Profesional_Ammo_High_Grain_Ammo_ACED.png',
+        },
+        basemodifier: 0.2,
+        masteredmodifier: 0.5,
+        allowedClasses: ['Assault Rifle','Marksman','Shotgun','Pistol','Revolver','SMG','LMG'],
+    },
+    PremiumBag: {
+        name: 'skills-PremiumBag',
+        description: 'skills-PremiumBag-desc',
+        icons: {
+            base: 'images/Skills2.0/Skills2_Profesional_Ammo_High_Quality_Bag.png',
+            mastered: 'images/Skills2.0/Skills2_Profesional_Ammo_High_Quality_Bag_ACED.png',
+        },
+        iconOffset: {
+            x: 192,
+            y: 1280,
+        },
+        modifier: 2,
+        allowedClasses: ['Assault Rifle','Marksman','Shotgun','Pistol','Revolver','SMG','LMG'],
+        directMastered: true,
+    },
+
+};
+
+// minimal skill numeric values (persist across populateSkills calls)
+const SKILL_VALUES = {
+    // Rifleman adjustable value (1..12)
+    Rifleman: 1,
+    // HeadGames adjustable value (1..12)
+    HeadGames: 1,
+    // New counter for percentage display (0..100%)
+    HeadGamesPercentage: 0,
+    SMGAdept: 1,
+    CallingShotgun: 1,
+    Bullseye: 1,
+    BullseyeMode: 'Unmarkmodifier',
 };
 
 const EDGE_DEPENDENT_SKILLS = [
@@ -118,61 +468,70 @@ const EDGE_DEPENDENT_SKILLS = [
 const ENEMIES = {
     swat: {
         displayName: 'SWAT',
-        health: 150,
-        armor: 70,
+        health: 350,
+        armor: 480,
         armorHardness: 1.5,
+        armorLayer: 6,
     },
     heavySwat: {
         displayName: 'Heavy SWAT',
-        health: 150,
-        armor: 170,
+        health: 490,
+        armor: 560,
         armorHardness: 1.5,
+        armorLayer: 7,
     },
     specials: {
         displayName: 'Specials',
-        health: 150,
-        armor: 140,
+        health: 700,
+        armor: 400,
         armorHardness: 2,
+        armorLayer: 5,
     },
     techies: {
         displayName: 'Techies',
-        health: 150,
-        armor: 140,
-        armorHardness: 1.5,
+        health: 700,
+        armor: 400,
+        armorHardness: 2,
+        armorLayer: 5,
     },
     shield: {
         displayName: 'Shield',
-        health: 160,
-        armor: 180,
+        health: 350,
+        armor: 480,
         armorHardness: 2.5,
-        visorArmor: 250,
-        visorArmorHardness: 2.5,
+        visorArmor: 400,
+        visorArmorHardness: 5,
+        armorLayer: 6,
     },
     bulldozer: {
         displayName: 'Bulldozer',
-        health: 200,
-        armor: 4000,
+        health: 2800,
+        armor: 9600,
         armorHardness: 4,
-        visorArmor: 850,
-        visorArmorHardness: 4,
+        visorArmor: 3360,
+        visorArmorHardness: 42,
+        armorLayer: 120,
     },
     sniper: {
         displayName: 'Sniper',
-        health: 40,
+        health: 112,
         armor: 0,
         armorHardness: 0,
+        armorLayer: 0,
     },
     cloaker: {
         displayName: 'Cloaker',
-        health: 150,
+        health: 280,
         armor: 0,
-        armorHardness: 0,
+        armorHardness: 0,   
+        armorLayer: 0,
     },
     drone: {
         displayName: 'Drone',
-        health: 50,
-        armor: 50,
+        health: 140,
+        armor: 400,
         armorHardness: 2,
+        armorLayer: 5,
     },
 };
 
@@ -221,7 +580,7 @@ function applyLoadout(weapon, skills, attachments) {
     fireData.ammoLoaded = (equippedMag ?? fireData).ammoLoaded ?? 10;
     fireData.ammoInventory = (equippedMag ?? fireData).ammoInventory ?? 100;
     fireData.ammoInventoryMax =
-        (equippedMag ?? fireData).ammoInventoryMax ?? 200;
+        (equippedMag ?? fireData).ammoInventoryMax ?? 100;
     fireData.ammoPickup = {
         min: (equippedMag ?? fireData).ammoPickup.min ?? 5,
         max: (equippedMag ?? fireData).ammoPickup.max ?? 10,
@@ -239,6 +598,10 @@ function applyLoadout(weapon, skills, attachments) {
             'DamageDistance',
             attributeModifiers['DamageDistance']
         );
+        critrangeModifier = convertAttributeModifier(
+            'CriticalDamageMultiplierDistance',
+            attributeModifiers['CriticalDamageMultiplierDistance']
+        );
 
     // Precision Shot sets the base damage modifier
     // to the current scope's magnification
@@ -247,60 +610,141 @@ function applyLoadout(weapon, skills, attachments) {
         equippedSight?.targetingData?.targetingMagnification > 4
     )
         damageModifier = equippedSight.targetingData.targetingMagnification;
-
+//damage increase with Skills
     for (const skill of [
         'edge',
         'coupDeGrace',
         'combatMarking',
         'painAsymbolia',
         'duckAndWeave',
+        'CheapTrick',
     ]) {
         if (skills.includes(skill)) damageModifier += SKILLS[skill].modifier;
     }
-
-    const faceToFaceIsEquipped = skills.includes('faceToFace');
-
+    if(isSkillMastered('HulkOut')){
+        damageModifier += SKILLS.HulkOut.masteredmodifier * (SKILL_VALUES.HulkOut ?? 1);
+    }else if(isSkillEquipped('HulkOut')){
+        damageModifier += SKILLS.HulkOut.basemodifier * (SKILL_VALUES.HulkOut ?? 1);
+    }
+    if(isSkillMastered('BulletFrenzy')){
+        damageModifier += SKILLS.BulletFrenzy.masteredmodifier;
+    }else if(isSkillEquipped('BulletFrenzy')){
+        damageModifier += SKILLS.BulletFrenzy.basemodifier;
+    }
+    if(isSkillEquipped('SMGenius')){
+        damageModifier += SKILLS.SMGenius.modifier * (SKILL_VALUES.SMGenius ?? 1);
+    }
+    if(isSkillEquipped('Annihilation')){
+        const AnnihilationModifier = isSkillMastered('Annihilation')
+                ? SKILLS['Annihilation'].masteredmodifier
+                : SKILLS['Annihilation'].basemodifier;
+        const projectiles = fireData.projectilesPerFiredRound ?? 1;
+        damageModifier += AnnihilationModifier * (projectiles - 1);
+    }
+    if(isSkillEquipped('Bullseye')){
+        const BullseyeModifier = SKILL_VALUES.Bullseye;
+        if(SKILL_VALUES.BullseyeMode === 'Unmarkmodifier')
+            damageModifier += BullseyeModifier*(SKILLS['Bullseye'].Unmarkmodifier ?? 0.025);
+        else 
+            damageModifier += BullseyeModifier*(SKILLS['Bullseye'].Markmodifier ?? 0.1)
+    }
+    if(isSkillEquipped('Sunburn')){
+        damageModifier *= (1+SKILLS['Sunburn'].modifier * (SKILL_VALUES['Sunburn'] ?? 1));
+    }
+    if(isSkillMastered('ElecTenderizer')){
+        damageModifier += SKILLS['ElecTenderizer'].masteredmodifier * (SKILL_VALUES['ElecTenderizer'] ?? 1);
+    }else if(isSkillEquipped('ElecTenderizer')){
+        damageModifier += SKILLS['ElecTenderizer'].basemodifier * (SKILL_VALUES['ElecTenderizer'] ?? 1);
+    }
+    if(isSkillMastered('HeadGames')){
+        damageModifier += SKILL_VALUES.HeadGamesPercentage/100;
+    }
     fireData.damageDistanceArray = fireData.damageDistanceArray.map(
         (damageStep) => {
             let damage = damageStep.damage;
-
+            let distance = isSkillMastered('PointBlank')
+                ? SKILLS['PointBlank'].Mdistancemodifier
+                : SKILLS['PointBlank'].distancemodifier
             // Face to Face adds to the damage modifier within 5 metres
             if (
-                faceToFaceIsEquipped &&
-                damageStep.distance + rangeModifier <= 500
-            )
-                damage *= damageModifier + SKILLS['faceToFace'].modifier;
-            else damage *= damageModifier;
-
+                isSkillEquipped('PointBlank') &&
+                damageStep.distance + rangeModifier <= distance
+            ){const pointBlankModifier = isSkillMastered('PointBlank') 
+                ? SKILLS['PointBlank'].masteredmodifier 
+                : SKILLS['PointBlank'].basemodifier;
+                damage *= (damageModifier + pointBlankModifier);
+            }else damage *= damageModifier;
+            if(isSkillEquipped('CallingShotgun')){
+                const CSvalue = SKILL_VALUES.CallingShotgun ?? 1;
+                damageStep.distance *= 1+SKILLS['CallingShotgun'].modifier*CSvalue;
+            }
             return {
                 damage: damage,
                 distance: damageStep.distance + rangeModifier,
             };
         }
-    );
+    )
 
-    if (faceToFaceIsEquipped) {
-        if (fireData.damageDistanceArray[0].distance > 500) {
+        .filter((item, index, array) => {
+        // Find all items with the same damage value
+        const sameDamageItems = array.filter(x => x.damage === item.damage);
+        // If there's only one item with this damage, keep it
+        if (sameDamageItems.length === 1) return true;
+        // If there are multiple items with this damage, keep the one with the longest distance
+        return item.distance === Math.max(...sameDamageItems.map(x => x.distance));
+    });
+
+    if (isSkillEquipped('PointBlank')) {
+             let distance = isSkillMastered('PointBlank')
+                ? SKILLS['PointBlank'].Mdistancemodifier
+                : SKILLS['PointBlank'].distancemodifier
+            const pointBlankModifier = isSkillMastered('PointBlank') 
+                ? SKILLS['PointBlank'].masteredmodifier 
+                : SKILLS['PointBlank'].basemodifier;
+        if (fireData.damageDistanceArray[0].distance > distance) {
             // Insert face to face's 5m range at the start of the array
             fireData.damageDistanceArray.unshift({
                 damage:
                     WEAPON_DATA[weapon].fireData.damageDistanceArray[0].damage *
-                    (damageModifier + SKILLS['faceToFace'].modifier),
-                distance: 500,
+                    (damageModifier + pointBlankModifier),
+                distance: distance,
             });
-        } else if (fireData.damageDistanceArray[0].distance < 500) {
+        } else if (fireData.damageDistanceArray[0].distance < distance) {
             // Insert face to face's 5m range second in the array
             const damage =
                 WEAPON_DATA[weapon].fireData.damageDistanceArray[1].damage *
-                (damageModifier + SKILLS['faceToFace'].modifier);
+                (damageModifier + pointBlankModifier);
 
             fireData.damageDistanceArray.splice(1, 0, {
                 damage: damage,
-                distance: 500,
+                distance: distance,
             });
+            
+            const uniqueDamageArray = [];
+            const damageMap = {};
+            
+            for (let i = fireData.damageDistanceArray.length - 1; i >= 0; i--) {
+                const item = fireData.damageDistanceArray[i];
+                const roundedDamage = Math.round(item.damage * 100) / 100; // 四舍五入到小数点后两位
+                
+                if (!damageMap[roundedDamage] || damageMap[roundedDamage] < item.distance) {
+                    damageMap[roundedDamage] = item.distance;
+                    uniqueDamageArray.unshift(item);
+                }
+            }
+            
+            fireData.damageDistanceArray = uniqueDamageArray;
         }
+        
     }
-
+    fireData.criticalDamageMultiplierDistanceArray = fireData.criticalDamageMultiplierDistanceArray.map(
+        (critStep) => {
+            return {
+                multiplier: critStep.multiplier,
+                distance: critStep.distance + critrangeModifier,
+            };
+        }
+    );
     // Long shot removes distance penalties on critical multipliers
     if (skills.includes('longShot')) {
         fireData.criticalDamageMultiplierDistanceArray = [
@@ -310,7 +754,7 @@ function applyLoadout(weapon, skills, attachments) {
                         .multiplier,
                 distance:
                     fireData.criticalDamageMultiplierDistanceArray.reverse()[0]
-                        .distance,
+                        .distance + critrangeModifier,
             },
         ];
     }
@@ -324,6 +768,33 @@ function applyLoadout(weapon, skills, attachments) {
             'ArmorPenetration',
             attributeModifiers['ArmorPenetration'] ?? 0
         );
+    if (weapon == 'MX63') {
+        updatedWeapon.reloadTime = 4.4999995;
+        updatedWeapon.reloadEmptyTime = 5.166667;
+    }
+    if (weapon == 'T32') {
+        updatedWeapon.reloadTime = 1.4666667;
+        updatedWeapon.reloadEmptyTime = 1.9999999;
+    }
+
+
+    if (isSkillEquipped('Rifleman')) {
+        const rv = SKILL_VALUES.Rifleman ?? 1;
+        fireData.armorPenetration += rv * (SKILLS.Rifleman?.modifier ?? 0.1);
+        
+        if (isSkillMastered('Rifleman')) {
+            const reloadSpeedBonus = (SKILL_VALUES.Rifleman ?? 1) * (SKILLS.Rifleman?.reloadSpeedModifier ?? 0.025); // 将百分比转换为小数
+            updatedWeapon.reloadTime /= (1 + reloadSpeedBonus); 
+            updatedWeapon.reloadEmptyTime /= (1 + reloadSpeedBonus * 2); 
+        }
+    }
+    if(isSkillMastered('SkullTrauma')){
+        updatedWeapon.reloadTime /= (1 + SKILLS.SkullTrauma?.reloadSpeedModifier); // 将百分比转换为小数
+        updatedWeapon.reloadEmptyTime /= (1 + SKILLS.SkullTrauma?.reloadSpeedModifier);
+    }
+    if(isSkillMastered('PremiumBag')){
+        fireData.armorPenetration += SKILLS.PremiumBag.modifier ?? 2;
+    }
 
     const viewKick = updatedWeapon.recoilData.viewKick;
 
@@ -425,14 +896,6 @@ function applyLoadout(weapon, skills, attachments) {
     };
 
     // Bandaid fix for inaccurate reload notify times
-    if (weapon == 'MX63') {
-        updatedWeapon.reloadTime = 4.4999995;
-        updatedWeapon.reloadEmptyTime = 5.166667;
-    }
-    if (weapon == 'T32') {
-        updatedWeapon.reloadTime = 1.4666667;
-        updatedWeapon.reloadEmptyTime = 1.9999999;
-    }
 
     if (attributeModifiers['OverallReloadPlayRate']) {
         updatedWeapon.reloadTime /= convertAttributeModifier(
@@ -510,20 +973,20 @@ function convertAttributeModifier(attribute, modifier) {
  * @param {number} armorHardness The enemy's armor hardness stat
  * @returns The weapon's EAP against the enemy
  */
-function effectiveArmorPenetration(armorPenetration, armorHardness) {
+/*function effectiveArmorPenetration(armorPenetration, armorHardness) {
     return Math.max(0, Math.min(1, armorPenetration - armorHardness + 1));
-}
+}*/
 
 /**
  * Calculate how many shots it would take to defeat an enemy
  *
  * @param {number} weaponDamage The weapon's current damage
  * @param {number} weaponCritMultiplier The weapon's current crit multiplier
- * @param {number} effectiveArmorPenetration The weapon's EAP against the enemy
+
  * @param {number} enemyHealth The enemy's health stat
  * @param {number} enemyArmor The enemy's armor stat
  */
-function weaponShotsToKill(
+/*function weaponShotsToKill(
     weaponDamage,
     weaponCritMultiplier,
     effectiveArmorPenetration,
@@ -536,8 +999,9 @@ function weaponShotsToKill(
     const apDamage = weaponDamage * effectiveArmorPenetration;
     const critApDamage = critDamage * effectiveArmorPenetration;
 
+    const armorDamagePerShot = weaponDamage * (weaponCritMultiplier !== 1 ? armorCritMultiplier : 1);
     const shotsOnArmor = Math.min(
-        Math.ceil(enemyArmor / weaponDamage),
+        Math.ceil(enemyArmor / armorDamagePerShot),
         Math.ceil(enemyHealth / critApDamage)
     );
 
@@ -582,9 +1046,232 @@ function weaponShotsToKill(
         unarmoredNonCrits: shotsOnHealth,
         totalShots: shotsOnArmor + shotsOnHealth,
     };
+}*/
+
+function weaponShotsToKillByArmorLayer(
+    weaponDamage,
+    weaponCritMultiplier,
+    armorPenetration,
+    enemyHealth,
+    enemyArmor,
+    armorlayer,
+    enemyName = ''
+) {
+    
+    if (weaponDamage <= 0) {
+        return {
+            totalShotsNonCrit: Infinity,
+            totalShotsFullCrit: Infinity,
+        };
+    }
+    if(enemyName ==='Bulldozer'&&isSkillEquipped('Sunburn')){
+        weaponDamage/=(1+(SKILLS.Sunburn?.modifier ?? 0) * (SKILL_VALUES.Sunburn ?? 1))
+    }
+    if (enemyName === 'Drone') {
+        weaponCritMultiplier = 1;
+    }
+    armorlayer = Math.max(0, Math.floor(armorlayer || 0));
+    const penetrationThreshold = Math.floor(armorPenetration || 0);
+    const layersToBreak = Math.max(armorlayer - penetrationThreshold, 0);
+    const layerArmorValue = 80;
+    const requiredArmorDamage = layerArmorValue * layersToBreak;
+    let DamagetoArmor = 0, armorShots = 0, increment = 0, CrackedBonus = 0;
+    let armorDamagePerShot = 0;
+    if(weaponCritMultiplier !== 1){
+        armorDamagePerShot = weaponDamage+weaponDamage * weaponCritMultiplier*0.54
+    }else{
+        armorDamagePerShot = weaponDamage
+    }
+    let DamagePercent = weaponDamage/(weaponDamage+weaponDamage * weaponCritMultiplier*0.54);
+    const hgLevel = SKILL_VALUES.HeadGames ?? 1;
+    if (weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')&&isSkillEquipped('SkullTrauma')) {
+        armorDamagePerShot *= 1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if(weaponCritMultiplier !== 1&&isSkillEquipped('SkullTrauma')){
+        armorDamagePerShot *= 1+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if(weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')){
+        armorDamagePerShot *= 1+(SKILLS.HeadGames?.modifier ?? 0) * hgLevel;
+    }
+    /*let armorCritMultiplier = 1;
+    const hgLevel = SKILL_VALUES.HeadGames ?? 1;
+    if (weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')&&isSkillEquipped('SkullTrauma')) {
+        armorCritMultiplier *= 1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if(weaponCritMultiplier !== 1&&isSkillEquipped('SkullTrauma')){
+        armorCritMultiplier *= 1+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if(weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')){
+        armorCritMultiplier *= 1+(SKILLS.HeadGames?.modifier ?? 0) * hgLevel;
+    }
+
+    // Default armor shots if no BreakingPoint: number of shots needed to do
+    // requiredArmorDamage using armorDamagePerShot per shot
+    let armorDamagePerShot =0;
+    if(weaponCritMultiplier !== 1){
+        armorDamagePerShot = weaponDamage * armorCritMultiplier
+    }else{
+        armorDamagePerShot = weaponDamage
+    }*/
+    if(isSkillEquipped('SMGAdept')) {
+        const smgLevel = SKILL_VALUES.SMGAdept ?? 1;
+        armorDamagePerShot *= (1 + (SKILLS.SMGAdept?.modifier ?? 0.02) * smgLevel);
+    }
+    // BreakingPoint behaviour (new): if equipped, each failed shot that does not
+    // satisfy the penetration threshold will increase the weapon's armorPenetration
+    // for the *next* shot by a fixed increment (base 0.05, mastered 0.15). We need
+    // to simulate shot-by-shot because armor damage may reduce the effective
+    // "layer" count (enemy armor divided into equal layers), and the penetration
+    // increases only apply to subsequent shots.
+    if (isSkillEquipped('BreakingPoint') || isSkillEquipped('Cracked')||isSkillEquipped('ArmorPiercing')) {
+        if(isSkillEquipped('BreakingPoint')) {
+            increment = equippedSkillsMastered?.has('BreakingPoint')
+                ? (SKILLS.BreakingPoint.masteredmodifier ?? 0.15)
+                : (SKILLS.BreakingPoint.basemodifier ?? 0.05);
+        }
+
+        // If armorlayer or enemyArmor are zero, no need to simulate
+        if (armorlayer > 0 && enemyArmor > 0 && weaponDamage > 0) {
+            // Preserve initial values
+            const initialArmor = enemyArmor;
+            const initialLayers = armorlayer;
+
+            // layerValue: how much armor corresponds to one layer
+            const layerValue = initialLayers > 0 ? initialArmor / initialLayers : 0;
+
+            let currentArmor = initialArmor;
+            let currentPen = armorPenetration ?? 0; // this will accumulate increments
+            let currentLayers = initialLayers;
+            let shots = 0,previousArmorLayers = currentLayers;
+            
+
+            // Simulate shots until either penetration floor reaches remaining
+            // layer count (i.e. we can start penetrating), or armor is gone
+            while (currentArmor > 0) {
+                // If the current floored penetration already is sufficient to
+                // bypass the remaining layers, we stop (no more armor shots)
+                if (Math.floor(currentPen) >= currentLayers) break;
+                previousArmorLayers = currentLayers;
+
+                // This shot hits armor and reduces its absolute value
+                shots++;
+                currentArmor -= armorDamagePerShot * (1 + CrackedBonus ?? 0);
+                DamagetoArmor += armorDamagePerShot * (1 + CrackedBonus ?? 0);
+                if(isSkillEquipped('ArmorPiercing')&&armorDamagePerShot>layerValue&&weaponCritMultiplier !== 1&&armorDamagePerShot<enemyArmor) {
+                    currentArmor -= Math.floor(layerValue);
+                    if(currentArmor<=0) {
+                        currentArmor = 0
+                        DamagetoArmor = enemyArmor
+                    }else{
+                        DamagetoArmor += Math.floor(layerValue)
+                    }
+                }
+                // After a shot that did not penetrate, BreakingPoint increases
+                // the effective penetration for the *next* shot
+                if(isSkillEquipped('BreakingPoint')) {
+                    currentPen += Math.max(0, increment);
+                }
+
+                // Recompute layers from remaining armor (each layer has size layerValue)
+                currentLayers = layerValue > 0 
+                    ? Math.max(0, Math.ceil(currentArmor / layerValue)) 
+                    : 0;
+                if(isSkillEquipped('Cracked')) {
+                    if(previousArmorLayers-currentLayers > 0) {
+                        CrackedBonus += equippedSkillsMastered?.has('Cracked')
+                        ? (SKILLS.Cracked?.masteredmodifier ?? 0.3)
+                        : (SKILLS.Cracked?.basemodifier ?? 0.1);
+                    }
+                }
+
+                // If after the shot the currentPen floored is sufficient, we stop
+                if (Math.floor(currentPen) >= currentLayers) break;
+                // Otherwise continue; the loop will end when we can penetrate or currentArmor <= 0
+            }
+
+            armorShots = shots;
+        }
+    } else {
+        armorShots = requiredArmorDamage > 0 ? Math.ceil(requiredArmorDamage / armorDamagePerShot) : 0;
+        DamagetoArmor = armorDamagePerShot * armorShots;
+    }
+
+    // If BreakingPoint was used we may have computed armorShots using an effective
+    // armor-damage-per-shot; calculate overflow using that effective value if present.
+    // Compute overflowDamage: only the portion of the last armor-shot that
+    // exceeded the remaining armor spills into health. Note: with the
+    // BreakingPoint per-shot increment behaviour, the penetration increase
+    // applies to the next shot, so overflow only happens if a shot actually
+    // reduced armor below zero.
+    let overflowDamage = 0;
+    if (armorShots > 0 && DamagetoArmor > enemyArmor) {
+        // amount of armour actually removed by the shots is armorShots * weaponDamage
+        // but the armour that existed to be removed was requiredArmorDamage when there
+        // was no per-shot penetration change. To keep consistent, if BreakingPoint
+        // was involved and the armour wasn't fully drained, overflow is 0. A simpler
+        // and robust rule: overflowDamage equals max(0, armorShots * weaponDamage - requiredArmorDamage)
+        // except when BreakingPoint increments allowed early termination without
+        // consuming requiredArmorDamage (in which case requiredArmorDamage would be
+        // larger than consumed armour) — that makes overflow negative which we clamp to 0.
+
+        overflowDamage = Math.max(0, DamagetoArmor - enemyArmor);
+        let baseCritMultiplier = weaponCritMultiplier;
+        if (weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames') && isSkillEquipped('SkullTrauma')) {
+            baseCritMultiplier /= (1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel + (SKILLS.SkullTrauma?.modifier ?? 0.15));
+        } else if (weaponCritMultiplier !== 1&&isSkillEquipped('SkullTrauma')) {
+            baseCritMultiplier /= (1 + (SKILLS.SkullTrauma?.modifier ?? 0.15));
+        } else if (weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')) {
+            baseCritMultiplier /= (1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel);
+        }
+        if (weaponCritMultiplier !== 1&&isSkillEquipped('HeadGames')) {
+            overflowDamage *= baseCritMultiplier*DamagePercent;
+        }else if(weaponCritMultiplier !== 1&&isSkillEquipped('SkullTrauma')){
+            overflowDamage *= baseCritMultiplier*DamagePercent;
+        }else{
+            overflowDamage *= weaponCritMultiplier*DamagePercent;
+        }
+    }
+    let healthDamage = weaponDamage;
+        if (isSkillEquipped('HollowPointRounds')) {
+        const HealBonus = equippedSkillsMastered?.has('HollowPointRounds')
+            ? (SKILLS.HollowPointRounds.masteredmodifier ?? 0.4)
+            : (SKILLS.HollowPointRounds.basemodifier ?? 0.15); 
+            healthDamage *= (1 + HealBonus);
+            if (overflowDamage > 0) {
+                overflowDamage *= (1 + HealBonus);
+            }
+        }
+    if (isSkillEquipped('Cracked')) {
+        healthDamage *= (1 + CrackedBonus ?? 0);
+    }
+    const remainingHealthAfterOverflow = Math.max(0, enemyHealth - overflowDamage);
+
+    const nonCritHealthShots = Math.ceil(remainingHealthAfterOverflow / healthDamage);
+    const fullCritHealthShots = Math.ceil(
+        remainingHealthAfterOverflow / (healthDamage * weaponCritMultiplier)
+    );
+
+
+    if (weaponCritMultiplier !== 1) {
+            return {
+            armoredCrits: armorShots,
+            armoredNonCrits: 0,
+            unarmoredCrits: fullCritHealthShots,
+            unarmoredNonCrits: 0,
+            totalShots: armorShots + fullCritHealthShots,
+            };
+
+    }
+
+    return {
+        armoredCrits: 0,
+        armoredNonCrits: armorShots,
+        unarmoredCrits: 0,
+        unarmoredNonCrits: nonCritHealthShots,
+        totalShots: armorShots + nonCritHealthShots,
+        //totalShotsNonCrit: armorShots + nonCritHealthShots,
+        //totalShotsFullCrit: armorShots + fullCritHealthShots,
+    };
 }
 
 let equippedSkills = [],
+    equippedSkillsMastered = new Set(),
     equippedAttachments = [];
 
 const weaponClasses = [
@@ -643,33 +1330,45 @@ function populateWeaponSelector() {
         weaponName.innerHTML = WEAPON_DATA[weapon].displayName;
         weaponName.setAttribute('for', id);
 
-        weaponDLC.setAttribute(
-            'data-localisation-key',
+        setLocalizationAttributes(
+            weaponDLC,
             'dlc-' + WEAPON_DATA[weapon].dlc
         );
         weaponDLC.setAttribute('for', id);
 
         weaponInput.addEventListener('change', (event) => {
             populateLoadout(event.target.value);
-            updateWeaponStats(event.target.value);
-            updateDamageStats(event.target.value);
+            updateStatsAfterChange();
         });
 
         if (weapon == 'CAR4') weaponInput.checked = true;
 
         populateLoadout('CAR4');
-        updateWeaponStats('CAR4');
-        updateDamageStats('CAR4');
+        updateStatsAfterChange();
     }
 }
 
 const tooltip = document.querySelector('#tooltip');
 
 function showTooltip(left, top, tooltipBody) {
-    tooltip.style.visibility = 'visible';
-    tooltip.style.left = left;
-    tooltip.style.top = top;
     tooltip.innerHTML = tooltipBody;
+
+    const desiredLeft = parseFloat(left);
+    const desiredTop = parseFloat(top);
+    const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+
+    tooltip.style.left = desiredLeft + 'px';
+    tooltip.style.top = desiredTop + 'px';
+    tooltip.style.visibility = 'hidden';
+
+    const height = tooltip.offsetHeight || 0;
+    const margin = 35;
+    const adjustedTop = desiredTop + height + margin > viewportHeight 
+        ? desiredTop - height - margin 
+        : desiredTop;
+
+    tooltip.style.top = adjustedTop + 'px';
+    tooltip.style.visibility = 'visible';
 }
 
 const skillSelector = document.querySelector(
@@ -682,7 +1381,269 @@ const defaultSkillIcons = 'sydch';
 let skillIcons = defaultSkillIcons;
 if (localStorage.getItem('icons')) skillIcons = localStorage.getItem('icons');
 
-function populateSkills() {
+/**
+ * 创建技能数值计数器
+ * @param {HTMLElement} selectableSkill - 技能容器元素
+ * @param {string} skillName - 技能名称
+ * @param {string} counterClass - 计数器CSS类名
+ * @param {string} valueClass - 值显示元素CSS类名
+ * @param {string} minusClass - 减少按钮CSS类名
+ * @param {string} plusClass - 增加按钮CSS类名
+ * @param {number} minValue - 最小值
+ * @param {number} maxValue - 最大值
+ * @param {boolean} hasModeButtons - 是否有模式切换按钮（仅Bullseye）
+ */
+function updateSMGeniusCounterMaxValue() {
+    const smGeniusSkill = document.querySelector('.skill input[value="SMGenius"]');
+    if (!smGeniusSkill) return;
+
+    const isMastered = equippedSkillsMastered.has('SMGenius');
+    const newMaxValue = isMastered ? SKILLS.SMGenius.masteredMaxValue : SKILLS.SMGenius.baseMaxValue;
+
+    const counter = smGeniusSkill.closest('.skill').querySelector('.SMGenius-counter');
+    if (!counter) return;
+
+    const minusBtn = counter.querySelector('.SMGenius-minus');
+    const plusBtn = counter.querySelector('.SMGenius-plus');
+    const valueSpan = counter.querySelector('.SMGenius-value');
+
+    if (!minusBtn || !plusBtn || !valueSpan) return;
+
+    // Remove existing event listeners to avoid duplication
+    const newMinusBtn = minusBtn.cloneNode(true);
+    minusBtn.parentNode.replaceChild(newMinusBtn, minusBtn);
+
+    const newPlusBtn = plusBtn.cloneNode(true);
+    plusBtn.parentNode.replaceChild(newPlusBtn, plusBtn);
+
+    // Update the plus button click handler with the new max value
+    newPlusBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const cur = SKILL_VALUES.SMGenius ?? 1;
+        const next = Math.min(newMaxValue, cur + 1);
+        SKILL_VALUES.SMGenius = next;
+        valueSpan.textContent = next;
+        if (equippedSkills.includes('SMGenius')) {
+            updateStatsAfterChange();
+        }
+    });
+
+    // Update the minus button click handler to ensure it doesn't go below 1
+    newMinusBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        const cur = SKILL_VALUES.SMGenius ?? 1;
+        const next = Math.max(1, cur - 1);
+        SKILL_VALUES.SMGenius = next;
+        valueSpan.textContent = next;
+        if (equippedSkills.includes('SMGenius')) {
+            updateStatsAfterChange();
+        }
+    });
+
+    // Ensure current value doesn't exceed the new max value
+    const currentValue = SKILL_VALUES.SMGenius ?? 1;
+    if (currentValue > newMaxValue) {
+        SKILL_VALUES.SMGenius = newMaxValue;
+        valueSpan.textContent = newMaxValue;
+        if (equippedSkills.includes('SMGenius')) {
+            updateStatsAfterChange();
+        }
+    }
+}
+
+function createSkillCounter(selectableSkill, skillName, counterClass, valueClass, minusClass, plusClass, minValue = 1, maxValue = 12, hasModeButtons = false) {
+    let counter = selectableSkill.querySelector(`.${counterClass}`);
+
+    if (!counter) {
+        counter = document.createElement('div');
+        counter.className = counterClass;
+        counter.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:4px;margin-top:-3px;width:4.536em;height:1.6em;padding:0 0.15em;box-sizing:border-box;';
+
+        const minus = document.createElement('button');
+        minus.type = 'button';
+        minus.className = minusClass;
+        minus.textContent = '-';
+        minus.style.cssText = 'min-width:16px;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.9em;line-height:1;';
+
+        const valueSpan = document.createElement('span');
+        valueSpan.className = valueClass;
+        valueSpan.style.cssText = 'min-width:12px;text-align:center;display:inline-block;font-size:0.85em;line-height:1;';
+        valueSpan.textContent = SKILL_VALUES[skillName] ?? 1;
+
+        const plus = document.createElement('button');
+        plus.type = 'button';
+        plus.className = plusClass;
+        plus.textContent = '+';
+        plus.style.cssText = 'min-width:16px;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.9em;line-height:1;';
+
+        const stopEvent = (ev) => {
+            ev.stopPropagation();
+        };
+
+        minus.addEventListener('click', (ev) => {
+            stopEvent(ev);
+            const cur = SKILL_VALUES[skillName] ?? 1;
+            const next = Math.max(minValue, cur - 1);
+            SKILL_VALUES[skillName] = next;
+            valueSpan.textContent = next;
+            if (equippedSkills.includes(skillName)) {
+                updateStatsAfterChange();
+            }
+        });
+
+        plus.addEventListener('click', (ev) => {
+            stopEvent(ev);
+            const cur = SKILL_VALUES[skillName] ?? 1;
+            const next = Math.min(maxValue, cur + 1);
+            SKILL_VALUES[skillName] = next;
+            valueSpan.textContent = next;
+            if (equippedSkills.includes(skillName)) {
+                updateStatsAfterChange();
+            }
+        });
+
+        minus.addEventListener('contextmenu', (ev) => ev.stopPropagation());
+        plus.addEventListener('contextmenu', (ev) => ev.stopPropagation());
+
+        counter.appendChild(minus);
+        counter.appendChild(valueSpan);
+        counter.appendChild(plus);
+
+        selectableSkill.appendChild(counter);
+
+        if (hasModeButtons) {
+            const buttonContainer = document.createElement('div');
+            buttonContainer.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:4px;margin-top:4px;width:4.536em;height:1.6em;padding:0 0.15em;box-sizing:border-box;';
+            const unmarkBtn = document.createElement('button');
+            unmarkBtn.type = 'button';
+            unmarkBtn.className = 'Bullseye-unmark';
+            unmarkBtn.textContent = SKILLS.Bullseye.Unmarkmodifier * 100 + '%';
+            unmarkBtn.style.cssText = 'flex:1;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8em;line-height:1;';
+            const markBtn = document.createElement('button');
+            markBtn.type = 'button';
+            markBtn.className = 'Bullseye-mark';
+            markBtn.textContent = SKILLS.Bullseye.Markmodifier * 100 + '%';
+            markBtn.style.cssText = 'flex:1;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8em;line-height:1;';
+
+            const updateButtonStyles = () => {
+                if (SKILL_VALUES.BullseyeMode === 'Unmarkmodifier') {
+                    unmarkBtn.style.background = 'rgba(255,255,255,0.2)';
+                    markBtn.style.background = 'transparent';
+                } else {
+                    unmarkBtn.style.background = 'transparent';
+                    markBtn.style.background = 'rgba(255,255,255,0.2)';
+                }
+            };
+
+            unmarkBtn.addEventListener('click', (ev) => {
+                stopEvent(ev);
+                SKILL_VALUES.BullseyeMode = 'Unmarkmodifier';
+                updateButtonStyles();
+                if (equippedSkills.includes('Bullseye')) {
+                    updateStatsAfterChange();
+                }
+            });
+
+            markBtn.addEventListener('click', (ev) => {
+                stopEvent(ev);
+                SKILL_VALUES.BullseyeMode = 'Markmodifier';
+                updateButtonStyles();
+                if (equippedSkills.includes('Bullseye')) {
+                    updateStatsAfterChange();
+                }
+            });
+
+            updateButtonStyles();
+
+            buttonContainer.appendChild(unmarkBtn);
+            buttonContainer.appendChild(markBtn);
+
+            selectableSkill.appendChild(buttonContainer);
+        }
+    } else {
+        const valueSpan = counter.querySelector(`.${valueClass}`);
+        if (valueSpan) valueSpan.textContent = SKILL_VALUES[skillName] ?? 1;
+    }
+}
+
+/**
+ * 创建百分比计数器（每次增加10%）
+ * @param {HTMLElement} selectableSkill - 技能容器元素
+ * @param {string} skillName - 技能名称
+ * @param {string} counterClass - 计数器CSS类名
+ * @param {string} valueClass - 值显示元素CSS类名
+ * @param {string} minusClass - 减少按钮CSS类名
+ * @param {string} plusClass - 增加按钮CSS类名
+ */
+function createPercentageCounter(selectableSkill, skillName, counterClass, valueClass, minusClass, plusClass) {
+    let counter = selectableSkill.querySelector(`.${counterClass}`);
+
+    if (!counter) {
+        counter = document.createElement('div');
+        counter.className = counterClass;
+        counter.style.cssText = 'display:flex;justify-content:space-between;align-items:center;gap:2px;margin-top:4px;width:4.536em;height:1.6em;padding:0 0.15em;box-sizing:border-box;';
+
+        const minus = document.createElement('button');
+        minus.type = 'button';
+        minus.className = minusClass;
+        minus.textContent = '-';
+        minus.style.cssText = 'min-width:12px;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8em;line-height:1;';
+
+        const valueSpan = document.createElement('span');
+        valueSpan.className = valueClass;
+        valueSpan.style.cssText = 'min-width:18px;text-align:center;display:inline-block;font-size:0.75em;line-height:1;';
+        // Display with % sign
+        valueSpan.textContent = (SKILL_VALUES[skillName] ?? 0) + '%';
+
+        const plus = document.createElement('button');
+        plus.type = 'button';
+        plus.className = plusClass;
+        plus.textContent = '+';
+        plus.style.cssText = 'min-width:12px;padding:0;border-radius:3px;border:1px solid rgba(255,255,255,0.08);background:transparent;color:inherit;cursor:pointer;height:100%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8em;line-height:1;';
+
+        const stopEvent = (ev) => {
+            ev.stopPropagation();
+        };
+
+        minus.addEventListener('click', (ev) => {
+            stopEvent(ev);
+            const cur = SKILL_VALUES[skillName] ?? 0;
+            const next = Math.max(0, cur - 7.5);
+            SKILL_VALUES[skillName] = next;
+            valueSpan.textContent = next + '%';
+            if (equippedSkills.includes('HeadGames')) {
+                updateStatsAfterChange();
+            }
+        });
+
+        plus.addEventListener('click', (ev) => {
+            stopEvent(ev);
+            const cur = SKILL_VALUES[skillName] ?? 0;
+            const next = Math.min(75, cur + 7.5);
+            SKILL_VALUES[skillName] = next;
+            valueSpan.textContent = next + '%';
+            if (equippedSkills.includes('HeadGames')) {
+                updateStatsAfterChange();
+            }
+        });
+
+        minus.addEventListener('contextmenu', (ev) => ev.stopPropagation());
+        plus.addEventListener('contextmenu', (ev) => ev.stopPropagation());
+
+        counter.appendChild(minus);
+        counter.appendChild(valueSpan);
+        counter.appendChild(plus);
+
+        selectableSkill.appendChild(counter);
+    } else {
+        const valueSpan = counter.querySelector(`.${valueClass}`);
+        if (valueSpan) valueSpan.textContent = (SKILL_VALUES[skillName] ?? 0) + '%';
+    }
+}
+
+function populateSkills(weaponClass = 'Assault Rifle') {
+    skillSelector.innerHTML = '';
+
     for (const skill in SKILLS) {
         const selectableSkill = skillSelector.appendChild(
             document.createElement('div')
@@ -699,66 +1660,277 @@ function populateSkills() {
         skillInput.id = id;
         skillInput.value = skill;
 
-        if (EDGE_DEPENDENT_SKILLS.includes(skill)) skillInput.disabled = true;
+        if (equippedSkills.includes(skill)) {
+            skillInput.checked = true;
+            skillInput.dataset.state = equippedSkillsMastered.has(skill) ? '2' : '1';
+        } else {
+            skillInput.checked = false;
+            skillInput.dataset.state = '0';
+        }
 
-        skillLabel.innerHTML = SKILLS[skill].displayName;
+        const allowed = SKILLS[skill].allowedClasses;
+        if (weaponClass && Array.isArray(allowed) && !allowed.includes(weaponClass)) {
+            selectableSkill.style.display = 'none';
+            skillInput.disabled = true;
+            if (skillInput.checked) {
+                const idx = equippedSkills.indexOf(skill);
+                if (idx > -1) equippedSkills.splice(idx, 1);
+                equippedSkillsMastered.delete(skill);
+                skillInput.checked = false;
+                skillInput.dataset.state = '0';
+            }
+        } else {
+            selectableSkill.style.display = '';
+            skillInput.disabled = false;
+        }
+
+        // put text into a dedicated span so we don't overwrite the overlay img
+        const skillTextSpan = skillLabel.querySelector('.skill-label-text');
+        if (skillTextSpan) {
+            setLocalizationAttributes(skillTextSpan, SKILLS[skill].name);
+            skillTextSpan.innerText = getLocalisation(SKILLS[skill].name);
+        } else {
+            // fallback if template hasn't been updated
+            setLocalizationAttributes(skillLabel, SKILLS[skill].name);
+            skillLabel.innerText = getLocalisation(SKILLS[skill].name);
+        }
         skillLabel.setAttribute('for', id);
 
-        skillLabel.style = `
-            --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
-            --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
-            --image-url: url("images/${
-                skill == 'edge'
-                    ? skillIcons + '-edge.png'
-                    : skillIcons + '-skills.png'
-            }");
-        `;
-
-        skillInput.addEventListener('change', (event) => {
-            updateSkills(event.target.value);
-            updateWeaponStats(
-                document.querySelector('.selectable-weapon input:checked').value
-            );
-            updateDamageStats(
-                document.querySelector('.selectable-weapon input:checked').value
-            );
-        });
-
-        skillLabel.addEventListener('mouseenter', (event) => {
-            const tooltipBody = `
-                <span class="tooltip-title">${getLocalisation(
-                    SKILLS[skill].name
-                )}</span>
-                <span>${getLocalisation(SKILLS[skill].description)}</span>
+        const iconSpec = SKILLS[skill].icons || (SKILLS[skill].iconBase || SKILLS[skill].iconMastered ? { base: SKILLS[skill].iconBase, mastered: SKILLS[skill].iconMastered } : null);
+        if (iconSpec && iconSpec.base) {
+            skillLabel.dataset.iconMode = 'single';
+            const baseIcon = iconSpec.base.replace('Skills2.0', skillIcons);
+            skillLabel.style.setProperty('--image-url', `url("${baseIcon}")`);
+            skillLabel.style.setProperty('--image-x-offset', 'center');
+            skillLabel.style.setProperty('--image-y-offset', 'center');
+            skillLabel.style.setProperty('--image-size', '64px 64px');
+            skillLabel.style.setProperty('--image-scale', '80%');
+        } else {
+            skillLabel.dataset.iconMode = 'pack';
+            skillLabel.style = `
+                --image-x-offset: ${SKILLS[skill].iconOffset.x * -1}px;
+                --image-y-offset: ${SKILLS[skill].iconOffset.y * -1}px;
+                --image-url: url("images/${
+                    skill == 'edge'
+                        ? skillIcons + '-edge.png'
+                        : skillIcons + '-skills.png'
+                }");
             `;
+        }
 
-            const rect = event.target.getBoundingClientRect();
+        if (skillLabel.dataset.iconMode === 'pack') {
+            skillLabel.style.setProperty('--image-size', '64px 64px');
+        }
 
-            showTooltip(
-                rect.left + 'px',
-                rect.top + event.target.clientHeight + 'px',
-                tooltipBody
+        if (skillLabel.dataset.iconMode === 'pack') {
+            skillLabel.style.setProperty('--image-scale', '80%');
+        }
+
+        skillLabel.style.position = skillLabel.style.position || 'relative';
+
+        // overlay img is now provided in template (no dynamic creation needed)
+        const overlay = skillLabel.querySelector('.skill-mastered-overlay');
+//skill value span
+        if (skill === 'Rifleman') {
+            createSkillCounter(selectableSkill, 'Rifleman', 'rifleman-counter', 'rifleman-value', 'rifleman-minus', 'rifleman-plus');
+        }
+        if (skill === 'HeadGames') {
+            createSkillCounter(selectableSkill, 'HeadGames', 'headgames-counter', 'headgames-value', 'headgames-minus', 'headgames-plus');
+            // Create percentage counter below HeadGames counter
+            createPercentageCounter(selectableSkill, 'HeadGamesPercentage', 'headgames-percentage-counter', 'headgames-percentage-value', 'headgames-percentage-minus', 'headgames-percentage-plus');
+        }
+        if (skill === 'SMGAdept') {
+            createSkillCounter(selectableSkill, 'SMGAdept', 'SMGAdept-counter', 'SMGAdept-value', 'SMGAdept-minus', 'SMGAdept-plus');
+        }
+        if (skill === 'CallingShotgun') {
+            createSkillCounter(selectableSkill, 'CallingShotgun', 'CallingShotgun-counter', 'CallingShotgun-value', 'CallingShotgun-minus', 'CallingShotgun-plus');
+        }
+        if (skill === 'Bullseye') {
+            createSkillCounter(selectableSkill, 'Bullseye', 'Bullseye-counter', 'Bullseye-value', 'Bullseye-minus', 'Bullseye-plus', 1, 12, true);
+        }
+        if (skill === 'SMGenius') {
+            // Get the current max value based on skill mastery state
+            const isMastered = equippedSkillsMastered.has('SMGenius');
+            const maxValue = isMastered ? SKILLS.SMGenius.masteredMaxValue : SKILLS.SMGenius.baseMaxValue;
+            createSkillCounter(selectableSkill, 'SMGenius', 'SMGenius-counter', 'SMGenius-value', 'SMGenius-minus', 'SMGenius-plus', 1, maxValue);
+        }
+        if (skill === 'Sunburn') {
+            createSkillCounter(selectableSkill, 'Sunburn', 'Sunburn-counter', 'Sunburn-value', 'Sunburn-minus', 'Sunburn-plus');
+        }
+        if (skill === 'ElecTenderizer') {
+            createSkillCounter(selectableSkill, 'ElecTenderizer', 'ElecTenderizer-counter', 'ElecTenderizer-value', 'ElecTenderizer-minus', 'ElecTenderizer-plus',1,5);
+        }
+        if (skill === 'HulkOut') {
+            createSkillCounter(selectableSkill, 'HulkOut', 'HulkOut-counter', 'HulkOut-value', 'HulkOut-minus', 'HulkOut-plus');
+        }
+
+
+         const applyVisualState = (state) => {
+             // Keep data-state on both input and label in sync (some CSS targets input[data-state])
+             skillInput.dataset.state = state;
+             skillLabel.dataset.state = state;
+
+             // checked should be true for both basic(1) and mastered(2), false for none(0)
+             skillInput.checked = state !== '0';
+
+             // Use a class to control the icon-only greyscale via CSS on the ::before pseudo-element
+             skillLabel.classList.toggle('unselected', state === '0');
+
+             // toggle mastered overlay
+             skillLabel.classList.toggle('mastered', state === '2');
+
+             // ensure the container .skill has .selected when any state except '0' so the page's
+             // original selected visuals (which use .skill.selected or :has(> input:checked)) are
+             // applied consistently. When state is '0' remove .selected to clear visuals.
+             selectableSkill.classList.toggle('selected', state !== '0');
+
+             if (skillLabel.dataset.iconMode === 'single') {
+                 const baseIcon = SKILLS[skill].icons ? SKILLS[skill].icons.base.replace('Skills2.0', skillIcons) : SKILLS[skill].iconBase;
+                 const masteredIcon = SKILLS[skill].icons ? SKILLS[skill].icons.mastered.replace('Skills2.0', skillIcons) : SKILLS[skill].iconMastered || baseIcon;
+                 const iconUrl = state === '2' ? masteredIcon : baseIcon;
+                 if (iconUrl) {
+                     skillLabel.style.setProperty('--image-url', `url("${iconUrl}")`);
+                 }
+             }
+
+                     console.debug('Skill state updated', {
+                 skill,
+                 state,
+                 mastered: equippedSkillsMastered.has(skill),
+                 overlayVisible: skillLabel.classList.contains('mastered'),
+             });
+         };
+
+        applyVisualState(skillInput.dataset.state);
+
+        skillInput.addEventListener('click', (event) => {
+            event.preventDefault();
+            const skill = event.target.value;
+            const isEquipped = equippedSkills.includes(skill);
+            const isMastered = equippedSkillsMastered.has(skill);
+            const isDirectMastered = SKILLS[skill]?.directMastered;
+            const isdirectBasiced = SKILLS[skill]?.directBasiced;
+
+            if (isDirectMastered) {
+                if (!isEquipped) {
+                    equippedSkills.push(skill);
+                    equippedSkillsMastered.add(skill);
+                    skillInput.dataset.state = '2';
+                    applyVisualState('2');
+                } else if (isMastered) {
+                    const idx = equippedSkills.indexOf(skill);
+                    if (idx > -1) equippedSkills.splice(idx, 1);
+                    equippedSkillsMastered.delete(skill);
+                    skillInput.dataset.state = '0';
+                    applyVisualState('0');
+                } else {
+                    if (isdirectBasiced) {
+                        const idx = equippedSkills.indexOf(skill);
+                        if (idx > -1) equippedSkills.splice(idx, 1);
+                        equippedSkillsMastered.delete(skill);
+                        skillInput.dataset.state = '0';
+                        applyVisualState('0');
+                    } else {
+                        equippedSkillsMastered.add(skill);
+                        skillInput.dataset.state = '2';
+                        applyVisualState('2');
+                    }
+                }
+            } else {
+                        if (!isEquipped) {
+                            equippedSkills.push(skill);
+                            equippedSkillsMastered.delete(skill);
+                            skillInput.dataset.state = '1';
+                            applyVisualState('1');
+                        } else if (isEquipped && !isMastered) {
+                            if (isdirectBasiced) {
+                                const idx = equippedSkills.indexOf(skill);
+                                if (idx > -1) equippedSkills.splice(idx, 1);
+                                equippedSkillsMastered.delete(skill);
+                                skillInput.dataset.state = '0';
+                                applyVisualState('0');
+                            } else {
+                                equippedSkillsMastered.add(skill);
+                                skillInput.dataset.state = '2';
+                                applyVisualState('2');
+                            }
+                        } else {
+                            const idx = equippedSkills.indexOf(skill);
+                            if (idx > -1) equippedSkills.splice(idx, 1);
+                            equippedSkillsMastered.delete(skill);
+                            skillInput.dataset.state = '0';
+                            applyVisualState('0');
+                        }
+                }
+
+            console.debug('Skill clicked', { skill, state: skillInput.dataset.state });
+            updateStatsAfterChange();
+
+            // Update SMGenius counter max value if the skill is SMGenius
+            if (skill === 'SMGenius') {
+                updateSMGeniusCounterMaxValue();
+            }
+        });
+
+        skillInput.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            const skill = event.target.value;
+
+            // Context behaviour: always reset to none (用户要求：右键直接回到未选)
+            const idx = equippedSkills.indexOf(skill);
+            if (idx > -1) equippedSkills.splice(idx, 1);
+            equippedSkillsMastered.delete(skill);
+            skillInput.dataset.state = '0';
+            skillInput.checked = false;
+            applyVisualState('0');
+
+            console.debug('Skill contextmenu changed', { skill, state: skillInput.dataset.state });
+
+            updateStatsAfterChange();
+        });
+
+        skillLabel.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            skillInput.dispatchEvent(
+                new MouseEvent('contextmenu', { bubbles: true, cancelable: true })
             );
         });
 
-        skillLabel.addEventListener('mouseleave', (event) => {
-            tooltip.style.visibility = 'hidden';
-        });
+        const tooltipBody = `
+            <span class="tooltip-title">${getLocalisation(
+                SKILLS[skill].name
+            )}</span>
+            <span>${getLocalisation(SKILLS[skill].description)}</span>
+        `;
+        
+        addTooltipEvents(skillLabel, tooltipBody);
     }
 }
 
 function updateSkillIcons() {
     document.querySelectorAll('.skill label').forEach((element) => {
-        if (element.getAttribute('for') == 'edge') {
-            element.style.setProperty(
-                '--image-url',
-                `url("images/${skillIcons}-edge.png")`
-            );
-        } else {
-            element.style.setProperty(
-                '--image-url',
-                `url("images/${skillIcons}-skills.png")`
-            );
+        if (element.dataset.iconMode === 'pack') {
+            if (element.getAttribute('for') == 'edge') {
+                element.style.setProperty(
+                    '--image-url',
+                    `url("images/${skillIcons}-edge.png")`
+                );
+            } else {
+                element.style.setProperty(
+                    '--image-url',
+                    `url("images/${skillIcons}-skills.png")`
+                );
+            }
+        } else if (element.dataset.iconMode === 'single') {
+            const skillId = element.getAttribute('for');
+            const skill = Object.keys(SKILLS).find(s => s.replace(/([a-z])([A-Z0-9])/g, '$1-$2').toLowerCase() === skillId);
+            if (skill && SKILLS[skill].icons) {
+                const state = element.dataset.state || '1';
+                const baseIcon = SKILLS[skill].icons.base.replace('Skills2.0', skillIcons);
+                const masteredIcon = SKILLS[skill].icons.mastered.replace('Skills2.0', skillIcons);
+                const iconUrl = state === '2' ? masteredIcon : baseIcon;
+                element.style.setProperty('--image-url', `url("${iconUrl}")`);
+            }
         }
     });
 }
@@ -788,6 +1960,8 @@ const attachmentSlots = [
 
 function populateLoadout(selectedWeapon) {
     const weapon = WEAPON_DATA[selectedWeapon];
+
+    populateSkills(weapon.class);
 
     document.querySelector('#loadout h2').innerHTML = weapon.displayName;
 
@@ -865,8 +2039,42 @@ function populateLoadout(selectedWeapon) {
 
                 attachmentInput.addEventListener('change', () => {
                     updateAttachments();
-                    updateWeaponStats(selectedWeapon);
-                    updateDamageStats(selectedWeapon);
+                    updateStatsAfterChange();
+                });
+
+                attachmentInput.addEventListener('contextmenu', (event) => {
+                    event.preventDefault();
+                    const slotName = attachmentInput.name;
+                    const defaultValue = defaultAttachment;
+
+                    if (attachmentInput.value !== defaultValue) {
+                        const defaultInput = document.querySelector(
+                            `input[name="${slotName}"][value="${defaultValue}"]`
+                        );
+                        if (defaultInput) {
+                            defaultInput.checked = true;
+                            defaultInput.dispatchEvent(
+                                new Event('change', { bubbles: true })
+                            );
+                        }
+                    } else {
+                        const noneInput = document.querySelector(
+                            `input[name="${slotName}"][value="None"]`
+                        );
+                        if (noneInput && !noneInput.checked) {
+                            noneInput.checked = true;
+                            noneInput.dispatchEvent(
+                                new Event('change', { bubbles: true })
+                            );
+                        }
+                    }
+                });
+
+                attachmentLabel.addEventListener('contextmenu', (event) => {
+                    event.preventDefault();
+                    attachmentInput.dispatchEvent(
+                        new MouseEvent('contextmenu', { bubbles: true, cancelable: true })
+                    );
                 });
 
                 attachmentLabel.addEventListener('mouseenter', (event) => {
@@ -886,15 +2094,15 @@ function populateLoadout(selectedWeapon) {
                             (attachmentData.magazineData.ammoLoaded ?? 10) +
                                 '/' +
                                 (attachmentData.magazineData.ammoInventoryMax ??
-                                    200) +
-                                getLocalisation(' Magazine Size')
+                                    100) +
+                            getLocalisation(' Magazine Size')
                         );
                         attachmentStats.push(
                             (attachmentData.magazineData.ammoPickup.min ?? 5) +
                                 '–' +
                                 (attachmentData.magazineData.ammoPickup.max ??
                                     10) +
-                                getLocalisation(' Ammo Pickup')
+                            getLocalisation(' Ammo Pickup')
                         );
                     }
 
@@ -916,9 +2124,8 @@ function populateLoadout(selectedWeapon) {
                     const tooltipBody = `
                         <span>${attachmentStats.join('</br>')}</span>
                     `;
-
+                    
                     const rect = event.target.getBoundingClientRect();
-
                     showTooltip(
                         rect.left + 'px',
                         rect.top + event.target.clientHeight + 'px',
@@ -926,7 +2133,7 @@ function populateLoadout(selectedWeapon) {
                     );
                 });
 
-                attachmentLabel.addEventListener('mouseleave', (event) => {
+                attachmentLabel.addEventListener('mouseleave', () => {
                     tooltip.style.visibility = 'hidden';
                 });
             }
@@ -939,22 +2146,11 @@ function populateLoadout(selectedWeapon) {
 function updateSkills(selectedSkill) {
     const skillIsEquipped = equippedSkills.includes(selectedSkill);
 
-    if (!skillIsEquipped) equippedSkills.push(selectedSkill);
-    else equippedSkills.splice(equippedSkills.indexOf(selectedSkill), 1);
-
-    if (selectedSkill !== 'edge') return;
-    for (const skill of EDGE_DEPENDENT_SKILLS) {
-        const skillInput = document.querySelector(`input[value=${skill}]`);
-
-        if (skillIsEquipped) {
-            skillInput.disabled = true;
-            skillInput.checked = false;
-
-            if (equippedSkills.includes(skill))
-                equippedSkills.splice(equippedSkills.indexOf(skill), 1);
-        } else {
-            skillInput.disabled = false;
-        }
+    if (!skillIsEquipped) {
+        equippedSkills.push(selectedSkill);
+    } else {
+        equippedSkills.splice(equippedSkills.indexOf(selectedSkill), 1);
+        equippedSkillsMastered.delete(selectedSkill);
     }
 }
 
@@ -990,13 +2186,13 @@ function updateWeaponStats(selectedWeapon) {
         fireData.projectilesPerFiredRound > 1
     ) {
         baseDamageStat.innerHTML =
-            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
+            formatNumber(fireData.damageDistanceArray[0].damage) +
             '*' +
             Math.round(fireData.projectilesPerFiredRound) +
             '/';
     } else {
         baseDamageStat.innerHTML =
-            Math.round(fireData.damageDistanceArray[0].damage * 100) / 100 +
+            formatNumber(fireData.damageDistanceArray[0].damage) +
             '/';
     }
 
@@ -1012,8 +2208,17 @@ function updateWeaponStats(selectedWeapon) {
     );
 
     const baseMultiplierStat = document.querySelector('#stat-base-multiplier');
-    baseMultiplierStat.innerHTML =
-        fireData.criticalDamageMultiplierDistanceArray[0].multiplier + '×/';
+    let baseMultiplier = fireData.criticalDamageMultiplierDistanceArray[0].multiplier;
+    const hgLevel = SKILL_VALUES.HeadGames ?? 1
+    if (isSkillEquipped('HeadGames')&&isSkillEquipped('SkullTrauma')) {
+        baseMultiplier *= 1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if(isSkillEquipped('SkullTrauma')){
+        baseMultiplier *= 1+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+    }else if (isSkillEquipped('HeadGames')) {
+        baseMultiplier *= 1 + (SKILLS.HeadGames?.modifier ?? 0) * hgLevel;
+    }
+    
+    baseMultiplierStat.innerHTML = formatNumber(baseMultiplier, 2) + '×/';
 
     const baseMultiplierRange = baseMultiplierStat.appendChild(
         document.createElement('span')
@@ -1022,12 +2227,13 @@ function updateWeaponStats(selectedWeapon) {
     baseMultiplierRange.setAttribute(
         'data-localisation-var',
         `{"distance":"${
-            fireData.criticalDamageMultiplierDistanceArray[0].distance / 100
+            ((fireData.criticalDamageMultiplierDistanceArray[0].distance) / 100).toFixed(2)
         }"}`
     );
 
-    document.querySelector('#stat-armor-penetration').innerHTML =
-        fireData.armorPenetration;
+    const rawAp = Number(fireData.armorPenetration ?? 0);
+    const apDisplay = formatNumber(rawAp).toString().replace(/\.0+$/, '');
+    document.querySelector('#stat-armor-penetration').innerHTML = apDisplay;
 
     const fireModeStat = document.querySelector('#stat-fire-type');
     fireModeStat.innerHTML = fireData.fireType;
@@ -1058,17 +2264,17 @@ function updateWeaponStats(selectedWeapon) {
         fireData.ammoPickup.min + '–' + weapon.fireData.ammoPickup.max;
 
     const reloadStat = document.querySelector('#stat-reload');
-    reloadStat.setAttribute('data-localisation-key', 'stats-time');
-    reloadStat.setAttribute(
-        'data-localisation-var',
-        `{"duration": "${Math.round(weapon.reloadTime * 1000) / 1000}"}`
+    setLocalizationAttributes(
+        reloadStat,
+        'stats-time',
+        {"duration": formatNumber(weapon.reloadTime, 3).toString()}
     );
 
     const fullReloadStat = document.querySelector('#stat-full-reload');
-    fullReloadStat.setAttribute('data-localisation-key', 'stats-time');
-    fullReloadStat.setAttribute(
-        'data-localisation-var',
-        `{"duration": "${Math.round(weapon.reloadEmptyTime * 1000) / 1000}"}`
+    setLocalizationAttributes(
+        fullReloadStat,
+        'stats-time',
+        {"duration": formatNumber(weapon.reloadEmptyTime, 3).toString()}
     );
 
     const weaponDamageStats = document.querySelector(
@@ -1095,12 +2301,15 @@ function updateWeaponStats(selectedWeapon) {
         );
 
         damageStat.children[1].innerHTML =
-            Math.round(damageStep.damage * 100) / 100;
+            formatNumber(damageStep.damage);
     });
 
     const weaponCritStats = document.querySelector('#weapon-stats-damage > div')
         .children[1];
     weaponCritStats.innerHTML = '';
+
+    const headGamesLevel = equippedSkills.includes('HeadGames') ? (SKILL_VALUES.HeadGames ?? 1) : 0;
+    const headGamesModifier = equippedSkills.includes('HeadGames') ? (SKILLS.HeadGames?.modifier ?? 0) : 0;
 
     weapon.fireData.criticalDamageMultiplierDistanceArray.forEach(
         (criticalDamageStep) => {
@@ -1116,16 +2325,25 @@ function updateWeaponStats(selectedWeapon) {
             );
             critStat.children[0].setAttribute(
                 'data-localisation-var',
-                `{"distance": "${
+                `{"distance":"${
                     Math.round(Math.min(criticalDamageStep.distance, 100000)) /
                     100
                 }"}`
             );
 
-            critStat.children[1].innerHTML =
-                criticalDamageStep.multiplier + 'x';
+            let finalMultiplier = criticalDamageStep.multiplier;
+            if (headGamesLevel > 0&&isSkillEquipped('SkullTrauma')) {
+                finalMultiplier *= (1 + headGamesModifier * headGamesLevel +(SKILLS.SkullTrauma?.modifier ?? 0.15));
+            }else if(isSkillEquipped('SkullTrauma')){
+                finalMultiplier *= 1+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+            }else if (isSkillEquipped('HeadGames')) {
+                finalMultiplier *= 1 + headGamesModifier * headGamesLevel;
+            }
+
+            critStat.children[1].innerHTML = formatNumber(finalMultiplier, 2) + 'x';
         }
     );
+
 
     const recoilPatternStat = document.querySelector('svg#recoil-pattern');
 
@@ -1272,41 +2490,50 @@ function updateWeaponStats(selectedWeapon) {
     initialNumStat.innerHTML = weapon.recoilData.viewKick.initialNum;
 
     const equipTimeStat = document.querySelector('#stat-equip-time');
-    equipTimeStat.setAttribute('data-localisation-key', 'stats-time');
-    equipTimeStat.setAttribute(
-        'data-localisation-var',
-        `{"duration": "${Math.round(weapon.equipTime * 1000) / 1000}"}`
+    setLocalizationAttributes(
+        equipTimeStat,
+        'stats-time',
+        {"duration": formatNumber(weapon.equipTime, 3).toString()}
     );
 
     const unequipTimeStat = document.querySelector('#stat-unequip-time');
-    unequipTimeStat.setAttribute('data-localisation-key', 'stats-time');
-    unequipTimeStat.setAttribute(
-        'data-localisation-var',
-        `{"duration": "${Math.round(weapon.unequipTime * 1000) / 1000}"}`
+    setLocalizationAttributes(
+        unequipTimeStat,
+        'stats-time',
+        {"duration": formatNumber(weapon.unequipTime, 3).toString()}
     );
 
     const sprintExitTimeStat = document.querySelector('#stat-sprint-exit-time');
-    sprintExitTimeStat.setAttribute('data-localisation-key', 'stats-time');
-    sprintExitTimeStat.setAttribute(
-        'data-localisation-var',
-        `{"duration": "${Math.round(weapon.sprintExitTime * 1000) / 1000}"}`
+    setLocalizationAttributes(
+        sprintExitTimeStat,
+        'stats-time',
+        {"duration": formatNumber(weapon.sprintExitTime, 3).toString()}
     );
 }
 
 function shotsToKillAtDistances(weapon, enemy, headshots) {
     const fireData = weapon.fireData;
 
-    const distanceArray = [
-        ...new Set([
-            ...fireData.damageDistanceArray.map(
-                (damageStep) => damageStep.distance
-            ),
-            ...fireData.criticalDamageMultiplierDistanceArray.map(
-                (critMultiplierStep) => critMultiplierStep.distance
-            ),
-        ]),
-    ].sort((a, b) => b - a);
-
+    // 当装备 CallingShotgun 时，只使用修改后的伤害距离数组，以避免使用未修改的距离数值
+    const distanceArray = isSkillEquipped('CallingShotgun')
+        ? [
+            ...new Set([
+                ...fireData.damageDistanceArray.map(
+                    (damageStep) => damageStep.distance
+                ),
+            ]),
+        ].sort((a, b) => b - a)
+        : [
+            ...new Set([
+                ...fireData.damageDistanceArray.map(
+                    (damageStep) => damageStep.distance
+                ),
+                ...fireData.criticalDamageMultiplierDistanceArray.map(
+                    (critMultiplierStep) => critMultiplierStep.distance
+                ),
+            ]),
+        ].sort((a, b) => b - a);
+    
     let shotsToKillAtDistances = {},
         previous = {};
 
@@ -1317,7 +2544,7 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
             ) ?? fireData.damageDistanceArray.slice(-1)[0]
         ).damage;
 
-        const multiplier = headshots
+        let multiplier = headshots
             ? (
                   fireData.criticalDamageMultiplierDistanceArray.find(
                       (critMultiplierStep) =>
@@ -1327,31 +2554,61 @@ function shotsToKillAtDistances(weapon, enemy, headshots) {
               ).multiplier
             : 1;
 
+        if (headshots && isSkillEquipped('HeadGames')&&isSkillEquipped('SkullTrauma')) {
+            multiplier *= 1 + (SKILLS.HeadGames?.modifier ?? 0) * (SKILL_VALUES.HeadGames ?? 1)+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+        }else if(headshots &&isSkillEquipped('SkullTrauma')){
+            multiplier *= 1+(SKILLS.SkullTrauma?.modifier ?? 0.15);
+        }else if(headshots &&isSkillEquipped('HeadGames')){
+            multiplier *= 1+(SKILLS.HeadGames?.modifier ?? 0) * (SKILL_VALUES.HeadGames ?? 1);
+        }
+
         let enemyArmor = enemy.armor;
-
-        if (enemy.displayName == 'Bulldozer' && headshots) enemyArmor = 0;
+        let enemyArmorLayer = enemy.armorLayer;
+        if (enemy.displayName == 'Bulldozer' && headshots) enemyArmor = enemyArmorLayer = 0;
         if (
-            equippedSkills.includes('expose') &&
-            enemy.displayName != 'Bulldozer'
-        )
-            enemyArmor = 0;
+            isSkillMastered('Sunburn') &&
+            enemy.displayName != 'Bulldozer'&&enemy.displayName != 'Drone'&&
+            enemy.armorLayer > 0
+        ){
+            let decreaselayer = Math.ceil(enemy.armorLayer/2);
+            enemyArmor -= (decreaselayer/enemy.armorLayer)*enemyArmor;
+            enemyArmorLayer -= decreaselayer;
+        }
 
-        const shotsToKill = weaponShotsToKill(
+//        const shotsToKill = weaponShotsToKill(
+//            damage,
+//            multiplier,
+//            effectiveArmorPenetration(
+//                fireData.armorPenetration,
+//                enemy.armorHardness
+//            ),
+//            enemy.health,
+//            enemyArmor
+//        );
+        const shotsToKill = weaponShotsToKillByArmorLayer(
             damage,
             multiplier,
-            effectiveArmorPenetration(
-                fireData.armorPenetration,
-                enemy.armorHardness
-            ),
+            fireData.armorPenetration,
             enemy.health,
-            enemyArmor
+            enemyArmor,
+            enemyArmorLayer,
+            enemy.displayName
         );
-
+        let damagetoVisor = damage;
         if (enemy.displayName == 'Bulldozer' || enemy.displayName == 'Shield') {
-            const shotsToBreakVisor =
-                fireData.armorPenetration < enemy.visorArmorHardness - 0.99
-                    ? Math.ceil(enemy.visorArmor / damage)
-                    : 0;
+            if(isSkillEquipped('Sunburn')){
+                damagetoVisor = damage/(1+(SKILLS.Sunburn?.modifier ?? 0) * (SKILL_VALUES.Sunburn ?? 1));
+            }
+            const headshotBonus = headshots && (isSkillEquipped('HeadGames') || isSkillEquipped('SkullTrauma'))
+                ? (1 + (isSkillEquipped('HeadGames') ? (SKILLS.HeadGames?.modifier ?? 0) * (SKILL_VALUES.HeadGames ?? 1) : 0) +
+                   (isSkillEquipped('SkullTrauma') ? (SKILLS.SkullTrauma?.modifier ?? 0.15) : 0))
+                : 1;
+
+            const shotsToBreakVisor = enemy.displayName == 'Bulldozer'
+                ? Math.ceil(enemy.visorArmor / ((damagetoVisor+damagetoVisor*multiplier*0.2) * headshotBonus))
+                : fireData.armorPenetration < enemy.visorArmorHardness - 0.99
+                ? Math.ceil(enemy.visorArmor / damagetoVisor)
+                : 0;
 
             shotsToKill.visorShots = shotsToBreakVisor;
             shotsToKill.nonVisorShots = shotsToKill.totalShots;
@@ -1432,7 +2689,7 @@ function updateDamageStats(selectedWeapon) {
         const filteredSkills = equippedSkills.filter((skill) => {
             return (
                 // In normal gameplay dozers cannot be stunned
-                !(enemy == 'bulldozer' && skill == 'coupDeGrace')
+                !(enemy == 'bulldozer' && skill == 'CheapTrick')
             );
         });
 
@@ -1474,17 +2731,31 @@ function updateDamageStats(selectedWeapon) {
             );
         }
 
-        if (enemyData.armorHardness) {
-            const enemyArmorHardness = enemyInfo.appendChild(
+//        if (enemyData.armorHardness) {
+//            const enemyArmorHardness = enemyInfo.appendChild(
+//                document.createElement('span')
+//            );
+//            enemyArmorHardness.setAttribute(
+//                'data-localisation-key',
+//                'enemy-stats-armor-hardness'
+//            );
+//            enemyArmorHardness.setAttribute(
+//                'data-localisation-var',
+//                `{"hardness":"${enemyData.armorHardness}"}`
+//            );
+//        }
+
+        if (enemyData.armorLayer) {
+            const enemyArmorLayer = enemyInfo.appendChild(
                 document.createElement('span')
             );
-            enemyArmorHardness.setAttribute(
+            enemyArmorLayer.setAttribute(
                 'data-localisation-key',
-                'enemy-stats-armor-hardness'
+                'enemy-stats-armor-layer'
             );
-            enemyArmorHardness.setAttribute(
+            enemyArmorLayer.setAttribute(
                 'data-localisation-var',
-                `{"hardness":"${enemyData.armorHardness}"}`
+                `{"layer":"${enemyData.armorLayer}"}`
             );
         }
 
@@ -1578,12 +2849,10 @@ function updateDamageStats(selectedWeapon) {
             const ttk = damageBreakdown.appendChild(
                 document.createElement('span')
             );
-            ttk.setAttribute('data-localisation-key', 'stats-time');
-            ttk.setAttribute(
-                'data-localisation-var',
-                `{"duration": "${
-                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
-                }"}`
+            setLocalizationAttributes(
+                ttk,
+                'stats-time',
+                {"duration": formatNumber(timeToKill(weapon, totalShots), 2).toString()}
             );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
@@ -1678,12 +2947,10 @@ function updateDamageStats(selectedWeapon) {
             const ttk = damageBreakdown.appendChild(
                 document.createElement('span')
             );
-            ttk.setAttribute('data-localisation-key', 'stats-time');
-            ttk.setAttribute(
-                'data-localisation-var',
-                `{"duration": "${
-                    Math.round(timeToKill(weapon, totalShots) * 100) / 100
-                }"}`
+            setLocalizationAttributes(
+                ttk,
+                'stats-time',
+                {"duration": formatNumber(timeToKill(weapon, totalShots), 2).toString()}
             );
 
             if (totalShots > weapon.fireData.ammoLoaded) {
@@ -1712,7 +2979,7 @@ function updateDamageStats(selectedWeapon) {
 
 document.addEventListener('DOMContentLoaded', async () => {
     await initialiseDefaultLocale();
-
+    preloadImages(SKILL_ICONS_TO_PRELOAD);
     populateWeaponSelector();
     populateSkills();
 
